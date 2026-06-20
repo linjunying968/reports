@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界杯 6/21 三场波胆串关 — 排除荷兰</title>
+<style>
+:root{--bg:#0a0e14;--card-bg:#12171f;--card-border:#1e2a3a;--text:#cfd7e6;--text-dim:#8896a8;--accent:#e8b830;--green:#10b981;--red:#ef4444;--purple:#8b5cf6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.6;-webkit-text-size-adjust:100%;}
+.container{max-width:960px;margin:0 auto;padding:clamp(10px,3vw,20px);}
+.hero{text-align:center;padding:clamp(20px,4vw,36px) clamp(12px,3vw,20px);background:linear-gradient(135deg,#12171f,#1a2235);border-radius:12px;margin-bottom:16px;border:1px solid var(--card-border);}
+.hero h1{font-size:clamp(20px,4vw,28px);color:var(--accent);margin-bottom:6px;}
+.hero .meta{color:var(--text-dim);font-size:clamp(11px,1.8vw,13px);}
+.section{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:clamp(12px,2.5vw,18px);margin-bottom:14px;}
+.section h2{font-size:clamp(15px,2.2vw,18px);color:var(--accent);margin-bottom:10px;border-bottom:1px solid var(--card-border);padding-bottom:6px;}
+.section h3{font-size:clamp(13px,1.8vw,15px);color:#bcc5d6;margin:10px 0 8px;}
+table{width:100%;border-collapse:collapse;font-size:clamp(11px,1.7vw,13px);margin:8px 0;}
+th,td{padding:clamp(5px,1.2vw,8px);text-align:center;border-bottom:1px solid var(--card-border);}
+th{background:#1a2235;color:var(--accent);font-weight:600;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+tr:hover td{background:rgba(232,184,48,0.05);}
+tr.hl td{background:rgba(232,184,48,0.08)!important;}
+.tag{display:inline-block;padding:2px 6px;border-radius:3px;font-size:clamp(9px,1.3vw,10px);font-weight:600;margin:0 2px;}
+.tag-2{background:rgba(16,185,129,0.2);color:var(--green);}
+.tag-3{background:rgba(139,92,246,0.2);color:var(--purple);}
+.tag-ex{background:rgba(239,68,68,0.2);color:var(--red);}
+.rank-num{font-size:clamp(16px,2.5vw,24px);font-weight:bold;color:var(--accent);}
+.prob-big{font-size:clamp(18px,2.8vw,26px);font-weight:bold;color:var(--green);}
+.odds-big{font-size:clamp(20px,3vw,30px);font-weight:bold;color:var(--accent);}
+.combo-card{background:linear-gradient(135deg,#1a2235,#12171f);border:1px solid var(--card-border);border-radius:10px;padding:clamp(10px,2vw,16px);margin:8px 0;}
+.combo-card.best{border:1px solid var(--accent);}
+.match-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;background:rgba(255,255,255,0.05);margin:2px;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;}
+@media(max-width:640px){.grid-3{grid-template-columns:1fr;}}
+.note{font-size:clamp(10px,1.4vw,12px);color:var(--text-dim);margin:6px 0;}
+.warn-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:10px 14px;margin:8px 0;color:#fca5a5;font-size:clamp(11px,1.7vw,13px);}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>⚽ 世界杯 6/21 波胆串关 · 排除荷兰</h1>
+  <div class="meta">荷兰 vs 瑞典已开赛（Brobbey 梅开二度，荷兰正领先）→ 排除</div>
+  <div class="meta" style="margin-top:3px;color:var(--accent)">三场：德国vs科特迪瓦 · 厄瓜多尔vs库拉索 · 突尼斯vs日本</div>
+</div>
+
+<!-- 各场最优比分 -->
+<div class="section">
+  <h2>📊 三场 Poisson 最优比分</h2>
+  <div class="grid-3">
+    <div>
+      <h3 style="color:var(--accent)">🇩🇪 德国 vs 科特迪瓦 🇨🇮</h3>
+      <table>
+        <tr><th>比分</th><th>概率</th><th>≈赔率</th></tr>
+        <tr class="hl"><td><b>2-0</b></td><td>10.5%</td><td>8.0</td></tr>
+        <tr><td>1-0</td><td>10.2%</td><td>8.0</td></tr>
+        <tr><td>2-1</td><td>9.9%</td><td>8.5</td></tr>
+        <tr><td>1-1</td><td>9.7%</td><td>8.5</td></tr>
+        <tr><td>3-0</td><td>7.2%</td><td>12</td></tr>
+        <tr><td>3-1</td><td>6.8%</td><td>12</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="color:var(--accent)">🇪🇨 厄瓜多尔 vs 库拉索 🇨🇼</h3>
+      <table>
+        <tr><th>比分</th><th>概率</th><th>≈赔率</th></tr>
+        <tr class="hl"><td><b>3-0</b></td><td>10.3%</td><td>8.0</td></tr>
+        <tr><td>2-0</td><td>8.9%</td><td>9.5</td></tr>
+        <tr><td>4-0</td><td>8.9%</td><td>9.5</td></tr>
+        <tr><td>3-1</td><td>7.7%</td><td>11</td></tr>
+        <tr><td>2-1</td><td>6.7%</td><td>12</td></tr>
+        <tr><td>4-1</td><td>6.6%</td><td>13</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="color:var(--accent)">🇹🇳 突尼斯 vs 日本 🇯🇵</h3>
+      <table>
+        <tr><th>比分</th><th>概率</th><th>≈赔率</th></tr>
+        <tr class="hl"><td><b>0-1</b></td><td>15.9%</td><td>5.0</td></tr>
+        <tr><td>0-2</td><td>13.9%</td><td>6.0</td></tr>
+        <tr><td>1-1</td><td>10.3%</td><td>8.0</td></tr>
+        <tr><td>0-0</td><td>9.1%</td><td>9.0</td></tr>
+        <tr><td>1-2</td><td>9.0%</td><td>9.0</td></tr>
+        <tr><td>0-3</td><td>8.1%</td><td>10</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 2串1 -->
+<div class="section">
+  <h2>🎯 2串1 波胆 · TOP 10</h2>
+  <p class="note">三场选两场串，C(3,2)=3种选场组合 × 每场TOP4比分交叉，按综合概率排名。</p>
+
+  <div class="combo-card best">
+    <span class="tag tag-2">2串1</span> <span style="color:var(--accent);font-weight:bold">🥇 最优</span>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0">
+      <span class="rank-num">#1</span>
+      <span class="prob-big">1.66%</span>
+      <span class="odds-big">≈40倍</span>
+    </div>
+    <div style="font-size:clamp(12px,2vw,14px)">
+      <span class="match-tag">🇩🇪 德国 2-0 @8.0</span> ×
+      <span class="match-tag">🇯🇵 日本 0-1 @5.0</span>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>排名</th><th>组合</th><th>比分</th><th>综合概率</th><th>≈赔率</th><th>100元→</th></tr>
+    <tr class="hl"><td>1</td><td>德国 × 日本</td><td>2-0 + 0-1</td><td>1.66%</td><td>40</td><td style="color:var(--accent)">4,000</td></tr>
+    <tr><td>2</td><td>厄瓜多尔 × 日本</td><td>3-0 + 0-1</td><td>1.63%</td><td>40</td><td>4,000</td></tr>
+    <tr><td>3</td><td>德国 × 日本</td><td>1-0 + 0-1</td><td>1.62%</td><td>40</td><td>4,000</td></tr>
+    <tr><td>4</td><td>德国 × 日本</td><td>2-1 + 0-1</td><td>1.58%</td><td>42</td><td>4,200</td></tr>
+    <tr><td>5</td><td>德国 × 日本</td><td>1-1 + 0-1</td><td>1.54%</td><td>42</td><td>4,200</td></tr>
+    <tr><td>6</td><td>德国 × 日本</td><td>2-0 + 0-2</td><td>1.45%</td><td>48</td><td>4,800</td></tr>
+    <tr><td>7</td><td>厄瓜多尔 × 日本</td><td>3-0 + 0-2</td><td>1.43%</td><td>48</td><td>4,800</td></tr>
+    <tr><td>8</td><td>德国 × 日本</td><td>1-0 + 0-2</td><td>1.42%</td><td>48</td><td>4,800</td></tr>
+    <tr><td>9</td><td>厄瓜多尔 × 日本</td><td>2-0 + 0-1</td><td>1.42%</td><td>48</td><td>4,800</td></tr>
+    <tr><td>10</td><td>厄瓜多尔 × 日本</td><td>4-0 + 0-1</td><td>1.41%</td><td>48</td><td>4,800</td></tr>
+  </table>
+  <div class="note">⚡ 2串1 最优铁三角：日本 0-1 是定海神针，搭档在德国 2-0 和厄瓜多尔 3-0 之间几乎等价。</div>
+</div>
+
+<!-- 3串1 -->
+<div class="section">
+  <h2>🎯 3串1 波胆 · TOP 5</h2>
+
+  <div class="combo-card best">
+    <span class="tag tag-3">3串1</span> <span style="color:var(--accent);font-weight:bold">🥇 最优</span>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0">
+      <span class="rank-num">#1</span>
+      <span class="prob-big">0.17%</span>
+      <span class="odds-big">≈320倍</span>
+    </div>
+    <div style="font-size:clamp(11px,1.7vw,13px)">
+      <span class="match-tag">🇩🇪 德国 2-0 @8.0</span> ×
+      <span class="match-tag">🇪🇨 厄瓜多尔 3-0 @8.0</span> ×
+      <span class="match-tag">🇯🇵 日本 0-1 @5.0</span>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>排名</th><th>比分组合</th><th>综合概率</th><th>≈赔率</th><th>100元→</th></tr>
+    <tr class="hl"><td>1</td><td>德 2-0 + 厄 3-0 + 日 0-1</td><td>0.17%</td><td>320</td><td style="color:var(--accent)">32,000</td></tr>
+    <tr><td>2</td><td>德 1-0 + 厄 3-0 + 日 0-1</td><td>0.17%</td><td>320</td><td>32,000</td></tr>
+    <tr><td>3</td><td>德 2-1 + 厄 3-0 + 日 0-1</td><td>0.16%</td><td>340</td><td>34,000</td></tr>
+    <tr><td>4</td><td>德 2-0 + 厄 3-0 + 日 0-2</td><td>0.15%</td><td>384</td><td>38,400</td></tr>
+    <tr><td>5</td><td>德 2-0 + 厄 2-0 + 日 0-1</td><td>0.15%</td><td>380</td><td>38,000</td></tr>
+  </table>
+  <div class="note">⚡ 3串1 综合概率约 0.17%（≈1/600），三场都是"强队零封胜"，路径最连贯。</div>
+</div>
+
+<!-- 策略 -->
+<div class="section">
+  <h2>💰 推荐策略</h2>
+  <table>
+    <tr><th>策略</th><th>串法</th><th>组合</th><th>概率</th><th>赔率</th><th>建议金额</th></tr>
+    <tr class="hl">
+      <td><span class="tag tag-2">主力</span></td>
+      <td>2串1</td>
+      <td>德 2-0 + 日 0-1</td><td>1.66%</td><td>40</td><td>200元 → 8,000</td>
+    </tr>
+    <tr>
+      <td>分散</td>
+      <td>2串1</td>
+      <td>厄 3-0 + 日 0-1</td><td>1.63%</td><td>40</td><td>100元 → 4,000</td>
+    </tr>
+    <tr>
+      <td>分散</td>
+      <td>2串1</td>
+      <td>德 2-0 + 日 0-2</td><td>1.45%</td><td>48</td><td>100元 → 4,800</td>
+    </tr>
+    <tr>
+      <td><span class="tag tag-3">彩票</span></td>
+      <td>3串1</td>
+      <td>德 2-0+厄 3-0+日 0-1</td><td>0.17%</td><td>320</td><td>20元 → 6,400</td>
+    </tr>
+  </table>
+  <div class="note">总投入 420 元，任何一个 2串1 命中即可覆盖成本并有可观利润。</div>
+</div>
+
+<div class="warn-box">
+  ⚠️ 荷兰 vs 瑞典已排除（比赛正在进行中，荷兰 Brobbey 梅开二度领先）。仅分析剩余三场。
+</div>
+
+<div class="disclaimer" style="text-align:center;color:var(--text-dim);padding:20px;border-top:1px solid var(--card-border)">
+  ⚠️ 仅供娱乐参考 · Poisson 模型 + 全量交叉组合 · 数据截至 2026.6.20
+</div>
+
+</div>
+</body>
+</html>
