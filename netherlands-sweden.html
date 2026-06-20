@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>荷兰 vs 瑞典 — 世界杯2026 深度分析 | 甜点波胆</title>
+<style>
+  :root {
+    --bg: #0a0e14; --card-bg: #12171f; --card-border: #1e2a3a; --text: #cfd7e6;
+    --text-dim: #8896a8; --accent: #e8b830; --accent2: #3b82f6; --red: #ef4444;
+    --green: #22c55e; --tag-bg: #1a2332; --table-stripe: #161c26;
+    --tier-core: #f59e0b; --tier-high: #8b5cf6; --tier-upset: #ef4444; --tier-lotto: #6b7280;
+    --radius: 10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.7}
+  .container{max-width:800px;margin:0 auto;padding:24px 16px 60px}
+  .hero{background:linear-gradient(135deg,#0f1923 0%,#1a1a2e 50%,#162032 100%);border:1px solid var(--card-border);border-radius:var(--radius);padding:32px 24px;margin-bottom:20px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 50%,rgba(232,184,48,0.06) 0%,transparent 50%),radial-gradient(circle at 70% 50%,rgba(59,130,246,0.06) 0%,transparent 50%);pointer-events:none}
+  .hero h1{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:4px}
+  .hero .sub{color:var(--text-dim);font-size:14px;margin-bottom:16px}
+  .hero .meta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;font-size:13px;color:var(--text-dim)}
+  .hero .meta span{background:var(--tag-bg);padding:4px 12px;border-radius:20px;border:1px solid var(--card-border)}
+  .hero .flags{font-size:48px;margin-bottom:8px}
+
+  .section{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+  .section h2{font-size:18px;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--card-border)}
+  .section h3{font-size:15px;color:var(--text);margin:16px 0 8px}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+  th{background:var(--table-stripe);color:var(--text-dim);font-weight:600;padding:8px 10px;text-align:left;border-bottom:1px solid var(--card-border)}
+  td{padding:8px 10px;border-bottom:1px solid var(--card-border)}
+  tr:nth-child(even) td{background:var(--table-stripe)}
+  .highlight-row td{background:#1a2332!important}
+
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:12px 0}
+  .stat-card{background:var(--table-stripe);border:1px solid var(--card-border);border-radius:8px;padding:14px;text-align:center}
+  .stat-card .num{font-size:28px;font-weight:800;color:var(--accent)}
+  .stat-card .lbl{font-size:12px;color:var(--text-dim);margin-top:2px}
+
+  .picks-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:600px){.picks-grid{grid-template-columns:1fr}}
+  .pick-card{background:var(--table-stripe);border-radius:8px;padding:14px;position:relative}
+  .pick-score{font-size:22px;font-weight:800;color:var(--accent)}
+  .pick-odds{font-size:14px;color:var(--green);font-weight:600;margin:2px 0}
+  .pick-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:12px;margin:4px 0;font-weight:600}
+  .pick-story{font-size:12px;color:var(--text-dim);line-height:1.5;margin-top:6px}
+
+  .allocation-table td,.allocation-table th{font-size:12px;padding:6px 8px}
+  .plan-badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;margin-right:4px}
+  .plan-badge.balanced{background:#f59e0b20;color:#f59e0b}
+  .plan-badge.conservative{background:#22c55e20;color:#22c55e}
+  .plan-badge.aggressive{background:#ef444420;color:#ef4444}
+
+  .disclaimer{font-size:11px;color:var(--text-dim);text-align:center;padding:20px;border-top:1px solid var(--card-border);margin-top:20px;line-height:1.6}
+
+  .red{color:var(--red)}.green{color:var(--green)}.gold{color:var(--accent)}.dim{color:var(--text-dim)}
+  strong{color:var(--text)}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:12px;margin:1px 2px;background:var(--tag-bg)}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="flags" style="font-size:52px">🇳🇱 vs 🇸🇪</div>
+  <h1>荷兰 vs 瑞典</h1>
+  <div class="sub">世界杯2026 · E组第2轮 · NRG体育场休斯顿</div>
+  <div class="meta">
+    <span>📅 2026.06.20 周六</span>
+    <span>⏰ 18:00 BST / 13:00 ET</span>
+    <span>🏟 NRG Stadium (72,220座)</span>
+    <span>🌡 28-32°C 休斯顿室内</span>
+    <span>🦯 裁判：Michael Oliver (ENG)</span>
+  </div>
+</div>
+
+<!-- BOTTOM LINE -->
+<div class="section">
+  <h2>📌 一句话定调</h2>
+  <p style="font-size:15px;line-height:1.8">
+    <strong>荷兰必须赢球才能掌控出线命运，瑞典一场平局就足够舒服。</strong>
+    这决定了比赛走势：荷兰主动进攻、瑞典低位+反击（Isak+Gyokeres双箭头）。预期进球荷兰1.6 vs 瑞典0.9，本质上是 <span class="gold">55%/25%/21%</span> 的三方分布。最可能的分段是2-3球区。核心甜点：<strong>2-1 @9.0 和 2-2 @20.0</strong>。
+  </p>
+</div>
+
+<!-- 1. FIXTURE CONTEXT -->
+<div class="section">
+  <h2>🏆 赛事全景</h2>
+  <table>
+    <tr><td style="width:140px">赛事</td><td>2026 FIFA 世界杯 · Group F</td></tr>
+    <tr><td>对阵</td><td>荷兰 🇳🇱 (FIFA #7) vs 瑞典 🇸🇪 (FIFA #38)</td></tr>
+    <tr><td>时间</td><td>2026年6月20日 周六 18:00 BST / 13:00 ET</td></tr>
+    <tr><td>场地</td><td>NRG Stadium, 休斯顿 — 72,220座，室内空调控制</td></tr>
+    <tr><td>裁判</td><td><strong>Michael Oliver</strong> (英格兰) — 652场执法经历，2,284黄牌(3.50/场)，50红牌(0.08/场)</td></tr>
+    <tr><td>首轮</td><td>🇳🇱 荷兰 2-2 日本 | 🇸🇪 瑞典 5-1 突尼斯</td></tr>
+  </table>
+</div>
+
+<!-- 2. GROUP STANDINGS -->
+<div class="section">
+  <h2>📊 小组积分榜</h2>
+  <p class="dim" style="margin-bottom:8px">比赛前，第2轮</p>
+  <table>
+    <tr><th>#</th><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>进球</th><th>失球</th><th>净胜</th><th>积分</th></tr>
+    <tr style="background:#22c55e15"><td>1</td><td>🇸🇪 瑞典</td><td>1</td><td>1</td><td>0</td><td>0</td><td>5</td><td>1</td><td>+4</td><td><strong>3</strong></td></tr>
+    <tr><td>2</td><td>🇯🇵 日本</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>1</td></tr>
+    <tr><td>3</td><td>🇳🇱 荷兰</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>1</td></tr>
+    <tr><td>4</td><td>🇹🇳 突尼斯</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>5</td><td>-4</td><td>0</td></tr>
+  </table>
+  <div style="margin-top:12px;padding:12px;background:var(--table-stripe);border-radius:8px;font-size:13px">
+    <strong>🔑 出线逻辑：</strong>荷兰赢→积4分反超瑞典登顶。平局→荷兰2分、瑞典4分，末轮荷兰必须赢突尼斯+看日本vs瑞典结果。输→荷兰1分基本出局。<span class="gold">荷兰=必赢。</span>
+  </div>
+</div>
+
+<!-- 3. Recent Form -->
+<div class="section">
+  <h2>📈 近期战绩（含首轮 + 世界杯热身/预选赛）</h2>
+
+  <h3>🇳🇱 荷兰</h3>
+  <table>
+    <tr><th>日期</th><th>对手</th><th>比分</th><th>主/客</th><th>赛事</th><th>备注</th></tr>
+    <tr><td>6月15日</td><td>🇯🇵 日本</td><td><strong>2-2</strong></td><td>中</td><td>世界杯GS</td><td class="dim">Summerville 51', Van Dijk 64'; Nakamura 57', Kamada 89'</td></tr>
+    <tr><td>6月7日</td><td>🇲🇽 墨西哥</td><td>3-1</td><td>客</td><td>友谊赛</td><td class="dim">Gakpo×2, Malen</td></tr>
+    <tr><td>6月2日</td><td>🇨🇦 加拿大</td><td>2-0</td><td>客</td><td>友谊赛</td><td class="dim">Depay, Gravenberch</td></tr>
+    <tr><td>3月27日</td><td>🇪🇸 西班牙</td><td>0-1</td><td>客</td><td>欧国联</td><td class="dim">被西班牙压着打，0射正</td></tr>
+    <tr><td>3月23日</td><td>🇪🇸 西班牙</td><td>2-2</td><td>主</td><td>欧国联</td><td class="dim">主场逼平，Gakpo+Reijnders进球</td></tr>
+  </table>
+
+  <h3>🇸🇪 瑞典</h3>
+  <table>
+    <tr><th>日期</th><th>对手</th><th>比分</th><th>主/客</th><th>赛事</th><th>备注</th></tr>
+    <tr><td>6月14日</td><td>🇹🇳 突尼斯</td><td><strong>5-1</strong></td><td>中</td><td>世界杯GS</td><td class="dim">Isak⚽, Gyokeres⚽⚽, Elanga⚽, Svanberg⚽</td></tr>
+    <tr><td>6月8日</td><td>🇺🇸 美国</td><td>2-2</td><td>客</td><td>友谊赛</td><td class="dim">防守端有漏洞，被美国反击打进2球</td></tr>
+    <tr><td>6月4日</td><td>🇨🇭 瑞士</td><td>1-1</td><td>中</td><td>友谊赛</td><td class="dim">Gyokeres进球</td></tr>
+    <tr><td>3月26日</td><td>🇸🇰 斯洛伐克</td><td>3-0</td><td>主</td><td>世预附加赛</td><td class="dim">Isak×2, Gyokeres</td></tr>
+    <tr><td>3月22日</td><td>🇸🇰 斯洛伐克</td><td>1-1</td><td>客</td><td>世预附加赛</td><td class="dim">客场苟平，总比分4-1晋级</td></tr>
+  </table>
+
+  <div style="margin-top:12px;padding:12px;background:#ef444410;border-radius:8px;font-size:13px">
+    <strong>⚠️ 瑞典5-1的水分：</strong>突尼斯是小组最弱（FIFA #45），5-1不代表瑞典攻击力碾压一切。对瑞士1-1、对美国2-2暴露防线不稳。荷兰的进攻群等级远在突尼斯之上。
+  </div>
+</div>
+
+<!-- 4. H2H -->
+<div class="section">
+  <h2>📜 历史交锋</h2>
+  <table>
+    <tr><th>年份</th><th>比分</th><th>赛事</th></tr>
+    <tr><td>2017.10</td><td>荷兰 2-0 瑞典</td><td>世预赛</td></tr>
+    <tr><td>2016.09</td><td>瑞典 1-1 荷兰</td><td>世预赛</td></tr>
+    <tr><td>2011.10</td><td>瑞典 3-2 荷兰</td><td>欧预赛</td></tr>
+    <tr><td>2010.10</td><td>荷兰 4-1 瑞典</td><td>欧预赛</td></tr>
+    <tr><td>2008.11</td><td>荷兰 3-1 瑞典</td><td>友谊赛</td></tr>
+  </table>
+  <p style="margin-top:8px;font-size:13px" class="dim">
+    <strong>总计20次交手：</strong>荷兰9胜 / 4平 / 瑞典7胜。近5次：荷兰3胜1平1负，主场全胜（3-1, 4-1, 2-0）。
+    ⚠️ 最近一次瑞典赢球是2011年（14年前），两队已完全不同。H2H参考价值中等。
+  </p>
+</div>
+
+<!-- 5. LINEUPS -->
+<div class="section">
+  <h2>👥 预计首发</h2>
+  <table>
+    <tr><th>位置</th><th>🇳🇱 荷兰 (4-3-3)</th><th style="width:20px"></th><th style="width:20px"></th><th>🇸🇪 瑞典 (4-3-3)</th><th>位置</th></tr>
+    <tr><td>GK</td><td>Verbruggen</td><td></td><td></td><td>Johansson</td><td>GK</td></tr>
+    <tr><td>RB</td><td>Dumfries</td><td></td><td></td><td>Gudmundsson</td><td>LB</td></tr>
+    <tr><td>CB</td><td><strong>Van Dijk</strong></td><td></td><td></td><td>Hien</td><td>CB</td></tr>
+    <tr><td>CB</td><td>Van de Ven</td><td></td><td></td><td><strong>Lindelof</strong></td><td>CB</td></tr>
+    <tr><td>LB</td><td>Aké</td><td></td><td></td><td>Ekdal</td><td>LB</td></tr>
+    <tr><td>CM</td><td>Reijnders</td><td></td><td></td><td>Bergvall</td><td>CM</td></tr>
+    <tr><td>CM</td><td><strong>De Jong</strong></td><td></td><td></td><td>Karlstrom</td><td>DM</td></tr>
+    <tr><td>CM</td><td>Gravenberch</td><td></td><td></td><td>Svanberg</td><td>CM</td></tr>
+    <tr><td>RW</td><td>Summerville</td><td></td><td></td><td>Elanga</td><td>RW</td></tr>
+    <tr><td>ST</td><td>Depay</td><td></td><td></td><td><strong>Gyokeres</strong></td><td>ST</td></tr>
+    <tr><td>LW</td><td><strong>Gakpo</strong></td><td></td><td></td><td><strong>Isak</strong></td><td>LW</td></tr>
+  </table>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;font-size:13px">
+    <div style="padding:12px;background:var(--table-stripe);border-radius:8px">
+      <strong>🇳🇱 荷兰关键：</strong><br>
+      ✅ 无伤停，Koeman可能不变阵<br>
+      ✅ Depay大腿伤愈回归<br>
+      ✅ Gakpo首战1球(Dumfries助攻)<br>
+      ⚠️ 首战防守右路被日本反复冲击<br>
+      ⚠️ Van Dijk回追速度下降是隐患（Isak专打此点）
+    </div>
+    <div style="padding:12px;background:var(--table-stripe);border-radius:8px">
+      <strong>🇸🇪 瑞典关键：</strong><br>
+      ✅ 首战5-1大胜，全队信心巅峰<br>
+      ✅ Isak+Gyokeres=真·双箭头（欧洲顶级前锋组合）<br>
+      ✅ 无伤停，预计不变阵<br>
+      ⚠️ 后防线未受真正考验（vs突尼斯）<br>
+      ⚠️ Lindelof+Ekdal空中球偏弱
+    </div>
+  </div>
+</div>
+
+<!-- 6. TACTICAL -->
+<div class="section">
+  <h2>🎯 战术对位</h2>
+
+  <h3>荷兰进攻 vs 瑞典防守</h3>
+  <p style="font-size:13px;line-height:1.8">
+    <strong>荷兰攻击线路：</strong>右路Summerville+Dumfries套边传中（首战对日本制造了首球）→ Depay中路抢点 / Gakpo远点包抄。
+    <strong>De Jong</strong>后场长传找前插的中场Reijnders/Gravenberch。Van Dijk定位球头球威胁巨大。
+    <br>
+    <strong>瑞典应对：</strong>Lindelof防空一般但组织能力好。中场Karlstrom需要跟住De Jong的调度。边后卫Ekdal单防Summerville有难度——这是荷兰最大突破口。
+  </p>
+
+  <h3>瑞典反击 vs 荷兰防线</h3>
+  <p style="font-size:13px;line-height:1.8">
+    <strong>瑞典致命武器：</strong><span class="red">Isak的速度+Gyokeres的身体。</span>
+    首战对突尼斯的5球中有3球来自快速转换。Bergvall直塞→Isak插荷兰身后（Van Dijk+Van de Ven的高位防线身后）是瑞典最可能得分的路径。
+    <strong>Elanga</strong>一对一吃掉Aké的速度也是手段。
+    <br>
+    <strong>荷兰弱点：</strong>首战对日本，右路Dumfries身后被Nakamura反复利用。Isak比Nakamura快得多。Van Dijk转身慢（32岁）vs Isak（24岁）= 代差级速度差距。
+  </p>
+
+  <h3>关键个体对决</h3>
+  <table>
+    <tr><th>对决</th><th>赢面</th><th>影响</th></tr>
+    <tr><td>Isak vs Van Dijk</td><td class="red">Isak 6/4</td><td class="dim">速度差是决定性因素。Van Dijk需要Aké协防</td></tr>
+    <tr><td>Summerville vs Ekdal</td><td class="green">Summerville 7/3</td><td class="dim">首战2助攻，瑞典左路是薄弱点</td></tr>
+    <tr><td>De Jong vs Karlstrom</td><td class="green">De Jong 7/3</td><td class="dim">荷兰节拍器控制力碾压</td></tr>
+    <tr><td>Gyokeres vs Van de Ven</td><td>55/45</td><td class="dim">身体对抗+支点作用，荷兰可能吃亏</td></tr>
+    <tr><td>Gakpo vs Gudmundsson</td><td class="green">Gakpo 6/4</td><td class="dim">Gakpo内切射门是荷兰第二得分点</td></tr>
+  </table>
+</div>
+
+<!-- 7. REFEREE -->
+<div class="section">
+  <h2>🦯 裁判分析</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">652</div><div class="lbl">执法场次</div></div>
+    <div class="stat-card"><div class="num">3.50</div><div class="lbl">场均黄牌</div></div>
+    <div class="stat-card"><div class="num">0.08</div><div class="lbl">场均红牌</div></div>
+    <div class="stat-card"><div class="num">Michael Oliver</div><div class="lbl">英格兰 🇬🇧</div></div>
+  </div>
+  <p style="font-size:13px;line-height:1.8;margin-top:8px">
+    Oliver是英格兰顶级裁判，风格介于"宽松派"和"严格派"之间。3.50黄/场属于<span class="gold">中等偏上</span>水平。他倾向于"控制>吹罚"——开局尺度较松，让比赛流动，后期收紧。对双方中场对抗影响中等。不会成为比赛变量。
+  </p>
+  <div style="padding:10px;background:var(--table-stripe);border-radius:8px;font-size:13px;margin-top:8px">
+    <strong>🎴 卡牌市场信号：</strong>Oliver的红牌率极低(0.08/场=每13场1红)。红牌投注价值低。黄牌无特别偏移。两队在裁判层面没有明显利益方。
+  </div>
+</div>
+
+<!-- 8. MARKET -->
+<div class="section">
+  <h2>💰 盘口分析</h2>
+  <table>
+    <tr><th>市场</th><th>赔率</th><th>隐含概率</th><th>净概率(去水)</th></tr>
+    <tr><td>荷兰胜 (1X2)</td><td>1.72 (-138)</td><td>58.1%</td><td class="gold">54.5%</td></tr>
+    <tr><td>平局</td><td>3.80</td><td>26.3%</td><td>24.7%</td></tr>
+    <tr><td>瑞典胜</td><td>4.50 (+350)</td><td>22.2%</td><td>20.8%</td></tr>
+    <tr><td>Over 2.5</td><td>1.91 (-110)</td><td>52.4%</td><td>—</td></tr>
+    <tr><td>Under 2.5</td><td>1.91 (-110)</td><td>52.4%</td><td>—</td></tr>
+    <tr><td>BTTS Yes</td><td>~1.83</td><td>~54.6%</td><td>—</td></tr>
+  </table>
+  <div style="margin-top:12px;padding:12px;background:var(--table-stripe);border-radius:8px;font-size:13px">
+    <strong>⚠️ 市场vs基本面：</strong>Over 2.5的-110对开是标准盘口。Poisson模型预测O2.5=45.6%，市场隐含52.4% — <span class="dim">Over略微高估</span>。荷兰需要赢但瑞典不需要冒险对攻→总进球可能偏2-3球区，而非4+。<br>
+    <strong>BTTS Yes</strong>的模型预测47.4%，低于市场54%。<span class="dim">市场可能高估了互有进球概率</span>——瑞典如果先丢球可能破釜沉舟，但如果瑞典先进球则他们会缩回去。
+  </div>
+</div>
+
+<!-- 9. POISSON -->
+<div class="section">
+  <h2>📐 Poisson 概率模型</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">1.60</div><div class="lbl">荷兰 λ (预期进球)</div></div>
+    <div class="stat-card"><div class="num">0.90</div><div class="lbl">瑞典 λ (预期进球)</div></div>
+    <div class="stat-card"><div class="num">55%</div><div class="lbl">荷兰胜</div></div>
+    <div class="stat-card"><div class="num">25%</div><div class="lbl">平局</div></div>
+    <div class="stat-card"><div class="num">45.6%</div><div class="lbl">Over 2.5</div></div>
+    <div class="stat-card"><div class="num">47.4%</div><div class="lbl">BTTS</div></div>
+  </div>
+
+  <h3>三情景模型</h3>
+  <table>
+    <tr><th>情景</th><th>λh / λa</th><th>荷兰胜</th><th>平局</th><th>瑞典胜</th><th>O2.5</th><th>BTTS</th></tr>
+    <tr class="highlight-row"><td>🔷 基准</td><td>1.60 / 0.90</td><td>53.8%</td><td>25.0%</td><td>21.2%</td><td>45.6%</td><td>47.4%</td></tr>
+    <tr><td>🟢 荷兰乐观（瑞典5-1有水分）</td><td>1.90 / 0.70</td><td>65.9%</td><td>21.1%</td><td>13.0%</td><td>48.1%</td><td>42.8%</td></tr>
+    <tr><td>🟡 谨慎/紧张</td><td>1.30 / 0.70</td><td>51.0%</td><td>29.0%</td><td>20.1%</td><td>32.3%</td><td>36.6%</td></tr>
+  </table>
+
+  <h3>完整比分概率矩阵 (基准模型)</h3>
+  <table style="font-size:11px">
+    <tr><th></th><th>荷兰0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+    <tr><td>瑞典0</td><td>8.2%</td><td class="gold">13.1%</td><td>10.5%</td><td>5.6%</td><td>2.2%</td></tr>
+    <tr><td>瑞典1</td><td>7.4%</td><td><strong>11.8%</strong></td><td class="gold">9.5%</td><td>5.0%</td><td>2.0%</td></tr>
+    <tr><td>瑞典2</td><td>3.3%</td><td>5.3%</td><td>4.3%</td><td>2.3%</td><td>0.9%</td></tr>
+    <tr><td>瑞典3</td><td>1.0%</td><td>1.6%</td><td>1.3%</td><td>0.7%</td><td>—</td></tr>
+  </table>
+  <p style="font-size:11px;color:var(--text-dim);margin-top:4px">绿色=最高概率单比分。金色=第二/第三。最可能比分：1-0 (13.1%) > 1-1 (11.8%) > 2-0 (10.5%) > 2-1 (9.5%)</p>
+</div>
+
+<!-- 10. UPSET -->
+<div class="section">
+  <h2>❄️ 冷门路线（三条路径）</h2>
+
+  <div style="margin-bottom:12px;padding:14px;background:#ef444410;border-left:3px solid #ef4444;border-radius:8px">
+    <strong style="color:#ef4444">路径一：瑞典闪电偷球（⚡ 最可能冷门）</strong>
+    <p style="font-size:13px" class="dim">Isak开场10分钟利用Van Dijk转身慢接Bergvall直塞→单刀进球。瑞典领先后全员回撤，荷兰控球率65%+但破密集乏力。比分：<strong>0-1 或 1-2</strong>。概率~21%。</p>
+  </div>
+
+  <div style="margin-bottom:12px;padding:14px;background:#ef444410;border-left:3px solid #ef4444;border-radius:8px">
+    <strong style="color:#ef4444">路径二：荷兰久攻不下自乱（🔄 结构性冷门）</strong>
+    <p style="font-size:13px" class="dim">瑞典5-4-1铁桶+Gyokeres做支点→Elanga/Isak反击。荷兰高防线被反复打身后，全场射门20次只进1个，瑞典3次反击进2个。比分：<strong>1-2</strong>。需要荷兰终结效率糟糕。概率~12%。</p>
+  </div>
+
+  <div style="padding:14px;background:#ef444410;border-left:3px solid #ef4444;border-radius:8px">
+    <strong style="color:#ef4444">路径三：红牌/点球改写比赛（🎲 随机变量）</strong>
+    <p style="font-size:13px" class="dim">Van Dijk或Lindelof在禁区内犯规→点球+红牌。比赛人数失衡后走势完全改变。Michael Oliver点球倾向正常，无显著偏好。概率~5%。比分不定。</p>
+  </div>
+</div>
+
+<!-- 11. SWEET SPOTS -->
+<div class="section">
+  <h2>🍰 甜点波胆</h2>
+
+  <div style="padding:12px;background:#f59e0b10;border:1px solid #f59e0b30;border-radius:8px;margin-bottom:16px">
+    <strong style="color:#f59e0b"> 核心甜点 (有概率+有赔率)</strong>
+  </div>
+  <div class="picks-grid">
+    <div class="pick-card" style="border-left:3px solid #f59e0b">
+      <div class="pick-score">2-1</div>
+      <div class="pick-odds">@9.0</div>
+      <div class="pick-badge" style="background:#f59e0b20;color:#f59e0b">核心甜点</div>
+      <div class="pick-story">荷兰率先破门→瑞典反击扳平→荷兰再度超出。标准节奏，荷兰进攻实力足够多进一个。首战对日本就是2-2，这次荷兰防守少犯一次错。</div>
+    </div>
+    <div class="pick-card" style="border-left:3px solid #f59e0b">
+      <div class="pick-score">2-2</div>
+      <div class="pick-odds">@20.0</div>
+      <div class="pick-badge" style="background:#f59e0b20;color:#f59e0b">核心甜点</div>
+      <div class="pick-story">与荷兰首战2-2日本同模式：荷兰二度领先被追平。Isak+Gyokeres的反击威胁真实存在，Van Dijk退防速度是真实软肋。@20赔率在双方都能进球的比赛中极有价值。</div>
+    </div>
+  </div>
+
+  <div style="padding:12px;background:#8b5cf610;border:1px solid #8b5cf630;border-radius:8px;margin:16px 0">
+    <strong style="color:#8b5cf6"> 高赔正路 (荷兰赢球但比分超市场共识)</strong>
+  </div>
+  <div class="picks-grid">
+    <div class="pick-card" style="border-left:3px solid #8b5cf6">
+      <div class="pick-score">3-1</div>
+      <div class="pick-odds">@17.0</div>
+      <div class="pick-badge" style="background:#8b5cf620;color:#8b5cf6">高赔正路</div>
+      <div class="pick-story">荷兰完全打开，瑞典防线不是突尼斯级别的垃圾。但荷兰也需要防反击丢一球——3-1是「大胜但不零封」的合理终点。首战荷兰丢了2球，瑞典有能力进1个。</div>
+    </div>
+    <div class="pick-card" style="border-left:3px solid #8b5cf6">
+      <div class="pick-score">3-0</div>
+      <div class="pick-odds">@15.0</div>
+      <div class="pick-badge" style="background:#8b5cf620;color:#8b5cf6">高赔正路</div>
+      <div class="pick-story">瑞典5-1有水分→面对真正强队被打回原形。荷兰完整控制比赛，Van Dijk+Van de Ven零封Isak。如果Koeman解决了首战右路防守问题，3-0是完全可能的。</div>
+    </div>
+  </div>
+
+  <div style="padding:12px;background:#ef444410;border:1px solid #ef444430;border-radius:8px;margin:16px 0">
+    <strong style="color:#ef4444"> 冷门甜点 (瑞典不败或赢球)</strong>
+  </div>
+  <div class="picks-grid">
+    <div class="pick-card" style="border-left:3px solid #ef4444">
+      <div class="pick-score">1-2</div>
+      <div class="pick-odds">@16.0</div>
+      <div class="pick-badge" style="background:#ef444420;color:#ef4444">冷门甜点</div>
+      <div class="pick-story">瑞典低位防守→两个反击进球。Isak速度碾压Van Dijk转身→Gyokeres支点做墙。荷兰全场控球但射门转化率低。首战荷兰丢2球证明防线有问题。</div>
+    </div>
+    <div class="pick-card" style="border-left:3px solid #ef4444">
+      <div class="pick-score">0-1</div>
+      <div class="pick-odds">@11.0</div>
+      <div class="pick-badge" style="background:#ef444420;color:#ef4444">冷门甜点</div>
+      <div class="pick-story">瑞典开场偷一个后全员龟缩。荷兰压上但攻不破密集防守。类似2016世预赛瑞典1-1荷兰的低比分模式，但这次瑞典把握住了一次机会。</div>
+    </div>
+  </div>
+
+  <div style="padding:12px;background:#6b728010;border:1px solid #6b728030;border-radius:8px;margin:16px 0">
+    <strong style="color:#6b7280">🎲 极小注彩票</strong>
+  </div>
+  <div class="picks-grid">
+    <div class="pick-card" style="border-left:3px solid #6b7280">
+      <div class="pick-score">3-2</div>
+      <div class="pick-odds">@37.0</div>
+      <div class="pick-badge" style="background:#6b728020;color:#6b7280">极小注</div>
+      <div class="pick-story">双方防线都有软肋，对攻到底。荷兰绝杀取胜。需要特定剧本：瑞典2次反击进球+荷兰3球。</div>
+    </div>
+    <div class="pick-card" style="border-left:3px solid #6b7280">
+      <div class="pick-score">4-1</div>
+      <div class="pick-odds">@41.0</div>
+      <div class="pick-badge" style="background:#6b728020;color:#6b7280">极小注</div>
+      <div class="pick-story">荷兰屠杀模式。瑞典防线彻底崩盘。需要荷兰射门转化率极高的罕见比赛。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 12. ALLOCATION -->
+<div class="section">
+  <h2>💵 投注矩阵（假设本金 ¥1000）</h2>
+
+  <div style="margin:12px 0"><span class="plan-badge balanced">推荐</span> <strong>均衡方案 — 总投入 ¥200</strong></div>
+  <table class="allocation-table">
+    <tr><th>类型</th><th>比分</th><th>赔率</th><th>投入</th><th>中奖回报</th></tr>
+    <tr><td>核心甜点</td><td>2-1</td><td>@9.0</td><td>¥60</td><td>¥540</td></tr>
+    <tr><td>核心甜点</td><td>2-2</td><td>@20.0</td><td>¥50</td><td>¥1,000</td></tr>
+    <tr><td>高赔正路</td><td>3-1</td><td>@17.0</td><td>¥30</td><td>¥510</td></tr>
+    <tr><td>冷门甜点</td><td>1-2</td><td>@16.0</td><td>¥30</td><td>¥480</td></tr>
+    <tr><td>冷门甜点</td><td>0-1</td><td>@11.0</td><td>¥20</td><td>¥220</td></tr>
+    <tr><td>极小注</td><td>3-2</td><td>@37.0</td><td>¥5</td><td>¥185</td></tr>
+    <tr><td>极小注</td><td>4-1</td><td>@41.0</td><td>¥5</td><td>¥205</td></tr>
+  </table>
+
+  <div style="margin:16px 0"><span class="plan-badge conservative">保守</span> <strong>保守方案 — 总投入 ¥120</strong></div>
+  <table class="allocation-table">
+    <tr><th>比分</th><th>赔率</th><th>投入</th><th>中奖回报</th></tr>
+    <tr><td>2-1</td><td>@9.0</td><td>¥50</td><td>¥450</td></tr>
+    <tr><td>1-0</td><td>@6.5</td><td>¥40</td><td>¥260</td></tr>
+    <tr><td>2-2</td><td>@20.0</td><td>¥20</td><td>¥400</td></tr>
+    <tr><td>1-2</td><td>@16.0</td><td>¥10</td><td>¥160</td></tr>
+  </table>
+
+  <div style="margin:16px 0"><span class="plan-badge aggressive">激进</span> <strong>激进方案 — 总投入 ¥100</strong></div>
+  <table class="allocation-table">
+    <tr><th>比分</th><th>赔率</th><th>投入</th><th>中奖回报</th></tr>
+    <tr><td>2-2</td><td>@20.0</td><td>¥30</td><td>¥600</td></tr>
+    <tr><td>1-2</td><td>@16.0</td><td>¥20</td><td>¥320</td></tr>
+    <tr><td>3-1</td><td>@17.0</td><td>¥15</td><td>¥255</td></tr>
+    <tr><td>2-1</td><td>@9.0</td><td>¥15</td><td>¥135</td></tr>
+    <tr><td>3-2</td><td>@37.0</td><td>¥10</td><td>¥370</td></tr>
+    <tr><td>4-1</td><td>@41.0</td><td>¥10</td><td>¥410</td></tr>
+  </table>
+
+  <div style="margin-top:16px;padding:12px;background:var(--table-stripe);border-radius:8px;font-size:13px">
+    <strong>📊 情景收益速算（均衡方案 ¥200）：</strong><br>
+    • 荷兰赢 2-1 → 赚 <span class="green">+¥340</span>（¥540-¥200）<br>
+    • 荷兰赢 1-0 / 3-0 → 亏 <span class="red">-¥200</span>（全未命中）<br>
+    • 平局 2-2 → 赚 <span class="green">+¥800</span>（¥1,000-¥200）✈️ 最佳结果<br>
+    • 瑞典赢 1-2 → 赚 <span class="green">+¥280</span><br>
+    • 任何未覆盖比分 → 亏 <span class="red">-¥200</span><br>
+    <span class="dim" style="display:block;margin-top:4px">⚠️ 这是小注甜点波胆策略，不是稳赚玩法。覆盖了7个比分，但足球有无限可能。</span>
+  </div>
+</div>
+
+<!-- 13. ANYTIME SCORER -->
+<div class="section">
+  <h2>⚽ 任意时间进球手价值</h2>
+  <table>
+    <tr><th>球员</th><th>球队</th><th>角色</th><th>价值评估</th></tr>
+    <tr><td>Gakpo</td><td>🇳🇱</td><td>LW/内切射门</td><td class="green">★★★★ — 首战进球，荷兰头号得分点</td></tr>
+    <tr><td>Depay</td><td>🇳🇱</td><td>ST/点球</td><td class="green">★★★★ — 伤愈回归，点球+抢点</td></tr>
+    <tr><td>Isak</td><td>🇸🇪</td><td>LW/速度反击</td><td class="gold">★★★★★ — 瑞典最大威胁，速度碾压</td></tr>
+    <tr><td>Gyokeres</td><td>🇸🇪</td><td>ST/支点+射门</td><td class="gold">★★★★★ — 首战2球，身体碾压型</td></tr>
+    <tr><td>Van Dijk</td><td>🇳🇱</td><td>CB/定位球头球</td><td class="gold">★★★ — 首战头球破门，定位球得分王</td></tr>
+    <tr><td>Summerville</td><td>🇳🇱</td><td>RW/传中</td><td class="green">★★★ — 首战2助攻，右路进攻引擎</td></tr>
+    <tr><td>Elanga</td><td>🇸🇪</td><td>RW/速度</td><td>★★ — 首战1球，可能替补出场</td></tr>
+  </table>
+</div>
+
+<!-- 14. FINAL -->
+<div class="section" style="background:linear-gradient(135deg,#1a1a2e,#162032);border:1px solid var(--accent)">
+  <h2>🏁 最终判断</h2>
+  <p style="font-size:14px;line-height:2">
+    <strong>荷兰 55% — 平局 25% — 瑞典 21%。</strong><br><br>
+    这场比赛跟荷兰首战2-2日本有很多相似之处：荷兰是更强的一方但防守有漏洞，对手有高效反击武器（日本=Nakamura，瑞典=Isak）。<br><br>
+    <span class="gold"><strong>核心博彩观点：</strong></span><br>
+    ① 荷兰赢球是最可能结果，但 <strong>不要押1-0/2-0这种热度分</strong>——赔率太低<br>
+    ② <strong>2-2 @20.0 是本场最佳甜点</strong>：荷兰防守软肋+瑞典前锋质量=双方都能进球+荷兰不一定守得住<br>
+    ③ 瑞典不败（1-2 / 0-1）是真实冷门路径，赔率足够好<br>
+    ④ O2.5和BTTS市场可能被首轮进球数推高了——Poisson显示都低于市场隐含<br>
+    ⑤ 荷兰-1盘要谨慎：Poisson显示净胜1球(27%)≈净胜2+(27%)。荷兰需要赢但很少大比分赢强于突尼斯的对手<br><br>
+    <span class="dim">🎯 最值一注：2-2 @20.0。跟日本那场一模一样的原因：荷兰不够稳，瑞典够锋利。</span>
+  </p>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 以上为客观数据和概率分析，非投注建议。波胆投注具有极高风险，请理性娱乐，量力而行。<br>
+  所有赔率均为估算值，请以实际投注平台为准。<br>
+  数据来源：BetExplorer / FanDuel / ESPN / Sports Mole / Wikipedia / FIFA<br>
+  生成时间：2026年6月20日 · Hermes Agent 分析师
+</div>
+
+</div>
+</body>
+</html>
