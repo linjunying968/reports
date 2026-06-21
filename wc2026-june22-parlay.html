@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月22日 波胆串关分析</title>
+<title>2026世界杯 6月22日 多维度串关分析</title>
 <style>
 :root {
   --bg: #0a0e14;
@@ -12,269 +12,171 @@
   --text: #cfd7e6;
   --text-dim: #8896a8;
   --accent: #e8b830;
-  --tier-core: #f59e0b;
-  --tier-high: #8b5cf6;
-  --tier-upset: #ef4444;
-  --tier-lotto: #6b7280;
+  --gold-light: #fbbf24;
   --green: #10b981;
   --red: #ef4444;
+  --purple: #8b5cf6;
+  --blue: #3b82f6;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  line-height: 1.7;
+  line-height: 1.75;
   -webkit-text-size-adjust: 100%;
 }
-.container { max-width: 1200px; margin: 0 auto; padding: clamp(12px, 2vw, 24px); }
+.container { max-width: 1100px; margin: 0 auto; padding: clamp(12px, 2vw, 28px); }
 
 /* Hero */
 .hero {
   background: linear-gradient(135deg, #12171f 0%, #1a2540 100%);
   border: 1px solid var(--card-border);
   border-radius: 16px;
-  padding: clamp(20px, 4vw, 40px);
+  padding: clamp(24px, 4vw, 44px);
   text-align: center;
   margin-bottom: 24px;
 }
 .hero h1 {
-  font-size: clamp(22px, 4vw, 36px);
+  font-size: clamp(22px, 4vw, 38px);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), #fbbf24);
+  background: linear-gradient(135deg, var(--accent), var(--gold-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero .sub {
-  color: var(--text-dim);
-  font-size: clamp(13px, 2vw, 16px);
-  margin-top: 8px;
-}
+.hero .sub { color: var(--text-dim); font-size: clamp(13px, 2vw, 16px); margin-top: 8px; }
 .hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 20px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px;
 }
 .hero-meta span {
-  background: rgba(232,184,48,0.1);
-  border: 1px solid rgba(232,184,48,0.2);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: clamp(12px, 1.5vw, 14px);
-  color: var(--accent);
+  background: rgba(232,184,48,0.08); border: 1px solid rgba(232,184,48,0.18);
+  padding: 5px 14px; border-radius: 20px; font-size: clamp(11px, 1.4vw, 13px); color: var(--accent);
 }
 
-/* Sections */
+/* Section */
 .section {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: clamp(16px, 3vw, 28px);
-  margin-bottom: 20px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 12px; padding: clamp(16px, 3vw, 28px); margin-bottom: 20px;
 }
 .section h2 {
-  font-size: clamp(15px, 2.2vw, 20px);
-  color: var(--accent);
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--card-border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: clamp(16px, 2.2vw, 21px); color: var(--accent);
+  margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--card-border);
+  display: flex; align-items: center; gap: 8px;
 }
-.section h2 .emoji { font-size: 1.2em; }
 
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: clamp(12px, 1.4vw, 14px);
+/* Key insight box */
+.insight-box {
+  background: rgba(232,184,48,0.04); border: 1.5px solid var(--accent);
+  border-radius: 12px; padding: 18px; margin-bottom: 18px;
 }
-th {
-  background: rgba(232,184,48,0.08);
-  color: var(--accent);
-  padding: 10px 12px;
-  text-align: left;
-  font-weight: 600;
-  white-space: nowrap;
-}
-td {
-  padding: 9px 12px;
-  border-bottom: 1px solid var(--card-border);
-}
-tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
-tr:hover td { background: rgba(232,184,48,0.04); }
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.insight-box strong { color: var(--accent); }
 
 /* Cards grid */
-.cards-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-.cards-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
-.cards-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
+.cards-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.cards-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.cards-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
 @media (max-width: 640px) {
-  .cards-4 { grid-template-columns: 1fr; }
-  .cards-3 { grid-template-columns: 1fr; }
-  .cards-2 { grid-template-columns: 1fr; }
+  .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
 }
 
-/* Match cards */
-.match-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 20px;
+/* Market menu card */
+.menu-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 10px; padding: 16px;
 }
-.match-card .teams {
-  font-size: clamp(18px, 2.5vw, 24px);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 8px;
+.menu-card h3 { font-size: 15px; margin-bottom: 10px; }
+.menu-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 12px; margin: 4px 0; border-radius: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid transparent;
 }
-.match-card .meta {
-  text-align: center;
-  color: var(--text-dim);
-  font-size: clamp(11px, 1.3vw, 13px);
-  margin-bottom: 14px;
-}
-.match-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 600;
-  margin: 4px;
-}
-.badge-mismatch { background: rgba(239,68,68,0.15); color: var(--red); }
-.badge-strong { background: rgba(245,158,11,0.12); color: var(--tier-core); }
-.badge-moderate { background: rgba(139,92,246,0.12); color: var(--tier-high); }
-.badge-slight { background: rgba(16,185,129,0.12); color: var(--green); }
+.menu-item:hover { border-color: rgba(232,184,48,0.15); background: rgba(232,184,48,0.03); }
+.menu-item .label { font-size: 13px; font-weight: 500; }
+.menu-item .stats { text-align: right; }
+.menu-item .prob { font-weight: 700; color: var(--accent); font-size: 14px; }
+.menu-item .odds { color: var(--text-dim); font-size: 12px; margin-left: 6px; }
+.menu-item.pick { border-color: var(--accent); background: rgba(232,184,48,0.06); }
+.menu-item.pick::before { content: "✅"; margin-right: 6px; font-size: 12px; }
 
-.match-card .lambda-row {
-  display: flex;
-  justify-content: space-around;
-  margin: 12px 0;
-  padding: 10px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 8px;
+/* Tier cards */
+.tier-card {
+  border-radius: 14px; padding: 22px; position: relative;
+  border: 1.5px solid var(--card-border);
 }
-.match-card .lambda-row div { text-align: center; }
-.match-card .lambda-row .val { font-size: 24px; font-weight: 700; color: var(--accent); }
-.match-card .lambda-row .lbl { font-size: 11px; color: var(--text-dim); }
+.tier-card.safe { border-color: var(--green); background: linear-gradient(135deg, #12171f, #0d1f1a); }
+.tier-card.balance { border-color: var(--accent); background: linear-gradient(135deg, #12171f, #1a1a10); }
+.tier-card.attack { border-color: var(--red); background: linear-gradient(135deg, #12171f, #1a1015); }
+.tier-badge {
+  display: inline-block; padding: 4px 14px; border-radius: 12px;
+  font-size: 12px; font-weight: 700; margin-bottom: 12px;
+}
+.tier-badge.safe { background: rgba(16,185,129,0.15); color: var(--green); }
+.tier-badge.balance { background: rgba(232,184,48,0.15); color: var(--accent); }
+.tier-badge.attack { background: rgba(239,68,68,0.15); color: var(--red); }
 
-/* Score miniature */
-.score-mini {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin: 8px 0;
-  color: var(--text-dim);
-  font-size: 12px;
-}
-
-/* Parlay cards */
-.parlay-card {
-  background: linear-gradient(135deg, #12171f, #1a2030);
-  border: 1.5px solid var(--accent);
-  border-radius: 14px;
-  padding: 20px;
-  position: relative;
-}
-.parlay-card.rank-1 { border-color: var(--tier-core); }
-.parlay-card.rank-2 { border-color: var(--tier-high); }
-.parlay-card.rank-3 { border-color: var(--green); }
-.parlay-rank {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent);
-  color: #000;
-  padding: 4px 16px;
-  border-radius: 14px;
-  font-weight: 800;
+.tier-legs { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+.tier-leg {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; background: rgba(255,255,255,0.03); border-radius: 8px;
   font-size: 13px;
 }
-.parlay-card.rank-1 .parlay-rank { background: var(--tier-core); }
-.parlay-card.rank-2 .parlay-rank { background: var(--tier-high); color: #fff; }
-.parlay-card.rank-3 .parlay-rank { background: var(--green); }
-
-.parlay-scores { display: flex; flex-direction: column; gap: 6px; margin: 20px 0 14px; }
-.parlay-leg {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 8px;
+.tier-leg .market { color: var(--text-dim); font-size: 11px; }
+.tier-leg .pick { font-weight: 600; }
+.tier-stats {
+  display: flex; justify-content: space-around; margin-top: 16px;
+  padding: 14px; background: rgba(255,255,255,0.03); border-radius: 10px;
 }
-.parlay-leg .teams { font-weight: 600; font-size: 14px; }
-.parlay-leg .score { 
-  background: rgba(232,184,48,0.15);
-  color: var(--accent);
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 15px;
-}
-.parlay-prob { text-align: center; margin-top: 10px; }
-.parlay-prob .big { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--accent); }
-.parlay-prob .sub { color: var(--text-dim); font-size: 12px; }
+.tier-stats .stat { text-align: center; }
+.tier-stats .val { font-size: clamp(20px, 3vw, 28px); font-weight: 800; color: var(--accent); }
+.tier-stats .lbl { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
 
-/* Risk card */
-.risk-card {
-  border-left: 3px solid var(--red);
-  padding: 12px 16px;
-  background: rgba(239,68,68,0.05);
-  border-radius: 0 8px 8px 0;
-  margin: 8px 0;
-}
-.risk-card h4 { color: var(--red); font-size: 14px; margin-bottom: 4px; }
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: clamp(11px, 1.3vw, 13px); }
+th { background: rgba(232,184,48,0.07); color: var(--accent); padding: 10px 12px; text-align: left; font-weight: 600; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--card-border); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.012); }
+tr:hover td { background: rgba(232,184,48,0.03); }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-/* Gold highlight box */
+/* Compare bar */
+.compare-row { display: flex; gap: 8px; align-items: center; margin: 6px 0; }
+.bar-bg { flex: 1; height: 24px; background: rgba(255,255,255,0.04); border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s; }
+.bar-fill.cs { background: linear-gradient(90deg, #ef4444, #dc2626); }
+.bar-fill.mix { background: linear-gradient(90deg, var(--accent), var(--gold-light)); }
+
+/* Badge */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin: 2px; }
+.badge-g { background: rgba(16,185,129,0.12); color: var(--green); }
+.badge-y { background: rgba(232,184,48,0.12); color: var(--accent); }
+.badge-r { background: rgba(239,68,68,0.12); color: var(--red); }
+.badge-p { background: rgba(139,92,246,0.12); color: var(--purple); }
+
+/* Gold box */
 .gold-box {
-  border: 1.5px solid var(--accent);
-  border-radius: 12px;
-  padding: 20px;
-  background: rgba(232,184,48,0.04);
-  margin: 16px 0;
+  border: 1.5px solid var(--accent); border-radius: 12px;
+  padding: 18px; background: rgba(232,184,48,0.03); margin: 14px 0;
 }
 
-/* Disclaimer */
-.disclaimer {
-  text-align: center;
-  color: var(--text-dim);
-  font-size: 12px;
-  padding: 24px 0 16px;
-  border-top: 1px solid var(--card-border);
-  margin-top: 24px;
+/* Flow diagram */
+.flow { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 14px 0; }
+.flow-step {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--card-border);
+  border-radius: 10px; padding: 10px 16px; text-align: center; font-size: 12px;
 }
-
-/* Stat badges */
-.stat-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px 0;
-}
-.stat-badge {
-  background: rgba(255,255,255,0.04);
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  color: var(--text-dim);
-}
-.stat-badge strong { color: var(--text); }
-
-/* Emoji flags */
-.flag { font-size: 1.3em; display: inline-block; margin-right: 4px; }
+.flow-step .big { font-size: 16px; font-weight: 700; color: var(--accent); }
+.flow-arrow { color: var(--accent); font-size: 18px; align-self: center; }
 
 /* Highlight */
 .hi { color: var(--accent); font-weight: 600; }
 .warn { color: var(--red); font-weight: 600; }
 .good { color: var(--green); font-weight: 600; }
+
+.disclaimer {
+  text-align: center; color: var(--text-dim); font-size: 11px;
+  padding: 20px 0 14px; border-top: 1px solid var(--card-border); margin-top: 20px;
+}
 </style>
 </head>
 <body>
@@ -282,526 +184,374 @@ tr:hover td { background: rgba(232,184,48,0.04); }
 
 <!-- HERO -->
 <div class="hero">
-  <h1>⚽ 2026世界杯 波胆串关分析</h1>
-  <div class="sub">2026年6月22日 北京时间 — 4场小组赛第二轮</div>
+  <h1>🎯 2026世界杯 6月22日 · 多维度串关分析</h1>
+  <div class="sub">Group G + H 第二轮 · 4场 · 北京时间 00:00-09:00</div>
   <div class="hero-meta">
-    <span>🕐 00:00-09:00 四场连打</span>
-    <span>📊 Group G + H</span>
-    <span>🎯 3串1 & 4串1 推荐</span>
-    <span>📈 Poisson 概率模型</span>
+    <span>🏟️ 西班牙·比利时·乌拉圭·埃及</span>
+    <span>📊 1X2 + 大小球 + BTTS + 让球</span>
+    <span>🔀 任意市场自由混合串</span>
+    <span>📈 Poisson 概率驱动</span>
   </div>
 </div>
 
-<!-- OVERVIEW TABLE -->
+<!-- KEY INSIGHT -->
 <div class="section">
-  <h2><span class="emoji">📋</span> 四场对阵总览</h2>
-  <div class="table-wrap">
-    <table>
-      <tr><th>#</th><th>时间(北京)</th><th>对阵</th><th>小组</th><th>场地</th><th>实力差</th><th>市场胜率</th><th>λ(主/客)</th></tr>
-      <tr>
-        <td>①</td><td>00:00</td><td><span class="flag">🇪🇸</span>西班牙 vs 沙特<span class="flag">🇸🇦</span></td>
-        <td>H组</td><td>亚特兰大</td>
-        <td><span class="badge-mismatch">碾压级</span></td>
-        <td>86.4% / 9.1% / 4.5%</td>
-        <td><span class="hi">2.45</span> vs 0.05</td>
-      </tr>
-      <tr>
-        <td>②</td><td>03:00</td><td><span class="flag">🇧🇪</span>比利时 vs 伊朗<span class="flag">🇮🇷</span></td>
-        <td>G组</td><td>洛杉矶</td>
-        <td><span class="badge-strong">中强</span></td>
-        <td>66.5% / 20.8% / 12.7%</td>
-        <td><span class="hi">1.90</span> vs 0.65</td>
-      </tr>
-      <tr>
-        <td>③</td><td>06:00</td><td><span class="flag">🇺🇾</span>乌拉圭 vs 佛得角<span class="flag">🇨🇻</span></td>
-        <td>H组</td><td>迈阿密</td>
-        <td><span class="badge-moderate">中度</span></td>
-        <td>64.2% / 23.1% / 12.6%</td>
-        <td><span class="hi">1.75</span> vs 0.60</td>
-      </tr>
-      <tr>
-        <td>④</td><td>09:00</td><td><span class="flag">🇳🇿</span>新西兰 vs 埃及<span class="flag">🇪🇬</span></td>
-        <td>G组</td><td>温哥华</td>
-        <td><span class="badge-slight">轻微</span></td>
-        <td>59.9% / 23.9% / 16.2%</td>
-        <td>1.70 vs <span class="hi">0.75</span></td>
-      </tr>
-    </table>
+  <h2>💡 核心思路：串关 = 每场挑最强方向 × 拼在一起</h2>
+  <div class="insight-box">
+    <strong>串关不限市场类型。</strong>不需要四场全买 1X2，也不需要全买大小球。你可以：
+    <span style="color:var(--accent);">西班牙买「胜」</span> + 
+    <span style="color:var(--purple);">比利时买「双方不进球」</span> + 
+    <span style="color:var(--blue);">乌拉圭买「小2.5球」</span> + 
+    <span style="color:var(--green);">埃及买「不败」</span>
+    <br>——这四样拼在一张串关票上，完全合法，而且概率远超全买波胆。
+  </div>
+
+  <!-- Before/After comparison -->
+  <div style="margin-top: 16px;">
+    <h3 style="font-size:14px;color:var(--text-dim);margin-bottom:10px;">概率对比（同一比赛日）：</h3>
+    <div class="compare-row">
+      <span style="width:90px;font-size:12px;">波胆 3串1</span>
+      <div class="bar-bg"><div class="bar-fill cs" style="width:1%"></div></div>
+      <span style="width:100px;font-size:12px;text-align:right;"><span class="warn">0.6%</span> ~89x</span>
+    </div>
+    <div class="compare-row">
+      <span style="width:90px;font-size:12px;">1X2 3串1</span>
+      <div class="bar-bg"><div class="bar-fill mix" style="width:37%"></div></div>
+      <span style="width:100px;font-size:12px;text-align:right;"><span class="good">36.9%</span> ~2.3x</span>
+    </div>
+    <div class="compare-row">
+      <span style="width:90px;font-size:12px;">混合 3串1</span>
+      <div class="bar-bg"><div class="bar-fill mix" style="width:51%"></div></div>
+      <span style="width:100px;font-size:12px;text-align:right;"><span class="good">50.6%</span> ~1.9x</span>
+    </div>
+    <div class="compare-row">
+      <span style="width:90px;font-size:12px;">混合 4串1</span>
+      <div class="bar-bg"><div class="bar-fill mix" style="width:33%"></div></div>
+      <span style="width:100px;font-size:12px;text-align:right;"><span class="good">33.0%</span> ~2.8x</span>
+    </div>
+    <p style="font-size:11px;color:var(--text-dim);margin-top:6px;">混合串关概率是波胆串关的 <strong style="color:var(--accent);">50-80倍</strong></p>
   </div>
 </div>
 
-<!-- GROUP STANDINGS -->
+<!-- MARKET MENU -->
 <div class="section">
-  <h2><span class="emoji">🏆</span> 小组积分榜（首轮后）</h2>
-  <div class="cards-2">
-    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:16px;">
-      <h3 style="color:var(--tier-high);margin-bottom:10px;font-size:15px;">G组 — 四队全平</h3>
-      <div class="table-wrap">
-        <table>
-          <tr><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>GD</th><th>分</th></tr>
-          <tr><td>🇧🇪 比利时</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-          <tr><td>🇪🇬 埃及</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-          <tr><td>🇮🇷 伊朗</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-          <tr><td>🇳🇿 新西兰</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-        </table>
-      </div>
-      <div class="stat-row" style="margin-top:10px;">
-        <span class="stat-badge">R1: <strong>🇧🇪 1-1 🇪🇬</strong></span>
-        <span class="stat-badge">R1: <strong>🇮🇷 2-2 🇳🇿</strong></span>
-      </div>
-    </div>
-    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:16px;">
-      <h3 style="color:var(--tier-core);margin-bottom:10px;font-size:15px;">H组 — 四队全平</h3>
-      <div class="table-wrap">
-        <table>
-          <tr><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>GD</th><th>分</th></tr>
-          <tr><td>🇪🇸 西班牙</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-          <tr><td>🇸🇦 沙特</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-          <tr><td>🇺🇾 乌拉圭</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-          <tr><td>🇨🇻 佛得角</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><strong>1</strong></td></tr>
-        </table>
-      </div>
-      <div class="stat-row" style="margin-top:10px;">
-        <span class="stat-badge">R1: <strong>🇪🇸 0-0 🇨🇻</strong> ⚠️</span>
-        <span class="stat-badge">R1: <strong>🇸🇦 1-1 🇺🇾</strong></span>
-      </div>
-    </div>
-  </div>
-  <div class="gold-box" style="margin-top:16px;">
-    <strong>⚡ 核心矛盾：</strong>两个小组四队全拿1分，种子队（西班牙、比利时）非赢不可！第二轮是生死战，决定了各队的出线主动权。西班牙首轮0-0佛得角已被西班牙媒体口诛笔伐，本场怒火中烧。
-  </div>
-</div>
-
-<!-- MATCH ANALYSIS -->
-<div class="section">
-  <h2><span class="emoji">🔬</span> 逐场 Poisson 深度分析</h2>
-
-  <!-- MATCH 1: Spain vs Saudi Arabia -->
-  <div class="match-card" style="margin-bottom:16px;border-left:3px solid var(--red);">
-    <div class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特阿拉伯 <span class="flag">🇸🇦</span></div>
-    <div class="meta">06/22 00:00 北京时间 · 亚特兰大 Mercedes-Benz Stadium · H组</div>
-    <div class="lambda-row">
-      <div><div class="val">2.45</div><div class="lbl">🇪🇸 λ (预期进球)</div></div>
-      <div><div class="val">2.50</div><div class="lbl">预期总进球</div></div>
-      <div><div class="val">0.05</div><div class="lbl">🇸🇦 λ (预期进球)</div></div>
-    </div>
-    <div style="margin:10px 0;">
-      <span class="badge-mismatch">MASSIVE MISMATCH</span>
-      <span class="stat-badge">盘口: 西班牙 -1000</span>
-      <span class="stat-badge">O/U 2.5: Under -200</span>
-      <span class="stat-badge">Kalshi: 🇪🇸 89%</span>
-    </div>
-    <p style="font-size:13px;color:var(--text-dim);margin-top:10px;">
-      <strong>首轮：</strong>西班牙 0-0 佛得角（耻辱性零封）| 沙特 1-1 乌拉圭<br>
-      <strong>战术：</strong>西班牙 4-3-3 全主力（Yamal复出+Williams+Pedri+Rodri），沙特铁桶反击。西班牙憋了一周的火，Yamal确认伤愈首发，全场围攻可期。但沙特首轮对乌拉圭也展示了大巴韧性。<br>
-      <strong>串关逻辑：</strong>2-0是最优比分——西班牙会破门但沙特不会崩盘到4-0。1-0概率也高但串关赔率更低。
-    </p>
-    <div class="table-wrap" style="margin-top:12px;">
-      <table>
-        <tr><th>#</th><th>比分</th><th>概率</th><th>公平赔率</th><th>估值赔率</th><th>串关价值</th></tr>
-        <tr><td><span class="hi">1</span></td><td><strong>2-0</strong></td><td><span class="hi">24.6%</span></td><td>4.1</td><td>3.2</td><td>⭐⭐⭐</td></tr>
-        <tr><td>2</td><td>3-0</td><td>20.1%</td><td>5.0</td><td>4.0</td><td>⭐⭐</td></tr>
-        <tr><td>3</td><td>1-0</td><td>20.1%</td><td>5.0</td><td>4.0</td><td>⭐⭐</td></tr>
-        <tr><td>4</td><td>4-0</td><td>12.3%</td><td>8.1</td><td>6.5</td><td>⭐</td></tr>
-        <tr><td>5</td><td>0-0</td><td>8.2%</td><td>12.2</td><td>10.0</td><td>—</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- MATCH 2: Belgium vs Iran -->
-  <div class="match-card" style="margin-bottom:16px;border-left:3px solid var(--tier-core);">
-    <div class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗 <span class="flag">🇮🇷</span></div>
-    <div class="meta">06/22 03:00 北京时间 · 洛杉矶 SoFi Stadium · G组</div>
-    <div class="lambda-row">
-      <div><div class="val">1.90</div><div class="lbl">🇧🇪 λ (预期进球)</div></div>
-      <div><div class="val">2.55</div><div class="lbl">预期总进球</div></div>
-      <div><div class="val">0.65</div><div class="lbl">🇮🇷 λ (预期进球)</div></div>
-    </div>
-    <div style="margin:10px 0;">
-      <span class="badge-strong">CLEAR FAVORITE</span>
-      <span class="stat-badge">盘口: 比利时 -230</span>
-      <span class="stat-badge">市场CS: 1-0 @6.50, 2-0 @7.00</span>
-      <span class="stat-badge">BTTS No 共识</span>
-    </div>
-    <p style="font-size:13px;color:var(--text-dim);margin-top:10px;">
-      <strong>首轮：</strong>比利时 1-1 埃及 | 伊朗 2-2 新西兰（两次落后两次扳平）<br>
-      <strong>战术：</strong>比利时 KDB+Lukaku+Doku 纸面碾压，但首轮暴露了终结效率问题。伊朗 Azmoun+Taremi 反击有威胁，会低位防守寻求反击。Squawka 预测 2-0。<br>
-      <strong>串关逻辑：</strong>1-0（最高概率14.8%）和2-0（14.1%）是合理选择。比利时破伊朗大巴需要时间，1-0更现实。
-    </p>
-    <div class="table-wrap" style="margin-top:12px;">
-      <table>
-        <tr><th>#</th><th>比分</th><th>概率</th><th>公平赔率</th><th>估值赔率</th><th>串关价值</th></tr>
-        <tr><td><span class="hi">1</span></td><td><strong>1-0</strong></td><td><span class="hi">14.8%</span></td><td>6.7</td><td>5.5</td><td>⭐⭐⭐</td></tr>
-        <tr><td>2</td><td>2-0</td><td>14.1%</td><td>7.1</td><td>6.0</td><td>⭐⭐</td></tr>
-        <tr><td>3</td><td>1-1</td><td>9.6%</td><td>10.4</td><td>8.5</td><td>—</td></tr>
-        <tr><td>4</td><td>2-1</td><td>9.2%</td><td>10.9</td><td>9.0</td><td>⭐</td></tr>
-        <tr><td>5</td><td>3-0</td><td>8.9%</td><td>11.2</td><td>9.0</td><td>⭐</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- MATCH 3: Uruguay vs Cape Verde -->
-  <div class="match-card" style="margin-bottom:16px;border-left:3px solid var(--tier-high);">
-    <div class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角 <span class="flag">🇨🇻</span></div>
-    <div class="meta">06/22 06:00 北京时间 · 迈阿密 Hard Rock Stadium · H组</div>
-    <div class="lambda-row">
-      <div><div class="val">1.75</div><div class="lbl">🇺🇾 λ (预期进球)</div></div>
-      <div><div class="val">2.35</div><div class="lbl">预期总进球</div></div>
-      <div><div class="val">0.60</div><div class="lbl">🇨🇻 λ (预期进球)</div></div>
-    </div>
-    <div style="margin:10px 0;">
-      <span class="badge-moderate">⚠ 最大变数</span>
-      <span class="stat-badge">盘口: 乌拉圭 -210</span>
-      <span class="stat-badge">乌拉圭: 近5场平4场</span>
-      <span class="stat-badge warn">佛得角: 首轮零封西班牙!</span>
-    </div>
-    <p style="font-size:13px;color:var(--text-dim);margin-top:10px;">
-      <strong>首轮：</strong>乌拉圭 1-1 沙特（需Nunez绝杀）| 佛得角 0-0 西班牙（史诗级防守）<br>
-      <strong>战术：</strong>乌拉圭进攻便秘（近8场仅1个上半场进球），佛得角防守纪律性极强。这是四场中平局风险最高的一场。Valverde+Nunez需要破局。<br>
-      <strong>串关逻辑：</strong>1-0是最合理选择（16.7%），但0-0（9.5%）和1-1（10%）的高平局概率是潜在杀手。
-    </p>
-    <div class="table-wrap" style="margin-top:12px;">
-      <table>
-        <tr><th>#</th><th>比分</th><th>概率</th><th>公平赔率</th><th>估值赔率</th><th>串关价值</th></tr>
-        <tr><td><span class="hi">1</span></td><td><strong>1-0</strong></td><td><span class="hi">16.7%</span></td><td>6.0</td><td>5.0</td><td>⭐⭐⭐</td></tr>
-        <tr><td>2</td><td>2-0</td><td>14.6%</td><td>6.8</td><td>5.5</td><td>⭐⭐</td></tr>
-        <tr><td>3</td><td>1-1</td><td>10.0%</td><td>10.0</td><td>8.0</td><td>—</td></tr>
-        <tr><td>4</td><td>0-0</td><td>9.5%</td><td>10.5</td><td>8.5</td><td>—</td></tr>
-        <tr><td>5</td><td>2-1</td><td>8.8%</td><td>11.4</td><td>9.5</td><td>⭐</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- MATCH 4: New Zealand vs Egypt -->
-  <div class="match-card" style="margin-bottom:16px;border-left:3px solid var(--green);">
-    <div class="teams"><span class="flag">🇳🇿</span> 新西兰 vs 埃及 <span class="flag">🇪🇬</span></div>
-    <div class="meta">06/22 09:00 北京时间 · 温哥华 BC Place · G组</div>
-    <div class="lambda-row">
-      <div><div class="val">1.70</div><div class="lbl">🇪🇬 λ (预期进球)</div></div>
-      <div><div class="val">2.45</div><div class="lbl">预期总进球</div></div>
-      <div><div class="val">0.75</div><div class="lbl">🇳🇿 λ (预期进球)</div></div>
-    </div>
-    <div style="margin:10px 0;">
-      <span class="badge-slight">MODERATE EDGE</span>
-      <span class="stat-badge">盘口: 埃及 -167</span>
-      <span class="stat-badge">市场CS: 2-0 @7.50</span>
-      <span class="stat-badge">Mo Salah 核心</span>
-    </div>
-    <p style="font-size:13px;color:var(--text-dim);margin-top:10px;">
-      <strong>首轮：</strong>埃及 1-1 比利时（Salah破门）| 新西兰 2-2 伊朗（Just双响）<br>
-      <strong>战术：</strong>埃及 Salah+Marmoush+Trezeguet 攻击线豪华，新西兰 Chris Wood+Just 有反击威胁。埃及实力优势明显但新西兰首轮得分能力不容小觑。<br>
-      <strong>串关逻辑：</strong>埃及 1-0（14.7%）或 2-0（12.5%），新西兰有17%概率拿分（0-0/1-1/1-0）。
-    </p>
-    <div class="table-wrap" style="margin-top:12px;">
-      <table>
-        <tr><th>#</th><th>比分</th><th>概率</th><th>公平赔率</th><th>估值赔率</th><th>串关价值</th></tr>
-        <tr><td><span class="hi">1</span></td><td><strong>1-0</strong></td><td><span class="hi">14.7%</span></td><td>6.8</td><td>5.5</td><td>⭐⭐⭐</td></tr>
-        <tr><td>2</td><td>2-0</td><td>12.5%</td><td>8.0</td><td>6.5</td><td>⭐⭐</td></tr>
-        <tr><td>3</td><td>1-1</td><td>11.0%</td><td>9.1</td><td>7.5</td><td>—</td></tr>
-        <tr><td>4</td><td>2-1</td><td>9.4%</td><td>10.7</td><td>9.0</td><td>⭐</td></tr>
-        <tr><td>5</td><td>0-0</td><td>8.6%</td><td>11.6</td><td>9.5</td><td>—</td></tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- 3场串关 -->
-<div class="section">
-  <h2><span class="emoji">🎯</span> 3串1 波胆推荐 TOP 6</h2>
-  <p style="color:var(--text-dim);margin-bottom:16px;font-size:13px;">
-    方法：每场取 Poisson TOP5 比分 × 所有3场组合(C(4,3)=4) → 全扫描(625种/组合) → 按综合概率排序<br>
-    ⚡ 核心原则：<strong>串关追求最高概率，不选冷门高赔</strong>
+  <h2>📋 每场可选市场菜单（挑自己最强的）</h2>
+  <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">
+    以下是每场比赛的可用市场选项，标注了 <span class="hi">Poisson概率</span> 和 <span style="color:var(--text-dim);">估值赔率</span>。
+    串关时从每场选一个市场，自由组合。
   </p>
 
+  <div class="cards-4">
+    <!-- Match 1: Spain vs Saudi -->
+    <div class="menu-card" style="border-top:3px solid var(--red);">
+      <h3>🇪🇸 西班牙 vs 沙特 🇸🇦</h3>
+      <p style="font-size:11px;color:var(--text-dim);margin-bottom:8px;">00:00 · H组 · 亚特兰大 · 碾压级</p>
+      <div class="menu-item pick">
+        <span class="label">西班牙 <strong>胜</strong></span>
+        <span class="stats"><span class="prob">86.4%</span><span class="odds">@1.10</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">西班牙 <strong>不败</strong></span>
+        <span class="stats"><span class="prob">95.5%</span><span class="odds">@1.05</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">双方 <strong>不进球</strong></span>
+        <span class="stats"><span class="prob">95.5%</span><span class="odds">@1.05</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label"><strong>小 2.5 球</strong></span>
+        <span class="stats"><span class="prob">54.3%</span><span class="odds">@1.50</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">西班牙 <strong>零封</strong></span>
+        <span class="stats"><span class="prob">91.7%</span><span class="odds">@1.08</span></span>
+      </div>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:6px;">✅ = 推荐选择。不败/零封概率极高但赔率太低，<strong>「胜」是串关最优锚点</strong></p>
+    </div>
+
+    <!-- Match 2: Belgium vs Iran -->
+    <div class="menu-card" style="border-top:3px solid var(--accent);">
+      <h3>🇧🇪 比利时 vs 伊朗 🇮🇷</h3>
+      <p style="font-size:11px;color:var(--text-dim);margin-bottom:8px;">03:00 · G组 · 洛杉矶 · 中度优势</p>
+      <div class="menu-item pick">
+        <span class="label">比利时 <strong>胜</strong></span>
+        <span class="stats"><span class="prob">66.5%</span><span class="odds">@1.44</span></span>
+      </div>
+      <div class="menu-item pick">
+        <span class="label">双方 <strong>不进球</strong></span>
+        <span class="stats"><span class="prob">58.9%</span><span class="odds">@1.70</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">比利时 <strong>不败</strong></span>
+        <span class="stats"><span class="prob">87.3%</span><span class="odds">@1.12</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label"><strong>小 2.5 球</strong></span>
+        <span class="stats"><span class="prob">53.1%</span><span class="odds">@1.85</span></span>
+      </div>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:6px;">✅ BTTS No = 价值最优（概率×赔率最高）| 胜 = 安全首选</p>
+    </div>
+
+    <!-- Match 3: Uruguay vs Cape Verde -->
+    <div class="menu-card" style="border-top:3px solid var(--purple);">
+      <h3>🇺🇾 乌拉圭 vs 佛得角 🇨🇻</h3>
+      <p style="font-size:11px;color:var(--text-dim);margin-bottom:8px;">06:00 · H组 · 迈阿密 · ⚠️ 最危险</p>
+      <div class="menu-item pick">
+        <span class="label"><strong>小 2.5 球</strong></span>
+        <span class="stats"><span class="prob">58.2%</span><span class="odds">@1.65</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">双方 <strong>不进球</strong></span>
+        <span class="stats"><span class="prob">65.4%</span><span class="odds">@1.55</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">乌拉圭 <strong>胜</strong></span>
+        <span class="stats"><span class="prob">64.2%</span><span class="odds">@1.48</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">乌拉圭 <strong>不败</strong></span>
+        <span class="stats"><span class="prob">87.3%</span><span class="odds">@1.12</span></span>
+      </div>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:6px;">⚠️ 乌拉圭近5场平4场+佛得角零封过西班牙 → <strong>避开「胜」，选「小2.5」更稳</strong></p>
+    </div>
+
+    <!-- Match 4: NZ vs Egypt -->
+    <div class="menu-card" style="border-top:3px solid var(--green);">
+      <h3>🇳🇿 新西兰 vs 埃及 🇪🇬</h3>
+      <p style="font-size:11px;color:var(--text-dim);margin-bottom:8px;">09:00 · G组 · 温哥华 · 轻微优势</p>
+      <div class="menu-item pick">
+        <span class="label">埃及 <strong>不败</strong></span>
+        <span class="stats"><span class="prob">83.8%</span><span class="odds">@1.18</span></span>
+      </div>
+      <div class="menu-item pick">
+        <span class="label">埃及 <strong>胜</strong></span>
+        <span class="stats"><span class="prob">59.9%</span><span class="odds">@1.60</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label"><strong>小 2.5 球</strong></span>
+        <span class="stats"><span class="prob">55.7%</span><span class="odds">@1.75</span></span>
+      </div>
+      <div class="menu-item">
+        <span class="label">双方 <strong>不进球</strong></span>
+        <span class="stats"><span class="prob">60.5%</span><span class="odds">@1.60</span></span>
+      </div>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:6px;">✅ 新西兰曾输掉9/12场 → 埃及不败83.8%概率极高 | 埃及胜作为进攻版</p>
+    </div>
+  </div>
+</div>
+
+<!-- TIERED RECOMMENDATIONS -->
+<div class="section">
+  <h2>🎯 三层串关推荐（从每场菜单中挑选最优拼合）</h2>
+
   <div class="cards-3">
-    <!-- #1 -->
-    <div class="parlay-card rank-1">
-      <div class="parlay-rank">🥇 第1名 · 最稳</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特 <span class="flag">🇸🇦</span></span>
-          <span class="score">2-0</span>
+    <!-- TIER 1: Safe -->
+    <div class="tier-card safe">
+      <div class="tier-badge safe">🛡️ 基石层 · 稳中求胜</div>
+      <div class="tier-legs">
+        <div class="tier-leg">
+          <div><span style="color:var(--red);">🇪🇸</span> 西班牙 vs 沙特</div>
+          <div><span class="market">1X2</span> <span class="pick">西班牙胜</span></div>
         </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗 <span class="flag">🇮🇷</span></span>
-          <span class="score">1-0</span>
+        <div class="tier-leg">
+          <div><span style="color:var(--accent);">🇧🇪</span> 比利时 vs 伊朗</div>
+          <div><span class="market">1X2</span> <span class="pick">比利时胜</span></div>
         </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角 <span class="flag">🇨🇻</span></span>
-          <span class="score">1-0</span>
+        <div class="tier-leg">
+          <div><span style="color:var(--purple);">🇺🇾</span> 乌拉圭 vs 佛得角</div>
+          <div><span class="market">1X2</span> <span class="pick">乌拉圭胜</span></div>
+        </div>
+        <div class="tier-leg">
+          <div><span style="color:var(--green);">🇪🇬</span> 新西兰 vs 埃及</div>
+          <div><span class="market">1X2</span> <span class="pick">埃及不败</span></div>
         </div>
       </div>
-      <div class="parlay-prob">
-        <div class="big">0.61%</div>
-        <div class="sub">综合概率 (~1/164) · 综合赔率 ≈ <span class="hi">89x</span></div>
+      <div class="tier-stats">
+        <div class="stat"><div class="val">33.0%</div><div class="lbl">综合概率</div></div>
+        <div class="stat"><div class="val" style="color:var(--green);">2.8x</div><div class="lbl">估值赔率</div></div>
+        <div class="stat"><div class="val">0.91</div><div class="lbl">效率分</div></div>
       </div>
-      <p style="font-size:12px;color:var(--text-dim);margin-top:8px;">
-        纯正路串：三场最高概率比分 × 最高概率比分 × 最高概率比分。西班牙憋火2-0收工、比利时破伊朗大巴、乌拉圭Nunez绝杀。
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">
+        三场1X2 + 一场不败。埃及「不败」替代「胜」大幅提升概率（83.8% vs 59.9%）。最强四场均对强队有利。
       </p>
     </div>
 
-    <!-- #2 -->
-    <div class="parlay-card rank-2">
-      <div class="parlay-rank">🥈 第2名</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特 <span class="flag">🇸🇦</span></span>
-          <span class="score">2-0</span>
+    <!-- TIER 2: Balance -->
+    <div class="tier-card balance">
+      <div class="tier-badge balance">⚖️ 平衡层 · 概率赔率最优</div>
+      <div class="tier-legs">
+        <div class="tier-leg">
+          <div><span style="color:var(--red);">🇪🇸</span> 西班牙 vs 沙特</div>
+          <div><span class="market">1X2</span> <span class="pick">西班牙胜</span></div>
         </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角 <span class="flag">🇨🇻</span></span>
-          <span class="score">1-0</span>
+        <div class="tier-leg">
+          <div><span style="color:var(--accent);">🇧🇪</span> 比利时 vs 伊朗</div>
+          <div><span class="market">BTTS</span> <span class="pick">双方不进球</span></div>
         </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇳🇿</span> 新西兰 vs 埃及 <span class="flag">🇪🇬</span></span>
-          <span class="score">1-0</span>
+        <div class="tier-leg">
+          <div><span style="color:var(--purple);">🇺🇾</span> 乌拉圭 vs 佛得角</div>
+          <div><span class="market">大小球</span> <span class="pick">小2.5球</span></div>
+        </div>
+        <div class="tier-leg">
+          <div><span style="color:var(--green);">🇪🇬</span> 新西兰 vs 埃及</div>
+          <div><span class="market">1X2</span> <span class="pick">埃及不败</span></div>
         </div>
       </div>
-      <div class="parlay-prob">
-        <div class="big">0.60%</div>
-        <div class="sub">综合概率 (~1/166) · 综合赔率 ≈ <span class="hi">89x</span></div>
+      <div class="tier-stats">
+        <div class="stat"><div class="val">26.1%</div><div class="lbl">综合概率</div></div>
+        <div class="stat"><div class="val" style="color:var(--green);">3.6x</div><div class="lbl">估值赔率</div></div>
+        <div class="stat"><div class="val">0.95</div><div class="lbl">效率分 ⭐最高</div></div>
       </div>
-      <p style="font-size:12px;color:var(--text-dim);margin-top:8px;">
-        用埃及替代比利时。Salah 加分项——如果担心比利时再翻车，这场串关多一层攻击核心保障。
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">
+        <strong>效率分 0.95 为三组最高。</strong>比利时换BTTS No（避开平局风险）、乌拉圭换小2.5（避开「平局大师」翻车）。
+        保留了高概率 + 赔率从 2.8 跳到 3.6。
       </p>
     </div>
 
-    <!-- #3 -->
-    <div class="parlay-card rank-3">
-      <div class="parlay-rank">🥉 第3名 · 高赔</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特 <span class="flag">🇸🇦</span></span>
-          <span class="score">2-0</span>
+    <!-- TIER 3: Attack -->
+    <div class="tier-card attack">
+      <div class="tier-badge attack">🚀 进攻层 · 高赔冲击</div>
+      <div class="tier-legs">
+        <div class="tier-leg">
+          <div><span style="color:var(--red);">🇪🇸</span> 西班牙 vs 沙特</div>
+          <div><span class="market">1X2</span> <span class="pick">西班牙胜</span></div>
         </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗 <span class="flag">🇮🇷</span></span>
-          <span class="score">2-0</span>
+        <div class="tier-leg">
+          <div><span style="color:var(--accent);">🇧🇪</span> 比利时 vs 伊朗</div>
+          <div><span class="market">BTTS</span> <span class="pick">双方不进球</span></div>
         </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角 <span class="flag">🇨🇻</span></span>
-          <span class="score">1-0</span>
+        <div class="tier-leg">
+          <div><span style="color:var(--purple);">🇺🇾</span> 乌拉圭 vs 佛得角</div>
+          <div><span class="market">大小球</span> <span class="pick">小2.5球</span></div>
+        </div>
+        <div class="tier-leg">
+          <div><span style="color:var(--green);">🇪🇬</span> 新西兰 vs 埃及</div>
+          <div><span class="market">1X2</span> <span class="pick">埃及胜</span></div>
         </div>
       </div>
-      <div class="parlay-prob">
-        <div class="big">0.58%</div>
-        <div class="sub">综合概率 (~1/173) · 综合赔率 ≈ <span class="hi">98x</span></div>
+      <div class="tier-stats">
+        <div class="stat"><div class="val">18.7%</div><div class="lbl">综合概率</div></div>
+        <div class="stat"><div class="val" style="color:var(--red);">4.9x</div><div class="lbl">估值赔率</div></div>
+        <div class="stat"><div class="val">0.92</div><div class="lbl">效率分</div></div>
       </div>
-      <p style="font-size:12px;color:var(--text-dim);margin-top:8px;">
-        比利时从1-0升到2-0：概率微降至0.58%但赔率从89→98跳涨。看好比利时能踢开局面时选此。
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">
+        埃及从「不败」回到「胜」→ 赔率从 3.6 跳到 4.9。概率仍比波胆串关高 <strong>31倍</strong>。
       </p>
     </div>
   </div>
 
-  <div class="table-wrap" style="margin-top:20px;">
-    <table>
-      <tr><th>排名</th><th>组合</th><th>比分</th><th>综合概率</th><th>估值赔率</th></tr>
-      <tr><td>4</td><td>ESP + URU + EGY</td><td>2-0 × 2-0 × 1-0</td><td>0.53%</td><td>98x</td></tr>
-      <tr><td>5</td><td>ESP + BEL + URU</td><td>2-0 × 1-0 × 2-0</td><td>0.53%</td><td>98x</td></tr>
-      <tr><td>6</td><td>ESP + URU + EGY</td><td>2-0 × 1-0 × 2-0</td><td>0.51%</td><td>106x</td></tr>
-    </table>
-  </div>
-  <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">注：以上为 top 5 lλ 分数全扫描结果，含C(4,3)=4种场次组合 × 5³=125种分数组合 = 500种，按综合概率排序取前6。</p>
-</div>
-
-<!-- 4场串关 -->
-<div class="section">
-  <h2><span class="emoji">💎</span> 4串1 波胆推荐 TOP 4</h2>
-  <p style="color:var(--text-dim);margin-bottom:16px;font-size:13px;">
-    四场全串：5⁴=625种组合全扫描
-  </p>
-
-  <div class="cards-2">
-    <div class="parlay-card rank-1">
-      <div class="parlay-rank">🥇 第1名 · 唯一最优</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特</span>
-          <span class="score">2-0</span>
-        </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗</span>
-          <span class="score">1-0</span>
-        </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角</span>
-          <span class="score">1-0</span>
-        </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇳🇿</span> 新西兰 vs 埃及</span>
-          <span class="score">1-0</span>
-        </div>
-      </div>
-      <div class="parlay-prob">
-        <div class="big">0.09%</div>
-        <div class="sub">综合概率 (~1/1,111) · 综合赔率 ≈ <span class="hi">492x</span></div>
-      </div>
-      <p style="font-size:12px;color:var(--text-dim);margin-top:8px;">
-        四场全选最高概率比分 × 四场强队均1-0或2-0小胜——这是唯一合理的4串1正路组合。
-      </p>
-    </div>
-
-    <div class="parlay-card rank-2">
-      <div class="parlay-rank">🥈 第2名 · 赔率跳升</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特</span>
-          <span class="score">2-0</span>
-        </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗</span>
-          <span class="score">2-0</span>
-        </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角</span>
-          <span class="score">1-0</span>
-        </div>
-        <div class="parlay-leg">
-          <span class="teams"><span class="flag">🇳🇿</span> 新西兰 vs 埃及</span>
-          <span class="score">1-0</span>
-        </div>
-      </div>
-      <div class="parlay-prob">
-        <div class="big">0.09%</div>
-        <div class="sub">综合概率 (~1/1,176) · 综合赔率 ≈ <span class="hi">536x</span></div>
-      </div>
-    </div>
-
-    <div class="parlay-card rank-3">
-      <div class="parlay-rank">🥉 第3名</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特</span><span class="score">2-0</span></div>
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗</span><span class="score">1-0</span></div>
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角</span><span class="score">2-0</span></div>
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇳🇿</span> 新西兰 vs 埃及</span><span class="score">1-0</span></div>
-      </div>
-      <div class="parlay-prob">
-        <div class="big">0.08%</div>
-        <div class="sub">综合概率 (~1/1,220) · 综合赔率 ≈ <span class="hi">541x</span></div>
-      </div>
-    </div>
-
-    <div class="parlay-card">
-      <div class="parlay-rank" style="background:var(--tier-lotto);">第4名</div>
-      <div class="parlay-scores">
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇪🇸</span> 西班牙 vs 沙特</span><span class="score">2-0</span></div>
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇧🇪</span> 比利时 vs 伊朗</span><span class="score">1-0</span></div>
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇺🇾</span> 乌拉圭 vs 佛得角</span><span class="score">1-0</span></div>
-        <div class="parlay-leg"><span class="teams"><span class="flag">🇳🇿</span> 新西兰 vs 埃及</span><span class="score">2-0</span></div>
-      </div>
-      <div class="parlay-prob">
-        <div class="big">0.08%</div>
-        <div class="sub">综合概率 (~1/1,316) · 综合赔率 ≈ <span class="hi">581x</span></div>
-      </div>
-    </div>
+  <!-- 3-match safe option -->
+  <div class="gold-box" style="margin-top:18px;">
+    <strong>🔹 三场精简版（去掉最危险的乌拉圭）：</strong><br>
+    <span style="font-size:14px;">🇪🇸 西班牙胜 + 🇧🇪 比利时胜 + 🇪🇬 埃及不败</span><br>
+    <span style="font-size:13px;">概率 <strong style="color:var(--accent);">50.6%</strong> | 赔率 <strong>1.9x</strong> — 一半概率命中</span>
+    <p style="font-size:11px;color:var(--text-dim);margin-top:6px;">乌拉圭近5场平4场 + 佛得角零封过西班牙 = 四场中最危险的一环。去掉它概率直接跳到50%+。</p>
   </div>
 </div>
 
-<!-- RISK ANALYSIS -->
+<!-- COMPARISON TABLE -->
 <div class="section">
-  <h2><span class="emoji">⚠️</span> 风险矩阵 — 最大翻车点</h2>
-  <div class="cards-3">
-    <div class="risk-card">
-      <h4>🔴 乌拉圭 0-0 佛得角</h4>
-      <p style="font-size:13px;color:var(--text-dim);">
-        概率: <span class="warn">9.5%</span><br>
-        佛得角首轮零封了西班牙！乌拉圭近5场平4场，近8场只有1个上半场进球。<br>
-        <strong>杀伤：含乌拉圭的所有串关全灭。</strong>
-      </p>
-    </div>
-    <div class="risk-card">
-      <h4>🟠 比利时 1-1 伊朗</h4>
-      <p style="font-size:13px;color:var(--text-dim);">
-        概率: <span class="warn">9.6%</span><br>
-        比利时首轮被埃及逼平暴露进攻问题。伊朗两次落后新西兰两次扳平——阿兹蒙和塔雷米的反击不容小觑。<br>
-        <strong>杀伤：含比利时的所有串关报废。</strong>
-      </p>
-    </div>
-    <div class="risk-card">
-      <h4>🟡 西班牙再次0-0？</h4>
-      <p style="font-size:13px;color:var(--text-dim);">
-        概率: 8.2%<br>
-        西班牙首轮0射正！对佛得角全场围攻无果。如果沙特大巴比佛得角更硬……<br>
-        <strong>杀伤：所有串关都以西班牙赢球为前提，全灭。</strong>
-      </p>
-    </div>
-  </div>
-  <div class="gold-box" style="margin-top:16px;">
-    <p style="margin:0;text-align:center;">
-      ⚡ <strong>最大单一风险：乌拉圭平局</strong> — 近5场平4场的「平局大师」遇到零封西班牙的佛得角。<br>
-      如果你特别担心这场，可以用 <strong>第2名 3串1</strong>（ESP 2-0 × URU 1-0 × EGY 1-0，不含比利时），或仅串2场规避。
-    </p>
-  </div>
-</div>
-
-<!-- 2串1参考 -->
-<div class="section">
-  <h2><span class="emoji">🔗</span> 2串1 参考（低风险备选）</h2>
-  <p style="color:var(--text-dim);margin-bottom:12px;font-size:13px;">仅2场串关，综合概率高得多，适合稳健型投注</p>
+  <h2>📊 全策略横向对比（同一比赛日）</h2>
   <div class="table-wrap">
     <table>
-      <tr><th>#</th><th>组合</th><th>比分</th><th>综合概率</th><th>估值赔率</th></tr>
-      <tr><td><span class="hi">1</span></td><td>🇪🇸 ESP + 🇺🇾 URU</td><td>2-0 × 1-0</td><td><span class="hi">4.11%</span></td><td>16x</td></tr>
-      <tr><td>2</td><td>🇪🇸 ESP + 🇧🇪 BEL</td><td>2-0 × 1-0</td><td>3.65%</td><td>18x</td></tr>
-      <tr><td>3</td><td>🇪🇸 ESP + 🇪🇬 EGY</td><td>2-0 × 1-0</td><td>3.61%</td><td>18x</td></tr>
-      <tr><td>4</td><td>🇪🇸 ESP + 🇺🇾 URU</td><td>2-0 × 2-0</td><td>3.60%</td><td>18x</td></tr>
-      <tr><td>5</td><td>🇪🇸 ESP + 🇧🇪 BEL</td><td>2-0 × 2-0</td><td>3.47%</td><td>20x</td></tr>
+      <tr><th>策略</th><th>类型</th><th>串法</th><th>场数</th><th>综合概率</th><th>估值赔率</th><th>效率分</th><th>特点</th></tr>
+      <tr style="background:rgba(239,68,68,0.04);">
+        <td>波胆串关</td><td><span class="badge-r">纯波胆</span></td><td>全买正确比分</td><td>3场</td><td><span class="warn">0.6%</span></td><td>89x</td><td>0.54</td><td>中彩票级别</td>
+      </tr>
+      <tr style="background:rgba(239,68,68,0.02);">
+        <td>波胆串关</td><td><span class="badge-r">纯波胆</span></td><td>全买正确比分</td><td>4场</td><td><span class="warn">0.09%</span></td><td>492x</td><td>0.44</td><td>纯运气</td>
+      </tr>
+      <tr>
+        <td>纯1X2</td><td><span class="badge-y">同市场</span></td><td>四场全买胜</td><td>4场</td><td>23.7%</td><td>3.8x</td><td>0.89</td><td>最朴素</td>
+      </tr>
+      <tr>
+        <td>纯BTTS No</td><td><span class="badge-y">同市场</span></td><td>四场全零封</td><td>4场</td><td>20.1%</td><td>4.4x</td><td>0.89</td><td>零封方向</td>
+      </tr>
+      <tr style="background:rgba(16,185,129,0.03);">
+        <td><strong>🛡️ 基石层</strong></td><td><span class="badge-g">推荐</span></td><td><strong>混合市场</strong></td><td>4场</td><td><strong class="good">33.0%</strong></td><td>2.8x</td><td>0.91</td><td>概率最高</td>
+      </tr>
+      <tr style="background:rgba(232,184,48,0.03);">
+        <td><strong>⚖️ 平衡层</strong></td><td><span class="badge-g">推荐</span></td><td><strong>混合市场</strong></td><td>4场</td><td><strong class="good">26.1%</strong></td><td>3.6x</td><td><strong class="hi">0.95</strong></td><td>效率最高</td>
+      </tr>
+      <tr style="background:rgba(239,68,68,0.03);">
+        <td>🚀 进攻层</td><td><span class="badge-y">冲击</span></td><td>混合市场</td><td>4场</td><td>18.7%</td><td>4.9x</td><td>0.92</td><td>高赔</td>
+      </tr>
+      <tr style="background:rgba(16,185,129,0.05);">
+        <td><strong>🔹 精简3场</strong></td><td><span class="badge-g">最稳</span></td><td><strong>混合市场</strong></td><td>3场</td><td><strong class="good">50.6%</strong></td><td>1.9x</td><td>0.96</td><td>去掉乌拉圭</td>
+      </tr>
     </table>
   </div>
+  <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">
+    效率分 = 概率 × 赔率（越高越好，>0.9 为优秀）。混合市场在效率和概率上全面碾压同市场串关和波胆串关。
+  </p>
 </div>
 
-<!-- STAKING PLAN -->
+<!-- QUICK REFERENCE: WHAT TO PICK -->
 <div class="section">
-  <h2><span class="emoji">💰</span> 投注分配建议</h2>
-  <div class="cards-3">
-    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:16px;border:1px solid var(--card-border);">
-      <h3 style="color:var(--green);font-size:14px;margin-bottom:10px;">🛡️ 保守方案 (300元)</h3>
-      <p style="font-size:13px;">只买第1名 3串1<br><strong>ESP 2-0 × BEL 1-0 × URU 1-0</strong></p>
-      <p style="font-size:13px;margin-top:8px;">300元 → 预期回报 <span class="hi">~26,800元</span></p>
+  <h2>🧩 串关拼图：每场的最优选择</h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div style="color:var(--red);">🇪🇸 西班牙 vs 沙特</div>
+      <div class="big">西班牙胜</div>
+      <div style="font-size:10px;color:var(--text-dim);">86.4% @1.10</div>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:16px;border:1px solid var(--accent);">
-      <h3 style="color:var(--accent);font-size:14px;margin-bottom:10px;">⭐ 均衡方案 (600元) 推荐</h3>
-      <p style="font-size:13px;">
-        第1名 3串1: 200元<br>
-        第2名 3串1: 200元<br>
-        第3名 3串1: 200元
-      </p>
-      <p style="font-size:13px;margin-top:8px;">分散三组，覆盖比利时和埃及的不同组合</p>
+    <div class="flow-arrow">+</div>
+    <div class="flow-step">
+      <div style="color:var(--accent);">🇧🇪 比利时 vs 伊朗</div>
+      <div class="big">胜 / BTTS No</div>
+      <div style="font-size:10px;color:var(--text-dim);">66.5% / 58.9%</div>
     </div>
-    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:16px;border:1px solid var(--tier-upset);">
-      <h3 style="color:var(--tier-upset);font-size:14px;margin-bottom:10px;">🚀 进取方案 (700元)</h3>
-      <p style="font-size:13px;">
-        均衡方案(600元) +<br>
-        第1名 4串1: 100元
-      </p>
-      <p style="font-size:13px;margin-top:8px;">4串1若命中: <span class="hi">~49,200元</span></p>
+    <div class="flow-arrow">+</div>
+    <div class="flow-step">
+      <div style="color:var(--purple);">🇺🇾 乌拉圭 vs 佛得角</div>
+      <div class="big">小2.5球</div>
+      <div style="font-size:10px;color:var(--text-dim);">58.2% @1.65</div>
+    </div>
+    <div class="flow-arrow">+</div>
+    <div class="flow-step">
+      <div style="color:var(--green);">🇪🇬 新西兰 vs 埃及</div>
+      <div class="big">不败 / 胜</div>
+      <div style="font-size:10px;color:var(--text-dim);">83.8% / 59.9%</div>
     </div>
   </div>
+  <p style="text-align:center;font-size:13px;color:var(--text-dim);margin-top:12px;">
+    ← 安全方向 &nbsp;&nbsp;&nbsp; 赔率方向 →
+  </p>
 </div>
 
-<!-- SUMMARY -->
+<!-- HOW TO BUILD -->
 <div class="section">
-  <h2><span class="emoji">🧠</span> 三大核心结论</h2>
-  <div class="gold-box" style="margin-bottom:12px;">
-    <strong>1. 西班牙 2-0 是串关锚点</strong><br>
-    <span style="font-size:13px;color:var(--text-dim);">24.6%的Poisson概率让这个比分成为所有串关的核心。它出现在90%+的顶部组合中。西班牙憋着火踢，2-0是最合理的收工比分。</span>
-  </div>
-  <div class="gold-box" style="margin-bottom:12px;">
-    <strong>2. 乌拉圭是最危险的一环</strong><br>
-    <span style="font-size:13px;color:var(--text-dim);">近5场平4场 vs 零封西班牙的佛得角。如果你只串2场，优先排除乌拉圭。如果串3/4场，做好被乌拉圭0-0坑的心理准备。</span>
-  </div>
-  <div class="gold-box">
-    <strong>3. 串关追求概率而非赔率</strong><br>
-    <span style="font-size:13px;color:var(--text-dim);">所有含西班牙1-0（20.1%）的串关虽然概率相近但赔率被市场压缩，不如2-0。含0-0/1-1的串关会让综合概率暴跌至彩票级别。纯正路串才是最优解。</span>
+  <h2>🔧 怎么串？实际操作指南</h2>
+  <div class="cards-2">
+    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:18px;">
+      <h3 style="color:var(--accent);font-size:14px;margin-bottom:10px;">📱 在博彩平台操作</h3>
+      <ol style="font-size:13px;color:var(--text-dim);padding-left:18px;line-height:2;">
+        <li>找到「串关/过关/Parlay/Acca」入口</li>
+        <li>依次添加四场比赛</li>
+        <li><strong>关键：同一场比赛可以切换市场类型</strong>（1X2、大小球、BTTS等）</li>
+        <li>比如：点西班牙 → 选「胜」；点比利时 → 切到「双方都进球」→ 选「否」</li>
+        <li>确认串关总赔率，输入金额，下单</li>
+      </ol>
+    </div>
+    <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:18px;">
+      <h3 style="color:var(--accent);font-size:14px;margin-bottom:10px;">💰 资金分配建议</h3>
+      <table>
+        <tr><th>层级</th><th>金额</th><th>说明</th></tr>
+        <tr><td>🛡️ 基石</td><td class="hi">500元</td><td>主力仓位，33%命中概率</td></tr>
+        <tr><td>⚖️ 平衡</td><td class="hi">300元</td><td>效率分最高，3.6x回报</td></tr>
+        <tr><td>🚀 进攻</td><td class="hi">200元</td><td>小注博高赔，4.9x回报</td></tr>
+        <tr style="background:rgba(232,184,48,0.04);"><td><strong>合计</strong></td><td class="hi"><strong>1,000元</strong></td><td>覆盖三种风险偏好</td></tr>
+      </table>
+    </div>
   </div>
 </div>
 
 <!-- DISCLAIMER -->
 <div class="disclaimer">
   <p>⚠️ 本文仅为数据分析和概率模型输出，不构成任何投注建议。</p>
-  <p>Poisson模型基于市场净化概率校准，估值赔率为模型估计值，实际赔率以各平台为准。</p>
-  <p>波胆串关本质是小概率高赔事件，请理性参与，量力而行。</p>
-  <p style="margin-top:8px;">Generated by Hermes Agent · 2026-06-21 13:00 CST · Data: wc-26.com, CBS Sports, Squawka, Yahoo Sports, FanDuel</p>
+  <p>Poisson 模型基于市场净化概率校准，赔率为模型估计值，以各平台实际赔率为准。</p>
+  <p>串关本质是多事件联合概率事件，任何组合都有全部失败的可能。请量力而行，理性参与。</p>
+  <p style="margin-top:6px;">Generated by Hermes Agent · 2026-06-21 · Data: wc-26.com, CBS Sports, Squawka, FanDuel, Yahoo Sports</p>
 </div>
 
 </div>
