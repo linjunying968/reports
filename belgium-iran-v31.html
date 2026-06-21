@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>比利时 vs 伊朗 · 2026世界杯 v3.1 全维度分析</title>
+<style>
+:root{--bg:#05080e;--card:#0c111a;--card2:#111827;--border:#1a2635;--text:#c8d2e0;--dim:#6b7d95;--accent:#e8b830;--gold:#fbbf24;--g:#10b981;--r:#ef4444;--purple:#8b5cf6;--blue:#60a5fa;--orange:#f59e0b;--red-bg:rgba(239,68,68,0.08)}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.8;-webkit-text-size-adjust:100%}
+.wrap{max-width:1050px;margin:0 auto;padding:clamp(10px,2vw,24px)}
+
+.hero{background:linear-gradient(160deg,#0c111a,#101a28,#0c111a);border:2px solid var(--border);border-radius:16px;padding:clamp(20px,4vw,40px);text-align:center;margin-bottom:20px}
+.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:6px}
+.hero h1 .flag{font-size:1.2em}.hero h1 .vs{color:var(--dim);margin:0 8px}
+.hero p{color:var(--dim);font-size:13px}
+.badge{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.badge.purple{background:rgba(139,92,246,0.15);color:var(--purple)}
+.badge.red{background:rgba(239,68,68,0.15);color:var(--red)}
+.badge.green{background:rgba(16,185,129,0.15);color:var(--g)}
+
+.sec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,3vw,22px);margin-bottom:14px}
+.sec h2{font-size:clamp(15px,2.2vw,19px);color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px}
+.sec h3{font-size:14px;color:var(--text);margin:16px 0 8px}
+.sec h4{font-size:13px;color:var(--gold);margin:10px 0 6px}
+
+table{width:100%;border-collapse:collapse;font-size:clamp(10px,1.2vw,12px)}
+th{background:rgba(232,184,48,0.06);color:var(--accent);padding:7px 10px;text-align:left;font-weight:600}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:rgba(255,255,255,0.01)}
+.tw{overflow-x:auto}
+
+.c2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px}
+@media(max-width:640px){.c2{grid-template-columns:1fr}}
+
+.mc{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.mc h4{font-size:14px;margin-bottom:8px}
+.mc .row{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.02)}
+.mc .tag{font-size:10px;color:var(--dim);background:rgba(255,255,255,0.03);padding:1px 6px;border-radius:4px}
+
+.note{background:rgba(232,184,48,0.04);border:1px solid rgba(232,184,48,0.2);border-radius:10px;padding:12px;margin:10px 0;font-size:13px}
+.note.red{background:var(--red-bg);border-color:rgba(239,68,68,0.3)}
+.note.blue{background:rgba(96,165,250,0.04);border-color:rgba(96,165,250,0.2)}
+.note.green{background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2)}
+
+.hi{color:var(--accent);font-weight:600}.g{color:var(--g)}.r{color:var(--r)}.b{color:var(--blue)}.dim{color:var(--dim);font-size:11px}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:12px 0}
+.stat-box{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.stat-box .num{font-size:clamp(18px,2.5vw,26px);font-weight:800;color:var(--accent)}
+.stat-box .lbl{font-size:10px;color:var(--dim);margin-top:2px}
+.stat-box.highlight{border-color:var(--accent);background:rgba(232,184,48,0.04)}
+
+.bar-wrap{height:6px;background:var(--border);border-radius:3px;margin-top:3px}
+.bar-inner{height:6px;border-radius:3px}
+.bar-inner.gold{background:var(--accent)}
+.bar-inner.green{background:var(--g)}
+.bar-inner.red{background:var(--red)}
+.bar-inner.orange{background:var(--orange)}
+
+.tactical{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0;font-size:10px}
+.tactical .chip{background:var(--card2);border:1px solid var(--border);padding:3px 8px;border-radius:6px}
+.tactical .chip.adv{background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.2);color:var(--g)}
+.tactical .chip.dis{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);color:var(--red)}
+
+.big-num{font-size:clamp(28px,5vw,48px);font-weight:900;text-align:center;margin:16px 0;color:var(--accent)}
+.big-num span{font-size:16px;color:var(--dim);font-weight:400}
+
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:8px 0}
+
+.form-line{display:flex;align-items:center;gap:8px;padding:6px 10px;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.02)}
+.form-line .date{color:var(--dim);min-width:55px;font-size:11px}
+.form-line .res{font-weight:700;min-width:45px}
+.form-line .opp{min-width:70px}
+.form-line .comp{color:var(--dim);font-size:10px;min-width:45px}
+
+.carousel{overflow-x:auto;display:flex;gap:10px;padding:6px 0}
+.scenario-card{min-width:220px;flex-shrink:0;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.scenario-card h4{font-size:14px;margin-bottom:6px}
+.scenario-card .pct{font-size:11px;color:var(--dim)}
+
+.ref-card{background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:16px}
+.ref-card h3 span{color:var(--r)}
+
+.playbook{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:12px}
+.play{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px}
+.play .play-num{font-size:11px;color:var(--dim);margin-bottom:4px}
+.play .play-title{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.play .play-desc{font-size:12px;color:var(--text);line-height:1.6}
+.play .play-odds{font-size:11px;color:var(--dim);margin-top:8px}
+
+.divider{border:none;border-top:1px solid var(--border);margin:14px 0}
+
+.formation{display:flex;flex-direction:column;align-items:center;gap:3px;margin:10px 0;font-size:10px}
+.formation .line{display:flex;gap:4px}
+.formation .player{background:var(--card2);border:1px solid var(--border);padding:3px 6px;border-radius:4px;text-align:center;min-width:60px}
+.formation .player.star{border-color:var(--accent);color:var(--accent)}
+.formation .player.gk{border-color:var(--blue);color:var(--blue)}
+
+.dis{text-align:center;color:var(--dim);font-size:10px;padding:16px 0 10px;border-top:1px solid var(--border);margin-top:16px}
+
+.gauge{position:relative;height:8px;background:linear-gradient(90deg,var(--r) 0%,var(--accent) 50%,var(--g) 100%);border-radius:4px;margin:6px 0}
+.gauge .marker{position:absolute;top:-3px;width:14px;height:14px;background:white;border:2px solid var(--accent);border-radius:50%;transform:translateX(-50%)}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="hero">
+<span class="badge purple">v3.1 全维度</span>
+<h1><span class="flag">🇧🇪</span><span class="vs"> vs </span><span class="flag">🇮🇷</span></h1>
+<p>2026世界杯 · Group G 第二轮 · 6月22日 03:00 (北京时间)<br>SoFi Stadium, Los Angeles · 容量 70,000 · 室温室内<br>
+裁判：Dario Herrera 🇦🇷 · VAR：FIFA 2026 标准</p>
+</div>
+
+<!-- ====== 0. CONTEXT ====== -->
+<div class="sec">
+<h2>📊 赛事背景</h2>
+<div class="c2">
+<div>
+<h4>Group G 积分榜</h4>
+<table>
+<tr><th>#</th><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>GF</th><th>GA</th><th>分</th></tr>
+<tr><td>1</td><td>🇧🇪 比利时</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>2</td><td>🇪🇬 埃及</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+<tr><td>3</td><td>🇮🇷 伊朗</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td><strong>1</strong></td></tr>
+<tr><td>4</td><td>🇳🇿 新西兰</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td><strong>1</strong></td></tr>
+</table>
+<p class="dim" style="margin-top:6px">全组4队1分。无队出线，无队淘汰。胜者独占榜首。</p>
+</div>
+<div>
+<h4>出线形势</h4>
+<table>
+<tr><th>球队</th><th>目标</th><th>压力</th></tr>
+<tr><td>🇧🇪 比利时</td><td><span class="r">必须赢</span></td><td>世界第5，首轮1-1平埃及已受媒体批评。平局=最后一轮必须赢新西兰，净胜球可能不够。</td></tr>
+<tr><td>🇮🇷 伊朗</td><td><span class="g">平即成功</span></td><td>世界第37（亚洲第3），平局完全可接受。最后一轮对埃及决定命运。</td></tr>
+</table>
+<div class="note" style="margin-top:12px">
+<strong>心理博弈：</strong>比利时必须主动，伊朗可以安心反击。这决定了比赛节奏——前30分钟如果比利时没进球，急躁情绪会蔓延。
+</div>
+</div>
+</div>
+</div>
+
+<!-- ====== 1. RECENT FORM ====== -->
+<div class="sec">
+<h2>📋 近期战绩 (Step 1-2)</h2>
+
+<h3>🇧🇪 比利时 — 近 5 场</h3>
+<div class="tw"><table>
+<tr><th>日期</th><th>对手</th><th>比分</th><th>赛事</th><th>关键数据</th><th>权重</th></tr>
+<tr><td>Jun 15</td><td>🇪🇬 Egypt</td><td class="hi">1-1</td><td>🏆 正赛</td><td>15射/xG1.31 | 失球：Ashour 20'(Salah助攻，穿Meunier裆远射) | 扳平：66' Lukaku替补制造OG</td><td><strong>1.0</strong></td></tr>
+<tr><td>Jun 6</td><td>🇹🇳 Tunisia</td><td class="g">5-0</td><td>热身</td><td>Trossard 28' · CDK 46' · De Bruyne 63' · Lukebakio 81' · Raskin 89' | Tunisia 10人(红牌)</td><td>0.4</td></tr>
+<tr><td>Jun 2</td><td>🇭🇷 Croatia</td><td class="g">2-0</td><td>热身</td><td>Tielemans开场 · Lukaku锁定 | 客场零封欧洲强队</td><td>0.4</td></tr>
+<tr><td>Mar 28</td><td>🇺🇸 USA</td><td class="g">5-2</td><td>热身</td><td>⚠️ 缺席Lukaku+Trossard+Courtois仍大胜！Debast首球 | 火力证明</td><td>0.4</td></tr>
+<tr><td>Mar 26</td><td>🇲🇽 Mexico</td><td>1-1</td><td>热身</td><td>轮换阵容 · 客场</td><td>0.3</td></tr>
+</table></div>
+<div class="stats-grid" style="margin-top:12px">
+<div class="stat-box"><div class="num">2.38</div><div class="lbl">混合场均进球</div></div>
+<div class="stat-box"><div class="num">0.69</div><div class="lbl">混合场均失球</div></div>
+<div class="stat-box"><div class="num">3.25</div><div class="lbl">热身赛场均进球</div></div>
+<div class="stat-box highlight"><div class="num">3/4</div><div class="lbl">热身赛零封率</div></div>
+</div>
+<div class="note blue">
+<strong>🔑 关键：</strong>比利时对 USA 的 5-2 是在缺少 Lukaku、Trossard、Courtois 三人情况下打出的——说明进攻体系不依赖个人。热身赛共 4 场 13 球、对手平均实力中等偏强（Croatia 世界前10，USA 主场）。但正赛对埃及仅 1 球（xG 1.31），存在"热身赛→正赛"的效率落差。
+</div>
+
+<h3>🇮🇷 伊朗 — 近期</h3>
+<div class="tw"><table>
+<tr><th>日期</th><th>对手</th><th>比分</th><th>赛事</th><th>关键数据</th><th>权重</th></tr>
+<tr><td>Jun 15</td><td>🇳🇿 New Zealand</td><td class="hi">2-2</td><td>🏆 正赛</td><td>7' 失球(Just) → 32' Rezaeian扳平 → 54' 再失球(Just) → 64' Mohebbi扳平 | <span class="r">Taremi未进球（击中门柱）</span></td><td><strong>1.0</strong></td></tr>
+<tr><td colspan="6" class="dim">⚠️ 伊朗热身赛：North Macedonia 取消 · Angola 取消。唯一的封闭热身赛（土耳其）无公开数据。基本零热身赛数据。</td></tr>
+</table></div>
+<div class="stats-grid" style="margin-top:12px">
+<div class="stat-box"><div class="num">2.00</div><div class="lbl">场均进球（仅正赛）</div></div>
+<div class="stat-box"><div class="num">2.00</div><div class="lbl">场均失球（仅正赛）</div></div>
+<div class="stat-box highlight" style="border-color:var(--red)"><div class="num" style="color:var(--red)">0</div><div class="lbl">热身赛场数</div></div>
+<div class="stat-box"><div class="num">?</div><div class="lbl">热身赛状态未知</div></div>
+</div>
+<div class="note red">
+<strong>🔴 数据置信度警示：</strong>伊朗完全没有任何公开热身赛数据。两场原定热身赛（North Macedonia、Angola）均被取消。封闭热身赛无公开比分。这意味着我们只能用一场正赛（2-2 vs NZ）来估算 λ——<strong>这是本轮4场中数据最不可靠的一队</strong>。
+</div>
+</div>
+
+<!-- ====== 2. H2H ====== -->
+<div class="sec">
+<h2>🤝 历史交锋 (Step 3)</h2>
+<p style="font-size:13px"><strong>首次交锋。</strong>比利时和伊朗在成年国家队层面从未交手。</p>
+<p class="dim">信号权重：0（无可参照）。但有一个间接联系：伊朗有多名球员在比利时联赛效力或曾效力（Eckert 出生在比利时，Taremi 曾传闻加盟比甲），对欧洲足球风格不陌生。</p>
+</div>
+
+<!-- ====== 3. LINEUPS ====== -->
+<div class="sec">
+<h2>👥 阵容分析 (Step 4)</h2>
+<div class="c2">
+<div class="mc">
+<h4>🇧🇪 比利时预计首发 (4-2-3-1)</h4>
+<div class="formation">
+<div class="line"><div class="player gk">🧤 Courtois (GK)</div></div>
+<div class="line"><div class="player">Meunier RB</div><div class="player">Ngoy CB</div><div class="player">Mechele CB</div><div class="player">De Cuyper LB</div></div>
+<div class="line"><div class="player">Onana DM</div><div class="player">Tielemans CM</div></div>
+<div class="line"><div class="player star">Trossard RW</div><div class="player star" style="border:2px solid var(--gold);color:var(--gold);font-weight:700">De Bruyne ⭐ AM</div><div class="player star">Doku LW</div></div>
+<div class="line"><div class="player">De Ketelaere ST</div></div>
+</div>
+<div class="row"><span>核心引擎</span><span><span class="hi">De Bruyne</span> — 37粒国家队进球，关键传球机器</span></div>
+<div class="row"><span>爆破点</span><span><span class="hi">Doku</span> — 突破型边锋，Herrera紧哨下最危险的武器</span></div>
+<div class="row"><span>支点争议</span><span><span class="r">Lukaku伤后状态存疑</span>（Napoli极少出场）· 7场世界杯0球 · De Ketelaere首轮首发伪9号</span></div>
+<div class="row"><span>防线</span><span>Courtois世界级 · Mechele/Ngoy防空出色 · <span class="r">Meunier回追速度慢</span></span></div>
+<div class="row"><span>缺阵</span><span>Debast（恢复个人训练，预计缺阵）</span></div>
+</div>
+<div class="mc">
+<h4>🇮🇷 伊朗预计首发 (3-4-3)</h4>
+<div class="formation">
+<div class="line"><div class="player gk">🧤 Beiranvand (GK)</div></div>
+<div class="line"><div class="player">Khalilzadeh CB</div><div class="player">Nemati CB</div><div class="player">Mohammadi LB</div></div>
+<div class="line"><div class="player">Rezaeian RWB</div><div class="player">Ezatolahi DM</div><div class="player star">Ghoddos CM</div><div class="player">Yousefi LWB</div></div>
+<div class="line"><div class="player">Mohebi RW</div><div class="player star" style="border:2px solid var(--gold);color:var(--gold);font-weight:700">Taremi ⭐ ST</div><div class="player">Ghayedi LW</div></div>
+</div>
+<div class="row"><span>唯一王牌</span><span><span class="hi">Taremi</span> — 60+国家队进球 · 首轮击中门柱未得分</span></div>
+<div class="row"><span>🔴🔴</span><span><span class="r" style="font-weight:700">Azmoun 被开除！</span> — 57球/91场，伊朗历史第二射手 · 因"叛国"指控被开除</span></div>
+<div class="row"><span>伤疑</span><span>Jahanbakhsh（队长/创造者）首轮伤缺 · 次轮状态待定</span></div>
+<div class="row"><span>意外破局者</span><span>首轮进球者：Rezaeian (RB) + Mohebi (RW) — <span class="b">不是Taremi</span></span></div>
+<div class="row"><span>防线</span><span>Beiranvand经验丰富但时有失误 · Khalilzadeh速度偏慢</span></div>
+</div>
+</div>
+<div class="note red" style="margin-top:12px">
+<strong>🔴 Azmoun 缺阵的连锁反应：</strong>伊朗失去了他们唯一的第二攻击点。首轮对 NZ 已经暴露问题——Taremi 被重点盯防后（0进球），伊朗需要依赖右后卫 Rezaeian 和边锋 Mohebi 来进球。面对比利时级别的防线，这种"非常规得分"的概率大幅下降。Azmoun 的头球能力缺失也降低了定位球威胁。
+</div>
+</div>
+
+<!-- ====== 4. TACTICAL ====== -->
+<div class="sec">
+<h2>⚔️ 战术对位 (Step 5-6)</h2>
+<div class="c2">
+<div>
+<h4>🇧🇪 进攻武器 → 🇮🇷 防守弱点</h4>
+<table>
+<tr><th>比利时进攻</th><th>伊朗防守</th><th>对位</th></tr>
+<tr><td>Doku 左路爆破</td><td>Rezaeian 速度慢 · 回追依赖后腰覆盖</td><td><span class="g">⚡ 比利时大优</span></td></tr>
+<tr><td>De Bruyne 直塞+远射</td><td>Ezatolahi 覆盖范围有限 · 弧顶常空</td><td><span class="g">⚡ 比利时大优</span></td></tr>
+<tr><td>Trossard 回撤串联</td><td>Ghoddos 逼抢力度中等 · 留有空隙</td><td><span class="g">⚡ 比利时优势</span></td></tr>
+<tr><td>Mechele 定位球头球</td><td>伊朗防空一般 · Azmoun 缺阵削弱争顶</td><td><span class="g">⚡ 比利时优势</span></td></tr>
+<tr><td>De Ketelaere 伪9串联</td><td>Nemati 正面防守好但转身慢</td><td>均势</td></tr>
+</table>
+</div>
+<div>
+<h4>🇮🇷 进攻武器 → 🇧🇪 防守弱点</h4>
+<table>
+<tr><th>伊朗进攻</th><th>比利时防守</th><th>对位</th></tr>
+<tr><td>Taremi 支点+抢点</td><td>Mechele/Ngoy 身体对抗好 · Courtois 出击范围大</td><td>比利时优势</td></tr>
+<tr><td>Mohebi 反击速度</td><td><span class="r">Meunier 回追速度慢</span> · De Cuyper 压上后身后空档</td><td><span class="r">⚡ 伊朗唯一突破口</span></td></tr>
+<tr><td>Ghoddos 远射</td><td>Onana+Tielemans 中场屏障</td><td>比利时优势</td></tr>
+<tr><td>定位球头球</td><td>Courtois 制空能力 · <span class="r">Azmoun 缺阵削弱威胁</span></td><td><span class="g">比利时大优</span></td></tr>
+<tr><td>Rezaeian 后排插上</td><td>Doku 回防意愿一般</td><td>伊朗微弱机会</td></tr>
+</table>
+</div>
+</div>
+<div class="note" style="margin-top:12px">
+<strong>总结：</strong>比利时在 6/10 个对位点占优，其中 4 个是大优。伊朗唯一清晰的进攻路径是 <strong>Mohebi 利用 Meunier 身后的速度反击</strong>。没有 Azmoun，伊朗少了一个支点和一个头球选项，进攻维度从"可变的 3-4 条路"缩小到"几乎只有反击一条路"。
+</div>
+</div>
+
+<!-- ====== 5. SET PIECES ====== -->
+<div class="sec">
+<h2>🎯 定位球分析 (Step 7)</h2>
+<div class="c2">
+<div class="mc">
+<h4>🇧🇪 比利时定位球</h4>
+<div class="row"><span>直接任意球</span><span><span class="g">De Bruyne</span> — 世界顶级 · 射程35码</span></div>
+<div class="row"><span>角球头球</span><span>Mechele(193cm) · Ngoy(188cm) · 热身赛进过角球</span></div>
+<div class="row"><span>间接任意球</span><span>De Bruyne 精准传中 + Tielemans 禁区外远射</span></div>
+</div>
+<div class="mc">
+<h4>🇮🇷 伊朗定位球</h4>
+<div class="row"><span>直接任意球</span><span>Ghoddos 有一定能力 · 但非世界级</span></div>
+<div class="row"><span>角球头球</span><span><span class="r">Azmoun 缺阵大幅削弱</span> · Taremi 头球好但被重点盯防</span></div>
+<div class="row"><span>意外性</span><span>Rezaeian 首轮进过球（非定位球）· 后排插上可能</span></div>
+</div>
+</div>
+<div class="note blue" style="margin-top:10px">
+<strong>Herrera 紧哨 → 定位球数量激增 → 利好比利时。</strong>Herrera 场均 25.1 次犯规 + 5.5 张黄牌，意味着禁区附近会有大量任意球机会。De Bruyne 的任意球质量 + Herrera 的吹罚倾向 = 比利时至少获得 2-3 次危险位置任意球。
+</div>
+</div>
+
+<!-- ====== 6. REFEREE ====== -->
+<div class="sec">
+<div class="ref-card">
+<h3>🟨 裁判深度分析 — <span>Dario Herrera 🇦🇷</span> (Step 8)</h3>
+<div class="stats-grid" style="margin-top:12px">
+<div class="stat-box" style="border-color:var(--red)"><div class="num" style="color:var(--red)">5.50</div><div class="lbl">场均黄牌</div></div>
+<div class="stat-box" style="border-color:var(--red)"><div class="num" style="color:var(--red)">0.51</div><div class="lbl">场均点球 ⚠️</div></div>
+<div class="stat-box" style="border-color:var(--red)"><div class="num" style="color:var(--red)">0.33</div><div class="lbl">场均红牌</div></div>
+<div class="stat-box"><div class="num">25.1</div><div class="lbl">场均犯规</div></div>
+<div class="stat-box" style="border-color:var(--red)"><div class="num" style="color:var(--red)">27.1%</div><div class="lbl">红牌率</div></div>
+<div class="stat-box" style="border-color:var(--red)"><div class="num" style="color:var(--red)">19.9%</div><div class="lbl">点球率</div></div>
+</div>
+<p style="font-size:13px;margin-top:8px">数据来源：248场职业执法（阿根廷甲级、南美解放者杯、美洲杯、世界杯预选赛）。Herrera 是阿根廷输出的最严格裁判之一，在本次世界杯所有裁判中黄牌率排名前列。</p>
+
+<h4 style="margin-top:14px">这场比赛的三个关键推断：</h4>
+<table style="margin-top:8px">
+<tr><th style="width:30px">#</th><th>推断</th><th>概率</th><th>影响</th></tr>
+<tr><td>1</td><td>比赛中出现点球</td><td class="r" style="font-weight:700">≈20%</td><td>Doku 突破能力强 + Herrera 吹点倾向 → <strong>比利时更可能获得点球</strong>（预期 16% vs 4%）</td></tr>
+<tr><td>2</td><td>至少一张红牌</td><td class="r" style="font-weight:700">≈27%</td><td>如果比利时球员吃红 → 伊朗机会暴增。如果伊朗吃红 → 比利时可能拉大比分</td></tr>
+<tr><td>3</td><td>黄牌数 ≥6</td><td class="r" style="font-weight:700">≈55%</td><td>比赛碎片化 → 补时长 → 最后阶段进球概率上升。利好 Over 2.5</td></tr>
+</table>
+<div class="note red" style="margin-top:10px">
+<strong>⚠️ 这个裁判是这场比赛最大的 X 因素。</strong>一个点球可以彻底改变比分（1-0 → 锁定胜局，或 0-0 → 比利时打破僵局）。一张红牌可以完全改写比赛结构（11v10 vs 10v11 的概率分布完全不同）。Herrera 的存在让这场比赛比 λ 估算的更难预测——极端事件（点球/红牌）的概率远高于平均水平。
+</div>
+</div>
+</div>
+
+<!-- ====== 7. LAMBDA ====== -->
+<div class="sec">
+<h2>🔬 第 9 步：独立 λ 估算</h2>
+<table>
+<tr><th>步骤</th><th>比利时 λ</th><th>伊朗 λ</th><th>说明</th></tr>
+<tr><td>混合 GF</td><td>2.64</td><td>2.00</td><td class="dim">比利时：(1×1.0+12×0.4)/(1+3×0.4)=2.64 | 伊朗：(2×1.0)/(1)=2.00</td></tr>
+<tr><td>混合 GA</td><td>0.82</td><td>2.00</td><td class="dim">比利时：(1×1.0+2×0.4)/(1+3×0.4)=0.82 | 伊朗：(2×1.0)/(1)=2.00</td></tr>
+<tr><td>基础 λ</td><td><strong>2.318</strong></td><td><strong>1.240</strong></td><td class="dim">λ_home=(2.64+2.00)/2=2.318 | λ_away=(2.00+0.82)/2×0.88=1.240</td></tr>
+<tr><td>修正</td><td><span class="g">无</span></td><td><span class="r">×0.85</span></td><td class="dim">伊朗：Azmoun 缺阵（核心射手缺阵惩罚）</td></tr>
+<tr style="background:rgba(232,184,48,0.05)"><td><strong>最终 λ</strong></td><td><strong style="color:var(--accent)">2.318</strong></td><td><strong style="color:var(--accent)">1.054</strong></td><td><strong>总进球期望 = 3.37 ⚽</strong></td></tr>
+</table>
+
+<div class="note" style="margin-top:10px">
+<strong>λ 置信度评估：</strong><br>
+比利时：高置信度 ✅（4场热身赛+1场正赛，对手质量已知）<br>
+伊朗：低置信度 ⚠️（仅1场正赛，零公开热身赛，Azmoun 影响难以精确量化）<br>
+<span class="dim">伊朗的 λ 不确定性区间约为 ±0.25。如果 Jahanbakhsh 复出，伊朗 λ 升至约 1.21（见下文情景分析）。</span>
+</div>
+</div>
+
+<!-- ====== 8. POISSON ====== -->
+<div class="sec">
+<h2>📈 第 10 步：Poisson 独立概率分布</h2>
+
+<div class="stats-grid">
+<div class="stat-box highlight"><div class="num">65.3%</div><div class="lbl">比利时胜</div></div>
+<div class="stat-box"><div class="num">18.5%</div><div class="lbl">平局</div></div>
+<div class="stat-box"><div class="num" style="color:var(--red)">15.7%</div><div class="lbl">伊朗胜</div></div>
+<div class="stat-box"><div class="num" style="color:var(--r)">65.1%</div><div class="lbl">Over 2.5</div></div>
+<div class="stat-box"><div class="num">43.2%</div><div class="lbl">Over 3.5</div></div>
+<div class="stat-box"><div class="num" style="color:var(--r)">58.4%</div><div class="lbl">BTTS Yes</div></div>
+<div class="stat-box"><div class="num">34.8%</div><div class="lbl">比利时零封</div></div>
+<div class="stat-box"><div class="num" style="color:var(--red)">9.8%</div><div class="lbl">伊朗零封</div></div>
+</div>
+
+<h3>比分概率 TOP 10</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>比分</th><th>概率</th><th>场景</th><th>概率条</th></tr>
+<tr><td>1</td><td><strong>2-1</strong></td><td>9.7%</td><td>比利时掌控但防线漏一个</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:97%"></div></div></td></tr>
+<tr><td>2</td><td><strong>2-0</strong></td><td>9.2%</td><td>比利时干净利落</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:92%"></div></div></td></tr>
+<tr><td>3</td><td><strong>1-1</strong></td><td>8.4%</td><td>僵持不下，各进一球</td><td><div class="bar-wrap"><div class="bar-inner orange" style="width:84%"></div></div></td></tr>
+<tr><td>4</td><td><strong>1-0</strong></td><td>8.0%</td><td>比利时艰难小胜</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:80%"></div></div></td></tr>
+<tr><td>5</td><td><strong>3-1</strong></td><td>7.5%</td><td>比利时火力全开</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:75%"></div></div></td></tr>
+<tr><td>6</td><td><strong>3-0</strong></td><td>7.1%</td><td>比利时碾压</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:71%"></div></div></td></tr>
+<tr><td>7</td><td><strong>2-2</strong></td><td>5.1%</td><td>对攻大战</td><td><div class="bar-wrap"><div class="bar-inner orange" style="width:51%"></div></div></td></tr>
+<tr><td>8</td><td><strong>1-2</strong></td><td>4.4%</td><td>伊朗逆转</td><td><div class="bar-wrap"><div class="bar-inner red" style="width:44%"></div></div></td></tr>
+<tr><td>9</td><td><strong>4-1</strong></td><td>4.4%</td><td>比利时屠杀</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:44%"></div></div></td></tr>
+<tr><td>10</td><td><strong>4-0</strong></td><td>4.1%</td><td>比利时完美</td><td><div class="bar-wrap"><div class="bar-inner gold" style="width:41%"></div></div></td></tr>
+</table></div>
+
+<div class="note" style="margin-top:12px">
+<strong>解读：</strong>前10比分中有7个是比利时获胜、2个平局、1个伊朗获胜。比分分布集中在 2-1 / 2-0 / 3-1 区间——换句话说，<strong>比利时大概率赢且比赛大概率有进球</strong>。0-0 只有 3.4%，远远低于西班牙 vs 沙特的 40%——这是完全不同的比赛类型。
+</div>
+</div>
+
+<!-- ====== 9. SCORE PATHS ====== -->
+<div class="sec">
+<h2>🗺️ 第 11 步：比赛路径情景</h2>
+<div class="carousel">
+<div class="scenario-card" style="border-color:var(--g)">
+<h4>🟢 A · 比利时掌控胜利</h4>
+<div class="pct">≈57%</div>
+<p style="font-size:11px;margin-top:6px;line-height:1.6">
+比利时前30分钟破门（Doku突破传中/De Bruyne远射）→ 伊朗被迫压出 → De Bruyne反击助攻 → 最终 2-0 / 3-1。
+</p>
+<p class="dim">触发：比利时先进球</p>
+</div>
+<div class="scenario-card" style="border-color:var(--accent)">
+<h4>🟡 B · Herrera 点球破局</h4>
+<div class="pct">≈16%</div>
+<p style="font-size:11px;margin-top:6px;line-height:1.6">
+比赛僵持到 60' 仍 0-0 或 1-1 → Doku 禁区内被犯规 → Herrera 吹点球 → De Bruyne 罚进 → 1-0 锁定或 2-1 反超。
+</p>
+<p class="dim">触发：Herrera 判点（20%概率）</p>
+</div>
+<div class="scenario-card" style="border-color:var(--orange)">
+<h4>🟠 C · 焦灼平局</h4>
+<div class="pct">≈19%</div>
+<p style="font-size:11px;margin-top:6px;line-height:1.6">
+上半场 0-0 → 伊朗 55' 通过 Mohebi 反击进球 → 比利时围攻 → Lukaku/De Ketelaere 75' 扳平 → 1-1。比利时屡射不进，球员急躁。
+</p>
+<p class="dim">触发：比利时锋线效率低</p>
+</div>
+<div class="scenario-card" style="border-color:var(--r)">
+<h4>🔴 D · 红牌改写剧本</h4>
+<div class="pct">≈27% <span class="dim">(红牌率)</span></div>
+<p style="font-size:11px;margin-top:6px;line-height:1.6">
+Herrera 判罚比利时后卫红牌（Meunier 最后一名防守犯规？）→ 10人比利时需守平 → Iran 以多打少 → 最后阶段 1-2 伊朗逆转。
+</p>
+<p class="dim">触发：比利时吃红（14%概率）</p>
+</div>
+<div class="scenario-card" style="border-color:var(--accent)">
+<h4>🟢 E · 比利时屠杀</h4>
+<div class="pct">≈25%</div>
+<p style="font-size:11px;margin-top:6px;line-height:1.6">
+Doku 12' 突破得分 → 伊朗被迫压上 → 23' De Bruyne 远射 → 半场 2-0 → 下半场定位球 Mechele 头球 → 3-0/4-0。伊朗心态崩溃。
+</p>
+<p class="dim">触发：比利时10分钟内进球</p>
+</div>
+</div>
+</div>
+
+<!-- ====== 10. MARKET ====== -->
+<div class="sec">
+<h2>⚡ 第 12 步：市场对比</h2>
+<table>
+<tr><th>市场</th><th>数据概率</th><th>市场隐含</th><th>隐含赔率</th><th>分歧</th><th>判断</th></tr>
+<tr><td>比利时胜</td><td><strong>65.3%</strong></td><td>≈69%</td><td>≈1.44</td><td>-3.7%</td><td>🟢 合理</td></tr>
+<tr><td>比利时不败</td><td><strong>84.2%</strong></td><td>≈86%</td><td>≈1.16</td><td>-1.8%</td><td>🟢 合理</td></tr>
+<tr><td>Over 2.5</td><td><strong>65.1%</strong></td><td>≈55-60%</td><td>≈1.70-1.80</td><td><span class="g">+5-10%</span></td><td>🟢 <strong>数据支持大球</strong></td></tr>
+<tr><td>BTTS Yes</td><td><strong>58.4%</strong></td><td>≈50%</td><td>≈2.00</td><td><span class="g">+8%</span></td><td>🟡 <strong>数据倾向 BTTS Yes</strong></td></tr>
+<tr><td>比利时 -1.5</td><td><strong>≈40%</strong></td><td>≈45%</td><td>≈2.20</td><td>-5%</td><td>🟢 合理偏贵</td></tr>
+</table>
+<div class="note">
+<strong>两项数据看涨：</strong>Over 2.5（65.1% vs 市场55%）和 BTTS Yes（58.4% vs 市场50%）。这主要来自 Herrera 效应——紧哨 → 犯规多 → 定位球多 → 进球概率上升。市场可能没有充分定价裁判因素。
+</div>
+</div>
+
+<!-- ====== 11. SCENARIOS ====== -->
+<div class="sec">
+<h2>🔄 情景分析：Jahanbakhsh 复出的影响</h2>
+<div class="c2">
+<div>
+<h4>🔴 不复出（基准）</h4>
+<table>
+<tr><td>伊朗 λ</td><td><strong>1.054</strong>（Azmoun×0.85）</td></tr>
+<tr><td>比利时胜</td><td>65.3%</td></tr>
+<tr><td>平局</td><td>18.5%</td></tr>
+<tr><td>Over 2.5</td><td>65.1%</td></tr>
+<tr><td>BTTS Yes</td><td>58.4%</td></tr>
+</table>
+</div>
+<div>
+<h4>🟢 复出（乐观情景）</h4>
+<table>
+<tr><td>伊朗 λ</td><td><strong>1.212</strong>（×0.85×1.15）</td></tr>
+<tr><td>比利时胜</td><td>61.8% <span class="dim">↓3.5%</span></td></tr>
+<tr><td>平局</td><td>19.1%</td></tr>
+<tr><td>Over 2.5</td><td>68.0% <span class="dim">↑2.9%</span></td></tr>
+<tr><td>BTTS Yes</td><td>63.0% <span class="dim">↑4.6%</span></td></tr>
+</table>
+</div>
+</div>
+<p style="font-size:12px;margin-top:10px;color:var(--dim)">Jahanbakhsh 复出会让伊朗进攻更有组织性，BTTS Yes 和 Over 2.5 的概率反而上升——因为它让伊朗更有能力进球，但不改变比利时是更好球队的事实。这其实是 <strong>利好大球方向</strong>。</p>
+</div>
+
+<!-- ====== 12. PLAYBOOK ====== -->
+<div class="sec">
+<h2>🎯 实战手册：这场比赛怎么玩</h2>
+<div class="playbook">
+<div class="play" style="border-color:var(--g)">
+<div class="play-num">选择 1</div>
+<div class="play-title">🛡️ 比利时不败</div>
+<div class="play-desc">最稳选择。84.2% 概率，Herrera 的点球/红牌即使对伊朗有利，比利时仍极大概率至少拿到平局。适合做串关底座。</div>
+<div class="play-odds">数据 84.2% · 估值赔率 ≈1.19</div>
+</div>
+<div class="play" style="border-color:var(--g)">
+<div class="play-num">选择 2</div>
+<div class="play-title">⚡ Over 2.5 球</div>
+<div class="play-desc">数据 65.1% vs 市场 ~55%。差距来自 Herrera 紧哨效应的低估。Doku 爆破 + Herrera 点球 + De Bruyne 任意球 = 高进球期望。</div>
+<div class="play-odds">数据 65.1% · 隐含赔率 ≈1.54 · 市场约1.75 → <span class="g">潜在价值</span></div>
+</div>
+<div class="play" style="border-color:var(--orange)">
+<div class="play-num">选择 3</div>
+<div class="play-title">🔥 BTTS Yes</div>
+<div class="play-desc">伊朗有 Taremi + Mohebi 的反击路径。58.4% 概率，Herrera 的大量子球+犯规让双方都有定位球得分机会。</div>
+<div class="play-odds">数据 58.4% · 隐含赔率 ≈1.71 · 市场约2.00 → <span class="g">潜在价值</span></div>
+</div>
+<div class="play" style="border-color:var(--r)">
+<div class="play-num">选择 4</div>
+<div class="play-title">🚫 比利时不败 + Over 2.5</div>
+<div class="play-desc">双选。Belgium 不败概率 84%，Over 2.5 概率 65%。两者重叠概率约 55-60%。如果你需要中等风险的串关加一腿，这个组合不错。</div>
+<div class="play-odds">综合概率 ≈58% · 估值赔率 ≈1.72</div>
+</div>
+</div>
+</div>
+
+<!-- ====== 13. SUMMARY ====== -->
+<div class="sec">
+<h2>🧠 最终判断</h2>
+
+<div class="big-num">65.3%<span> 比利时胜率</span></div>
+
+<div class="c2">
+<div>
+<h4>✅ 确定性高的信号</h4>
+<table>
+<tr><td>比利时实力碾压</td><td class="g">✓</td></tr>
+<tr><td>Doku vs Rezaeian 对位优势</td><td class="g">✓</td></tr>
+<tr><td>Herrera 点球倾向(20%)</td><td class="g">✓</td></tr>
+<tr><td>伊朗零热身赛·准备不足</td><td class="g">✓</td></tr>
+<tr><td>Azmoun 缺阵削弱伊朗进攻</td><td class="g">✓</td></tr>
+<tr><td>伊朗得分依赖非常规来源</td><td class="g">✓</td></tr>
+</table>
+</div>
+<div>
+<h4>⚠️ 不确定性</h4>
+<table>
+<tr><td>Lukaku 首发？状态如何？</td><td class="r">?</td></tr>
+<tr><td>Herrera 红牌（27%）颠覆比赛</td><td class="r">?</td></tr>
+<tr><td>伊朗 λ 数据置信度低</td><td class="r">?</td></tr>
+<tr><td>Jahanbakhsh 复出与否未定</td><td class="r">?</td></tr>
+<tr><td>比利时正赛vs热身赛效率差</td><td class="r">?</td></tr>
+<tr><td>伊朗如果先进球会如何反应？</td><td class="r">?</td></tr>
+</table>
+</div>
+</div>
+
+<div class="note" style="margin-top:14px">
+<strong>一句话：</strong>比利时应该赢，也大概率赢。但 Dario Herrera 的哨子 + 伊朗零热身赛的未知性 + Azmoun 缺阵的连锁反应 = 比赛走向有多个戏剧性分岔。最可能的结果是 2-0 或 2-1，但 1-1 和 0-0（概率各 8% 和 3%）也不是不可能。
+</div>
+</div>
+
+<div class="dis">
+<p>⚠️ 本文仅为数据驱动的比赛分析，不构成投注建议。所有 λ 和概率为模型估算，存在不确定性。数据来源：ESPN, BBC Sport, FIFA.com, The Guardian, The Athletic, Sports Mole, CBS Sports, Sporting News, Opta, Sofascore, FootyStats, StatsHub, Reuters, The Standard.</p>
+<p>Generated by Hermes Agent · v3.1 全维度分析 · 2026-06-21</p>
+</div>
+
+</div></body></html>
