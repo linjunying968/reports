@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2026世界杯 6月22日 v3 全维度混合串关分析</title>
+<style>
+:root{--bg:#080c12;--card:#10161e;--border:#1c2836;--text:#c8d2e0;--dim:#7a8ba0;--accent:#e8b830;--gold:#fbbf24;--green:#10b981;--red:#ef4444;--purple:#8b5cf6;--blue:#3b82f6;--orange:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.8;-webkit-text-size-adjust:100%}
+.wrap{max-width:1050px;margin:0 auto;padding:clamp(12px,2vw,24px)}
+
+.hero{background:linear-gradient(160deg,#10161e,#141f30,#0f1a15);border:1px solid var(--border);border-radius:14px;padding:clamp(22px,4vw,40px);text-align:center;margin-bottom:20px}
+.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.hero p{color:var(--dim);font-size:13px}
+.badge-v3{display:inline-block;background:rgba(139,92,246,0.15);color:var(--purple);padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
+
+.sec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,3vw,22px);margin-bottom:16px}
+.sec h2{font-size:clamp(15px,2.2vw,19px);color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px}
+.sec h3{font-size:14px;color:var(--text);margin:14px 0 8px}
+.sec h4{font-size:13px;color:var(--gold);margin:10px 0 6px}
+
+table{width:100%;border-collapse:collapse;font-size:clamp(10px,1.2vw,12px)}
+th{background:rgba(232,184,48,0.07);color:var(--accent);padding:7px 10px;text-align:left;font-weight:600}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:rgba(255,255,255,0.01)}
+.tw{overflow-x:auto}
+
+.c2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+@media(max-width:640px){.c2,.c3{grid-template-columns:1fr}}
+
+.mc{border-radius:10px;padding:14px;background:rgba(255,255,255,0.015);border:1px solid var(--border)}
+.mc h4{font-size:14px;margin-bottom:8px}
+.mc .row{display:flex;justify-content:space-between;padding:5px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.mc .pick{color:var(--accent);font-weight:600}
+
+.tier{border-radius:12px;padding:16px;border:1.5px solid var(--border)}
+.tier.safe{border-color:var(--green);background:linear-gradient(135deg,#10161e,#0d1f1a)}
+.tier.mid{border-color:var(--accent);background:linear-gradient(135deg,#10161e,#1a1a10)}
+.tier .badge{display:inline-block;padding:3px 12px;border-radius:10px;font-size:11px;font-weight:700;margin-bottom:10px}
+.tier .badge.safe{background:rgba(16,185,129,0.15);color:var(--green)}
+.tier .badge.mid{background:rgba(232,184,48,0.15);color:var(--accent)}
+.tier .leg{display:flex;justify-content:space-between;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:6px;margin:3px 0;font-size:12px}
+.tier .leg .tag{font-size:10px;color:var(--dim);background:rgba(255,255,255,0.04);padding:1px 6px;border-radius:4px}
+.tier .leg .sel{font-weight:600;color:var(--accent)}
+.tier .nums{display:flex;justify-content:space-around;margin-top:12px;padding:10px;background:rgba(255,255,255,0.02);border-radius:8px}
+.tier .nums .v{font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--accent);text-align:center}
+.tier .nums .l{font-size:10px;color:var(--dim);text-align:center}
+
+.note{background:rgba(232,184,48,0.04);border:1px solid var(--accent);border-radius:10px;padding:12px;margin:10px 0;font-size:13px}
+.note.red{background:rgba(239,68,68,0.04);border-color:var(--red)}
+
+.hi{color:var(--accent);font-weight:600}
+.g{color:var(--green)} .r{color:var(--red)} .dim{color:var(--dim);font-size:11px}
+
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:12px 0}
+.fb{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;text-align:center}
+.fb.big{font-size:13px;font-weight:600;padding:10px 16px;border-color:var(--accent);color:var(--accent)}
+.fa{color:var(--dim);font-size:14px}
+
+.dis{text-align:center;color:var(--dim);font-size:10px;padding:16px 0 10px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+</head>
+<body><div class="wrap">
+
+<div class="hero">
+<h1>⚽ 2026世界杯 6月22日 · 全维度混合串关</h1>
+<p><span class="badge-v3">v3</span> 14维数据 → 独立 λ → Poisson → 市场校验 → 串关 · 北京时间 6/22 00:00-09:00</p>
+</div>
+
+<!-- GROUP CONTEXT -->
+<div class="sec">
+<h2>📊 第1步：赛事背景</h2>
+<div class="c2">
+<div>
+<h4>Group G (第二轮)</h4>
+<table>
+<tr><th>队</th><th>赛</th><th>分</th><th>GF</th><th>GA</th></tr>
+<tr><td>🇧🇪 比利时</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>🇪🇬 埃及</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>🇮🇷 伊朗</td><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+<tr><td>🇳🇿 新西兰</td><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+</table>
+<p class="dim" style="margin-top:6px">全部1分！无人出线，无人淘汰。每场都是生死战。</p>
+</div>
+<div>
+<h4>Group H (第二轮)</h4>
+<table>
+<tr><th>队</th><th>赛</th><th>分</th><th>GF</th><th>GA</th></tr>
+<tr><td>🇸🇦 沙特阿拉伯</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>🇺🇾 乌拉圭</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>🇨🇻 佛得角</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>🇪🇸 西班牙</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+</table>
+<p class="dim" style="margin-top:6px">全部1分！H组4场仅产生2个总进球 — 极端小球组。</p>
+</div>
+</div>
+<p class="dim">⚠️ 两组合计8队全部1分。No dead rubbers. Every team fights. 轮换风险：零。</p>
+</div>
+
+<!-- MATCHDAY 1 REVIEW -->
+<div class="sec">
+<h2>📋 第2步：首轮实况 & 近期数据</h2>
+<table>
+<tr><th>比赛</th><th>比分</th><th>关键数据</th><th>信号</th></tr>
+<tr><td>🇪🇸 西班牙 vs 佛得角</td><td><strong>0-0</strong></td><td>西班牙 <span class="r">0射正</span>，佛得角角球险些绝杀</td><td>🔴 西班牙进攻体系问题严重</td></tr>
+<tr><td>🇸🇦 沙特 vs 乌拉圭</td><td><strong>1-1</strong></td><td>沙特角球领先，乌拉圭80'反弹球扳平。沙特门将<span class="hi">9次扑救</span></td><td>🔴 乌拉圭27射仅1球</td></tr>
+<tr><td>🇧🇪 比利时 vs 埃及</td><td><strong>1-1</strong></td><td>De Bruyne助攻，Salah进球。比利时仅1球</td><td>🟡 正赛vs热身赛不同</td></tr>
+<tr><td>🇮🇷 伊朗 vs 新西兰</td><td><strong>2-2</strong></td><td>伊朗两次落后两次扳平。新西兰防守漏2球</td><td>🟡 双方防线都有问题</td></tr>
+</table>
+<div class="note" style="margin-top:12px">
+<strong>热身赛降权数据 (×0.4)：</strong>比利时5-0突尼斯/2-0克罗地亚/5-2美国 | 西班牙1-1伊拉克 | 埃及1-2巴西 | 沙特0-0塞内加尔 | 新西兰0-1英格兰/0-4海地
+</div>
+</div>
+
+<!-- H2H + LINEUPS + REFEREE -->
+<div class="sec">
+<h2>⚖️ 第3-8步：H2H · 阵容 · 战术 · 裁判</h2>
+<div class="c3">
+<div class="mc">
+<h4>🇪🇸 西班牙 vs 🇸🇦 沙特</h4>
+<div class="row"><span>H2H</span><span>西班牙3-0-0。最后：1-0 (2018) ⚠️弱信号</span></div>
+<div class="row"><span>裁判</span><span>Raphael Claus 🇧🇷 4.3YC/game 中等</span></div>
+<div class="row"><span>西班牙</span><span>Yamal复出但状态存疑。Pedri+Rodri+Barcelona系</span></div>
+<div class="row"><span>沙特</span><span>无伤停。门将 Al Owais 首轮9扑救</span></div>
+<div class="row"><span>场地</span><span>Atlanta室内·22°C·完美条件</span></div>
+</div>
+<div class="mc">
+<h4>🇧🇪 比利时 vs 🇮🇷 伊朗</h4>
+<div class="row"><span>H2H</span><span>首次交锋。无历史数据 ⚠️</span></div>
+<div class="row"><span>裁判</span><span><span class="r">Dario Herrera 🇦🇷 5.5YC/game ⚠️紧哨</span></span></div>
+<div class="row"><span>比利时</span><span>De Bruyne+Lukaku+Courtois全主力</span></div>
+<div class="row"><span>伊朗</span><span>Taremi+Azmoun双箭头。首轮进2球</span></div>
+<div class="row"><span>场地</span><span>SoFi Stadium LA·室内·完美条件</span></div>
+</div>
+<div class="mc">
+<h4>🇺🇾 乌拉圭 vs 🇨🇻 佛得角</h4>
+<div class="row"><span>H2H</span><span>首次交锋。无历史数据 ⚠️</span></div>
+<div class="row"><span>裁判</span><span><span class="g">Espen Eskås 🇳🇴 3.4YC/game ✓松哨</span></span></div>
+<div class="row"><span>乌拉圭</span><span>Valverde+Bentancur+Muslera全主力</span></div>
+<div class="row"><span>佛得角</span><span>零封西班牙！门将Vozinha神勇。队长Mendes</span></div>
+<div class="row"><span>场地</span><span>Miami·Hard Rock Stadium·湿热可能</span></div>
+</div>
+<div class="mc">
+<h4>🇳🇿 新西兰 vs 🇪🇬 埃及</h4>
+<div class="row"><span>H2H</span><span>埃及2-1-0。唯一：埃及1-0 (2024) ⚠️弱信号</span></div>
+<div class="row"><span>裁判</span><span>Omar Al-Ali 🇦🇪 4.1YC/game 中等</span></div>
+<div class="row"><span>新西兰</span><span>Chris Wood中锋。Just首轮进球。输9/12场</span></div>
+<div class="row"><span>埃及</span><span>Salah+Marmoush攻击线。防线仅失1球vs比利时</span></div>
+<div class="row"><span>场地</span><span>Vancouver·BC Place·室内·完美条件</span></div>
+</div>
+</div>
+</div>
+
+<!-- λ ESTIMATION -->
+<div class="sec">
+<h2>🔬 第9步：独立 λ 估算</h2>
+<table>
+<tr><th>比赛</th><th>λ 主队</th><th>λ 客队</th><th>总进球</th><th>估算依据</th></tr>
+<tr><td>🇪🇸 西班牙 vs 🇸🇦</td><td><strong>0.46</strong></td><td>0.44</td><td>0.90</td><td class="dim">西: (0×1.0+1×0.4)/1.4=0.29×0.75(0SoT)=0.22. 沙GA=0.71. (0.22+0.71)/2=0.46</td></tr>
+<tr><td>🇧🇪 比利时 vs 🇮🇷</td><td><strong>2.32</strong></td><td>1.24</td><td>3.56</td><td class="dim">比: (1×1.0+12×0.4)/2.2=2.64. 伊GA=2.0. (2.64+2.0)/2=2.32</td></tr>
+<tr><td>🇺🇾 乌拉圭 vs 🇨🇻</td><td><strong>0.50</strong></td><td>0.44</td><td>0.94</td><td class="dim">乌: 1.0GF/GA. 佛GA=0.0. (1.0+0.0)/2=0.50</td></tr>
+<tr><td>🇪🇬 埃及 vs 🇳🇿</td><td><strong>1.42</strong></td><td>1.20</td><td>2.62</td><td class="dim">埃: (1+1×0.4)/1.4=1.0. 新GA=(2×1.0+5×0.4)/1.8=2.22. (1.0+2.22)/2×0.88=1.42</td></tr>
+</table>
+<div class="note">
+<strong>⚠️ 比利时λ偏高说明：</strong>热身赛5-0/5-2对手弱，正赛仅1球vs埃及。λ=2.32含热身赛溢价，实际可能低0.5-1.0。<br>
+<strong>⚠️ 西班牙λ偏低说明：</strong>0射正+0进球数据极端。λ=0.46可能过于悲观。但数据就是数据。
+</div>
+</div>
+
+<!-- POISSON -->
+<div class="sec">
+<h2>📈 第10步：Poisson 独立概率</h2>
+<table>
+<tr><th>比赛</th><th>胜</th><th>平</th><th>负</th><th>Over2.5</th><th>Under2.5</th><th>BTTS Yes</th><th>BTTS No</th><th>TOP 比分</th></tr>
+<tr><td>🇪🇸 vs 🇸🇦</td><td>26.2%</td><td><span class="hi">49.2%</span></td><td>24.5%</td><td>6.2%</td><td><span class="g">93.8%</span></td><td>13.1%</td><td><span class="g">86.9%</span></td><td class="dim">0-0(40%) 1-0(19%) 0-1(18%)</td></tr>
+<tr><td>🇧🇪 vs 🇮🇷</td><td><span class="g">61.2%</span></td><td>19.1%</td><td>19.2%</td><td><span class="r">68.5%</span></td><td>31.5%</td><td><span class="r">63.6%</span></td><td>36.4%</td><td class="dim">2-1(9.5%) 1-1(8.2%) 2-0(7.7%)</td></tr>
+<tr><td>🇺🇾 vs 🇨🇻</td><td>27.9%</td><td><span class="hi">48.1%</span></td><td>23.8%</td><td>6.8%</td><td><span class="g">93.2%</span></td><td>13.9%</td><td><span class="g">86.1%</span></td><td class="dim">0-0(39%) 1-0(20%) 0-1(17%)</td></tr>
+<tr><td>🇪🇬 vs 🇳🇿</td><td>41.9%</td><td>26.1%</td><td>31.7%</td><td>48.3%</td><td><span class="g">51.7%</span></td><td>52.7%</td><td>47.3%</td><td class="dim">1-1(12%) 0-1(10%) 1-2(9%)</td></tr>
+</table>
+<div class="note" style="margin-top:12px">
+<strong>🔑 三个最强信号：</strong><br>
+1. <span class="g">西班牙小2.5=93.8%、BTTS No=86.9%</span> — 本轮最确定的Under<br>
+2. <span class="g">乌拉圭小2.5=93.2%、平局48.1%</span> — 几乎复制西班牙模式<br>
+3. 比利时虽然是唯一倾向大球的比赛，但<span class="r">Dario Herrera紧哨(5.5YC)会推高BTTS Yes</span>
+</div>
+</div>
+
+<!-- REFEREE -->
+<div class="sec">
+<h2>🟨 第8步补充：裁判对市场选择的影响</h2>
+<table>
+<tr><th>比赛</th><th>裁判</th><th>场均黄牌</th><th>风格</th><th>影响</th></tr>
+<tr><td>🇪🇸 vs 🇸🇦</td><td>Raphael Claus 🇧🇷</td><td>4.3</td><td>中等</td><td class="dim">无显著影响</td></tr>
+<tr><td>🇧🇪 vs 🇮🇷</td><td>Dario Herrera 🇦🇷</td><td><span class="r">5.5</span></td><td><span class="r">⚠️紧哨</span></td><td><span class="r">犯规↑定位球↑BTTS Yes↑小2.5↓</span></td></tr>
+<tr><td>🇺🇾 vs 🇨🇻</td><td>Espen Eskås 🇳🇴</td><td><span class="g">3.4</span></td><td><span class="g">✓松哨</span></td><td><span class="g">比赛流畅·Under2.5更可靠</span></td></tr>
+<tr><td>🇪🇬 vs 🇳🇿</td><td>Omar Al-Ali 🇦🇪</td><td>4.1</td><td>中等</td><td class="dim">无显著影响</td></tr>
+</table>
+</div>
+
+<!-- MATCH PATHS -->
+<div class="sec">
+<h2>🗺️ 第11步：比分路径（4场）</h2>
+<div class="c2">
+<div class="mc">
+<h4>🇪🇸 西班牙 vs 沙特 — 3条路径</h4>
+<p style="font-size:12px"><strong>路径1 (40%)「沉闷0-0」</strong> — 西班牙继续创造不出机会，沙特稳守反击但进攻效率有限 → 0-0</p>
+<p style="font-size:12px"><strong>路径2 (26%)「西班牙小胜」</strong> — Yamal创造一次机会被把握住，皇马/巴萨系球员个人能力解决 → 1-0</p>
+<p style="font-size:12px"><strong>路径3 (18%)「沙特偷鸡」</strong> — 西班牙压上久攻不下，沙特一次角球/反击得分 → 0-1</p>
+</div>
+<div class="mc">
+<h4>🇧🇪 比利时 vs 伊朗 — 3条路径</h4>
+<p style="font-size:12px"><strong>路径1 (30%)「比利时火力全开」</strong> — Lukaku双响+De Bruyne助攻，Herrera紧哨送点球 → 3-1</p>
+<p style="font-size:12px"><strong>路径2 (20%)「焦灼平局」</strong> — 伊朗Taremi反击得分，比利时围攻效率低 → 1-1</p>
+<p style="font-size:12px"><strong>路径3 (19%)「比利时小胜」</strong> — 虽然围攻但只进一球，Courtois保住零封 → 1-0</p>
+</div>
+<div class="mc">
+<h4>🇺🇾 乌拉圭 vs 佛得角 — 3条路径</h4>
+<p style="font-size:12px"><strong>路径1 (39%)「0-0复制」</strong> — 乌拉圭27射1球的效率×佛得角零封西班牙的防线 → 0-0</p>
+<p style="font-size:12px"><strong>路径2 (20%)「乌拉圭1-0」</strong> — Valverde远射/定位球破局，Eskås松哨让比赛持续压迫 → 1-0</p>
+<p style="font-size:12px"><strong>路径3 (17%)「佛得角偷鸡」</strong> — 乌拉圭进攻端无力，佛得角一次角球头球 → 0-1</p>
+</div>
+<div class="mc">
+<h4>🇪🇬 新西兰 vs 埃及 — 3条路径</h4>
+<p style="font-size:12px"><strong>路径1 (25%)「Salah解决问题」</strong> — 埃及控场，Salah内切射门/助攻Marmoush → 0-2或1-2</p>
+<p style="font-size:12px"><strong>路径2 (20%)「对攻1-1」</strong> — 新西兰Just进球+埃及Salah扳平 → 1-1</p>
+<p style="font-size:12px"><strong>路径3 (18%)「新西兰主场气势」</strong> — Wood头球破门+密集防守 → 1-0</p>
+</div>
+</div>
+</div>
+
+<!-- MARKET DIVERGENCE -->
+<div class="sec">
+<h2>⚡ 第12步：市场对比（数据 vs 赔率）</h2>
+<table>
+<tr><th>比赛</th><th>数据胜率</th><th>典型市场</th><th>分歧</th><th>信号</th></tr>
+<tr><td>🇪🇸 vs 🇸🇦</td><td>26.2%</td><td>~85% (亚盘-2.5)</td><td><span class="r">-59%</span></td><td>🔴 市场严重高估西班牙</td></tr>
+<tr><td>🇧🇪 vs 🇮🇷</td><td>61.2%</td><td>~65% (1.44)</td><td>-4%</td><td>🟢 基本合理</td></tr>
+<tr><td>🇺🇾 vs 🇨🇻</td><td>27.9%</td><td>~65% (1.48)</td><td><span class="r">-37%</span></td><td>🔴 市场严重高估乌拉圭</td></tr>
+<tr><td>🇪🇬 vs 🇳🇿</td><td>41.9%</td><td>~57% (1.60)</td><td>-15%</td><td>🟡 市场中度高估埃及</td></tr>
+</table>
+<div class="note">市场用历史声誉定价（西班牙是冠军、乌拉圭是传统强队），数据只看当下状态（西班牙0射正、乌拉圭27射1球）。这就是为什么数据驱动的独立判断有价值。</div>
+</div>
+
+<!-- PARLAY -->
+<div class="sec">
+<h2>🎯 第13步：混合市场串关（任意市场拼票）</h2>
+
+<h3>🛡️ 4场高概率路线</h3>
+<div class="tier safe">
+<div class="badge safe">🛡️ 48.0% 概率 · 2.1x</div>
+<div class="leg"><span>🇪🇸 西班牙 vs 沙特</span><span><span class="tag">大小球</span> <span class="sel">小2.5球</span> 93.8%</span></div>
+<div class="leg"><span>🇧🇪 比利时 vs 伊朗</span><span><span class="tag">1X2</span> <span class="sel">比利时不败</span> 80.3%</span></div>
+<div class="leg"><span>🇺🇾 乌拉圭 vs 佛得角</span><span><span class="tag">大小球</span> <span class="sel">小2.5球</span> 93.2%</span></div>
+<div class="leg"><span>🇪🇬 新西兰 vs 埃及</span><span><span class="tag">1X2</span> <span class="sel">埃及不败</span> 68.3%</span></div>
+</div>
+
+<h3 style="margin-top:16px">⚖️ 4场均衡路线（推荐）</h3>
+<div class="tier mid">
+<div class="badge mid">⚖️ 44.4% 概率 · 2.3x ⭐推荐</div>
+<div class="leg"><span>🇪🇸 西班牙 vs 沙特</span><span><span class="tag">BTTS</span> <span class="sel">双方不进球</span> 86.9%</span></div>
+<div class="leg"><span>🇧🇪 比利时 vs 伊朗</span><span><span class="tag">1X2</span> <span class="sel">比利时不败</span> 80.3%</span></div>
+<div class="leg"><span>🇺🇾 乌拉圭 vs 佛得角</span><span><span class="tag">大小球</span> <span class="sel">小2.5球</span> 93.2%</span></div>
+<div class="leg"><span>🇪🇬 新西兰 vs 埃及</span><span><span class="tag">1X2</span> <span class="sel">埃及不败</span> 68.3%</span></div>
+</div>
+
+<div class="note" style="margin-top:16px">
+<strong>🔹 最稳3场（去乌拉圭）：</strong><br>
+🇪🇸 小2.5 + 🇧🇪 不败 + 🇪🇬 不败 → <strong style="color:var(--accent)">51.5%</strong> 概率 · 1.9x 赔率<br>
+<span class="dim">乌拉圭vs佛得角虽然是93%小2.5，但去掉它排3场概率直接过半。如果不放心乌拉圭0-0变1-1，建议走这条。</span>
+</div>
+
+<div class="note" style="margin-top:10px">
+<strong>🔸 4场"信强队"路线（风险版）：</strong><br>
+🇪🇸 小2.5 + 🇧🇪 不败 + 🇺🇾 不败 + 🇪🇬 不败 → <strong>39.1%</strong> · 2.6x<br>
+<span class="diff">西班牙和乌拉圭都避开了「胜」，改用「不败」。如果两队都只能平局，这条路线依然中。</span>
+</div>
+
+<div class="flow" style="margin-top:18px">
+<div class="fb"><strong>🇪🇸</strong><br>小2.5<br><span class="dim">93.8%</span></div>
+<div class="fa">+</div>
+<div class="fb"><strong>🇧🇪</strong><br>不败<br><span class="dim">80.3%</span></div>
+<div class="fa">+</div>
+<div class="fb"><strong>🇺🇾</strong><br>小2.5<br><span class="dim">93.2%</span></div>
+<div class="fa">+</div>
+<div class="fb big"><strong>🇪🇬</strong><br>不败<br><span class="dim">68.3%</span></div>
+<div class="fa">=</div>
+<div class="fb" style="border-color:var(--accent);color:var(--accent);font-weight:700">48.0%<br>~2.1x</div>
+</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="sec">
+<h2>🧠 v3 方法论总结</h2>
+<table>
+<tr><th>Step</th><th>做了什么</th><th>关键数据</th></tr>
+<tr><td>0-1</td><td>赛事背景</td><td>8队全1分，无人出线无人淘汰。每场生死战。</td></tr>
+<tr><td>2</td><td>近期战绩</td><td>首轮4场：0-0/1-1/1-1/2-2。H组2场仅2球。</td></tr>
+<tr><td>3</td><td>H2H</td><td>西班牙3-0沙特(弱信号)，埃及2-1-0新西兰(弱信号)，另2场首次交锋</td></tr>
+<tr><td>4-6</td><td>阵容/战术</td><td>西班牙Yamal复出但状态存疑。比利时全主力。佛得角门将Vozinha神勇。埃及Salah+Marmoush</td></tr>
+<tr><td>7</td><td>定位球</td><td>沙特首轮角球得分。佛得角角球差点绝杀西班牙。定位球是冷门关键</td></tr>
+<tr><td>8</td><td>裁判</td><td><span class="r">Herrera 5.5YC紧哨</span>·Eskås 3.4YC松哨·Claus/Al-Ali中等</td></tr>
+<tr><td>9</td><td>独立λ</td><td>西0.46/沙0.44·比2.32/伊1.24·乌0.50/佛0.44·埃1.42/新1.20</td></tr>
+<tr><td>10</td><td>Poisson</td><td>西小2.5=93.8%·乌小2.5=93.2%·比Over=68.5%·埃小2.5=51.7%</td></tr>
+<tr><td>11</td><td>比分路径</td><td>西班牙最可能0-0(40%)·比利时最可能2-1(9.5%)·乌拉圭最可能0-0(39%)·埃及1-1(12%)</td></tr>
+<tr><td>12</td><td>市场对比</td><td><span class="r">西班牙市场高估59%</span>·<span class="r">乌拉圭高估37%</span>·埃及高估15%·比利时合理</td></tr>
+<tr><td>13</td><td>串关</td><td>🏆 最优=西小2.5+比不败+乌小2.5+埃不败=48.0%@2.1x</td></tr>
+</table>
+</div>
+
+<div class="dis">
+<p>⚠️ 本文仅为数据分析输出，不构成投注建议。λ估算基于公开比赛数据，赔率为模型估值。数据来源：wc-26.com, FIFA.com, ESPN, Sports Mole, Goal.com, SI.com, CBS Sports, Yahoo Sports, The Athletic</p>
+<p>Generated by Hermes Agent · 2026-06-21 · v3 14维全维度分析</p>
+</div>
+
+</div></body></html>
