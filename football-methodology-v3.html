@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes 足球分析 v3 方法论 — 全维度数据驱动框架</title>
+<style>
+:root {
+  --bg: #080c12; --card-bg: #10161e; --card-border: #1c2836;
+  --text: #c8d2e0; --text-dim: #7a8ba0; --accent: #e8b830;
+  --gold: #fbbf24; --green: #10b981; --red: #ef4444;
+  --purple: #8b5cf6; --blue: #3b82f6; --orange: #f59e0b;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  line-height:1.8; -webkit-text-size-adjust:100%;
+}
+.container { max-width:1000px; margin:0 auto; padding:clamp(14px,3vw,32px); }
+
+.hero {
+  background:linear-gradient(160deg,#10161e 0%,#141f30 40%,#0f1a15 100%);
+  border:1px solid var(--card-border); border-radius:16px;
+  padding:clamp(28px,5vw,50px); text-align:center; margin-bottom:28px;
+}
+.hero h1 {
+  font-size:clamp(24px,4.5vw,42px); font-weight:800;
+  background:linear-gradient(135deg,var(--accent),var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  margin-bottom:8px;
+}
+.hero .tagline { color:var(--text-dim); font-size:clamp(13px,1.8vw,16px); }
+
+.section {
+  background:var(--card-bg); border:1px solid var(--card-border);
+  border-radius:12px; padding:clamp(18px,3vw,30px); margin-bottom:22px;
+}
+
+/* Header anchors */
+.section h2 {
+  font-size:clamp(17px,2.4vw,22px); color:var(--accent);
+  margin-bottom:16px; padding-bottom:10px;
+  border-bottom:1px solid var(--card-border);
+  display:flex; align-items:center; gap:10px;
+}
+.section h3 { font-size:15px; color:var(--text); margin:20px 0 10px; }
+.section h4 { font-size:13px; color:var(--gold); margin:14px 0 6px; }
+
+/* Principle cards */
+.principles {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px;
+  margin-bottom:16px;
+}
+.pr-card {
+  background:rgba(255,255,255,0.02); border:1px solid var(--card-border);
+  border-radius:10px; padding:14px 16px;
+}
+.pr-card .num {
+  font-size:24px; font-weight:800; color:var(--accent); opacity:0.3;
+  float:right; margin-top:-4px;
+}
+.pr-card strong { color:var(--accent); }
+
+/* Step cards */
+.step-grid { display:flex; flex-direction:column; gap:14px; }
+.step-card {
+  border:1px solid var(--card-border); border-radius:10px;
+  background:rgba(255,255,255,0.015); overflow:hidden;
+}
+.step-header {
+  padding:12px 18px; cursor:default;
+  display:flex; align-items:center; gap:12px;
+}
+.step-num {
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:14px; flex-shrink:0;
+}
+.step-num.c0 { background:rgba(139,92,246,0.15); color:var(--purple); }
+.step-num.c1 { background:rgba(59,130,246,0.15); color:var(--blue); }
+.step-num.c2 { background:rgba(16,185,129,0.15); color:var(--green); }
+.step-num.c3 { background:rgba(245,158,11,0.15); color:var(--orange); }
+.step-num.c4 { background:rgba(239,68,68,0.15); color:var(--red); }
+.step-title { font-weight:600; font-size:14px; }
+.step-tag { font-size:10px; opacity:0.5; }
+.step-body { padding:6px 18px 16px 66px; font-size:13px; }
+.step-body li { margin:3px 0; color:var(--text-dim); list-style-type:"▸ "; padding-left:4px; }
+.step-body .hl { color:var(--accent); }
+
+/* Weight table */
+.wt-table { width:100%; border-collapse:collapse; font-size:13px; }
+.wt-table th { background:rgba(232,184,48,0.07); color:var(--accent); padding:8px 12px; text-align:left; }
+.wt-table td { padding:8px 12px; border-bottom:1px solid var(--card-border); }
+.wt-table tr:nth-child(even) td { background:rgba(255,255,255,0.01); }
+
+/* Flow diagram */
+.flow {
+  display:flex; flex-wrap:wrap; gap:6px; align-items:center;
+  justify-content:center; margin:14px 0;
+}
+.flow-box {
+  background:rgba(255,255,255,0.03); border:1px solid var(--card-border);
+  border-radius:8px; padding:8px 14px; font-size:12px; text-align:center;
+}
+.flow-box.big { font-size:13px; font-weight:600; padding:10px 18px; }
+.flow-box.accent { border-color:var(--accent); color:var(--accent); }
+.flow-arrow { color:var(--text-dim); font-size:14px; }
+
+/* V1 vs V3 comparison */
+.cmp { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--card-border); border-radius:10px; overflow:hidden; }
+.cmp-header { padding:10px 16px; font-weight:600; font-size:13px; text-align:center; }
+.cmp-header.old { background:rgba(239,68,68,0.08); color:var(--red); }
+.cmp-header.new { background:rgba(16,185,129,0.08); color:var(--green); }
+.cmp-row { display:contents; }
+.cmp-col { padding:9px 14px; border-top:1px solid var(--card-border); font-size:12px; }
+.cmp-col.old { background:rgba(239,68,68,0.02); }
+.cmp-col.new { background:rgba(16,185,129,0.02); }
+
+.insight {
+  background:rgba(232,184,48,0.04); border:1px solid var(--accent);
+  border-radius:10px; padding:14px; margin:12px 0;
+}
+.insight strong { color:var(--accent); }
+
+.two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+@media (max-width:600px) { .two-col { grid-template-columns:1fr; } }
+
+.disclaimer {
+  text-align:center; color:var(--text-dim); font-size:10px;
+  padding:20px 0 12px; border-top:1px solid var(--card-border); margin-top:16px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <h1>⚽ Hermes 足球分析 v3</h1>
+  <div class="tagline">
+    14 维数据 → 独立 Poisson → 市场校验 → 串关输出<br>
+    数据先行 · 全维度覆盖 · 不跟市场走
+  </div>
+</div>
+
+<!-- PRINCIPLES -->
+<div class="section">
+  <h2>🔴 五大核心原则</h2>
+  <div class="principles">
+    <div class="pr-card"><div class="num">1</div><strong>先数据，后市场</strong><br>赔率永远在最后一步。不是分析的起点。</div>
+    <div class="pr-card"><div class="num">2</div><strong>全维度覆盖</strong><br>14 个数据维度，缺一不可。遗漏即偏差。</div>
+    <div class="pr-card"><div class="num">3</div><strong>独立 λ</strong><br>从真实进球数据估算。绝不校准到赔率（循环论证）。</div>
+    <div class="pr-card"><div class="num">4</div><strong>状态 > 声誉</strong><br>上一场 0 射正 比 "Yamal 复出" 更有信息量。</div>
+    <div class="pr-card"><div class="num">5</div><strong>诚实优先</strong><br>数据市场一致时如实说「无价值」，不强推。</div>
+  </div>
+</div>
+
+<!-- V1 vs V3 -->
+<div class="section">
+  <h2>📊 为什么需要 v3？v1 错在哪</h2>
+  <div class="cmp">
+    <div class="cmp-header old">❌ v1（已废弃）</div>
+    <div class="cmp-header new">✅ v3（当前）</div>
+
+    <div class="cmp-row">
+      <div class="cmp-col old">先看赔率 → 校准 λ 到市场</div>
+      <div class="cmp-col new">先采集 14 维数据 → 独立估算 λ</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-col old">Poisson = 把市场判断套数学壳</div>
+      <div class="cmp-col new">Poisson = 独立概率模型，市场只是校验</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-col old">跳过裁判、战术、伤停、定位球</div>
+      <div class="cmp-col new">14 步全走完才能进入 λ 估算</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-col old">西班牙胜 86.4%（= 市场说的）</div>
+      <div class="cmp-col new">西班牙胜 41.5%（数据说的：近 5 场场均 1.0 球 + 0 射正）</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-col old">热身赛 5-0 弱队 = 正赛也强</div>
+      <div class="cmp-col new">热身赛权重 ×0.4，正赛数据优先</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-col old">1-2 个数据维度就下判断</div>
+      <div class="cmp-col new">14 维交叉验证，缺数据就降低置信度</div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:14px;">
+    <strong>本质问题：</strong>市场定价受品牌溢价、公众情绪、历史声誉影响。用市场定价校准模型 = 把偏见装进数学公式。<br>
+    <strong>v3 的做法：</strong>真实数据先行 → 独立建模 → 最后对比市场找分歧。分歧才是价值。
+  </div>
+</div>
+
+<!-- 14 STEPS -->
+<div class="section">
+  <h2>🔵 完整 14 步分析流程</h2>
+  <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">
+    严格按顺序执行。第 0-8 步全部完成，才能进入第 9 步（λ 估算）。赔率只在第 12 步看一次。
+  </p>
+
+  <div class="flow" style="margin-bottom:20px;">
+    <div class="flow-box">0-8 数据采集</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box accent big">9 独立 λ</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">10 Poisson</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">11 比分路径</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box accent">12 市场对比</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">13-14 串关+交付</div>
+  </div>
+
+  <div class="step-grid">
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c0">0</div>
+        <div><span class="step-title">赛前背景采集</span></div>
+      </div>
+      <div class="step-body">
+        <li>赛事、小组、轮次、开球时间（北京时间）、场馆城市</li>
+        <li>两地旅行距离、是否有跨时区疲劳</li>
+        <li>天气条件（极端高温、暴雨、大风才需要标注）</li>
+        <li><span class="hl">休息天数差</span>——双方距上一场各休几天？差 >1 天就有关注价值</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c0">1</div>
+        <div><span class="step-title">赛事背景</span></div>
+      </div>
+      <div class="step-body">
+        <li>小组积分榜（全部 4 队，不止当前两队）</li>
+        <li>出线形势：谁必须赢、谁平局即可、谁已淘汰</li>
+        <li>净胜球影响：需要大胜还是小胜</li>
+        <li><span class="hl">轮换风险</span>：已出线 → 可能大面积轮换；已淘汰 → 心态松弛</li>
+        <li>红黄牌累积：关键球员有停赛风险吗？</li>
+        <li>心理因素：首轮爆冷的愤怒 / 连胜后的松懈 / 德比战情绪</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">2</div>
+        <div><span class="step-title">近期战绩（每队 5-10 场）</span></div>
+      </div>
+      <div class="step-body">
+        <li>完整列出：日期 | 对手 | 比分 | 主场/客场 | 赛事类型</li>
+        <li>统计汇总：场均进球、场均失球、零封率、BTTS 率</li>
+        <li>趋势判断：进球在上升还是下降？防守在改善还是恶化？</li>
+        <li>关键数据（如有）：射门数、射正数、xG、控球率</li>
+        <li><span class="hl">对手质量标注</span>：这些数据是对强队还是弱队打出来的？</li>
+        <li>⚠️ <span class="hl">热身赛/友谊赛降权 ×0.4</span>——比利时 5-0 突尼斯 ≠ 正赛能 5-0</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">3</div>
+        <div><span class="step-title">历史交锋 H2H</span></div>
+      </div>
+      <div class="step-body">
+        <li>列出所有历史交锋：日期 | 比分 | 赛事 | 主客</li>
+        <li>样本质量评估：≥5 场近 5 年=强信号 / 2-4 场=中等 / <2 场或>10 年=降权</li>
+        <li>模式识别：总是小球？总是 BTTS？总有一方被零封？</li>
+        <li>最近一场的阵容与当前对比——变化大吗？</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">4</div>
+        <div><span class="step-title">阵容与伤停</span></div>
+      </div>
+      <div class="step-body">
+        <li>预测首发 XI（双方阵型 + 11人）</li>
+        <li>伤病：谁缺阵？重要性？替代者能力？</li>
+        <li>停赛、复出球员</li>
+        <li>核心四人组：头号射手、主要创造者、防守领袖、首发门将——都在吗？</li>
+        <li>相比上一场几人变动？是被迫（伤停）还是主动（战术调整）？</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">5</div>
+        <div><span class="step-title">球队演变</span></div>
+      </div>
+      <div class="step-body">
+        <li>上次大赛（2022 世界杯）的核心阵容还剩几人？</li>
+        <li>重要引援/新人、重要离队/退役</li>
+        <li>主教练是否换人？战术风格是否变化？</li>
+        <li>近一年战绩趋势：上升期 / 平台期 / 下滑期</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">6</div>
+        <div><span class="step-title">战术对位</span></div>
+      </div>
+      <div class="step-body">
+        <li>主队：常用阵型、风格（控球/反击/高压/长传）</li>
+        <li>主队：怎么进球？（边路传中/中路渗透/定位球/反击/个人突破）</li>
+        <li>主队：怎么丢球？（怕反击/怕高空/怕速度/定位球防守差）</li>
+        <li>客队：同上全部</li>
+        <li><span class="hl">对位匹配度</span>：主队进攻手段 vs 客队防守弱点、客队进攻 vs 主队防守</li>
+        <li>关键单挑：中锋 vs 中卫、边锋 vs 边卫</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">7</div>
+        <div><span class="step-title">定位球分析</span></div>
+      </div>
+      <div class="step-body">
+        <li>角球效率（进球数 / 角球数）</li>
+        <li>任意球专家——有能直接得分的吗？</li>
+        <li>身高优势——头球进球/失球率</li>
+        <li>定位球防守质量</li>
+        <li><span class="hl">这个维度直接决定「BTTS No」和「小2.5」的可靠性</span></li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c1">8</div>
+        <div><span class="step-title">裁判分析</span></div>
+      </div>
+      <div class="step-body">
+        <li>姓名、国籍</li>
+        <li>场均黄牌数：>4.5=紧哨、<3.0=松哨</li>
+        <li>红牌/点球倾向</li>
+        <li><span class="hl">对大小球的影响</span>：紧哨 → BTTS Yes 概率↑（点球多）、小2.5↓（比赛碎片化）</li>
+        <li><span class="hl">对牌路的影响</span>：松哨多身体对抗 → 黄牌多但比赛流畅</li>
+        <li>裁判偏好的比赛风格——鼓励对抗还是保护技术球员？</li>
+      </div>
+    </div>
+
+    <div class="step-card" style="border-color:var(--accent);">
+      <div class="step-header">
+        <div class="step-num c2">9</div>
+        <div><span class="step-title">⭐ 独立 λ 估算（核心）</span></div>
+      </div>
+      <div class="step-body">
+        <li><span class="hl">公式：λ_home = (主队近期场均进球 + 客队近期场均失球) / 2</span></li>
+        <li>λ_away = (客队近期场均进球 + 主队近期场均失球) / 2 × 0.88</li>
+        <li>"近期" = 最近 5-10 场正式比赛。热身赛降权 ×0.4</li>
+        <li>状态调整：0射正 ×0.75 / 连续进球 ×1.15 / 核心缺阵 ×0.85</li>
+        <li>范围限制：世界杯 λ ∈ [0.15, 3.5]</li>
+        <li><span class="hl">必须显式记录 λ 来源和每次调整的理由</span></li>
+        <li>⚠️ 此处不看赔率，不用赔率校准</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c2">10</div>
+        <div><span class="step-title">Poisson 独立概率</span></div>
+      </div>
+      <div class="step-body">
+        <li>输入第 9 步的独立 λ → 跑 Poisson score_grid()</li>
+        <li>输出：胜/平/负概率、大小球 2.5、BTTS、总进球期望、比分 TOP10</li>
+        <li>零封概率（双方）、半全场倾向（谁先破门？逆转概率？）</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c2">11</div>
+        <div><span class="step-title">比分路径分析</span></div>
+      </div>
+      <div class="step-body">
+        <li>基于 Poisson 网格 + 战术分析构建 3 条具体路径：</li>
+        <li><span class="hl">路径 1</span>（最可能）：具体比分 + 关键触发事件 + 概率</li>
+        <li><span class="hl">路径 2</span>（偏大球）：强队开局进球 → 对手攻出来 → 比赛打开</li>
+        <li><span class="hl">路径 3</span>（冷门）：久攻不下 + 一次反击/定位球 → 0-1</li>
+      </div>
+    </div>
+
+    <div class="step-card" style="border-color:var(--accent);">
+      <div class="step-header">
+        <div class="step-num c3">12</div>
+        <div><span class="step-title">⭐ 市场对比——找分歧（赔率唯一出现的地方）</span></div>
+      </div>
+      <div class="step-body">
+        <li>数据胜率 vs 市场隐含胜率</li>
+        <li>数据总进球 vs 市场大小球线</li>
+        <li>数据 BTTS vs 市场 BTTS 赔率</li>
+        <li><span class="hl">分歧 >15%</span> = 🔴 显著价值 / 5-15% = 🟡 关注 / <5% = 🟢 无价值</li>
+        <li>如果全部一致：诚实说「本轮市场定价有效」</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c4">13</div>
+        <div><span class="step-title">串关构建</span></div>
+      </div>
+      <div class="step-body">
+        <li>每场列出可选市场 + 数据概率（1X2、大小球、BTTS）</li>
+        <li>不限市场类型——西班牙小2.5 + 比利时不败 = 合法串关</li>
+        <li>枚举所有组合 → 按综合概率排名</li>
+        <li>输出三条路线：🛡️高概率 / ⚖️均衡 / 🚀高赔</li>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-num c4">14</div>
+        <div><span class="step-title">交付</span></div>
+      </div>
+      <div class="step-body">
+        <li>完整分析 → HTML 报告 → GitHub Pages</li>
+        <li>链接裸发，不加任何符号</li>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DATA WEIGHTS -->
+<div class="section">
+  <h2>📊 数据时效性权重体系</h2>
+  <p style="color:var(--text-dim);font-size:13px;margin-bottom:12px;">
+    不是所有数据价值相等。时间越近、赛事越正式，权重越高。
+  </p>
+  <table class="wt-table">
+    <tr><th>数据类型</th><th>权重</th><th>理由</th></tr>
+    <tr><td>本届赛事正赛</td><td><strong style="color:var(--green);">1.0</strong></td><td>这是当下的真实水平，最高权重</td></tr>
+    <tr><td>6 个月内的正式比赛</td><td><strong style="color:var(--accent);">0.6</strong></td><td>有时效性折旧，阵容/状态可能已变</td></tr>
+    <tr><td>1 年前的比赛</td><td><strong style="color:var(--orange);">0.3</strong></td><td>参考价值有限</td></tr>
+    <tr><td>赛前 3 个月内热身赛</td><td><strong style="color:var(--orange);">0.4</strong></td><td>对手可能弱、心态不同、轮换多</td></tr>
+    <tr><td>H2H（5 年内）</td><td><strong style="color:var(--accent);">0.5</strong></td><td>有参考价值但不如近期状态重要</td></tr>
+    <tr><td>H2H（>10 年）</td><td><strong style="color:var(--red);">0.1</strong></td><td>基本无参考价值</td></tr>
+    <tr><td>历史声誉 / 品牌</td><td><strong style="color:var(--red);">0.0</strong></td><td>不计入。西班牙过去再辉煌也改变不了 0 射正的事实</td></tr>
+  </table>
+</div>
+
+<!-- 14 DIMENSIONS SUMMARY -->
+<div class="section">
+  <h2>🧩 14 个维度与 λ 的关系</h2>
+  <p style="color:var(--text-dim);font-size:13px;margin-bottom:12px;">
+    每个维度如何影响最终的 λ 估算和概率判断：
+  </p>
+
+  <div class="two-col">
+    <div style="font-size:13px;">
+      <h4 style="color:var(--purple);">直接影响 λ 的维度</h4>
+      <p style="color:var(--text-dim);">这些直接进入 λ 公式</p>
+      <li style="color:var(--text-dim);"><span class="hl">Step 2 近期进球/失球</span> → λ 计算公式的分子分母</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 4 核心射手缺阵</span> → λ 打折系数 ×0.85</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 1 轮换风险</span> → 如果大面积轮换，λ 需重估</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 0 天气</span> → 极端天气降低总进球期望</li>
+    </div>
+    <div style="font-size:13px;">
+      <h4 style="color:var(--blue);">影响概率判断的维度</h4>
+      <p style="color:var(--text-dim);">这些不改变 λ 但影响市场选择</p>
+      <li style="color:var(--text-dim);"><span class="hl">Step 8 裁判紧哨</span> → BTTS Yes 概率↑、小2.5 概率↓</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 6 战术克制</span> → 影响「胜」vs「不败」的可靠性</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 7 定位球弱点</span> → 影响 BTTS No / 零封判断</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 3 H2H 模式</span> → 补充验证：Poisson 结果符合历史规律吗？</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 1 心理因素</span> → 影响比赛节奏（焦灼 vs 开放）</li>
+      <li style="color:var(--text-dim);"><span class="hl">Step 5 球队演变</span> → 对弱信号 H2H 做修正</li>
+    </div>
+  </div>
+</div>
+
+<!-- FORBIDDEN -->
+<div class="section" style="border-color:var(--red);">
+  <h2>⚠️ 禁止事项</h2>
+  <div class="two-col">
+    <div>
+      <li style="color:var(--red);">先看赔率再看数据（颠倒因果）</li>
+      <li style="color:var(--red);">用市场赔率校准 λ（循环论证）</li>
+      <li style="color:var(--red);">因为「强队」标签就默认高 λ</li>
+    </div>
+    <div>
+      <li style="color:var(--red);">热身赛大胜当作正赛数据同权</li>
+      <li style="color:var(--red);">跳过裁判分析</li>
+      <li style="color:var(--red);">链接前后加符号</li>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p>Hermes Agent · sports-betting-analysis skill v3 · 2026-06-21</p>
+  <p>本文为方法论文档，不构成投注建议。数据来源：公开比赛数据、赛事官网。</p>
+</div>
+
+</div>
+</body>
+</html>
