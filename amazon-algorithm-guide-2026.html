@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亚马逊算法全解析 & 2026年7月标题新规应对指南</title>
+<style>
+:root {
+  --bg: #0a0e14;
+  --card: #12171f;
+  --border: #1e2530;
+  --text: #c8d0da;
+  --text-secondary: #8892a4;
+  --gold: #e8b830;
+  --blue: #4a9eff;
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --orange: #f39c12;
+  --tag-rule: #e74c3c22;
+  --tag-algo: #4a9eff22;
+  --tag-strat: #2ecc7122;
+  --tag-reco: #f39c1222;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: PingFang SC, Hiragino Sans GB, Microsoft YaHei, -apple-system, sans-serif;
+  line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
+  font-size: clamp(15px, 1.6vw, 17px);
+}
+.container { max-width: 1100px; margin: 0 auto; padding: clamp(16px, 3vw, 40px) clamp(12px, 2.5vw, 32px); }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: clamp(24px, 5vw, 60px) 16px;
+  background: linear-gradient(135deg, #12171f 0%, #1a2230 50%, #12171f 100%);
+  border-radius: 16px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
+}
+.hero h1 {
+  font-size: clamp(22px, 3.5vw, 38px);
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.hero .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(13px, 1.4vw, 16px);
+  margin-bottom: 20px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--text-secondary);
+}
+.hero-meta span {
+  background: #1a2230;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+/* TOC */
+.toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+.toc h2 { color: var(--gold); font-size: clamp(16px, 1.8vw, 20px); margin-bottom: 16px; }
+.toc ol { padding-left: 20px; }
+.toc li { margin-bottom: 8px; }
+.toc a { color: var(--blue); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* Section */
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(16px, 3vw, 32px);
+  margin-bottom: 24px;
+}
+.section h2 {
+  font-size: clamp(18px, 2.2vw, 26px);
+  color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #1e2530;
+}
+.section h3 {
+  font-size: clamp(15px, 1.8vw, 20px);
+  color: #fff;
+  margin: 24px 0 12px;
+}
+.section h4 {
+  font-size: clamp(14px, 1.5vw, 17px);
+  color: var(--blue);
+  margin: 16px 0 8px;
+}
+.section p { margin-bottom: 14px; }
+.section ul, .section ol { padding-left: 24px; margin-bottom: 14px; }
+.section li { margin-bottom: 6px; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+.tag-rule { background: var(--tag-rule); color: var(--red); }
+.tag-algo { background: var(--tag-algo); color: var(--blue); }
+.tag-strat { background: var(--tag-strat); color: var(--green); }
+.tag-reco { background: var(--tag-reco); color: var(--orange); }
+
+/* Cards Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+@media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: #181e28;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.card h4 { color: var(--blue); font-size: clamp(14px, 1.4vw, 16px); margin-bottom: 8px; }
+.card .num { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+.card p { color: var(--text-secondary); font-size: clamp(12px, 1.1vw, 14px); margin: 0; }
+
+/* Table */
+.table-wrap { overflow-x: auto; margin: 16px 0; -webkit-overflow-scrolling: touch; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(12px, 1.3vw, 15px);
+}
+th {
+  background: #1a2230;
+  color: var(--gold);
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--border);
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #181e28;
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #161c26; }
+tr:hover td { background: #1a2230; }
+
+/* Highlight boxes */
+.highlight {
+  background: #1a2230;
+  border-left: 4px solid var(--gold);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+.highlight.warn { border-left-color: var(--red); }
+.highlight.info { border-left-color: var(--blue); }
+.highlight.strat { border-left-color: var(--green); }
+.highlight strong { color: #fff; }
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+  margin: 16px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.timeline-date { color: var(--gold); font-weight: 600; font-size: 14px; }
+.timeline-content { color: var(--text-secondary); margin-top: 4px; }
+
+/* Code block */
+code {
+  background: #0d1117;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: SF Mono, Fira Code, monospace;
+  font-size: 0.9em;
+  color: var(--blue);
+}
+pre {
+  background: #0d1117;
+  padding: 16px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  margin: 12px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Checklist */
+.checklist { list-style: none; padding-left: 0; }
+.checklist li {
+  padding: 6px 0 6px 28px;
+  position: relative;
+}
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 16px;
+}
+
+/* Footer */
+.disclaimer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge-new { background: #2ecc7122; color: var(--green); }
+.badge-hot { background: #e74c3c22; color: var(--red); }
+.badge-core { background: #4a9eff22; color: var(--blue); }
+
+/* Accordion-like expand */
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--blue);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.expand-btn:hover { background: #1a2230; }
+
+@media (max-width: 640px) {
+  .hero { padding: 20px 12px; }
+  .section { padding: 16px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🔍 亚马逊算法全解析<br>& 2026年7月标题新规应对指南</h1>
+  <p class="subtitle">A9/A10算法 · COSMO知识图谱 · Rufus AI 购物助手 · 推荐引擎 · 75字符标题新规 · 卖家行动清单</p>
+  <div class="hero-meta">
+    <span>📅 更新：2026年6月22日</span>
+    <span>📊 基于：官方文档 + Amazon Science论文 + 行业最佳实践</span>
+    <span>⏰ 新规生效：2026年7月27日</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <h2>📑 目录</h2>
+  <ol>
+    <li><a href="#s1">第一部分：亚马逊搜索与排名算法体系</a></li>
+    <li><a href="#s2">第二部分：亚马逊推荐引擎详解</a></li>
+    <li><a href="#s3">第三部分：AI 新时代：COSMO + Rufus</a></li>
+    <li><a href="#s4">第四部分：2026年7月27日标题新规详解</a></li>
+    <li><a href="#s5">第五部分：标题新规对卖家的影响</a></li>
+    <li><a href="#s6">第六部分：卖家应对策略 & 行动清单</a></li>
+    <li><a href="#s7">第七部分：Listing 优化与算法对齐最佳实践</a></li>
+    <li><a href="#s8">参考来源</a></li>
+  </ol>
+</nav>
+
+<!-- SECTION 1: SEARCH & RANKING ALGORITHM -->
+<div class="section" id="s1">
+  <h2>第一部分：亚马逊搜索与排名算法体系</h2>
+
+  <h3>1.1 概述：从 A9 到「后 A9」时代</h3>
+  <p>亚马逊官方从未正式命名过「A10」算法。所谓「A10」是卖家社区对 A9 算法持续演进后的非正式称呼。亚马逊的底层搜索系统仍然是 A9，但经过大量 AI 和语义理解能力的重构。2026 年的现实是：<strong>卖家需要同时为三套系统优化</strong>——传统 A9/A10 关键词算法、COSMO 语义知识图谱、Rufus 对话式 AI 层。</p>
+
+  <div class="card-grid">
+    <div class="card"><h4>A9（原始版）</h4><p>关键词匹配 + 销售速度驱动。产品卖得越多，排名越高。简单直接，但容易被操纵。</p></div>
+    <div class="card"><h4>A10（社区称呼）</h4><p>转向有机参与和外部流量。卖家权威度、账户健康、客户满意度权重上升。广告转化率开始影响自然排名。</p></div>
+    <div class="card"><h4>COSMO（学术论文验证）</h4><p>AI 驱动的常识知识图谱系统。从「包含这些关键词吗」变成「解决了客户描述的问题吗」。18 大类目、630 万节点、2900 万知识边。</p></div>
+    <div class="card"><h4>Rufus（面向消费者）</h4><p>对话式 AI 购物助手。2025 年 3 亿+ 用户使用，近 $120 亿增量年化销售额，Rufus 互动用户购买完成率高出 60%+。</p></div>
+  </div>
+
+  <h3>1.2 A10 算法的十大排名因素</h3>
+  <p>以下是根据多家权威来源综合整理的 A10 算法核心排名因素（注意：亚马逊未公开完整列表，以下为行业共识）：</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>#</th><th>排名因素</th><th>权重趋势</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>转化率 (CVR)</strong></td><td>🔺 上升</td><td>目标 10-15%。A10 优先考虑将点击转化为持续销售的产品。这是最重要的单一信号。</td></tr>
+      <tr><td>2</td><td><strong>销售速度 & 销售历史</strong></td><td>→ 稳定</td><td>强劲的销售记录仍然是核心排名因素。有机销售比广告销售权重更高。</td></tr>
+      <tr><td>3</td><td><strong>点击率 (CTR)</strong></td><td>🔺 上升</td><td>高 CTR 告诉亚马逊你的主图、标题和价格有吸引力。印象→点击→购买链条的起点。</td></tr>
+      <tr><td>4</td><td><strong>关键词相关性</strong></td><td>→ 稳定（但方式变了）</td><td>关键词仍然重要，但从「精确匹配」转向「语义匹配」。COSMO 和 Rufus 正在改变关键词的作用方式。</td></tr>
+      <tr><td>5</td><td><strong>外部流量</strong></td><td>🔺🔺 大幅上升</td><td>A10 奖励从 Google、社交媒体、博客等站外来源带来的高质量转化流量，视为市场需求的验证信号。</td></tr>
+      <tr><td>6</td><td><strong>卖家权威度</strong></td><td>🔺 上升</td><td>卖家年限、反馈评分、订单缺陷率(ODR)、客户服务质量。长期表现良好的卖家获得排名加成。</td></tr>
+      <tr><td>7</td><td><strong>客户评价</strong></td><td>→ 稳定</td><td>星级评分和评价数量是信任信号。A10 下，评价质量和真实性比数量更重要。</td></tr>
+      <tr><td>8</td><td><strong>退货率</strong></td><td>🔺 上升</td><td>退货率高是负信号。A10 将退货率作为产品质量和客户满意度的代理指标。</td></tr>
+      <tr><td>9</td><td><strong>库存可用性</strong></td><td>🔺 上升</td><td>断货直接导致排名下降。持续有货的产品获得排名稳定性加成。</td></tr>
+      <tr><td>10</td><td><strong>定价 & Prime 资格</strong></td><td>→ 稳定</td><td>有竞争力的价格和 Prime 配送是购买决策的关键因素，间接影响转化率。</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="highlight info">
+    <strong>💡 关键洞察：</strong>A10 最大的范式转变——外部流量从「锦上添花」变成了「排名杠杆」。从 TikTok、Google、博客等渠道带来高转化流量，是 2026 年最有效的自然排名提升手段之一。但同时也有卖家报告，A10 在 2026 年对站外流量的权重有所回调，转而更重视客户满意度信号。
+  </div>
+
+  <h3>1.3 A9 vs A10：核心差异对比</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>维度</th><th>A9（早期）</th><th>A10（2025-2026）</th></tr></thead>
+    <tbody>
+      <tr><td>核心逻辑</td><td>关键词匹配 + 销售数据</td><td>买家意图理解 + 全链路行为信号</td></tr>
+      <tr><td>广告影响</td><td>广告和自然排名基本独立</td><td>广告转化率开始影响自然排名</td></tr>
+      <tr><td>外部流量</td><td>基本不纳入排名信号</td><td>高质量外部流量显著提升排名</td></tr>
+      <tr><td>卖家因素</td><td>基本不考虑</td><td>账户健康、反馈评分影响可见度</td></tr>
+      <tr><td>搜索方式</td><td>关键词精确匹配</td><td>语义搜索 + AI 意图理解</td></tr>
+      <tr><td>用户行为</td><td>只看购买</td><td>CTR、停留时间、浏览深度、退货率</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- SECTION 2: RECOMMENDATION ENGINE -->
+<div class="section" id="s2">
+  <h2>第二部分：亚马逊推荐引擎详解</h2>
+
+  <h3>2.1 推荐系统对亚马逊有多重要？</h3>
+  <p>据行业估计，亚马逊 <strong>约 35% 的营收来自推荐系统</strong>。你在亚马逊上看到的「买了这个的人也买了」「看了这个的人也看了」「为你推荐」——这些不是简单的关联规则，而是多套算法并行运行的复杂系统。</p>
+
+  <h3>2.2 推荐算法演进史</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">2003 年 — Item-to-Item 协同过滤</div>
+      <div class="timeline-content">亚马逊发表经典论文《Amazon.com Recommendations: Item-to-Item Collaborative Filtering》（IEEE Internet Computing）。这是业界最有影响力的推荐算法之一。核心思路：与其找相似用户，不如找相似商品——「买了 A 的人也买了 B」。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2010s — 深度学习引入</div>
+      <div class="timeline-content">RNN（循环神经网络）用于序列推荐——预测用户下一步会买什么。Transformer 架构引入后，SASRec 等模型在稀疏和密集数据集上均显著超越传统方法。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2020s — GNN + LLM 融合</div>
+      <div class="timeline-content">图神经网络（GNN）处理商品间复杂关系。COSMO-GNN 将会话行为建模为图结构。大语言模型（LLM）用于理解商品描述和用户评论的深层语义。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2024-2026 — Amazon Personalize + COSMO</div>
+      <div class="timeline-content">AWS 推出 Amazon Personalize（基于 Transformer 的用户个性化推荐 v2）。内部 COSMO 知识图谱与 Rufus 对话 AI 结合，实现从「猜你想买」到「理解你为什么想买」的跨越。</div>
+    </div>
+  </div>
+
+  <h3>2.3 亚马逊推荐系统的四大算法层级</h3>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4><span class="badge badge-core">核心</span> 协同过滤（Collaborative Filtering）</h4>
+      <p><strong>Item-to-Item（商品到商品）：</strong>亚马逊的「祖传」算法。不找相似用户，而是找相似商品。计算效率高、可扩展性强、推荐质量好。支撑「买了这个的人也买了」模块。</p>
+      <p style="margin-top:8px;"><strong>User-based（用户到用户）：</strong>找行为相似的用户群，推荐他们买过但你没买的东西。</p>
+    </div>
+    <div class="card">
+      <h4><span class="badge badge-core">核心</span> 内容过滤（Content-Based）</h4>
+      <p>基于商品属性（标题、描述、类目、品牌、价格区间）匹配用户历史偏好。不依赖其他用户数据——适合冷启动场景（新品无购买数据时）。</p>
+    </div>
+    <div class="card">
+      <h4><span class="badge badge-hot">热门</span> 深度学习序列推荐</h4>
+      <p>基于用户浏览/购买序列预测下一步行为：</p>
+      <ul style="padding-left:16px;margin-top:6px;">
+        <li><strong>Transformer (SASRec)：</strong>自注意力机制捕获长期依赖</li>
+        <li><strong>GRU4Rec：</strong>RNN 架构的会话推荐</li>
+        <li><strong>COSMO-GNN：</strong>图神经网络 + 常识知识融合</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4><span class="badge badge-new">新品</span> 混合模型</h4>
+      <p><strong>多臂老虎机（Multi-armed Bandit）：</strong>探索-利用平衡——新产品给展示机会，好产品获得更多流量。</p>
+      <p style="margin-top:8px;"><strong>Amazon Personalize：</strong>AWS 对外提供的推荐引擎服务，支持用户个性化、相似商品、个性化排名等方案。</p>
+    </div>
+  </div>
+
+  <h3>2.4 「买了又买」背后的技术细节</h3>
+  <p>当你看到「Frequently Bought Together（经常一起购买）」，背后是：</p>
+  <ul>
+    <li>🔗 <strong>Co-buy pairs 挖掘：</strong>从海量订单中提取同时购买的商品对（COSMO 使用了 314 万对）</li>
+    <li>📊 <strong>关联规则 + 协同过滤融合：</strong>不仅看频率，还看购买序列中的位置关系</li>
+    <li>🧠 <strong>会话上下文：</strong>当前购物车里的商品会影响推荐结果（实时推理）</li>
+    <li>🌐 <strong>知识图谱增强：</strong>COSMO 的关系类型（如 <code>Used_With</code>）引入常识性的互补关系</li>
+  </ul>
+</div>
+
+<!-- SECTION 3: COSMO + RUFUS -->
+<div class="section" id="s3">
+  <h2>第三部分：AI 新时代：COSMO + Rufus 深度解析</h2>
+
+  <h3>3.1 COSMO：亚马逊的常识知识图谱</h3>
+  <p><span class="badge badge-hot">SIGMOD 2024 论文</span> COSMO（Common Sense Knowledge Generation and Serving System）是亚马逊在 SIGMOD-Companion 2024 发表的同行评审论文中描述的生产级系统。这不是营销噱头，是经过学术验证的部署在亚马逊搜索基础设施中的 AI 系统。</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="num">630万</div><p>知识图谱节点数</p>
+    </div>
+    <div class="card">
+      <div class="num">2900万</div><p>知识边（关系连接）</p>
+    </div>
+    <div class="card">
+      <div class="num">18</div><p>覆盖的大类目</p>
+    </div>
+    <div class="card">
+      <div class="num">+0.7%</div><p>仅导航功能即带来销售额提升（亚马逊量级≈数亿美元）</p>
+    </div>
+  </div>
+
+  <p><strong>核心问题转变：</strong></p>
+  <div class="highlight">
+    <strong>A9 问：</strong>「这个 listing 包含客户搜索的词吗？」<br><br>
+    <strong>COSMO 问：</strong>「这个产品解决了客户描述的问题吗？」
+  </div>
+
+  <p>例如：客户搜索「I need a quiet vacuum for a small apartment with a shedding dog」——关键词匹配只看有没有这些词，而 COSMO 会映射到：噪音级别、紧凑形态、宠物毛发处理能力、过滤质量等多个意图节点。</p>
+
+  <h3>3.2 COSMO 的 15 种常识关系类型</h3>
+  <p>这是 COSMO 知识图谱编码产品知识的 15 种结构化关系——卖家优化 listing 的核心框架：</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>类别</th><th>关系类型</th><th>中文</th><th>含义</th><th>在 Listing 中如何体现</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="3"><strong>功能性</strong></td><td><code>Used_For_Func</code></td><td>用于/功能</td><td>具体功能（如「擦干脸」「切蔬菜」）</td><td>Bullet Points 中的功能描述</td></tr>
+      <tr><td><code>Used_To</code></td><td>用来/完成</td><td>完成什么任务（如「搭围栏」「整理衣柜」）</td><td>A+ 中的使用场景</td></tr>
+      <tr><td><code>Capable_Of</code></td><td>能做到</td><td>具备什么能力（如「防水」「承重 50 磅」）</td><td>标题和五点中的参数/能力</td></tr>
+      <tr><td rowspan="3"><strong>受众</strong></td><td><code>Used_For_Audience</code></td><td>目标用户</td><td>为谁设计（如「托儿所老师」「业余摄影师」）</td><td>标题和 Item Highlights</td></tr>
+      <tr><td><code>Used_By</code></td><td>使用者</td><td>谁在用（如「养猫的人」「大学生」）</td><td>五点中的场景描述</td></tr>
+      <tr><td><code>xIs_A</code></td><td>购买者身份</td><td>典型购买者（如「孕妇」「专业厨师」）</td><td>受众定位用</td></tr>
+      <tr><td rowspan="4"><strong>场景</strong></td><td><code>Used_For_Event</code></td><td>使用场景</td><td>什么场合用（如「遛狗」「节日派对」）</td><td>Item Highlights 重点</td></tr>
+      <tr><td><code>Used_On</code></td><td>时间场景</td><td>什么时候用（如「冬末」「搬家日」）</td><td>季节性关键词</td></tr>
+      <tr><td><code>Used_In_Location</code></td><td>地点</td><td>在哪用（如「卧室」「营地」「办公室」）</td><td>五点中的空间场景</td></tr>
+      <tr><td><code>Used_In_Body</code></td><td>身体部位</td><td>身体相关（如「敏感肌」「下背部」）</td><td>护肤品、健康品类</td></tr>
+      <tr><td rowspan="2"><strong>分类</strong></td><td><code>Used_As</code></td><td>作为/功能分类</td><td>功能类别（如「智能手表」「旅行枕头」）</td><td>标题和类目</td></tr>
+      <tr><td><code>Is_A</code></td><td>是什么</td><td>品类身份（如「登山靴」）</td><td>产品类型词</td></tr>
+      <tr><td rowspan="3"><strong>关联</strong></td><td><code>Used_With</code></td><td>搭配使用</td><td>和什么一起用（如「配三脚架」「配搅拌机」）</td><td>互补品交叉销售</td></tr>
+      <tr><td><code>xInterested_In</code></td><td>兴趣信号</td><td>买家兴趣（如「智能家居」「可持续生活」）</td><td>受众标签</td></tr>
+      <tr><td><code>xWant</code></td><td>想要/期望</td><td>期望结果（如「高效备餐」「睡得更好」）</td><td>五点中的利益描述</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="highlight strat">
+    <strong>🎯 卖家实战建议：</strong>你的 listing 应该覆盖尽可能多的关系类型。不要只写「what it is」（产品是什么），还要覆盖「who it's for」（为谁）「where it's used」（在哪用）「what it can do」（能做什么）「used with what」（配什么用）。一个覆盖了 10+ 种关系的 listing 在 COSMO 驱动的搜索中会比只覆盖 3 种的有显著优势。
+  </div>
+
+  <h3>3.3 Rufus：对话式 AI 购物助手</h3>
+  <p><span class="badge badge-hot">关键数据</span> Rufus 是亚马逊面向消费者的 AI 购物助手，基于 COSMO 等底层系统生成的商品知识。关键在于 <strong>Rufus 不是替代传统搜索，而是新增了一个发现渠道</strong>。</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="num">3亿+</div><p>2025 年使用 Rufus 的客户数</p>
+    </div>
+    <div class="card">
+      <div class="num">$120亿</div><p>AI 辅助购物的增量年化销售额</p>
+    </div>
+    <div class="card">
+      <div class="num">+60%</div><p>Rufus 互动用户的购买完成率提升</p>
+    </div>
+    <div class="card">
+      <div class="num">+149%</div><p>月活同比增长（2025年11月达2.5亿）</p>
+    </div>
+  </div>
+
+  <p><strong>Rufus 的数据来源：</strong>商品目录、客户评论、社区 Q&A、网页信息。这就是为什么<strong>评论质量和 Q&A 完整性在 AI 驱动的发现中格外重要</strong>——Rufus 会根据这些信息回答客户的问题和推荐产品。</p>
+
+  <h3>3.4 卖家现在需要同时优化三套系统</h3>
+  <div class="highlight warn">
+    <strong>⚠️ 三重优化范式：</strong><br>
+    ① <strong>A9/A10 关键词算法</strong> → 传统搜索结果页排名<br>
+    ② <strong>COSMO 语义知识图谱</strong> → 搜索导航细化、搜索相关性、推荐<br>
+    ③ <strong>Rufus 对话式 AI 层</strong> → 客户用自然语言提问时被推荐<br><br>
+    这三套系统不是替代关系，而是<strong>并行运行</strong>。你的 listing 需要同时满足三者的信息需求。
+  </div>
+</div>
+
+<!-- SECTION 4: TITLE REGULATION -->
+<div class="section" id="s4">
+  <h2>第四部分：2026年7月27日标题新规详解</h2>
+
+  <div class="highlight warn">
+    <strong>🚨 官方公告：</strong>2026年6月10日，Amazon Seller Central 发布公告<a href="https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470" target="_blank" style="color:var(--blue)">「Updates to improve your product titles begin on July 27」</a>，正式确认标题新规。
+  </div>
+
+  <h3>4.1 规则核心要点</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>规则项</th><th>具体要求</th><th>标签</th></tr></thead>
+    <tbody>
+      <tr><td><strong>字符上限</strong></td><td>75 个字符（含空格），适用于除媒体外的所有类目</td><td><span class="tag tag-rule">强制</span></td></tr>
+      <tr><td><strong>豁免类目</strong></td><td>仅限媒体（Books、Music、Video），没有其他例外</td><td><span class="tag tag-algo">例外</span></td></tr>
+      <tr><td><strong>Item Highlights 字段</strong></td><td>新增 125 字符的可搜索字段，显示在搜索结果页和商品详情页的标题下方</td><td><span class="tag tag-strat">新增</span></td></tr>
+      <tr><td><strong>AI 自动重写</strong></td><td>7月27日后，超75字符的标题将被 Amazon AI 逐步自动重写</td><td><span class="tag tag-rule">自动执行</span></td></tr>
+      <tr><td><strong>品牌主审查期</strong></td><td>品牌注册卖家在 AI 建议后享有 14 天审查/修改/批准窗口</td><td><span class="tag tag-strat">保护机制</span></td></tr>
+      <tr><td><strong>listing 保持活跃</strong></td><td>整个过程中 listing 不会下架，可随时手动修改标题和 Item Highlights</td><td><span class="tag tag-algo">卖家友好</span></td></tr>
+      <tr><td><strong>禁止内容</strong></td><td>禁止促销语言（如「Best Seller」「Free Shipping」）、禁止装饰性特殊字符（!、?、{} 等）、同一单词出现不超过 2 次（介词和连词除外）</td><td><span class="tag tag-rule">合规</span></td></tr>
+      <tr><td><strong>移动端适配</strong></td><td>亚马逊官方解释：缩短标题是为了确保移动端完整显示，并与其他在线商店的标题长度保持一致</td><td><span class="tag tag-algo">原因</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>4.2 Item Highlights（商品亮点）是什么？</h3>
+  <p>这是本次新规中<strong>最容易被忽视但最重要的部分</strong>。Item Highlights 不是你的 Bullet Points（五点描述），而是一个全新的独立字段：</p>
+  <ul>
+    <li><strong>125 字符上限</strong>，用于补充标题无法容纳的信息</li>
+    <li><strong>可被搜索</strong>，显示在搜索结果页标题下方和商品详情页</li>
+    <li>亚马逊官方指导：放「材质材料和推荐使用场景」</li>
+    <li>官方建议：使用产品特性或利益驱动的短语，<strong>不用完整句子</strong></li>
+    <li>⚠️ <strong>注意：</strong>Item Highlights <strong>仅在标题 ≤75 字符时才显示</strong></li>
+    <li>⚠️ <strong>注意：</strong>不要把标题内容重复放进去</li>
+  </ul>
+
+  <div class="highlight strat">
+    <strong>💡 策略解读：</strong>Item Highlights 本质上是亚马逊给卖家的「补偿」——标题被砍到 75 字符后，多给你 125 字符在搜索结果中展示。这不是限制而是<strong>新的发现渠道</strong>。利用好这 125 字符，你可以在搜索结果中获得比别人更多的信息展示空间。
+  </div>
+
+  <h3>4.3 AI 自动重写的风险</h3>
+  <p>如果你不在 7月27日前主动修改，亚马逊的 AI 会替你重写标题。但已有卖家报告这些自动重写存在严重问题：</p>
+  <ul>
+    <li>❌ 年份错误（2024 写成 2025）</li>
+    <li>❌ 尺寸错误</li>
+    <li>❌ 从其他 listing 拉来不相关的关键词</li>
+    <li>❌ 可能引入违禁词导致 listing 被抑制（suppressed）</li>
+    <li>❌ <strong>合规责任仍然在你：</strong>亚马逊审查的是 listing 上的内容，不论是谁写的</li>
+  </ul>
+
+  <div class="highlight warn">
+    <strong>⚠️ 关键警告：</strong>AI 重写不做合规检查。如果 AI 自动生成的标题包含违禁词或主观声明（如「best」「#1」「eco-friendly」未认证），listing 可能被抑制，而你甚至可能不知道标题已经被改了。<strong>这就是为什么必须主动审查 AI 建议版本，而不是盲目信任。</strong>
+  </div>
+
+  <h3>4.4 有先例可循</h3>
+  <p>这不是亚马逊第一次这么做。2025年1月，亚马逊执行了同样的策略：推出新标题政策 → 向品牌主发送修正建议 → 14天窗口 → 对未行动者自动更新。7月27日的新规是同一模板的复用。<strong>这意味着 AI 重写真的会发生，不是虚张声势。</strong></p>
+</div>
+
+<!-- SECTION 5: IMPACT -->
+<div class="section" id="s5">
+  <h2>第五部分：标题新规对卖家的影响评估</h2>
+
+  <h3>5.1 影响程度分级</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>影响程度</th><th>产品类型</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>🔴 <strong>高影响</strong></td><td>长标题依赖型（多属性、多变体、多关键词堆砌）</td><td>原来靠 200 字符堆关键词的 listing 将被砍掉 60%+ 的标题空间</td></tr>
+      <tr><td>🟡 <strong>中影响</strong></td><td>品牌名+产品名+1-2 属性</td><td>可能不需要大幅修改，但需要规划关键词迁移策略</td></tr>
+      <tr><td>🟢 <strong>低影响</strong></td><td>简短标题型（本来就在 75 字符以内）</td><td>只需补填 Item Highlights 即可获取额外搜索曝光</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>5.2 关键词权益的重新分配</h3>
+  <p>所有原来堆在标题里的长尾关键词需要找到新家。你的选项：</p>
+  <div class="card-grid">
+    <div class="card">
+      <h4>📌 Item Highlights</h4>
+      <p>125 字符，可搜索，显示在搜索结果中。<strong>优先级最高。</strong>放材质、使用场景、核心差异化卖点。</p>
+    </div>
+    <div class="card">
+      <h4>📌 Bullet Points（五点）</h4>
+      <p>不受此次新规直接影响。保持产品功能描述。A9/A10 仍会索引五点中的关键词。</p>
+    </div>
+    <div class="card">
+      <h4>📌 Backend Search Terms</h4>
+      <p>买家不可见，但亚马逊可索引。用于存放放不进标题和 Item Highlights 的关键词。</p>
+    </div>
+    <div class="card">
+      <h4>📌 A+ Content / 描述</h4>
+      <p>被 COSMO 和 Rufus 抓取用于理解产品。虽不直接显示在搜索结果中，但影响 AI 推荐。</p>
+    </div>
+  </div>
+
+  <h3>5.3 移动端的真实原因</h3>
+  <p>亚马逊官方给出的理由很直接——确保标题在移动端完整显示。但更深层的原因可能是：</p>
+  <ul>
+    <li>📱 <strong>移动购物占比持续上升</strong>，长标题在小屏幕上体验差</li>
+    <li>🤖 <strong>为 Rufus AI 做准备</strong>：结构化的短标题 + Item Highlights 更容易被 AI 解析和理解</li>
+    <li>🛒 <strong>与行业接轨</strong>：其他电商平台的标题普遍较短</li>
+    <li>🎯 <strong>信息分层</strong>：标题做产品身份、Item Highlights 做产品亮点、五点做详细参数——每个字段各司其职</li>
+  </ul>
+</div>
+
+<!-- SECTION 6: ACTION PLAN -->
+<div class="section" id="s6">
+  <h2>第六部分：卖家应对策略 & 行动清单</h2>
+
+  <div class="highlight warn">
+    <strong>⏰ 关键时间线：</strong>距离 7月27日约 5 周。现在开始规划，时间充裕。等到最后一周将面临批量修改的压力。
+  </div>
+
+  <h3>6.1 四周行动计划</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">第 1 周（现在 - 6月29日）：审计</div>
+      <div class="timeline-content">
+        <ul>
+          <li>导出全量 listing，用 Excel LEN() 函数筛选标题 >75 字符的产品</li>
+          <li>标记高流量/高排名 listing（这些需要人工精修）</li>
+          <li>标记低流量 listing（可以等 AI 自动重写后再调整）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">第 2 周（6月30日 - 7月6日）：精修核心 listing</div>
+      <div class="timeline-content">
+        <ul>
+          <li>优先处理占总销售额 80% 的头部产品</li>
+          <li>工程师标题：品牌 + 核心产品 + 最重要区分特征</li>
+          <li>将溢出关键词迁移到 Item Highlights</li>
+          <li>剩余关键词放入 Backend Search Terms</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">第 3 周（7月7日 - 7月13日）：批量处理</div>
+      <div class="timeline-content">
+        <ul>
+          <li>处理中等流量产品（可用 AI 工具如 ChatGPT/Claude 辅助改写）</li>
+          <li>检查 Item Highlights 是否正确显示</li>
+          <li>记录每个 listing 修改前后的排名数据作为基线</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">第 4 周（7月14日 - 7月26日）：收尾 + 监控</div>
+      <div class="timeline-content">
+        <ul>
+          <li>完成剩余 listing 的修改</li>
+          <li>低优先级 listing 可以选择不修改，让 AI 重写后再在 Review Listings Changes 面板中修正</li>
+          <li>设置 7月27日后的排名监控提醒</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>6.2 75 字符标题工程化公式</h3>
+  <pre>品牌名 + 核心产品名词 + #1 区分特征 = ≤ 75字符
+
+✅ 正确示例（~70字符）：
+Elystara Beaded Keychain Wristlet for Women, 15 Colors
+
+❌ 错误示例（超标）：
+Elystara Beaded Keychain Wristlet for Women - Boho Charm Bracelet Key Ring,
+Handmade Beaded Wristlet Keychain, Cute Purse Accessories Gift for Her, 15 Colors</pre>
+
+  <div class="highlight info">
+    <strong>📐 标题工程化规则：</strong>
+    <ul>
+      <li>用数字而非英文（32oz 而不是 thirty-two ounce）</li>
+      <li>缩写单位（in 而不是 inch，lbs 而不是 pounds）</li>
+      <li>删掉填充词（premium、perfect、high-quality 等无信息量的修饰词）</li>
+      <li>不用声明类语言（best、#1、eco-friendly 除非有认证）</li>
+      <li>不要截断单词来凑字符数</li>
+      <li>品牌名仍然放最前面（最佳实践，未被新规取消）</li>
+    </ul>
+  </div>
+
+  <h3>6.3 用 ChatGPT/Claude 辅助改写</h3>
+  <p>可以使用 AI 工具批量改写标题，以下是推荐的 prompt（英文版，因为标题本身是英文）：</p>
+  <pre>You are an Amazon listing specialist. Amazon now caps product titles at 75 
+characters (including spaces) in every category except media, effective July 
+27, 2026, plus a separate searchable "Item Highlights" field of 125 characters. 
+Rewrite my listing into the two fields.
+
+Current title: [PASTE YOUR FULL TITLE]
+Brand: [BRAND NAME]
+Core product (what it literally is): [e.g. stainless steel water bottle]
+Top differentiators, most important first: [e.g. 32oz, insulated, leakproof]
+Keywords that drive sales: [FROM BRAND ANALYTICS / SEARCH TERM REPORT]
+Category: [CATEGORY]
+
+RULES:
+- Title ≤75 chars: Brand + core product noun + #1 differentiator.
+- Item Highlights ≤125 chars: materials, use cases, displaced keywords.
+- No claim language (best, #1, eco-friendly unless certified).
+- Use numerals (32oz), abbreviate units, cut filler words.
+- Never cut a word off mid-way to hit character limit.
+- After rewriting, list every keyword you dropped and the character counts.</pre>
+
+  <h3>6.4 完整行动清单</h3>
+  <ul class="checklist">
+    <li>导出全量 listing，筛选标题 >75 字符的产品</li>
+    <li>按流量/销售额排序，确定优先级</li>
+    <li>头部队列：人工精修标题 + Item Highlights</li>
+    <li>中部队列：可用 AI 辅助批量改写</li>
+    <li>尾部队列：可等 AI 重写后在 Review Listings Changes 面板中修正</li>
+    <li>所有修改前记录排名基线（用于修改后对比效果）</li>
+    <li>将溢出关键词分配到：Item Highlights → Bullet Points → Backend Search Terms</li>
+    <li>确保每个 listing 的 Item Highlights 已填写（仅在标题 ≤75 字符时显示）</li>
+    <li>7月27日后，定期检查 Review Listings Changes 面板（品牌主专属）</li>
+    <li>设置排名和流量监控，追踪修改后的影响</li>
+    <li>避免在标题中使用禁止词：Best Seller, Free Shipping, !, ?, {} 等</li>
+    <li>确保品牌名+核心产品+区分特征在 75 字符以内</li>
+  </ul>
+</div>
+
+<!-- SECTION 7: LISTING OPTIMIZATION -->
+<div class="section" id="s7">
+  <h2>第七部分：Listing 优化与算法对齐最佳实践</h2>
+
+  <h3>7.1 2026年 Listing 优化核心原则</h3>
+  <div class="highlight strat">
+    <strong>🎯 核心理念：</strong>你的 listing 不再只是给人类看的，而是<strong>给 AI 系统（A10、COSMO、Rufus）做数据输入</strong>。Listing 就是你的产品知识库（Knowledge Base），AI 系统从中提取信息来匹配买家意图。
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>📝 标题</h4>
+      <p><strong>新标准：≤75字符</strong><br>品牌 + 核心产品 + #1区分特征<br>不再塞关键词，给身份定位</p>
+    </div>
+    <div class="card">
+      <h4>✨ Item Highlights（新）</h4>
+      <p><strong>125字符</strong>，可搜索<br>材质、使用场景、受众<br>搜索结果中显示</p>
+    </div>
+    <div class="card">
+      <h4>📋 Bullet Points</h4>
+      <p>覆盖 COSMO 关系类型<br>功能(<code>Used_For_Func</code>)<br>能力(<code>Capable_Of</code>)<br>场景(<code>Used_In_Location</code>)</p>
+    </div>
+    <div class="card">
+      <h4>🖼️ A+ Content</h4>
+      <p>深度场景描述<br>对比图表<br>互补品搭配<br>被 Rufus 引用</p>
+    </div>
+  </div>
+
+  <h3>7.2 COSMO 关系类型 Listing 覆盖检查表</h3>
+  <p>检查你的 listing 是否覆盖了以下关键关系类型（覆盖越多越好）：</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>关系类型</th><th>你的 listing 有吗？</th><th>应该放在哪里</th></tr></thead>
+    <tbody>
+      <tr><td><code>Is_A</code> / <code>Used_As</code>（是什么）</td><td>✅ 标题必须有</td><td>标题</td></tr>
+      <tr><td><code>Capable_Of</code>（能做到什么）</td><td>✅ 必须覆盖</td><td>Bullet Points</td></tr>
+      <tr><td><code>Used_For_Func</code>（功能）</td><td>✅ 必须覆盖</td><td>Bullet Points</td></tr>
+      <tr><td><code>Used_For_Audience</code>（目标用户）</td><td>强烈推荐</td><td>Item Highlights</td></tr>
+      <tr><td><code>Used_For_Event</code>（使用场景）</td><td>强烈推荐</td><td>Item Highlights</td></tr>
+      <tr><td><code>Used_In_Location</code>（使用地点）</td><td>强烈推荐</td><td>Bullet Points / Item Highlights</td></tr>
+      <tr><td><code>Used_With</code>（搭配）</td><td>推荐</td><td>A+ Content</td></tr>
+      <tr><td><code>Used_By</code> / <code>xIs_A</code>（使用者）</td><td>推荐</td><td>Item Highlights</td></tr>
+      <tr><td><code>xWant</code>（客户期望结果）</td><td>推荐</td><td>Bullet Points</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>7.3 外部流量策略（A10 奖励项）</h3>
+  <p>在 A10 算法下，站外流量仍然是重要的排名杠杆。推荐的渠道：</p>
+  <ol>
+    <li><strong>社交媒体（TikTok、Instagram）：</strong>短视频展示产品使用场景 → 链接到 Amazon listing</li>
+    <li><strong>Google SEO：</strong>针对「best [产品] Amazon」等长尾关键词做内容营销</li>
+    <li><strong>博客/测评站：</strong>与博主合作，获取高质量外链和推荐流量</li>
+    <li><strong>邮件营销：</strong>新品发布时通过邮件列表驱动首波转化</li>
+    <li><strong>Pinterest：</strong>视觉类产品（配饰、家居）的天然流量池</li>
+  </ol>
+
+  <div class="highlight info">
+    <strong>💡 注意：</strong>外部流量的关键是<strong>转化质量</strong>，不是数量。垃圾流量不会提升排名。A10 看重的是「来了就买」的高转化外部流量。用 Amazon Attribution 追踪外部流量的转化效果。
+  </div>
+
+  <h3>7.4 卖家权威度建设</h3>
+  <p>A10 算法赋予卖家权威度前所未有的权重。以下是核心指标：</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>指标</th><th>目标值</th><th>如何优化</th></tr></thead>
+    <tbody>
+      <tr><td>卖家反馈评分</td><td>≥ 95% 好评</td><td>及时响应客户消息、准确描述产品、准时发货</td></tr>
+      <tr><td>订单缺陷率 (ODR)</td><td>&lt; 1%</td><td>避免 A-to-Z 索赔、差评、信用卡拒付</td></tr>
+      <tr><td>退货率</td><td>类目合理范围内</td><td>准确的产品图片和描述、尺寸指南、材质说明</td></tr>
+      <tr><td>账户健康评分</td><td>≥ 200（绿色）</td><td>遵守所有亚马逊政策、及时处理违规通知</td></tr>
+      <tr><td>卖家年限</td><td>越久越好</td><td>持续经营，不要频繁开关账户</td></tr>
+      <tr><td>品牌注册</td><td>强烈推荐</td><td>注册 Amazon Brand Registry，解锁 A+ Content、Brand Analytics 等工具</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>7.5 三重算法对齐总结</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>🔍 A9/A10 关键词层</h4>
+      <ul>
+        <li>关键词在标题、五点、后台搜索词中的存在</li>
+        <li>转化率优化（主图、价格、Prime）</li>
+        <li>销售速度驱动</li>
+        <li>外部转化流量</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🧠 COSMO 语义层</h4>
+      <ul>
+        <li>覆盖 15 种关系类型</li>
+        <li>丰富的使用场景描述</li>
+        <li>清晰的受众定位</li>
+        <li>互补品关联</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🤖 Rufus AI 对话层</h4>
+      <ul>
+        <li>高质量评论和 Q&A</li>
+        <li>A+ Content 中的详细对比</li>
+        <li>完整的产品属性填写</li>
+        <li>用自然语言覆盖买家可能的提问</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: REFERENCES -->
+<div class="section" id="s8">
+  <h2>参考来源</h2>
+  <ol>
+    <li>A10 Algorithm (2026): <a href="https://www.sellerlabs.com/blog/amazon-a10-algorithm-2026/" target="_blank" style="color:var(--blue)">Seller Labs Guide</a> / <a href="https://signalytics.ai/amazon-a10-algorithm-guide/" target="_blank" style="color:var(--blue)">Signalytics</a> / <a href="https://coseoco.com/amazon-seo/the-amazon-a10-algorithm-in-2026/" target="_blank" style="color:var(--blue)">Coseoco</a></li>
+    <li>COSMO Algorithm: <a href="https://www.amazon.science/publications/cosmo-a-large-scale-e-commerce-common-sense-knowledge-generation-and-serving-system-at-amazon" target="_blank" style="color:var(--blue)">Amazon Science (SIGMOD 2024)</a> / <a href="https://www.zonguru.com/blog/amazon-cosmo-guide" target="_blank" style="color:var(--blue)">ZonGuru Comprehensive Guide</a></li>
+    <li>Amazon Recommendation System: <a href="https://www.cs.umd.edu/~samir/498/Amazon-Recommendations.pdf" target="_blank" style="color:var(--blue)">IEEE Paper (2003)</a> / <a href="https://www.amazon.science/the-history-of-amazons-recommendation-algorithm" target="_blank" style="color:var(--blue)">Amazon Science History</a></li>
+    <li>Title Policy: <a href="https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470" target="_blank" style="color:var(--blue)">Amazon Seller Central Official Announcement</a></li>
+    <li>Title Policy Analysis: <a href="https://www.zonguru.com/blog/amazon-75-character-title-limit" target="_blank" style="color:var(--blue)">ZonGuru</a> / <a href="https://www.goatconsulting.com/merchandising/amazon-product-title-requirements" target="_blank" style="color:var(--blue)">Goat Consulting</a> / <a href="https://canopymanagement.com/amazon-75-character-title-limit-item-highlights/" target="_blank" style="color:var(--blue)">Canopy Management</a></li>
+    <li>Title Regulations Details: <a href="https://novadata.io/resources/news/amazon-product-title-rules-overhaul-july-27-2026" target="_blank" style="color:var(--blue)">Novadata</a> / <a href="https://cedcommerce.com/blog/amazon-introduces-new-product-title-rules-effective-july-27-2026/" target="_blank" style="color:var(--blue)">CedCommerce</a> / <a href="https://www.verticalrail.com/blog/yes-the-rumors-are-true-amazon-is-changing-product-title-requirements" target="_blank" style="color:var(--blue)">Vertical Rail</a></li>
+    <li>Listing Optimization: <a href="https://novadata.io/resources/blog/listing-optimization" target="_blank" style="color:var(--blue)">Novadata A10 Playbook</a> / <a href="https://canopymanagement.com/decoding-the-amazon-algorithm/" target="_blank" style="color:var(--blue)">Canopy Management: 10 Ranking Factors</a></li>
+    <li>Rufus AI: <a href="https://www.bellavix.com/amazon-rufus-and-cosmo-explained-how-amazons-ai-is-changing-search-rankings-and-listing-optimization/" target="_blank" style="color:var(--blue)">BellaVix COSMO+Rufus Deep Dive</a> / <a href="https://www.zonguru.com/blog/understanding-amazon-rufus-ai" target="_blank" style="color:var(--blue)">ZonGuru Rufus Guide</a></li>
+  </ol>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <p>📌 本报告基于公开资料（Amazon Seller Central 官方公告、Amazon Science 学术论文、行业权威分析机构报告）整理，仅供参考。亚马逊算法细节未完全公开，具体排名逻辑以亚马逊实际运行为准。建议卖家在 2026年7月27日前主动完成标题修改，并持续关注 Seller Central 官方更新。</p>
+  <p style="margin-top:8px;">Generated 2026-06-22 · Research compiled from 20+ authoritative sources</p>
+</div>
+
+</div>
+</body>
+</html>
