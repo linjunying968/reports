@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>亚马逊 Prime Day 2026 · 卖家折扣规则完全指南</title>
+<style>
+:root {
+  --bg: #06080c;
+  --card: #0d1117;
+  --card2: #111820;
+  --border: #1c2533;
+  --text: #c8d5e8;
+  --dim: #5a6d85;
+  --accent: #f0b428;
+  --gold: #fbbf24;
+  --green: #10b981;
+  --red: #ef4444;
+  --blue: #60a5fa;
+  --orange: #f59e0b;
+  --pink: #ec4899;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.85;font-size:14px}
+.wrap{max-width:1000px;margin:0 auto;padding:clamp(12px,2.5vw,28px)}
+
+.hero{background:linear-gradient(155deg,#0d1830,#111820,#1a1018);border:2px solid var(--border);border-radius:16px;padding:clamp(22px,4vw,44px);text-align:center;margin-bottom:18px}
+.hero h1{font-size:clamp(20px,4vw,34px);font-weight:800;color:#fff;margin-bottom:6px}
+.hero .sub{color:var(--dim);font-size:13px}
+
+.sec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,2.5vw,22px);margin-bottom:14px}
+.sec h2{font-size:clamp(15px,2vw,19px);color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px}
+.sec h3{font-size:14px;color:var(--gold);margin:14px 0 8px}
+.sec h4{font-size:13px;color:var(--blue);margin:10px 0 6px}
+
+.rule-box{border:2px solid var(--border);border-radius:10px;padding:14px;margin:10px 0;background:var(--card2)}
+.rule-box.red{border-color:rgba(239,68,68,0.35);background:rgba(239,68,68,0.04)}
+.rule-box.green{border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.04)}
+.rule-box h4{font-size:14px;margin-bottom:6px}
+
+table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+th{background:rgba(240,180,40,0.08);color:var(--accent);padding:8px 10px;text-align:left;font-weight:600;font-size:12px}
+td{padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px}
+tr:hover td{background:rgba(240,180,40,0.02)}
+
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-right:4px}
+.tag.red{background:rgba(239,68,68,0.15);color:var(--red)}
+.tag.green{background:rgba(16,185,129,0.15);color:var(--green)}
+.tag.orange{background:rgba(245,158,11,0.15);color:var(--orange)}
+.tag.blue{background:rgba(96,165,250,0.15);color:var(--blue)}
+
+.example{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin:10px 0}
+.example h4{font-size:13px;color:var(--gold);margin-bottom:8px}
+.example .step{display:flex;gap:8px;margin:4px 0;font-size:12px}
+.example .step .n{color:var(--accent);font-weight:700;min-width:20px}
+
+.math{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px;font-family:'SF Mono','Consolas','Courier New',monospace;font-size:12px;overflow-x:auto;margin:8px 0}
+
+.note{background:rgba(240,180,40,0.04);border:1px solid rgba(240,180,40,0.2);border-radius:8px;padding:10px;margin:8px 0;font-size:12px}
+.note.red{background:rgba(239,68,68,0.05);border-color:rgba(239,68,68,0.25)}
+.note.blue{background:rgba(96,165,250,0.04);border-color:rgba(96,165,250,0.2)}
+.note.green{background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2)}
+
+.hi{color:var(--accent);font-weight:700}
+.gh{color:var(--green)}
+.rh{color:var(--red)}
+.dim{color:var(--dim);font-size:11px}
+.num{font-family:'SF Mono','Consolas',monospace;font-weight:700}
+
+.timeline{position:relative;padding-left:24px;border-left:2px solid var(--border);margin:12px 0}
+.timeline-item{margin-bottom:14px;position:relative}
+.timeline-item:before{content:'';position:absolute;left:-30px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.timeline-item .date{font-weight:700;color:var(--accent);font-size:12px}
+.timeline-item .desc{font-size:12px;color:var(--dim);margin-top:2px}
+
+.formula{text-align:center;padding:16px;margin:10px 0;background:var(--card2);border-radius:10px;border:1px dashed var(--border)}
+.formula .big{font-size:18px;font-weight:800;color:var(--accent)}
+.formula .explain{font-size:11px;color:var(--dim);margin-top:6px}
+
+.dis{text-align:center;color:var(--dim);font-size:10px;padding:12px 0;border-top:1px solid var(--border);margin-top:14px}
+
+@media(max-width:640px){
+  table{font-size:11px}
+  th,td{padding:6px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+<h1>🛒 亚马逊 Prime Day 2026</h1>
+<p style="font-size:15px;margin-top:4px">卖家折扣规则完全指南</p>
+<p class="sub">2026年6月23日 00:01 PT – 6月26日 · 首次提前至6月 · 史上最严价格规则</p>
+</div>
+
+<!-- ====== 核心规则 ====== -->
+<div class="sec">
+<h2>🔑 双重定价规则（2026年新增，必须同时满足）</h2>
+
+<div class="rule-box red">
+<h4><span class="tag red">规则一</span> 60天最低价红线</h4>
+<p>Prime Day活动价 <strong class="rh">不能高于</strong> 过去 <strong>60天</strong> 内的最低销售价格。</p>
+<p class="dim" style="margin-top:4px">这个「最低销售价格」包含：日常售价、优惠券折后价、会员专享折扣(PED)、LD/BD秒杀价、所有促销活动中的真实成交价。</p>
+</div>
+
+<div class="rule-box red">
+<h4><span class="tag red">规则二</span> 30天再降5%</h4>
+<p>Prime Day活动价 <strong class="rh">必须低于</strong> 过去 <strong>30天</strong> 内最低销售价格的 <strong>95%</strong>（即再降至少5%）。</p>
+<p class="dim" style="margin-top:4px">这意味着：即使你最近30天没有任何促销，日常价也要再打95折。</p>
+</div>
+
+<div class="formula">
+<div class="big">活动价 ≤ min(60天最低价, 30天最低价 × 0.95)</div>
+<div class="explain">两条规则取<strong>更严格</strong>的那个。系统全额追踪真实成交数据。</div>
+</div>
+
+<div class="note red">
+<strong>🚫 提价后降价？彻底堵死。</strong><br>
+系统抓取的是真实成交价，不是标价。<br>
+即使你在5月把标价提到$19.99，60天最低价和30天最低价仍然是之前的$8.99。<br>
+30天规则仍然要求活动价 ≤ $8.99 × 0.95 = $8.54。<br>
+「先涨后降」的老套路已完全失效。
+</div>
+</div>
+
+<!-- ====== $8.99 案例 ====== -->
+<div class="sec">
+<h2>📐 案例：你的商品日常售价 $8.99</h2>
+
+<h3>场景A · 最佳情况：近期无任何促销</h3>
+<div class="example">
+<p>假设过去60天只以 <span class="num">$8.99</span> 出售，过去30天也只以 <span class="num">$8.99</span> 出售：</p>
+<table style="margin-top:8px">
+<tr><th>检查项</th><th>计算</th><th>结论</th></tr>
+<tr><td>60天最低价</td><td>min($8.99) = <span class="num">$8.99</span></td><td>活动价 ≤ $8.99</td></tr>
+<tr><td>30天最低价 × 95%</td><td>$8.99 × 0.95 = <span class="num">$8.54</span></td><td>活动价 ≤ $8.54</td></tr>
+<tr><td><strong>最终允许</strong></td><td colspan="2" class="gh"><strong>活动价 ≤ $8.54</strong>（30天规则更严格）</td></tr>
+</table>
+<div class="math" style="margin-top:10px">推荐活动价: $8.49 或 $8.39 (比 $8.54 低，留有余地)</div>
+</div>
+
+<h3>场景B · 危险：上月用过10%优惠券</h3>
+<div class="example">
+<p>假设日常 $8.99，但<strong>上个月跑过10%优惠券</strong>，实际成交价 = $8.99 × 0.90 = $8.09：</p>
+<table style="margin-top:8px">
+<tr><th>检查项</th><th>计算</th><th>结论</th></tr>
+<tr><td>60天最低价</td><td>min($8.99, <span class="rh">$8.09</span>) = <span class="num">$8.09</span></td><td>活动价 ≤ $8.09</td></tr>
+<tr><td>30天最低价 × 95%</td><td>$8.09 × 0.95 = <span class="num">$7.69</span></td><td>活动价 ≤ $7.69</td></tr>
+<tr><td><strong>最终允许</strong></td><td colspan="2" class="rh"><strong>活动价 ≤ $7.69</strong>（比场景A多降了$0.85！）</td></tr>
+</table>
+<div class="note red" style="margin-top:10px">
+<strong>⚠️ 教训：</strong>一笔10%优惠券就把你的Prime Day活动价打掉了<strong>$0.85</strong>。对于$8.99的商品，多降$0.85等于额外让利<strong>9.6%</strong>。
+</div>
+</div>
+
+<h3>场景C · 更危险：跑过Prime Exclusive Discount 10%</h3>
+<div class="example">
+<p>假设一个月前做了10% PED，成交价 = $8.09；<strong>且</strong>60天前有秒杀价$7.99：</p>
+<table style="margin-top:8px">
+<tr><th>检查项</th><th>计算</th><th>结论</th></tr>
+<tr><td>60天最低价</td><td>min($7.99, $8.99, $8.09) = <span class="num">$7.99</span></td><td>活动价 ≤ $7.99</td></tr>
+<tr><td>30天最低价 × 95%</td><td>$8.09 × 0.95 = <span class="num">$7.69</span></td><td>活动价 ≤ $7.69</td></tr>
+<tr><td><strong>最终允许</strong></td><td colspan="2" class="rh"><strong>活动价 ≤ $7.69</strong></td></tr>
+</table>
+<div class="note red" style="margin-top:10px">
+<strong>🔴 双重打击：</strong>秒杀价拉低了60天最低，优惠券拉低了30天最低。从$8.99到$7.69，总计<strong>降幅14.5%</strong>。
+</div>
+</div>
+</div>
+
+<!-- ====== 所有算入的项目 ====== -->
+<div class="sec">
+<h2>📋 什么会被算入「最低价」？</h2>
+<table>
+<tr><th>项目</th><th>算入60天？</th><th>算入30天？</th><th>说明</th></tr>
+<tr><td>日常售价</td><td class="gh">✅ 算入</td><td class="gh">✅ 算入</td><td>最基础的参考价</td></tr>
+<tr><td>优惠券 (Coupon)</td><td class="gh">✅ 算入</td><td class="gh">✅ 算入</td><td>折后实付价！不是标价</td></tr>
+<tr><td>会员专享折扣 (PED)</td><td class="gh">✅ 算入</td><td class="gh">✅ 算入</td><td>折后价拉低所有基准线</td></tr>
+<tr><td>Best Deal / Lightning Deal</td><td class="gh">✅ 算入</td><td class="gh">✅ 算入</td><td>秒杀价拉低60天最低</td></tr>
+<tr><td>Outlet / 清仓价</td><td class="gh">✅ 算入</td><td class="gh">✅ 算入</td><td>同样计入</td></tr>
+<tr><td>企业购价格 (B2B)</td><td class="gh">✅ 算入</td><td class="rh">❌ 不算</td><td>仅影响60天，不影响30天</td></tr>
+<tr><td>Subscribe & Save</td><td class="gh">✅ 算入</td><td class="rh">❌ 不算</td><td>仅影响60天</td></tr>
+<tr><td>Buy X Get Y 促销</td><td class="gh">✅ 算入</td><td class="rh">❌ 不算</td><td>仅影响60天</td></tr>
+<tr><td>非促销性降价</td><td class="gh">✅ 算入</td><td class="gh">✅ 算入</td><td>2026年5月18日起新规：非促销降价也算</td></tr>
+</table>
+
+<div class="note" style="margin-top:8px">
+<strong>📌 核心原则：</strong>只要买家实际支付的价格，基本都会被算进「最低销售价格」。亚马逊系统<strong>交叉叠加计算</strong>所有折扣，包括优惠券+会员折扣同时生效的情况。
+</div>
+</div>
+
+<!-- ====== 时间线 ====== -->
+<div class="sec">
+<h2>📅 关键时间线</h2>
+<div class="timeline">
+<div class="timeline-item">
+  <div class="date">4月24日</div>
+  <div class="desc">价格保护期开始 → 严禁任何低于日常售价的直接降价 → 确保60天最低稳定</div>
+</div>
+<div class="timeline-item">
+  <div class="date">4月30日</div>
+  <div class="desc"><span class="tag green">早鸟</span> LD/BD 提报截止 → 每个deal立减$50（原价$100→$50）</div>
+</div>
+<div class="timeline-item">
+  <div class="date">5月18日</div>
+  <div class="desc">非促销降价也开始计入「典型价格」→ 彻底堵死降价漏洞</div>
+</div>
+<div class="timeline-item">
+  <div class="date">5月26日</div>
+  <div class="desc"><span class="tag red">最终</span> 所有deal提报截止日</div>
+</div>
+<div class="timeline-item">
+  <div class="date">5月27日</div>
+  <div class="desc">FBA入仓截止（第一批）</div>
+</div>
+<div class="timeline-item">
+  <div class="date">6月5日</div>
+  <div class="desc">FBA入仓截止（第二批）</div>
+</div>
+<div class="timeline-item">
+  <div class="date"><strong>6月23日 – 26日</strong></div>
+  <div class="desc"><strong>Prime Day 2026 🎉</strong></div>
+</div>
+</div>
+</div>
+
+<!-- ====== 费用 ====== -->
+<div class="sec">
+<h2>💰 促销费用</h2>
+<table>
+<tr><th>费用项</th><th>标准</th><th>早鸟(4月30日前)</th></tr>
+<tr><td>Lightning Deal 报名费</td><td class="num">$100</td><td class="num gh">$50</td></tr>
+<tr><td>Best Deal 报名费</td><td class="num">$100</td><td class="num gh">$50</td></tr>
+<tr><td>Coupon 兑换费</td><td colspan="2" class="dim">$0.60/每次兑换 + 折扣金额</td></tr>
+</table>
+<div class="note green">
+<strong>✅ 建议：</strong>4月30日前提交deal可以省一半报名费。多个ASIN累加起来省不少。
+</div>
+</div>
+
+<!-- ====== 实操建议 ====== -->
+<div class="sec">
+<h2>🛠️ 卖家实操建议</h2>
+
+<h3>对于你的 $8.99 商品</h3>
+<div class="example">
+<h4>✅ 正确做法</h4>
+<div class="step"><span class="n">1</span> 从现在到6月23日，<strong>保持 $8.99 不变</strong>，不跑任何优惠券、不做促销降价</div>
+<div class="step"><span class="n">2</span> 30天最低 = $8.99 → 活动价 ≤ $8.54</div>
+<div class="step"><span class="n">3</span> 选择 <strong class="gh">$8.49</strong> 或 <strong class="gh">$8.39</strong> 作为Prime Day活动价</div>
+<div class="step"><span class="n">4</span> 同时提报LD/BD（4月30日前早鸟价$50）</div>
+<div class="math" style="margin-top:10px">
+折扣: $8.99 → $8.39 = 降 $0.60 (6.7% 折扣)<br>
+减报名费$50 → 需卖出约83件回本($50/$0.60), Prime Day流量大, 回本不难
+</div>
+</div>
+
+<div class="example">
+<h4>❌ 错误做法</h4>
+<div class="step"><span class="n">✗</span> 5月份跑个20%优惠券 → 60天最低 = $7.19</div>
+<div class="step"><span class="n">✗</span> 30天规则：活动价 ≤ $7.19 × 0.95 = $6.83</div>
+<div class="step"><span class="n">✗</span> 从 $8.99 跌到 $6.83 → 降幅 <strong class="rh">24%</strong>，可能亏本</div>
+</div>
+
+<h3>四个核心原则</h3>
+<div class="rule-box green">
+<h4>1️⃣ 从现在起锁价</h4>
+<p>4月24日之后<strong>不要做任何低于日常价的促销</strong>。每次降价、每个优惠券都是在拉低你的Prime Day最低价。</p>
+</div>
+<div class="rule-box green">
+<h4>2️⃣ 优惠券 = 双刃剑</h4>
+<p>跑优惠券短期冲量，但会永久拉低30天/60天最低价。每次点击「创建优惠券」前问自己：<strong>这波降价会废掉我的Prime Day资格吗？</strong></p>
+</div>
+<div class="rule-box green">
+<h4>3️⃣ 算清真实利润</h4>
+<p>活动价 = 最低价底线，不等于最终利润。需叠加：FBA配送费 + 仓储费 + 广告费 + 退货率 + 促销报名费。$8.39 的活动价，扣除所有成本后是否还有利润？<strong>先算再报。</strong></p>
+</div>
+<div class="rule-box green">
+<h4>4️⃣ 4月30日前提交</h4>
+<p>早鸟报名每个deal省$50。多个ASIN、多站点累加起来不是小数。</p>
+</div>
+</div>
+
+<!-- ====== 常见问题 ====== -->
+<div class="sec">
+<h2>❓ 常见问题</h2>
+
+<h4>Q: 我能不能先提到 $12.99，再降到 $8.49？</h4>
+<div class="note red">
+<strong>A: 不能。</strong>系统看的是真实成交价，不是标价。60天/30天最低价仍然是之前的$8.99（或更低）。标价提到$19.99也没用。新版「Typical Price」算法从2026年5月18日起会检测这种行为。
+</div>
+
+<h4>Q: 优惠券如果是「买家用不用无所谓」的那种呢？</h4>
+<div class="note red">
+<strong>A: 照算。</strong>只要优惠券是激活状态，系统会把「标价 - 优惠券面值」作为最低销售价格计算。即使没有买家实际使用，只要优惠券在跑，亚马逊就按可能的最低成交价计算。
+</div>
+
+<h4>Q: 如果我是新ASIN，没有60天历史？</h4>
+<div class="note blue">
+<strong>A:</strong> 新ASIN无60天数据时，亚马逊会使用能获取到的最长历史。但建议新ASIN仍然提前做好价格规划：在Prime Day前保持稳定的标价，不要频繁变动。
+</div>
+
+<h4>Q: 非促销性降价到底怎么算？</h4>
+<div class="note">
+<strong>A:</strong> 从2026年5月18日起，任何价格下调（即使没有标记为促销），只要不是买家主动触发的折扣（如S&amp;S、企业购），都会被计入「Typical Price」计算。这进一步缩小了「先涨后降」的操作空间。
+</div>
+</div>
+
+<!-- ====== 总结 ====== -->
+<div class="sec">
+<h2>📊 一张图总结</h2>
+<table>
+<tr><th>维度</th><th>内容</th></tr>
+<tr><td>活动时间</td><td>2026年6月23日 00:01 PT – 6月26日</td></tr>
+<tr><td>核心规则</td><td>60天最低价红线 + 30天最低价再降5%（双重锁）</td></tr>
+<tr><td>提价后降价</td><td class="rh"><strong>彻底失效</strong></td></tr>
+<tr><td>优惠券影响</td><td class="rh"><strong>算入最低价 → 拉低PD门槛</strong></td></tr>
+<tr><td>$8.99例</td><td>无促销 → 可报到 <span class="gh">$8.39-8.49</span><br>有10%券 → 最多只能报 <span class="rh">$7.69</span></td></tr>
+<tr><td>报名费</td><td>$100/LD或BD · 4/30前早鸟$50 · 有销售附加费</td></tr>
+<tr><td>价格保护</td><td>4月24日起严禁低于日常价降价</td></tr>
+</table>
+</div>
+
+<div class="dis">
+<p>⚠️ 本文基于亚马逊卖家论坛、Seller Central公告及多个第三方电商资讯来源整理（2026年6月）。规则以亚马逊Seller Central官方最新公告为准。</p>
+<p>Generated by Hermes Agent · June 2026</p>
+</div>
+
+</div></body></html>
