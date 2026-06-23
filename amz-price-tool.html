@@ -267,26 +267,66 @@ body {
 .suggest-row {
   background: rgba(0,122,255,0.04);
   border: 1px solid rgba(0,122,255,0.15);
-  border-radius: var(--radius-xs);
-  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
   margin-top: 12px;
 }
-.suggest-row .s-title {
+.suggest-row .s-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.suggest-row .s-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.suggest-row .s-label {
   font-size: 11px;
   font-weight: 600;
   color: var(--text2);
-  margin-bottom: 3px;
 }
-.suggest-row .s-val {
+.suggest-row .s-yp {
   font-size: 22px;
   font-weight: 700;
   color: var(--blue);
   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  line-height: 1.1;
 }
-.suggest-row .s-sub {
+.suggest-row .s-yp-sub {
   font-size: 11px;
   color: var(--text2);
-  margin-top: 2px;
+}
+.suggest-row .s-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(0,122,255,0.15);
+  align-self: stretch;
+}
+.suggest-row .s-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+}
+.suggest-row .s-ped-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+}
+.suggest-row .s-ped {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--green);
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  line-height: 1;
+}
+.suggest-row .s-ped-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
 }
 
 /* ── Rules section ── */
@@ -575,25 +615,35 @@ function compute() {
 
   if (canAdjust && optYP) {
     html += `<div class="suggest-row">`;
-    html += `<div class="s-title">建议将售价调至</div>`;
-    html += `<div class="s-val">$${fmt(optYP)}</div>`;
-    html += `<div class="s-sub">涨幅 ${((optYP/yourPrice - 1) * 100).toFixed(1)}% · 调价后瓶颈转移至 ${newBottle ? newBottle.name + '（' + newBottle.desc + '）' : '其他规则'}</div>`;
+    html += `<div class="s-row">`;
+    // Left: suggested new selling price
+    html += `<div class="s-left">`;
+    html += `<div class="s-label">建议调至</div>`;
+    html += `<div class="s-yp">$${fmt(optYP)}</div>`;
+    html += `<div class="s-yp-sub">从 $${fmt(yourPrice)} · 涨幅 ${((optYP/yourPrice - 1) * 100).toFixed(1)}%</div>`;
+    html += `</div>`;
+    // Divider
+    html += `<div class="s-divider"></div>`;
+    // Right: after-adjustment PED price
+    html += `<div class="s-right">`;
+    html += `<div class="s-ped-label">调价后 PED 活动售价</div>`;
+    html += `<div class="s-ped">$${fmt(pedAfter)}</div>`;
+    html += `<div class="s-ped-sub">较日常优惠 ${pedDiscountAfter.toFixed(1)}%</div>`;
+    html += `</div>`;
+    html += `</div>`;
     html += `</div>`;
   }
 
   // Result cards
   html += `<div class="result-grid">`;
 
-  // PED card
+  // PED card — shows CURRENT (unadjusted) price
   html += `<div class="result-card">`;
-  html += `<div class="rc-label">PED 会员日售价</div>`;
-  html += `<div class="rc-price" style="color:${canAdjust ? 'var(--blue)' : 'var(--text)'}">$${fmt(pedMax)}</div>`;
+  html += `<div class="rc-label">PED 当前活动售价</div>`;
+  html += `<div class="rc-price">$${fmt(pedMax)}</div>`;
   html += `<div class="rc-discount green">较售价优惠 ${pedDiscount.toFixed(1)}%</div>`;
   html += `<div class="rc-detail">`;
   html += `瓶颈：${bottle.name} · ${bottle.desc} = $${fmt(bottle.val)}`;
-  if (canAdjust) {
-    html += `<br><span class="blue">调价后可达 $${fmt(pedAfter)} · 优惠 ${pedDiscountAfter.toFixed(1)}%</span>`;
-  }
   html += `</div>`;
   html += `</div>`;
 
