@@ -3,120 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>亚马逊 Prime Day 2026 · 卖家折扣规则完全指南</title>
+<title>亚马逊 Prime Day 2026 · 价格计算器 + 规则全解</title>
 <style>
 :root {
-  --bg: #06080c;
-  --card: #0d1117;
-  --card2: #111820;
-  --border: #1c2533;
-  --text: #c8d5e8;
-  --dim: #5a6d85;
-  --accent: #f0b428;
-  --gold: #fbbf24;
-  --green: #10b981;
-  --red: #ef4444;
-  --blue: #60a5fa;
-  --orange: #f59e0b;
-  --pink: #ec4899;
+  --bg: #06080c; --card: #0d1117; --card2: #111820; --border: #1c2533;
+  --text: #c8d5e8; --dim: #5a6d85; --accent: #f0b428; --gold: #fbbf24;
+  --green: #10b981; --red: #ef4444; --blue: #60a5fa; --orange: #f59e0b;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.85;font-size:14px}
-.wrap{max-width:1000px;margin:0 auto;padding:clamp(12px,2.5vw,28px)}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.8;font-size:14px}
+.wrap{max-width:1050px;margin:0 auto;padding:clamp(10px,2.5vw,24px)}
 
-.hero{background:linear-gradient(155deg,#0d1830,#111820,#1a1018);border:2px solid var(--border);border-radius:16px;padding:clamp(22px,4vw,44px);text-align:center;margin-bottom:18px}
-.hero h1{font-size:clamp(20px,4vw,34px);font-weight:800;color:#fff;margin-bottom:6px}
-.hero .sub{color:var(--dim);font-size:13px}
+.hero{background:linear-gradient(155deg,#0d1830,#111820,#1a1018);border:2px solid var(--border);border-radius:16px;padding:clamp(20px,4vw,40px);text-align:center;margin-bottom:16px}
+.hero h1{font-size:clamp(18px,4vw,32px);font-weight:800;color:#fff}
+.hero .sub{color:var(--dim);font-size:13px;margin-top:4px}
 
-.sec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,2.5vw,22px);margin-bottom:14px}
-.sec h2{font-size:clamp(15px,2vw,19px);color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(14px,2.5vw,20px);margin-bottom:14px}
+.sec h2{font-size:clamp(15px,2vw,18px);color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px}
 .sec h3{font-size:14px;color:var(--gold);margin:14px 0 8px}
 .sec h4{font-size:13px;color:var(--blue);margin:10px 0 6px}
 
-.rule-box{border:2px solid var(--border);border-radius:10px;padding:14px;margin:10px 0;background:var(--card2)}
-.rule-box.red{border-color:rgba(239,68,68,0.35);background:rgba(239,68,68,0.04)}
-.rule-box.green{border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.04)}
-.rule-box h4{font-size:14px;margin-bottom:6px}
+/* INPUT SECTION */
+.input-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:flex-end}
+.input-group{flex:1;min-width:140px}
+.input-group label{display:block;font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.input-group input{width:100%;padding:9px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:14px;font-family:'SF Mono','Consolas',monospace;outline:none;transition:border .2s}
+.input-group input:focus{border-color:var(--accent)}
+.input-group .unit{font-size:10px;color:var(--dim);margin-left:2px}
 
-table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
-th{background:rgba(240,180,40,0.08);color:var(--accent);padding:8px 10px;text-align:left;font-weight:600;font-size:12px}
-td{padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+
+/* RESULTS */
+.result-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin:10px 0}
+.result-card .final{font-size:22px;font-weight:800;color:var(--accent);text-align:center;padding:10px 0}
+.result-card .final small{font-size:11px;color:var(--dim);display:block;margin-top:2px}
+
+table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+th{background:rgba(240,180,40,0.06);color:var(--accent);padding:8px 10px;text-align:left;font-weight:600;font-size:12px}
+td{padding:7px 10px;border-bottom:1px solid var(--border);font-size:12px}
 tr:hover td{background:rgba(240,180,40,0.02)}
 
-.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-right:4px}
-.tag.red{background:rgba(239,68,68,0.15);color:var(--red)}
-.tag.green{background:rgba(16,185,129,0.15);color:var(--green)}
-.tag.orange{background:rgba(245,158,11,0.15);color:var(--orange)}
-.tag.blue{background:rgba(96,165,250,0.15);color:var(--blue)}
+.status{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700}
+.status.pass{background:rgba(16,185,129,0.12);color:var(--green)}
+.status.fail{background:rgba(239,68,68,0.12);color:var(--red)}
+.status.tight{background:rgba(245,158,11,0.12);color:var(--orange)}
 
-.example{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin:10px 0}
-.example h4{font-size:13px;color:var(--gold);margin-bottom:8px}
-.example .step{display:flex;gap:8px;margin:4px 0;font-size:12px}
-.example .step .n{color:var(--accent);font-weight:700;min-width:20px}
-
-.math{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px;font-family:'SF Mono','Consolas','Courier New',monospace;font-size:12px;overflow-x:auto;margin:8px 0}
+.strategy-box{border:2px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;background:rgba(16,185,129,0.03);margin:12px 0}
+.strategy-box.red{border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.03)}
+.strategy-box h4{color:var(--green);margin-bottom:6px}
+.strategy-box.red h4{color:var(--red)}
+.strategy-box .math{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px;font-family:'SF Mono','Consolas',monospace;font-size:12px;overflow-x:auto;margin:6px 0}
 
 .note{background:rgba(240,180,40,0.04);border:1px solid rgba(240,180,40,0.2);border-radius:8px;padding:10px;margin:8px 0;font-size:12px}
 .note.red{background:rgba(239,68,68,0.05);border-color:rgba(239,68,68,0.25)}
 .note.blue{background:rgba(96,165,250,0.04);border-color:rgba(96,165,250,0.2)}
 .note.green{background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.2)}
 
-.hi{color:var(--accent);font-weight:700}
-.gh{color:var(--green)}
-.rh{color:var(--red)}
-.dim{color:var(--dim);font-size:11px}
-.num{font-family:'SF Mono','Consolas',monospace;font-weight:700}
+.comp-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.comp-col{grid-template-columns:1fr}}
 
-/* ====== CALCULATOR ====== */
-.calc-section{background:linear-gradient(160deg,#0d1117,#0f1923,#0d1117);border:2px solid var(--border);border-radius:14px;padding:clamp(16px,3vw,28px);margin-bottom:18px}
-.calc-section h2{font-size:clamp(16px,2.2vw,20px);color:var(--accent);margin-bottom:16px;text-align:center;border-bottom:none}
+.hi{color:var(--accent);font-weight:700}.gh{color:var(--green)}.rh{color:var(--red)}
+.dim{color:var(--dim);font-size:11px}.num{font-family:'SF Mono','Consolas',monospace;font-weight:700}
 
-.input-row{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-.input-row label{font-weight:600;font-size:14px;white-space:nowrap}
-.input-row input{
-  background:var(--bg);color:var(--accent);border:2px solid var(--border);
-  border-radius:8px;padding:10px 14px;font-size:18px;font-weight:700;width:140px;
-  text-align:center;font-family:'SF Mono','Consolas',monospace;
-  outline:none;transition:border-color 0.2s
-}
-.input-row input:focus{border-color:var(--accent)}
-.input-row .unit{color:var(--dim);font-size:13px}
-
-.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:16px}
-
-.result-card{border:2px solid var(--border);border-radius:10px;padding:16px;background:var(--card2);text-align:center}
-.result-card.best{border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.03)}
-.result-card h4{font-size:13px;color:var(--dim);margin-bottom:6px}
-.result-card .big-price{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--accent);margin:4px 0}
-.result-card .big-price.green-price{color:var(--green)}
-.result-card .delta{font-size:12px;margin-top:4px}
-.result-card .delta.positive{color:var(--green)}
-.result-card .delta.negative{color:var(--red)}
-
-.binding-box{background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:12px}
-.binding-box h4{font-size:12px;color:var(--dim);margin-bottom:8px}
-.binding-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:12px;font-family:'SF Mono','Consolas',monospace}
-.binding-row .rule-name{color:var(--dim)}
-.binding-row .rule-val{color:var(--text)}
-.binding-row .rule-bind{color:var(--red);font-weight:700}
-
-/* ====== TIMELINE ====== */
 .timeline{position:relative;padding-left:24px;border-left:2px solid var(--border);margin:12px 0}
-.timeline-item{margin-bottom:14px;position:relative}
+.timeline-item{margin-bottom:12px;position:relative}
 .timeline-item:before{content:'';position:absolute;left:-30px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
 .timeline-item .date{font-weight:700;color:var(--accent);font-size:12px}
 .timeline-item .desc{font-size:12px;color:var(--dim);margin-top:2px}
 
-.formula{text-align:center;padding:16px;margin:10px 0;background:var(--card2);border-radius:10px;border:1px dashed var(--border)}
-.formula .big{font-size:18px;font-weight:800;color:var(--accent)}
-.formula .explain{font-size:11px;color:var(--dim);margin-top:6px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;margin-right:4px}
+.tag.red{background:rgba(239,68,68,0.15);color:var(--red)}
+.tag.green{background:rgba(16,185,129,0.15);color:var(--green)}
+.tag.blue{background:rgba(96,165,250,0.15);color:var(--blue)}
 
 .dis{text-align:center;color:var(--dim);font-size:10px;padding:12px 0;border-top:1px solid var(--border);margin-top:14px}
 
-@media(max-width:640px){
-  .input-row{flex-direction:column;gap:8px}
-  .results-grid{grid-template-columns:1fr}
-}
+.gain-val{font-size:18px;font-weight:800}
 </style>
 </head>
 <body>
@@ -124,288 +86,370 @@ tr:hover td{background:rgba(240,180,40,0.02)}
 
 <!-- ====== HERO ====== -->
 <div class="hero">
-<h1>🛒 亚马逊 Prime Day 2026</h1>
-<p style="font-size:15px;margin-top:4px">卖家折扣规则完全指南 + PED 定价计算器</p>
-<p class="sub">2026年6月23日 00:01 PT – 6月26日 · 首次提前至6月 · 史上最严价格规则</p>
+<h1>🧮 Prime Day 2026 · PED 价格计算器</h1>
+<p style="margin-top:6px">输入你的商品数据 → 自动算出允许的最低售价 + 最优提价方案</p>
+<p class="sub">Prime Day: 2026.6.23-26 · PED规则 v2026 · 7条锁全部检验</p>
 </div>
 
 <!-- ====== CALCULATOR ====== -->
-<div class="calc-section">
-<h2>🧮 PED（Prime 专享折扣）定价计算器</h2>
+<div class="sec">
+<h2>📐 输入你的商品数据</h2>
 
 <div class="input-row">
-  <label for="priceInput">日常售价 $</label>
-  <input type="number" id="priceInput" value="8.99" step="0.01" min="0.01" oninput="calc()">
-  <span class="unit">（过去 90 天稳定成交价 = 参考价 = 历史售价 = 30天最低价）</span>
+<div class="input-group">
+<label>① 当前售价 (Your Price)</label>
+<input type="number" id="yourPrice" value="8.99" step="0.01" min="0.01" oninput="calc()">
+<span class="unit">$</span>
 </div>
-
-<div class="results-grid">
-  <div class="result-card">
-    <h4>方案 A · 不提价</h4>
-    <div style="font-size:11px;color:var(--dim);margin-bottom:4px">标价保持不变</div>
-    <div class="big-price" id="rA_ped"></div>
-    <div class="delta negative" id="rA_delta"></div>
-    <div class="dim" style="margin-top:4px;font-size:11px" id="rA_note"></div>
-  </div>
-  <div class="result-card best">
-    <h4>✅ 方案 B · 最优提价</h4>
-    <div style="font-size:11px;color:var(--dim);margin-bottom:4px">标价提至 <strong class="gh" id="rB_your"></strong></div>
-    <div class="big-price green-price" id="rB_ped"></div>
-    <div class="delta positive" id="rB_delta"></div>
-    <div class="dim" style="margin-top:4px;font-size:11px" id="rB_note"></div>
-  </div>
+<div class="input-group">
+<label>② 参考价 (List Price / 建议零售价)</label>
+<input type="number" id="refPrice" value="8.99" step="0.01" min="0.01" oninput="calc()">
+<span class="unit">$</span>
 </div>
-
-<div class="binding-box">
-<h4>各规则约束值（哪个最紧？）</h4>
-<div id="bindingTable"></div>
-</div>
-
-<div class="note blue" style="margin-top:12px;font-size:12px">
-<strong>💡 原理：</strong>提高「your price」只能解 Rule 4（20%折扣）。Rule 5/6/7 看的是历史成交数据——你改不了。<br>
-最优策略：把 your price 提到刚好让 Rule 4 的约束「顶到」Rule 5 的天花板，多一分浪费，少一分吃亏。
+<div class="input-group">
+<label>③ 历史售价 (90天成交均价)</label>
+<input type="number" id="histPrice" value="8.99" step="0.01" min="0.01" oninput="calc()">
+<span class="unit">$</span>
 </div>
 </div>
 
-<script>
-function fmt(n){return '$'+Number(n).toFixed(2)}
-function calc(){
-  const S=parseFloat(document.getElementById('priceInput').value)||8.99;
-  // S = 日常稳定成交价 = 参考价 ≈ 历史售价 ≈ 30天最低成交价
+<div class="input-row">
+<div class="input-group">
+<label>④ 过去30天全站最低价</label>
+<input type="number" id="low30" value="8.99" step="0.01" min="0.01" oninput="calc()">
+<span class="unit">$</span>
+</div>
+<div class="input-group">
+<label>⑤ 过去60天全站最低价</label>
+<input type="number" id="low60" value="8.99" step="0.01" min="0.01" oninput="calc()">
+<span class="unit">$</span>
+</div>
+<div class="input-group">
+<label>⑥ 近期是否跑过 Coupon/PED? <span style="color:var(--dim);font-weight:400">手动把折后价填入 ④</span></label>
+<input type="text" id="couponNote" value="无" oninput="calc()" style="font-size:12px">
+</div>
+</div>
 
-  // --- 方案 A: 不提价 (your_price = S) ---
-  const rA_R4=S*0.80;
-  const rA_R5=S*0.85;
-  const rA_R6=S*0.95;
-  const rA_R7=S-0.01;
-  const pedA=Math.min(rA_R4,rA_R5,rA_R6,rA_R7);
-  const bindA=(pedA===rA_R4)?'R4(20%折扣)':(pedA===rA_R5?'R5(参考价)':(pedA===rA_R6?'R6(历史售价)':'R7(30天最低)'));
+<div class="btn-row">
+<span class="tag green">自动实时计算</span>
+<span class="dim" style="font-size:11px;align-self:center">修改任意数值即更新</span>
+</div>
+</div>
 
-  // --- 方案 B: 最优提价 ---
-  // 绑定链: Rule 4 是唯一可调的 → 提 your_price 直到碰到 Rule 5 的墙
-  // Rule 5 是下一个约束: PED ≤ S × 0.85
-  // 最优: your_price × 0.80 = S × 0.85 → your_price = S × 0.85 / 0.80 = S × 1.0625
-  const optYourPrice=S*1.0625;
-  const rB_R4=optYourPrice*0.80;
-  const rB_R5=S*0.85; // 不变
-  const rB_R6=S*0.95; // 不变
-  const rB_R7=S-0.01;  // 不变
-  const pedB=Math.min(rB_R4,rB_R5,rB_R6,rB_R7);
-  const bindB=(pedB===rB_R4)?'R4(20%折扣)':(pedB===rB_R5?'R5(参考价)':(pedB===rB_R6?'R6(历史售价)':'R7(30天最低)'));
-
-  // 差价
-  const diff=pedB-pedA;
-  const diffPct=((diff/pedA)*100);
-
-  // 显示
-  document.getElementById('rA_ped').textContent=fmt(pedA);
-  document.getElementById('rA_delta').textContent='R4 × 0.80 锁定 · 降价 '+(S-pedA).toFixed(2)+' ('+((1-pedA/S)*100).toFixed(1)+'%)';
-  document.getElementById('rA_note').textContent='绑定规则: '+bindA;
-
-  document.getElementById('rB_your').textContent=fmt(optYourPrice);
-  document.getElementById('rB_ped').textContent=fmt(pedB);
-  document.getElementById('rB_delta').textContent='比不提价多赚 +'+diff.toFixed(2)+' (+'+diffPct.toFixed(1)+'%)';
-  document.getElementById('rB_note').textContent='绑定规则: '+bindB;
-
-  // 各规则明细
-  const rows=[
-    {label:'R4 · 20%折扣', valA:rA_R4, valB:rB_R4, bindA:pedA===rA_R4, bindB:pedB===rB_R4},
-    {label:'R5 · 参考价 85%', valA:rA_R5, valB:rB_R5, bindA:pedA===rA_R5, bindB:pedB===rB_R5},
-    {label:'R6 · 历史售价 95%', valA:rA_R6, valB:rB_R6, bindA:pedA===rA_R6, bindB:pedB===rB_R6},
-    {label:'R7 · <30天最低价', valA:rA_R7, valB:rB_R7, bindA:pedA===rA_R7, bindB:pedB===rB_R7},
-  ];
-  let html='<table><tr><th>规则</th><th>方案 A 约束值</th><th>方案 B 约束值</th></tr>';
-  for(const r of rows){
-    html+='<tr>';
-    html+='<td>'+r.label+'</td>';
-    html+='<td style="'+ (r.bindA?'color:#ef4444;font-weight:700':'') +'">≤ '+fmt(r.valA)+ (r.bindA?' ← 绑定':'') +'</td>';
-    html+='<td style="'+ (r.bindB?'color:#ef4444;font-weight:700':'') +'">≤ '+fmt(r.valB)+ (r.bindB?' ← 绑定':'') +'</td>';
-    html+='</tr>';
-  }
-  html+='</table>';
-  document.getElementById('bindingTable').innerHTML=html;
-}
-calc();
-</script>
-
-<!-- ====== PED 规则详解 ====== -->
+<!-- ====== PED RESULTS ====== -->
 <div class="sec">
-<h2>🔑 PED（Prime 专享折扣）七条规则</h2>
+<h2>🔒 PED（Prime 专享折扣）· 7条规则逐条核验</h2>
 
-<div class="rule-box red">
-<h4><span class="tag red">Rule 4</span> 20% 折扣 · 可操作</h4>
-<p>折扣必须 ≥ 20% off「your price」或「sale price」中较低者。<br>
-<strong>✅ 这是唯一你能通过提价来优化的规则。</strong></p>
-<div class="math">PED_price ≤ MIN(your_price, sale_price) × 0.80</div>
+<div class="comp-col">
+<div class="result-card">
+<div style="font-size:13px;margin-bottom:4px;color:var(--dim)">📌 最终允许的 PED 售价</div>
+<div class="final"><span id="pedFinal">--</span><small>所有规则的最严格天花板</small></div>
 </div>
-
-<div class="rule-box red">
-<h4><span class="tag red">Rule 5</span> 参考价 15% 折扣 · 不可操作</h4>
-<p>PED 价格必须比参考价（建议零售价 或 历史售价）低 15%。<br>
-参考价 ≈ 过去 90 天的成交均价。<strong>你改不了。</strong></p>
-<div class="math">PED_price ≤ reference_price × 0.85</div>
-</div>
-
-<div class="rule-box red">
-<h4><span class="tag red">Rule 6</span> 历史售价 5% · 不可操作</h4>
-<p>PED 价格必须比该 ASIN 历史售价低 5%。<br>
-<strong>同样看历史数据，与当前标价无关。</strong></p>
-<div class="math">PED_price ≤ historical_selling_price × 0.95</div>
-</div>
-
-<div class="rule-box red">
-<h4><span class="tag red">Rule 7</span> 30天最低价 · 不可操作</h4>
-<p>PED 价格必须<strong>低于</strong>（严格小于）过去 30 天内所有卖家的最低成交价。<br>
-全站追踪真实成交，不是标价。</p>
-<div class="math">PED_price < 30d_min_price (≈ 30d_min_price − $0.01)</div>
-</div>
-
-<div class="note" style="margin-top:12px">
-<strong>📌 Rule 1/2/3：</strong>基础资质（4+反馈评级、4+星或0星、≥1条评论）——如果产品已正常销售通常满足，不再展开。
-</div>
-
-<div class="formula" style="margin-top:14px">
-<div class="big">PED_price = MIN( your_price × 0.80, 参考价 × 0.85, 历史售价 × 0.95, 30天最低 − $0.01 )</div>
-<div class="explain">4 个值中取最小那个。只要有一个不通过，PED 就报不上去。</div>
+<div class="result-card">
+<div style="font-size:13px;margin-bottom:4px;color:var(--dim)">📌 不打折的原始 20% off 价格</div>
+<div class="final" style="color:var(--blue)"><span id="pedRaw20">--</span><small>仅满足 Rule 4（当前售价 × 0.80）</small></div>
 </div>
 </div>
 
-<!-- ====== 核心公式 ====== -->
+<div id="pedTable"></div>
+
+<div id="strategyBox"></div>
+</div>
+
+<!-- ====== LD/BD RESULTS ====== -->
 <div class="sec">
-<h2>📐 最优提价公式</h2>
+<h2>⚡ Lightning Deal / Best Deal · 双重锁</h2>
 
-<div class="formula">
-<div class="big">最优 your_price = 日常售价 × 1.0625</div>
-<div class="explain">日常售价 = 过去 90 天稳定成交价（≈ 参考价 ≈ 历史售价 ≈ 30天最低）</div>
+<div class="comp-col">
+<div class="result-card">
+<div style="font-size:13px;margin-bottom:4px;color:var(--dim)">📌 LD/BD 最终允许价</div>
+<div class="final"><span id="ldFinal">--</span><small>≤ 60天最低 且 ≤ 30天最低×0.95</small></div>
 </div>
-
-<div class="example" style="margin-top:12px">
-<h4>推导过程</h4>
-<div class="math">
-假设日常售价 = S，则:<br>
-&nbsp;&nbsp;R5: PED ≤ S × 0.85 &nbsp;&nbsp;(下一道无法跨越的墙)<br>
-&nbsp;&nbsp;R4: PED ≤ your_price × 0.80 &nbsp;&nbsp;(唯一可调的)<br>
-<br>
-令 your_price × 0.80 = S × 0.85<br>
-&nbsp;&nbsp;→ your_price = S × 0.85 / 0.80<br>
-&nbsp;&nbsp;→ <strong>your_price = S × 1.0625</strong><br>
-<br>
-此时 PED = S × 0.85，Rule 4 与 Rule 5 同时绑定。<br>
-再提高 your_price 不会增加 PED 价格——R5 的天花板已经碰到。
+<div class="result-card">
+<div style="font-size:13px;margin-bottom:4px;color:var(--dim)">📌 与 PED 差价</div>
+<div class="final" style="color:var(--orange)"><span id="compare">--</span><small>PED价 − LD/BD价 = 多赚/少赚</small></div>
 </div>
 </div>
 
-<div class="note green">
-<strong>✅ 结论：</strong>对于 $8.99 的商品，提标价到 <strong>$9.55</strong>，PED 价从 $7.19 升到 <strong>$7.64</strong>，每单多赚 $0.45。
+<div id="ldTable"></div>
+
+<div class="note blue" style="margin-top:10px">
+<strong>💡 LD/BD vs PED：</strong>LD/BD 用60天+30天规则，PED用7条规则。对于你这种想「提价后打折」的场景，两个赛道的最低价可能不同，建议同时看。
 </div>
 </div>
 
-<!-- ====== LD/BD 双重规则 ====== -->
+<!-- ====== FULL RULES ====== -->
 <div class="sec">
-<h2>🔑 Lightning Deal / Best Deal 双重定价规则</h2>
+<h2>📖 PED 7条规则全文 + 解释</h2>
 
-<div class="rule-box red">
-<h4><span class="tag red">规则一</span> 60天最低价红线</h4>
-<p>活动价 <strong class="rh">不能高于</strong> 过去 <strong>60天</strong> 内的最低销售价格（含优惠券/PED/LD所有真实成交）。</p>
-</div>
-
-<div class="rule-box red">
-<h4><span class="tag red">规则二</span> 30天再降5%</h4>
-<p>活动价 <strong class="rh">必须低于</strong> 过去 <strong>30天</strong> 内最低销售价格的 <strong>95%</strong>（再降至少5%）。</p>
-</div>
-
-<div class="formula">
-<div class="big">活动价 ≤ min(60天最低价, 30天最低价 × 0.95)</div>
-</div>
-
-<div class="note red" style="margin-top:8px">
-<strong>🚫 提价后降价？彻底堵死。</strong> 系统看真实成交价，不看标价。60天和30天最低价是你过去的成交记录，提标价改变不了它们。
-</div>
-</div>
-
-<!-- ====== $8.99 案例 ====== -->
-<div class="sec">
-<h2>📐 $8.99 商品完整实例</h2>
-
-<h3>场景A · LD/BD（不提价场景）</h3>
-<div class="math" style="margin-bottom:6px">假设近期无任何促销，$8.99 稳定出售。</div>
+<div style="overflow-x:auto">
 <table>
-<tr><th>检查项</th><th>计算</th><th>结论</th></tr>
-<tr><td>60天最低价</td><td>min($8.99) = <span class="num">$8.99</span></td><td>活动价 ≤ $8.99</td></tr>
-<tr><td>30天最低价 × 95%</td><td>$8.99 × 0.95 = <span class="num">$8.54</span></td><td>活动价 ≤ $8.54</td></tr>
-<tr><td><strong>最终允许</strong></td><td colspan="2" class="gh"><strong>活动价 ≤ $8.54</strong></td></tr>
+<tr><th>#</th><th>规则</th><th>公式</th><th>锁死谁</th></tr>
+<tr>
+  <td><span class="tag red">Rule 1</span></td>
+  <td>卖家资格：≥4条反馈评分，或无反馈评分</td>
+  <td style="color:var(--dim)">资格检查</td>
+  <td style="color:var(--dim)">不合格直接不能报</td>
+</tr>
+<tr>
+  <td><span class="tag red">Rule 2</span></td>
+  <td>商品评级 ≥4星，或无评级</td>
+  <td style="color:var(--dim)">资格检查</td>
+  <td style="color:var(--dim)">评分不达标不能报</td>
+</tr>
+<tr>
+  <td><span class="tag red">Rule 3</span></td>
+  <td>≥1条评论且均分 ≥4星</td>
+  <td style="color:var(--dim)">资格检查</td>
+  <td style="color:var(--dim)">0评论或无评分不能报</td>
+</tr>
+<tr>
+  <td><span class="tag red">Rule 4</span></td>
+  <td>折扣 ≥ <strong>20%</strong> off 非会员非促销价<br><span class="dim">(min of Your Price 或 Sale Price)</span></td>
+  <td class="num">PED ≤ min(YourPrice, SalePrice) × 0.80</td>
+  <td><strong class="rh">这个是你想用提价避开的</strong></td>
+</tr>
+<tr>
+  <td><span class="tag red">Rule 5</span></td>
+  <td>比 <strong>参考价</strong> 低 ≥ <strong>15%</strong><br><span class="dim">(参考价 = List Price 或 系统锁定历史价格)</span></td>
+  <td class="num">PED ≤ 参考价 × 0.85</td>
+  <td><strong class="rh">你提价改不了这个</strong></td>
+</tr>
+<tr>
+  <td><span class="tag red">Rule 6</span></td>
+  <td>比 <strong>历史售价</strong> 低 ≥ <strong>5%</strong><br><span class="dim">(90天内的成交均价)</span></td>
+  <td class="num">PED ≤ 历史售价 × 0.95</td>
+  <td><strong class="rh">你提价改不了这个</strong></td>
+</tr>
+<tr>
+  <td><span class="tag red">Rule 7</span></td>
+  <td><strong>严格低于</strong> 过去 30 天全站最低价<br><span class="dim">(所有卖家 + 所有促销中的最低成交价)</span></td>
+  <td class="num">PED &lt; 30天全站最低</td>
+  <td><strong class="rh">提价不改历史成交</strong></td>
+</tr>
 </table>
-
-<h3>场景B · PED（不提价 → 最优提价对比）</h3>
-<table>
-<tr><th></th><th>不提价</th><th>最优提价</th></tr>
-<tr><td>标价 (your price)</td><td class="num">$8.99</td><td class="num gh">$9.55</td></tr>
-<tr><td>PED 最低售价</td><td class="num">$7.19</td><td class="num gh">$7.64</td></tr>
-<tr><td>绑定规则</td><td>R4 (20%折扣)</td><td>R4 = R5 (20% = 参考价85%)</td></tr>
-<tr><td>每单收入</td><td class="rh">$7.19</td><td class="gh">$7.64 (+6.3%)</td></tr>
-</table>
+</div>
 
 <div class="note red" style="margin-top:10px">
-<strong>⚠️ 跑过优惠券的代价：</strong>如果用过一个10%券，30天最低 = $8.09 → 不提价的 PED = $6.47（R4绑定）。在 $8.99 的商品上，一笔券直接多亏 $0.72。
+<strong>🔴 核心逻辑：</strong>你能改的只有 Rule 4（通过提高 Your Price 来抬高 20% off 的基准）。但 Rule 5（参考价×0.85）、Rule 6（历史售价×0.95）、Rule 7（30天最低）全部基于<strong>系统锁定的历史数据</strong>，你改不了。<br><br>
+<strong>也就是说：</strong>提高售价只能让 Rule 4 变宽松，但真正的天花板永远是 Rule 5 / 6 / 7 中最严格的那条。<br>
+<strong>最优策略：</strong>把 Your Price 精确提高到让 Rule 4 的结果 ≤ 真正的天花板。提到更多没用，提到不够则被其他锁压死。
 </div>
 </div>
 
-<!-- ====== 所有算入 ====== -->
+<!-- ====== LD/BD RULES ====== -->
 <div class="sec">
-<h2>📋 什么会被算入「最低价」？</h2>
+<h2>⚡ Lightning Deal / Best Deal 规则</h2>
+
 <table>
-<tr><th>项目</th><th>算入60天？</th><th>算入30天？</th><th>说明</th></tr>
-<tr><td>日常售价</td><td class="gh">✅</td><td class="gh">✅</td><td>最基础的参考</td></tr>
-<tr><td>优惠券 (Coupon)</td><td class="gh">✅</td><td class="gh">✅</td><td>折后实付价，不是标价</td></tr>
-<tr><td>PED</td><td class="gh">✅</td><td class="gh">✅</td><td>折后价拉低所有基准线</td></tr>
-<tr><td>Best Deal / Lightning Deal</td><td class="gh">✅</td><td class="gh">✅</td><td>秒杀价拉低60天最低</td></tr>
-<tr><td>Outlet / 清仓价</td><td class="gh">✅</td><td class="gh">✅</td><td>同样计入</td></tr>
-<tr><td>企业购 (B2B)</td><td class="gh">✅</td><td class="rh">❌</td><td>仅60天</td></tr>
-<tr><td>Subscribe & Save</td><td class="gh">✅</td><td class="rh">❌</td><td>仅60天</td></tr>
-<tr><td>Buy X Get Y</td><td class="gh">✅</td><td class="rh">❌</td><td>仅60天</td></tr>
+<tr><th>规则</th><th>公式</th><th>说明</th></tr>
+<tr>
+  <td>60天最低价红线</td>
+  <td class="num">LD/BD 价 ≤ 过去60天内全站最低成交价</td>
+  <td class="dim">含所有促销、优惠券、秒杀价</td>
+</tr>
+<tr>
+  <td>30天再降 5%</td>
+  <td class="num">LD/BD 价 ≤ 过去30天内全站最低价 × 0.95</td>
+  <td class="dim">取两条中更严格的那条</td>
+</tr>
 </table>
 
 <div class="note">
-<strong>📌 核心原则：</strong>买家实际支付的价格，基本都被算进去。亚马逊交叉叠加计算所有折扣。
+<strong>⚠️ 注意：</strong>LD/BD 用「≤」，PED 的 Rule 7 用「<」（严格小于）。PED 的符号更苛刻。
 </div>
 </div>
 
-<!-- ====== 时间线 ====== -->
+<!-- ====== $8.99 EXAMPLES ====== -->
+<div class="sec">
+<h2>📐 经典案例：日常 $8.99 的商品</h2>
+
+<h3>场景 A · 无促销历史（最佳）</h3>
+<table>
+<tr><th>参数</th><th>值</th></tr>
+<tr><td>当前售价</td><td class="num">$8.99</td></tr>
+<tr><td>参考价 / 历史售价 / 30天最低</td><td class="num">全部 = $8.99</td></tr>
+</table>
+
+<div class="note green">
+<strong>结果：</strong><br>
+Rule 4: $8.99 × 0.80 = <strong>$7.19</strong><br>
+Rule 5: $8.99 × 0.85 = $7.64<br>
+Rule 6: $8.99 × 0.95 = $8.54<br>
+Rule 7: < $8.99<br>
+→ <strong class="gh">真正天花板 = $7.19</strong>（Rule 4 最严）<br>
+→ 提价到 <span class="num">$9.55</span> 可将 Rule 4 抬至 $7.64 → <strong class="gh">最终可卖 $7.64，多赚 $0.45</strong>
+</div>
+
+<h3>场景 B · 跑过10%优惠券（踩坑）</h3>
+<table>
+<tr><th>参数</th><th>值</th></tr>
+<tr><td>当前售价</td><td class="num">$8.99</td></tr>
+<tr><td>参考价 / 历史售价</td><td class="num">$8.99</td></tr>
+<tr><td>30天最低价</td><td class="num rh">$8.09</td><td class="dim">(优惠券折后)</td></tr>
+</table>
+
+<div class="note red">
+<strong>结果：</strong><br>
+Rule 4: $8.99 × 0.80 = $7.19<br>
+Rule 5: $8.99 × 0.85 = $7.64<br>
+Rule 6: $8.99 × 0.95 = $8.54<br>
+Rule 7: < $8.09<br>
+→ <strong class="rh">真正天花板 = $7.19</strong>（Rule 4 + Rule 7 联合压死）<br>
+→ 提价到 $10.11 可将 Rule 4 抬至 $8.09 → <strong class="rh">最终可卖 $8.08，比场景A多降$0.91</strong>
+</div>
+</div>
+
+<!-- ====== TIMELINE ====== -->
 <div class="sec">
 <h2>📅 关键时间线</h2>
 <div class="timeline">
-<div class="timeline-item"><div class="date">4月24日</div><div class="desc">价格保护期开始 → 严禁低于日常售价的降价</div></div>
-<div class="timeline-item"><div class="date">4月30日</div><div class="desc"><span class="tag green">早鸟</span> LD/BD 提报截止 → 每个deal $50（原$100）</div></div>
-<div class="timeline-item"><div class="date">5月18日</div><div class="desc">非促销降价也计入 Typical Price → 堵死降价漏洞</div></div>
+<div class="timeline-item"><div class="date">4月24日</div><div class="desc">价格保护期开始 → 严禁低于日常价的降价</div></div>
+<div class="timeline-item"><div class="date">4月30日</div><div class="desc"><span class="tag green">早鸟</span> LD/BD提报截止 → 每个deal $100→$50</div></div>
+<div class="timeline-item"><div class="date">5月18日</div><div class="desc">非促销降价也计入典型价格</div></div>
 <div class="timeline-item"><div class="date">5月26日</div><div class="desc"><span class="tag red">最终</span> 所有deal提报截止</div></div>
-<div class="timeline-item"><div class="date">5月27日</div><div class="desc">FBA入仓截止 (第一批)</div></div>
-<div class="timeline-item"><div class="date">6月5日</div><div class="desc">FBA入仓截止 (第二批)</div></div>
-<div class="timeline-item"><div class="date"><strong>6月23–26日</strong></div><div class="desc"><strong>Prime Day 2026 🎉</strong></div></div>
+<div class="timeline-item"><div class="date">5月27日 / 6月5日</div><div class="desc">FBA入仓截止</div></div>
+<div class="timeline-item"><div class="date"><strong>6月23日 – 26日</strong></div><div class="desc"><strong>Prime Day 2026 🎉</strong></div></div>
 </div>
-</div>
-
-<!-- ====== 费用 ====== -->
-<div class="sec">
-<h2>💰 促销费用</h2>
-<table>
-<tr><th>费用项</th><th>标准</th><th>早鸟(4/30前)</th></tr>
-<tr><td>Lightning Deal</td><td class="num">$100</td><td class="num gh">$50</td></tr>
-<tr><td>Best Deal</td><td class="num">$100</td><td class="num gh">$50</td></tr>
-<tr><td>Coupon 兑换费</td><td colspan="2" class="dim">$0.60/次 + 折扣金额</td></tr>
-</table>
-</div>
-
-<!-- ====== 实操 ====== -->
-<div class="sec">
-<h2>🛠️ 实操总结</h2>
-<div class="rule-box green"><h4>1️⃣ PED 提价是唯一合法操作</h4><p>把标价提到 S × 1.0625，每单多赚。但只能提到 R5 的天花板，再提没用。</p></div>
-<div class="rule-box green"><h4>2️⃣ 锁价期别碰任何促销</h4><p>4月24日以后不要跑券、不要做 PED、不要降价。任何一次「真实低价」都会直接拉低你的 60/30 天最低价。</p></div>
-<div class="rule-box green"><h4>3️⃣ LD/BD 和 PED 是两个独立规则体系</h4><p>PED 有 20% 折扣要求（可提价对抗）+ 参考价锁（不可对抗）。LD/BD 只有 60+30 天锁（均不可对抗）。两个都可以报，但要分别满足。</p></div>
 </div>
 
 <div class="dis">
-<p>⚠️ 基于亚马逊 Seller Central、卖家论坛及第三方电商资讯整理（2026年6月）。最终以亚马逊官方公告为准。</p>
+<p>⚠️ 本文基于亚马逊 Seller Central 公告及卖家社区整理（2026年6月）。规则以亚马逊官方最新公告为准。计算器仅供策略参考。</p>
 <p>Generated by Hermes Agent · June 2026</p>
 </div>
 
-</div></body></html>
+</div>
+
+<script>
+function fmt(n){return '$'+(Math.round(n*100)/100).toFixed(2)}
+function fmt2(n){return (Math.round(n*100)/100).toFixed(2)}
+function fmtDiff(n){
+  if(n>0.005) return '<span class="gain-val gh">+'+fmt(n)+'</span>';
+  if(n<-0.005) return '<span class="gain-val rh">'+fmt(n)+'</span>';
+  return '≈ 相同';
+}
+
+function calc(){
+  const yp = parseFloat(document.getElementById('yourPrice').value) || 0;
+  const rp = parseFloat(document.getElementById('refPrice').value) || 0;
+  const hp = parseFloat(document.getElementById('histPrice').value) || 0;
+  const l30 = parseFloat(document.getElementById('low30').value) || 0;
+  const l60 = parseFloat(document.getElementById('low60').value) || 0;
+
+  // === PED RULES ===
+  const r4 = yp * 0.80;
+  const r5 = rp * 0.85;
+  const r6 = hp * 0.95;
+  const r7 = l30 - 0.01;
+  
+  const thresholds = [r4, r5, r6, r7];
+  const ceiling = Math.min(...thresholds);
+  const tightestIdx = thresholds.indexOf(ceiling);
+  const tightestName = ['Rule 4 (20% off)', 'Rule 5 (参考价15%)', 'Rule 6 (历史价5%)', 'Rule 7 (<30天最低)'][tightestIdx];
+
+  // Optimal price raise
+  const optPrice = ceiling / 0.80;
+  const needRaise = optPrice > yp;
+  
+  // Without raise: what PED price would be (limited by r4)
+  const noRaisePed = Math.min(r4, r5, r6, r7);
+
+  // === LD/BD RULES ===
+  const ld60 = l60;
+  const ld30 = l30 * 0.95;
+  const ldCeiling = Math.min(ld60, ld30);
+  const ldTightest = ld60 < ld30 ? '60天最低价红线' : '30天再降5%';
+
+  // === RENDER PED TABLE ===
+  const rules = [
+    {name:'Rule 4 · 20% off 当前售价', val:r4, pass:ceiling<=r4?'pass':(ceiling===r4?'tight':'fail')},
+    {name:'Rule 5 · 参考价 × 0.85', val:r5, pass:ceiling<=r5?'pass':(ceiling===r5?'tight':'fail')},
+    {name:'Rule 6 · 历史售价 × 0.95', val:r6, pass:ceiling<=r6?'pass':(ceiling===r6?'tight':'fail')},
+    {name:'Rule 7 · < 30天全站最低', val:r7, pass:ceiling<=r7?'pass':(ceiling===r7?'tight':'fail')},
+  ];
+  // Re-sort: tightest first
+  rules.sort((a,b)=>a.val-b.val);
+
+  let pedHtml = '<table><tr><th>规则</th><th>门槛值</th><th>你的 PED 价</th><th>结果</th></tr>';
+  for(const r of rules){
+    const statusLabel = r.pass==='tight' ? '🔒 最严锁' : (r.pass==='pass' ? '✅ 满足' : '❌ 不满足');
+    const statusClass = r.pass==='tight' ? 'tight' : (r.pass==='pass' ? 'pass' : 'fail');
+    pedHtml += `<tr>
+      <td>${r.name}</td>
+      <td class="num">≤ ${fmt2(r.val)}</td>
+      <td class="num">${fmt(ceiling)}</td>
+      <td><span class="status ${statusClass}">${statusLabel}</span></td>
+    </tr>`;
+  }
+  pedHtml += '</table>';
+  document.getElementById('pedTable').innerHTML = pedHtml;
+  document.getElementById('pedFinal').innerHTML = fmt(ceiling);
+  document.getElementById('pedRaw20').innerHTML = fmt(r4);
+
+  // === RENDER LD/BD TABLE ===
+  const ldRules = [
+    {name:'60天最低价红线', val:ld60, pass:ldCeiling<=ld60?'pass':(ldCeiling===ld60?'tight':'fail')},
+    {name:'30天最低 × 95%', val:ld30, pass:ldCeiling<=ld30?'pass':(ldCeiling===ld30?'tight':'fail')},
+  ];
+  ldRules.sort((a,b)=>a.val-b.val);
+  let ldHtml = '<table><tr><th>规则</th><th>门槛值</th><th>LD/BD 价</th><th>结果</th></tr>';
+  for(const r of ldRules){
+    const statusLabel = r.pass==='tight' ? '🔒 最严锁' : (r.pass==='pass' ? '✅ 满足' : '❌ 不满足');
+    const statusClass = r.pass==='tight' ? 'tight' : (r.pass==='pass' ? 'pass' : 'fail');
+    ldHtml += `<tr>
+      <td>${r.name}</td>
+      <td class="num">≤ ${fmt2(r.val)}</td>
+      <td class="num">${fmt(ldCeiling)}</td>
+      <td><span class="status ${statusClass}">${statusLabel}</span></td>
+    </tr>`;
+  }
+  ldHtml += '</table>';
+  document.getElementById('ldTable').innerHTML = ldHtml;
+  document.getElementById('ldFinal').innerHTML = fmt(ldCeiling);
+
+  // === COMPARE ===
+  const diff = ceiling - ldCeiling;
+  document.getElementById('compare').innerHTML = 'PED '+fmt(ceiling)+' − LD/BD '+fmt(ldCeiling)+' = '+fmtDiff(diff);
+
+  // === STRATEGY ===
+  let stratHtml = '';
+  if(needRaise){
+    const raiseAmt = optPrice - yp;
+    const gain = ceiling - noRaisePed;
+    stratHtml = `
+    <div class="strategy-box">
+      <h4>✅ 建议提价</h4>
+      <div class="math">
+当前售价: ${fmt(yp)} → 建议提到: ${fmt(optPrice)}（提升 ${fmt(raiseAmt)}）<br>
+不提升: PED 只能卖 ${fmt(noRaisePed)}<br>
+提价后: PED 可卖 ${fmt(ceiling)}<br>
+<strong class="gh">多赚: ${fmt(gain)} / 件</strong>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:6px">
+      📌 最严锁是 <strong style="color:var(--accent)">${tightestName}</strong>，天花板 = ${fmt(ceiling)}。<br>
+      Your Price 提到 ${fmt(optPrice)} 恰好让 Rule 4 (20% off) 对齐天花板。再提更多没用。
+      </p>
+    </div>`;
+  } else {
+    stratHtml = `
+    <div class="strategy-box red">
+      <h4>❌ 当前售价已足够高，无需提价</h4>
+      <div class="math">
+当前售价: ${fmt(yp)} → Rule 4 门槛 = ${fmt(r4)}<br>
+实际天花板 = ${fmt(ceiling)}（来自 <strong>${tightestName}</strong>）<br>
+Rule 4 的门槛(${fmt(r4)})已经 ≤ 天花板 → 提价不会改善结果
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:6px">
+      📌 最严锁是 <strong style="color:var(--accent)">${tightestName}</strong>，天花板 = ${fmt(ceiling)}。<br>
+      你的 Your Price 已足够高，Rule 4 不再是瓶颈。
+      </p>
+    </div>`;
+  }
+  document.getElementById('strategyBox').innerHTML = stratHtml;
+}
+
+// init
+calc();
+</script>
+
+</body></html>
