@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>6月24日 世界杯预测 · Cup26 + Hermes 融合分析</title>
+<style>
+:root{
+  --bg:#0a0e14; --card:#12171f; --card2:#181d27; --border:#1e2634;
+  --text:#c4d0e0; --dim:#4a6078; --accent:#e8b830; --gold:#fbbf24;
+  --g:#10b981; --r:#ef4444; --b:#60a5fa; --o:#f59e0b; --pink:#ec4899;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.75;font-size:13px;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:clamp(10px,2vw,20px)}
+.hero{background:linear-gradient(150deg,#0a1630,#0e1620,#1a0e14);border:2px solid var(--border);border-radius:14px;padding:clamp(16px,3vw,28px);text-align:center;margin-bottom:14px}
+.hero h1{font-size:clamp(17px,3.5vw,26px);font-weight:800;color:#fff}
+.hero .sub{color:var(--dim);font-size:11px;margin-top:2px}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:clamp(12px,2.5vw,18px);margin-bottom:12px}
+.sec h2{font-size:clamp(13px,2vw,16px);color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:10px}
+.match-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;background:var(--card2)}
+.match-head{padding:12px 16px;background:rgba(232,184,48,0.04);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.match-head .flag{font-size:20px}
+.match-head .teams{font-size:15px;font-weight:700}
+.match-head .info{font-size:10px;color:var(--dim);margin-left:auto}
+.match-body{padding:14px 16px}
+.match-body .row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+.match-body table{width:100%;border-collapse:collapse;font-size:11px;margin:6px 0}
+.match-body th{background:rgba(232,184,48,0.06);color:var(--accent);padding:6px 8px;text-align:left;font-weight:600;font-size:10px}
+.match-body td{padding:6px 8px;border-bottom:1px solid var(--border)}
+.match-body .num{font-family:'SF Mono','Consolas',monospace;text-align:right}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.compare-grid{grid-template-columns:1fr}}
+.compare-box{border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+.compare-box h4{font-size:11px;color:var(--dim);margin-bottom:4px}
+.compare-box .big{font-size:22px;font-weight:800;font-family:'SF Mono','Consolas',monospace}
+.compare-box.ours{border-color:rgba(232,184,48,0.3);background:rgba(232,184,48,0.02)}
+.compare-box.cup26{border-color:rgba(96,165,250,0.3);background:rgba(96,165,250,0.02)}
+
+.scores-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0}
+@media(max-width:500px){.scores-grid{grid-template-columns:repeat(3,1fr)}}
+.score-cell{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px 4px;text-align:center}
+.score-cell .s{font-size:15px;font-weight:700;font-family:'SF Mono','Consolas',monospace}
+.score-cell .p{font-size:10px;color:var(--dim)}
+.score-cell.hot{border-color:rgba(232,184,48,0.5);background:rgba(232,184,48,0.04)}
+.score-cell.hot .s{color:var(--accent)}
+.score-cell.sweet{border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.03)}
+.score-cell.sweet .s{color:var(--g)}
+
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:9px;font-weight:700;margin:0 2px}
+.tag.r{background:rgba(239,68,68,0.12);color:var(--r)}
+.tag.g{background:rgba(16,185,129,0.12);color:var(--g)}
+.tag.b{background:rgba(96,165,250,0.12);color:var(--b)}
+.tag.o{background:rgba(245,158,11,0.12);color:var(--o)}
+
+.insight{background:rgba(232,184,48,0.03);border:1px solid rgba(232,184,48,0.15);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:11px}
+.insight.red{background:rgba(239,68,68,0.03);border-color:rgba(239,68,68,0.15)}
+.insight.green{background:rgba(16,185,129,0.03);border-color:rgba(16,185,129,0.15)}
+
+.bar-wrap{height:6px;background:var(--bg);border-radius:3px;margin-top:3px;overflow:hidden}
+.bar{height:100%;border-radius:3px}
+.bar.win{background:var(--g)}.bar.draw{background:var(--o)}.bar.lose{background:var(--r)}
+
+.green{color:var(--g)}.red{color:var(--r)}.gold{color:var(--accent)}.blue{color:var(--b)}
+.hi{font-weight:700}.dim{color:var(--dim);font-size:10px}
+.dis{text-align:center;color:var(--dim);font-size:9px;padding:12px 0;border-top:1px solid var(--border);margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>⚽ 6月24日 世界杯预测</h1>
+  <p class="sub">Cup26 AI（66%准确率） + Hermes Poisson 独立建模 · 融合判断 · 北京时间</p>
+</div>
+
+<!-- ==================== MATCH 1: COL vs DRC ==================== -->
+<div class="match-card">
+<div class="match-head">
+  <span class="flag">🇨🇴</span><span class="teams">哥伦比亚 vs 刚果民主共和国</span>
+  <span class="info">6/24 10:00 北京 · Group K · 裁判 Mariani 🇮🇹（场均3.78黄）</span>
+</div>
+<div class="match-body">
+
+<div class="insight">
+  <strong>📌 形势：</strong>哥伦比亚首轮 3-1 胜乌兹别克，<span class="green">赢球即出线</span>。刚果金首轮 <span class="gold">1-1 逼平葡萄牙</span>（xG 0.82 vs 葡 0.64），防守出色，近5场仅失2球。两队无历史交锋。双方阵容完整，无伤病。
+</div>
+
+<div class="compare-grid">
+  <div class="compare-box cup26">
+    <h4>🔵 Cup26 AI（66%准确率）</h4>
+    <div class="big" style="color:var(--b)">哥伦比亚胜 63%</div>
+    <div style="font-size:11px;color:var(--dim)">平局 13% · 刚果金胜 24%</div>
+  </div>
+  <div class="compare-box ours">
+    <h4>🟡 Hermes Poisson（独立 λ）</h4>
+    <div class="big" style="color:var(--accent)">哥伦比亚胜 56%</div>
+    <div style="font-size:11px;color:var(--dim)">平局 27% · 刚果金胜 17%</div>
+  </div>
+</div>
+
+<div style="margin:10px 0">
+  <span style="font-size:11px">哥伦比亚胜</span>
+  <div style="display:flex;gap:2px;margin-top:4px">
+    <div style="flex:63;background:var(--b);height:14px;border-radius:7px 0 0 7px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">Cup26 63%</div>
+    <div style="flex:56;background:var(--accent);height:14px;border-radius:0 7px 7px 0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#000;font-weight:700">Hermes 56%</div>
+    <div style="flex:37"></div>
+  </div>
+  <div style="display:flex;gap:2px;margin-top:4px">
+    <div style="flex:27;background:var(--o);height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#000;font-weight:700">平 27%</div>
+    <div style="flex:24;background:var(--r);height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">客 24%</div>
+    <div style="flex:49"></div>
+  </div>
+</div>
+
+<div class="insight green">
+  <strong>✅ 一致判断：</strong>Cup26 和我们都说哥伦比亚赢。刚果金防守确实好（逼平葡萄牙），但哥伦比亚阵容更强（James+Luis Díaz+Suárez），且赢球即出线战意足。<strong>小2.5 概率 65%</strong>——刚果金铁桶阵，哥伦比亚破密集能力一般。
+</div>
+
+<h4 style="font-size:12px;color:var(--accent);margin:10px 0 6px">🎯 比分概率</h4>
+<div class="scores-grid">
+  <div class="score-cell hot"><div class="s">1-0</div><div class="p">17.8% · 最可能</div></div>
+  <div class="score-cell sweet"><div class="s">2-0</div><div class="p">12.9%</div></div>
+  <div class="score-cell sweet"><div class="s">0-0</div><div class="p">12.3% · 甜点波胆</div></div>
+  <div class="score-cell"><div class="s">1-1</div><div class="p">11.5%</div></div>
+  <div class="score-cell"><div class="s">2-1</div><div class="p">8.4%</div></div>
+</div>
+
+<div style="font-size:10px;color:var(--dim);margin-top:6px">
+  <span class="tag g">小2.5 65%</span>
+  <span class="tag r">BTTS No 63%</span>
+  <span class="tag b">零封概率: COL 44%</span>
+</div>
+
+</div></div>
+
+<!-- ==================== MATCH 2: SUI vs CAN ==================== -->
+<div class="match-card">
+<div class="match-head">
+  <span class="flag">🇨🇭</span><span class="teams">瑞士 vs 加拿大</span>
+  <span class="info">6/25 03:00 北京 · Group B 头名战 · 温哥华 BC Place · 裁判 Abatti 🇧🇷（场均3.64黄）</span>
+</div>
+<div class="match-body">
+
+<div class="insight red">
+  <strong>📌 形势：</strong>小组头名争夺战！瑞士 4 分（GD+3）、加拿大 4 分（GD+6，主场）。<span class="gold">加拿大打平即小组第一</span>。但加拿大 <span class="red">两名核心中场缺阵</span>：Koné（小腿骨折赛季报销）、Flores（ACL撕裂）。Alphonso Davies 有望首秀但状态存疑。瑞士阵容完整（Xhaka+Akanji+Embolo）。
+</div>
+
+<div class="compare-grid">
+  <div class="compare-box cup26">
+    <h4>🔵 Cup26 AI</h4>
+    <div class="big" style="color:var(--b)">瑞士 37% / 平 33%</div>
+    <div style="font-size:11px;color:var(--dim)">加拿大 30%</div>
+  </div>
+  <div class="compare-box ours">
+    <h4>🟡 Hermes Poisson</h4>
+    <div class="big" style="color:var(--accent)">瑞士 42% / 平 27%</div>
+    <div style="font-size:11px;color:var(--dim)">加拿大 30%</div>
+  </div>
+</div>
+
+<div class="insight green">
+  <strong>⚡ 关键分歧：</strong>Cup26 倾向于平局（33%），我们更看好瑞士（42%）。但双方都同意加拿大 <strong>约30%胜率</strong>。这场是三场中最接近的——加拿大虽有主场+净胜球优势，但两个中场核心缺阵是硬伤。Davies 如果首发会是 X 因子。<strong>小2.5 概率 56%</strong>，这场比另两场更可能出大球。
+</div>
+
+<h4 style="font-size:12px;color:var(--accent);margin:10px 0 6px">🎯 比分概率</h4>
+<div class="scores-grid">
+  <div class="score-cell hot"><div class="s">1-1</div><div class="p">12.8% · 最可能</div></div>
+  <div class="score-cell sweet"><div class="s">1-0</div><div class="p">11.7%</div></div>
+  <div class="score-cell sweet"><div class="s">0-1</div><div class="p">9.5%</div></div>
+  <div class="score-cell"><div class="s">2-1</div><div class="p">8.7%</div></div>
+  <div class="score-cell"><div class="s">0-0</div><div class="p">8.6% · 甜点波胆</div></div>
+</div>
+
+<div style="font-size:10px;color:var(--dim);margin-top:6px">
+  <span class="tag g">小2.5 56%</span>
+  <span class="tag o">BTTS Yes 49%</span>
+  <span class="tag b">H2H: 加拿大 3-1 瑞士 (2002友谊赛)</span>
+</div>
+
+</div></div>
+
+<!-- ==================== MATCH 3: BIH vs QAT ==================== -->
+<div class="match-card">
+<div class="match-head">
+  <span class="flag">🇧🇦</span><span class="teams">波黑 vs 卡塔尔</span>
+  <span class="info">6/25 03:00 北京 · Group B · 西雅图 Lumen Field · 裁判 Valenzuela 🇻🇪</span>
+</div>
+<div class="match-body">
+
+<div class="insight">
+  <strong>📌 形势：</strong>两队均 1 分，<span class="gold">必须赢球才有机会争小组第三出线</span>。波黑首轮 1-1 平加拿大、次轮 1-4 输瑞士（10人应战）。卡塔尔首轮 <span class="gold">1-1 逼平瑞士</span>（惊艳），次轮 0-6 惨败加拿大（崩盘）。波黑由 40 岁 Edin Džeko 领军，经验碾压。卡塔尔极度不稳定——一场神一场鬼。
+</div>
+
+<div class="compare-grid">
+  <div class="compare-box cup26">
+    <h4>🔵 Cup26 AI</h4>
+    <div class="big" style="color:var(--b)">波黑 37% / 平 34%</div>
+    <div style="font-size:11px;color:var(--dim)">卡塔尔 29%</div>
+  </div>
+  <div class="compare-box ours">
+    <h4>🟡 Hermes Poisson</h4>
+    <div class="big" style="color:var(--accent)">波黑 44% / 平 30%</div>
+    <div style="font-size:11px;color:var(--dim)">卡塔尔 26%</div>
+  </div>
+</div>
+
+<div class="insight green">
+  <strong>⚠️ 我们的判断：</strong>这场分歧最大。Cup26 说几乎是五五开（37-34-29），我们更看好波黑。<strong>波黑1-4输瑞士有红牌因素</strong>（74 分钟后崩盘），而卡塔尔 0-6 输加拿大是真实水平暴露。Džeko 的终结能力 + 卡塔尔防守漏洞 = 波黑占优。<strong>小2.5 概率 66%</strong>——虽然两队都需要赢，但进攻能力都有限。
+</div>
+
+<h4 style="font-size:12px;color:var(--accent);margin:10px 0 6px">🎯 比分概率</h4>
+<div class="scores-grid">
+  <div class="score-cell hot"><div class="s">1-0</div><div class="p">15.5% · 最可能</div></div>
+  <div class="score-cell sweet"><div class="s">1-1</div><div class="p">13.1%</div></div>
+  <div class="score-cell sweet"><div class="s">0-0</div><div class="p">12.9% · 甜点波胆</div></div>
+  <div class="score-cell"><div class="s">0-1</div><div class="p">10.9%</div></div>
+  <div class="score-cell"><div class="s">2-0</div><div class="p">9.3%</div></div>
+</div>
+
+<div style="font-size:10px;color:var(--dim);margin-top:6px">
+  <span class="tag g">小2.5 66%</span>
+  <span class="tag r">BTTS No 60%</span>
+  <span class="tag o">双方都需要赢 → 后半段可能对攻</span>
+</div>
+
+</div></div>
+
+<!-- ==================== SUMMARY ==================== -->
+<div class="sec">
+<h2>📊 三场合集 + 甜点波胆推荐</h2>
+
+<table>
+<tr>
+  <th>比赛</th><th>Hermes</th><th>Cup26</th><th>共识</th><th>甜点波胆</th>
+</tr>
+<tr>
+  <td><strong>🇨🇴 哥伦比亚 vs 🇨🇩 刚果金</strong></td>
+  <td class="num gold hi">56/27/17</td>
+  <td class="num blue">63/13/24</td>
+  <td><span class="tag g">一致：哥伦比亚胜</span></td>
+  <td><span class="hi">1-0</span> (17.8%) · <span class="hi">0-0</span> (12.3%)</td>
+</tr>
+<tr>
+  <td><strong>🇨🇭 瑞士 vs 🇨🇦 加拿大</strong></td>
+  <td class="num gold hi">42/27/30</td>
+  <td class="num blue">37/33/30</td>
+  <td><span class="tag o">分歧：瑞士胜 vs 平局</span></td>
+  <td><span class="hi">1-1</span> (12.8%) · <span class="hi">0-0</span> (8.6%)</td>
+</tr>
+<tr>
+  <td><strong>🇧🇦 波黑 vs 🇶🇦 卡塔尔</strong></td>
+  <td class="num gold hi">44/30/26</td>
+  <td class="num blue">37/34/29</td>
+  <td><span class="tag o">分歧最大：波黑优势</span></td>
+  <td><span class="hi">1-0</span> (15.5%) · <span class="hi">1-1</span> (13.1%)</td>
+</tr>
+</table>
+
+<div class="insight" style="margin-top:12px">
+  <strong>🔑 用法说明：</strong><br>
+  • <strong>Cup26</strong>：只预测输赢/平局方向，66%准确率，没有波胆<br>
+  • <strong>Hermes Poisson</strong>：独立估算 λ → 独立跑波胆概率，不校准市场赔率<br>
+  • <strong>甜点波胆</strong>：概率 8-20% 的比分，适合小额搏冷（赔率通常 10-20x）<br>
+  • <strong>最稳方向</strong>：哥伦比亚胜 + 三场全小 2.5 = 小 2.5 在这三场都超过 55%
+</div>
+</div>
+
+<div class="dis">
+  Hermes Agent · Poisson 独立建模 + Cup26 AI (Elo+Dixon-Coles+MonteCarlo) 融合 · 2026-06-23<br>
+  仅供分析参考，不构成投注建议。18+ 请理性。
+</div>
+
+</div>
+</body>
+</html>
