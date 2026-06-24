@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>6/25 世界杯六场全分析 — Cup26 AI vs Hermes Poisson 融合</title><style>
+<title>6/25 世界杯六场融合分析 — Cup26 AI vs Hermes Poisson</title><style>
 :root{--bg:#0a0e14;--card-bg:#12171f;--card-border:#1e2a3a;--text:#cfd7e6;--text-dim:#8896a8;--accent:#e8b830;--tier-core:#f59e0b;--tier-high:#8b5cf6;--tier-upset:#ef4444;--green:#22c55e;--red:#ef4444}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;padding:20px;max-width:1200px;margin:0 auto}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;line-height:1.6;padding:20px;max-width:1200px;margin:0 auto}
 h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 .subtitle{text-align:center;color:var(--text-dim);margin-bottom:10px;font-size:.9em}
 .match-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:20px;margin-bottom:24px}
@@ -22,21 +22,19 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 .compare-box.hermes{border-left:3px solid #8b5cf6}
 .compare-box .box-title{font-size:.8em;font-weight:700;margin-bottom:8px}
 .prob-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:.85em}
-.prob-row .outcome{font-weight:600;width:40px}
+.prob-row .outcome{font-weight:600;min-width:50px}
 .prob-row .bar-container{flex:1;height:20px;background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;margin:0 10px}
 .prob-row .bar{height:100%;border-radius:10px;transition:width .3s}
 .prob-row .bar.home{background:var(--green)}
 .prob-row .bar.draw{background:var(--text-dim)}
 .prob-row .bar.away{background:#3b82f6}
-.prob-row .pctval{font-size:.8em;font-weight:600;width:45px;text-align:right}
+.prob-row .pctval{font-size:.8em;font-weight:600;min-width:45px;text-align:right}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0}
 .stat-box{background:rgba(255,255,255,.03);border:1px solid var(--card-border);border-radius:8px;padding:12px;text-align:center}
-.stat-box .label{font-size:.75em;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+.stat-box .label{font-size:.75em;color:var(--text-dim);letter-spacing:.5px}
 .stat-box .value{font-size:1.3em;font-weight:700;margin:4px 0}
-.stat-box .value.green{color:var(--green)}
-.stat-box .value.gold{color:var(--accent)}
-.stat-box .value.purple{color:#8b5cf6}
+.stat-box .value.green{color:var(--green)}.stat-box .value.gold{color:var(--accent)}.stat-box .value.purple{color:#8b5cf6}
 .section-title{font-size:1.05em;font-weight:700;color:var(--accent);margin:16px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--card-border)}
 .score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:.8em}
 .score-item{background:rgba(255,255,255,.03);padding:6px 8px;border-radius:6px;text-align:center}
@@ -57,8 +55,8 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <body>
 <h1>⚽ 6月25日 世界杯六场融合分析</h1>
 <p class="subtitle">小组赛第3轮 · 北京时间 2026/06/25</p>
-<p class="subtitle"><span class="cup26-badge">Cup26 AI</span> Elo+Dixon-Coles+MonteCarlo×50,000 &nbsp;|&nbsp; <span class="hermes-badge">Hermes</span> 独立Poisson数据驱动(不校准市场)</p>
-<p class="subtitle" style="font-size:.8em;color:var(--red);margin-top:8px">⚠️ 场地纠正: B组瑞v加→BC Place温哥华, 波v卡→Lumen Field西雅图 | C组摩v海→Mercedes-Benz亚特兰大, 苏v巴→Hard Rock迈阿密</p>
+<p class="subtitle"><span class="cup26-badge">Cup26 AI</span> Elo+Dixon-Coles+蒙特卡洛×50,000次 &nbsp;|&nbsp; <span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场赔率)</p>
+<p class="subtitle" style="font-size:.8em;color:var(--red);margin-top:8px">⚠️ 场地纠正: B组 瑞士v加拿大→BC Place温哥华, 波黑v卡塔尔→Lumen Field西雅图 | C组 摩洛哥v海地→Mercedes-Benz亚特兰大, 苏格兰v巴西→Hard Rock迈阿密</p>
 
 <div class="match-card">
 <div class="match-hero">
@@ -71,51 +69,51 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <div class="section-title">🤖 双模型对比 · 胜平负概率</div>
 <div class="dual-card">
   <div class="compare-box cup26">
-    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+MonteCarlo×50,000</div>
+    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+蒙特卡洛×50,000</div>
     <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:12%"></div></div><span class="pctval">12%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:23%"></div></div><span class="pctval">23%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:23%"></div></div><span class="pctval">23%</span></div>
     <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:65%"></div></div><span class="pctval">65%</span></div>
   </div>
   <div class="compare-box hermes">
-    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立Poisson(λ不校准市场)</div>
-    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:28%"></div></div><span class="pctval">27.7%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:36%"></div></div><span class="pctval">35.9%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:36%"></div></div><span class="pctval">36.4%</span></div>
+    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场)</div>
+    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:28%"></div></div><span class="pctval">28%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:36%"></div></div><span class="pctval">36%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:36%"></div></div><span class="pctval">36%</span></div>
   </div>
 </div>
 
-<div class="divergence-box"><strong>📐 分歧解读：</strong>🔴 严重分歧。Cup26给墨65%胜率——没考虑墨已锁定头名+轮换。Hermes认为平局(35.9%)才是概率最高的结果。</div>
+<div class="divergence-box"><strong>📐 分歧解读：</strong>🔴 严重分歧。Cup26给墨西哥65%胜率——可能没考虑墨已锁定头名+会轮换。Hermes认为平局(35.9%)是最高概率结果。</div>
 
-<div class="section-title">📊 Hermes Poisson 完整概率</div>
+<div class="section-title">📊 Hermes 泊松完整概率</div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">主胜</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">平局</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">客胜</div><div class="value">0%</div></div>
+  <div class="stat-box"><div class="label">主胜</div><div class="value">28%</div></div>
+  <div class="stat-box"><div class="label">平局</div><div class="value">36%</div></div>
+  <div class="stat-box"><div class="label">客胜</div><div class="value">36%</div></div>
 </div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">O2.5</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">U2.5</div><div class="value green">1%</div></div>
+  <div class="stat-box"><div class="label">大2.5球</div><div class="value">20%</div></div>
+  <div class="stat-box"><div class="label">小2.5球</div><div class="value green">80%</div></div>
   <div class="stat-box"><div class="label">期望总进球</div><div class="value gold">1.55</div></div>
 </div>
 <div class="grid-2">
-  <div class="stat-box"><div class="label">BTTS Yes</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">BTTS No</div><div class="value">1%</div></div>
+  <div class="stat-box"><div class="label">双方进球</div><div class="value">29%</div></div>
+  <div class="stat-box"><div class="label">非双方进球</div><div class="value">71%</div></div>
 </div>
 
-<div class="section-title">🎯 Hermes Poisson TOP 12 比分</div>
-<div class="score-grid"><div class="score-item"><span class="prob">0.2%</span><br>0-0</div><div class="score-item"><span class="prob">0.2%</span><br>0-1</div><div class="score-item"><span class="prob">0.1%</span><br>1-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-1</div><div class="score-item"><span class="prob">0.1%</span><br>0-2</div><div class="score-item"><span class="prob">0.1%</span><br>1-2</div><div class="score-item"><span class="prob">0.1%</span><br>2-0</div><div class="score-item"><span class="prob">0.0%</span><br>2-1</div><div class="score-item"><span class="prob">0.0%</span><br>0-3</div><div class="score-item"><span class="prob">0.0%</span><br>2-2</div><div class="score-item"><span class="prob">0.0%</span><br>1-3</div><div class="score-item"><span class="prob">0.0%</span><br>3-0</div></div>
+<div class="section-title">🎯 Hermes 泊松 TOP 12 比分概率</div>
+<div class="score-grid"><div class="score-item"><span class="prob">21.2%</span><br>0-0</div><div class="score-item"><span class="prob">18.0%</span><br>0-1</div><div class="score-item"><span class="prob">14.9%</span><br>1-0</div><div class="score-item"><span class="prob">12.6%</span><br>1-1</div><div class="score-item"><span class="prob">7.7%</span><br>0-2</div><div class="score-item"><span class="prob">5.4%</span><br>1-2</div><div class="score-item"><span class="prob">5.2%</span><br>2-0</div><div class="score-item"><span class="prob">4.4%</span><br>2-1</div><div class="score-item"><span class="prob">2.2%</span><br>0-3</div><div class="score-item"><span class="prob">1.9%</span><br>2-2</div><div class="score-item"><span class="prob">1.5%</span><br>1-3</div><div class="score-item"><span class="prob">1.2%</span><br>3-0</div></div>
 
 <div class="section-title">🔍 核心信息</div>
 <div class="info-row"><strong>已赛:</strong> MD1: 韩2-1捷, 墨2-0南 | MD2: 捷1-1南, 墨1-0韩</div>
 <div class="info-row"><strong>积分:</strong> 1.墨西哥 6分(+3)✅已出线 | 2.韩国 3分(0) | 3.捷克 1分(-1) | 4.南非 1分(-2)</div>
 <div class="info-row"><strong>形势:</strong> 捷克必须赢才有机会，墨西哥已锁定头名大概率轮换。捷克2026全赛事BTTS延续，墨西哥8/10场零封。</div>
-<div class="info-row"><strong>H2H:</strong> 历史交锋稀少（2000年友谊赛捷克2-1胜），近25年无正式比赛交手。</div>
+<div class="info-row"><strong>历史交锋:</strong> 历史交锋稀少（2000年友谊赛捷克2-1胜），近25年无正式比赛交手。</div>
 <div class="info-row"><strong>伤停:</strong> 捷克: Jurasek伤疑 | 墨西哥: Montes解禁，无伤停，可能轮换多名主力</div>
 <div class="info-row"><strong>战术:</strong> 捷克4-2-3-1高空轰炸(Soucek+Krejci定位球) vs 墨西哥4-3-3务实(0失球+26场主场不败)</div>
-<div class="info-row"><strong>市场:</strong> 墨胜2.00 | 平3.40 | 捷胜3.90 | O2.5@2.14 | U2.5@1.72 | Yes@1.90 | No@1.85</div>
+<div class="info-row"><strong>市场赔率:</strong> 墨胜2.00 | 平3.40 | 捷胜3.90 | 大2.5@2.14 | 小2.5@1.72 | 双方进球@1.90 | 非双方进球@1.85</div>
 
 <div class="section-title">⭐ Hermes 甜点推荐</div>
-<div class="pick-card tier-core"><div class="pick-title">🛡️ U2.5</div><div class="pick-prob">概率 79.6%</div><div class="pick-reason">墨西哥0失球+轮换收着踢，捷克攻坚能力有限</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 平局</div><div class="pick-prob">概率 35.9%</div><div class="pick-reason">墨西哥轮换进攻打折，捷克必须赢但能力不足</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆 1-1</div><div class="pick-prob">概率 12.6%</div><div class="pick-reason">最大分歧场——市场低估捷克逼平能力</div></div>
+<div class="pick-card tier-core"><div class="pick-title">🛡️ 小2.5</div><div class="pick-prob">概率 79.6%</div><div class="pick-reason">墨西哥0失球+轮换收着踢，捷克攻坚有限</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 平局</div><div class="pick-prob">概率 35.9%</div><div class="pick-reason">墨西哥轮换打折+捷克必须赢但能力不够</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆1-1</div><div class="pick-prob">概率 12.6%</div><div class="pick-reason">Cup26严重分歧场——市场低估捷克逼平能力</div></div>
 </div>
 <div class="match-card">
 <div class="match-hero">
@@ -128,51 +126,51 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <div class="section-title">🤖 双模型对比 · 胜平负概率</div>
 <div class="dual-card">
   <div class="compare-box cup26">
-    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+MonteCarlo×50,000</div>
+    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+蒙特卡洛×50,000</div>
     <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:18%"></div></div><span class="pctval">18%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:26%"></div></div><span class="pctval">26%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:26%"></div></div><span class="pctval">26%</span></div>
     <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:56%"></div></div><span class="pctval">56%</span></div>
   </div>
   <div class="compare-box hermes">
-    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立Poisson(λ不校准市场)</div>
-    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:16%"></div></div><span class="pctval">15.6%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:31%"></div></div><span class="pctval">31.2%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:53%"></div></div><span class="pctval">53.2%</span></div>
+    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场)</div>
+    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:16%"></div></div><span class="pctval">16%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:31%"></div></div><span class="pctval">31%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:53%"></div></div><span class="pctval">53%</span></div>
   </div>
 </div>
 
-<div class="divergence-box green"><strong>📐 分歧解读：</strong>🟢 共识。Cup26(韩56%)与Hermes(韩53.2%)几乎一致。这是本轮最干净的信号。</div>
+<div class="divergence-box green"><strong>📐 分歧解读：</strong>🟢 共识。Cup26(韩56%)与Hermes(韩53.2%)几乎一致。本轮最干净信号。</div>
 
-<div class="section-title">📊 Hermes Poisson 完整概率</div>
+<div class="section-title">📊 Hermes 泊松完整概率</div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">主胜</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">平局</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">客胜</div><div class="value">1%</div></div>
+  <div class="stat-box"><div class="label">主胜</div><div class="value">16%</div></div>
+  <div class="stat-box"><div class="label">平局</div><div class="value">31%</div></div>
+  <div class="stat-box"><div class="label">客胜</div><div class="value">53%</div></div>
 </div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">O2.5</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">U2.5</div><div class="value green">1%</div></div>
+  <div class="stat-box"><div class="label">大2.5球</div><div class="value">24%</div></div>
+  <div class="stat-box"><div class="label">小2.5球</div><div class="value green">76%</div></div>
   <div class="stat-box"><div class="label">期望总进球</div><div class="value gold">1.69</div></div>
 </div>
 <div class="grid-2">
-  <div class="stat-box"><div class="label">BTTS Yes</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">BTTS No</div><div class="value">1%</div></div>
+  <div class="stat-box"><div class="label">双方进球</div><div class="value">27%</div></div>
+  <div class="stat-box"><div class="label">非双方进球</div><div class="value">73%</div></div>
 </div>
 
-<div class="section-title">🎯 Hermes Poisson TOP 12 比分</div>
-<div class="score-grid"><div class="score-item"><span class="prob">0.2%</span><br>0-1</div><div class="score-item"><span class="prob">0.2%</span><br>0-0</div><div class="score-item"><span class="prob">0.1%</span><br>0-2</div><div class="score-item"><span class="prob">0.1%</span><br>1-1</div><div class="score-item"><span class="prob">0.1%</span><br>1-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-2</div><div class="score-item"><span class="prob">0.1%</span><br>0-3</div><div class="score-item"><span class="prob">0.0%</span><br>2-1</div><div class="score-item"><span class="prob">0.0%</span><br>1-3</div><div class="score-item"><span class="prob">0.0%</span><br>2-0</div><div class="score-item"><span class="prob">0.0%</span><br>2-2</div><div class="score-item"><span class="prob">0.0%</span><br>0-4</div></div>
+<div class="section-title">🎯 Hermes 泊松 TOP 12 比分概率</div>
+<div class="score-grid"><div class="score-item"><span class="prob">22.0%</span><br>0-1</div><div class="score-item"><span class="prob">18.5%</span><br>0-0</div><div class="score-item"><span class="prob">13.1%</span><br>0-2</div><div class="score-item"><span class="prob">11.0%</span><br>1-1</div><div class="score-item"><span class="prob">9.2%</span><br>1-0</div><div class="score-item"><span class="prob">6.5%</span><br>1-2</div><div class="score-item"><span class="prob">5.2%</span><br>0-3</div><div class="score-item"><span class="prob">2.7%</span><br>2-1</div><div class="score-item"><span class="prob">2.6%</span><br>1-3</div><div class="score-item"><span class="prob">2.3%</span><br>2-0</div><div class="score-item"><span class="prob">1.6%</span><br>2-2</div><div class="score-item"><span class="prob">1.5%</span><br>0-4</div></div>
 
 <div class="section-title">🔍 核心信息</div>
 <div class="info-row"><strong>已赛:</strong> MD1: 墨2-0南, 韩2-1捷 | MD2: 捷1-1南, 墨1-0韩</div>
 <div class="info-row"><strong>积分:</strong> 1.墨西哥 6分(+3)✅ | 2.韩国 3分(0) | 3.捷克 1分(-1) | 4.南非 1分(-2)</div>
 <div class="info-row"><strong>形势:</strong> 韩国平局即出线。南非中场Mokoena+Zwane双双停赛，7场不胜0运动战进球。</div>
-<div class="info-row"><strong>H2H:</strong> 历史首次交锋！两队成年国家队此前从未交手。</div>
+<div class="info-row"><strong>历史交锋:</strong> 历史首次交锋！两队成年国家队此前从未交手。</div>
 <div class="info-row"><strong>伤停:</strong> 南非: Mokoena(停赛)+Zwane(红牌停赛)中场瘫痪, Sithole解禁 | 韩国: 全员健康</div>
-<div class="info-row"><strong>战术:</strong> 南非4-3-3中场被掏空 vs 韩国4-4-2控球(Son+Lee Kang-in+Kim Min-jae全主力),15/17场BTTS No</div>
-<div class="info-row"><strong>市场:</strong> 韩胜1.65 | 平4.00 | 南胜5.50 | O2.5@1.90 | U2.5@1.85 | Yes@2.10 | No@1.70</div>
+<div class="info-row"><strong>战术:</strong> 南非4-3-3中场被掏空 vs 韩国4-4-2控球(Son+Lee Kang-in+Kim Min-jae全主力),15/17场非双方进球</div>
+<div class="info-row"><strong>市场赔率:</strong> 韩胜1.65 | 平4.00 | 南胜5.50 | 大2.5@1.90 | 小2.5@1.85 | 双方进球@2.10 | 非双方进球@1.70</div>
 
 <div class="section-title">⭐ Hermes 甜点推荐</div>
-<div class="pick-card tier-core"><div class="pick-title">🛡️ 韩国不败</div><div class="pick-prob">概率 84.4%</div><div class="pick-reason">南非中场全废+7场不胜，韩国保平即可，模型与Cup26高度一致</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ U2.5</div><div class="pick-prob">概率 76.0%</div><div class="pick-reason">韩国15/17场BTTS No，南非进攻完全哑火</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆 韩国2-0</div><div class="pick-prob">概率 13.1%</div><div class="pick-reason">韩国控场消耗+反击杀招，南非下半场崩盘</div></div>
+<div class="pick-card tier-core"><div class="pick-title">🛡️ 韩国不败</div><div class="pick-prob">概率 84.4%</div><div class="pick-reason">南非中场全废+7场不胜，双模型共识</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 小2.5</div><div class="pick-prob">概率 76.0%</div><div class="pick-reason">韩国15/17场非BTTS，南非进攻哑火</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆韩国2-0</div><div class="pick-prob">概率 13.1%</div><div class="pick-reason">韩国控场消耗+反击杀招</div></div>
 </div>
 <div class="match-card">
 <div class="match-hero">
@@ -185,51 +183,51 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <div class="section-title">🤖 双模型对比 · 胜平负概率</div>
 <div class="dual-card">
   <div class="compare-box cup26">
-    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+MonteCarlo×50,000</div>
+    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+蒙特卡洛×50,000</div>
     <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:37%"></div></div><span class="pctval">37%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:30%"></div></div><span class="pctval">30%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:30%"></div></div><span class="pctval">30%</span></div>
     <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:33%"></div></div><span class="pctval">33%</span></div>
   </div>
   <div class="compare-box hermes">
-    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立Poisson(λ不校准市场)</div>
-    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:40%"></div></div><span class="pctval">39.8%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:25%"></div></div><span class="pctval">24.7%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:35%"></div></div><span class="pctval">35.3%</span></div>
+    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场)</div>
+    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:40%"></div></div><span class="pctval">40%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:25%"></div></div><span class="pctval">25%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:35%"></div></div><span class="pctval">35%</span></div>
   </div>
 </div>
 
-<div class="divergence-box green"><strong>📐 分歧解读：</strong>🟢 共识。Cup26(瑞37%/加33%)与Hermes(瑞39.8%/加35.3%)高度一致。极均衡比赛。</div>
+<div class="divergence-box green"><strong>📐 分歧解读：</strong>🟢 共识。Cup26(瑞37%/加33%)与Hermes(瑞40%/加35%)高度一致。极均衡比赛。</div>
 
-<div class="section-title">📊 Hermes Poisson 完整概率</div>
+<div class="section-title">📊 Hermes 泊松完整概率</div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">主胜</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">平局</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">客胜</div><div class="value">0%</div></div>
+  <div class="stat-box"><div class="label">主胜</div><div class="value">40%</div></div>
+  <div class="stat-box"><div class="label">平局</div><div class="value">25%</div></div>
+  <div class="stat-box"><div class="label">客胜</div><div class="value">35%</div></div>
 </div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">O2.5</div><div class="value">1%</div></div>
-  <div class="stat-box"><div class="label">U2.5</div><div class="value green">0%</div></div>
+  <div class="stat-box"><div class="label">大2.5球</div><div class="value">55%</div></div>
+  <div class="stat-box"><div class="label">小2.5球</div><div class="value green">45%</div></div>
   <div class="stat-box"><div class="label">期望总进球</div><div class="value gold">2.89</div></div>
 </div>
 <div class="grid-2">
-  <div class="stat-box"><div class="label">BTTS Yes</div><div class="value">1%</div></div>
-  <div class="stat-box"><div class="label">BTTS No</div><div class="value">0%</div></div>
+  <div class="stat-box"><div class="label">双方进球</div><div class="value">58%</div></div>
+  <div class="stat-box"><div class="label">非双方进球</div><div class="value">41%</div></div>
 </div>
 
-<div class="section-title">🎯 Hermes Poisson TOP 12 比分</div>
-<div class="score-grid"><div class="score-item"><span class="prob">0.1%</span><br>1-1</div><div class="score-item"><span class="prob">0.1%</span><br>2-1</div><div class="score-item"><span class="prob">0.1%</span><br>1-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-2</div><div class="score-item"><span class="prob">0.1%</span><br>0-1</div><div class="score-item"><span class="prob">0.1%</span><br>2-0</div><div class="score-item"><span class="prob">0.1%</span><br>2-2</div><div class="score-item"><span class="prob">0.1%</span><br>0-0</div><div class="score-item"><span class="prob">0.1%</span><br>0-2</div><div class="score-item"><span class="prob">0.0%</span><br>3-1</div><div class="score-item"><span class="prob">0.0%</span><br>1-3</div><div class="score-item"><span class="prob">0.0%</span><br>3-0</div></div>
+<div class="section-title">🎯 Hermes 泊松 TOP 12 比分概率</div>
+<div class="score-grid"><div class="score-item"><span class="prob">11.6%</span><br>1-1</div><div class="score-item"><span class="prob">8.7%</span><br>2-1</div><div class="score-item"><span class="prob">8.3%</span><br>1-0</div><div class="score-item"><span class="prob">8.1%</span><br>1-2</div><div class="score-item"><span class="prob">7.7%</span><br>0-1</div><div class="score-item"><span class="prob">6.2%</span><br>2-0</div><div class="score-item"><span class="prob">6.1%</span><br>2-2</div><div class="score-item"><span class="prob">5.5%</span><br>0-0</div><div class="score-item"><span class="prob">5.4%</span><br>0-2</div><div class="score-item"><span class="prob">4.3%</span><br>3-1</div><div class="score-item"><span class="prob">3.8%</span><br>1-3</div><div class="score-item"><span class="prob">3.1%</span><br>3-0</div></div>
 
 <div class="section-title">🔍 核心信息</div>
 <div class="info-row"><strong>已赛:</strong> MD1: 加1-1波, 瑞1-1卡 | MD2: 瑞4-1波, 加6-0卡</div>
 <div class="info-row"><strong>积分:</strong> 1.加拿大 4分(+6) | 2.瑞士 4分(+3) | 3.波黑 1分(-3) | 4.卡塔尔 1分(-6)</div>
-<div class="info-row"><strong>形势:</strong> 打平携手出线！加拿大Koné断腿报销+Davies可能不首发。加拿大MD2的6-0是对9人卡塔尔，虚高。</div>
-<div class="info-row"><strong>H2H:</strong> 瑞士对加拿大5场不败(2胜3平)，最近交手2002年瑞士1-0。</div>
+<div class="info-row"><strong>形势:</strong> 打平携手出线！加拿大Koné断腿报销+Davies可能不首发。MD2的6-0是对9人卡塔尔，虚高。</div>
+<div class="info-row"><strong>历史交锋:</strong> 瑞士对加拿大5场不败(2胜3平)，最近交手2002年瑞士1-0。</div>
 <div class="info-row"><strong>伤停:</strong> 瑞士: 全员健康 | 加拿大: Koné(断腿报销⚠️), Davies可能替补</div>
 <div class="info-row"><strong>战术:</strong> 瑞士3-4-3灵活(Xhaka指挥+Akanji防线) vs 加拿大4-4-2高位压迫(Koné缺→中场大损,6-0数据虚高)</div>
-<div class="info-row"><strong>市场:</strong> 瑞胜2.45 | 平3.10 | 加胜3.20 | O2.5@2.00 | U2.5@1.77 | Yes@1.73 | No@2.05</div>
+<div class="info-row"><strong>市场赔率:</strong> 瑞胜2.45 | 平3.10 | 加胜3.20 | 大2.5@2.00 | 小2.5@1.77 | 双方进球@1.73 | 非双方进球@2.05</div>
 
 <div class="section-title">⭐ Hermes 甜点推荐</div>
-<div class="pick-card tier-core"><div class="pick-title">🛡️ BTTS Yes</div><div class="pick-prob">概率 58.4%</div><div class="pick-reason">双方进攻强+瑞士4-1波黑火力足+加拿大锋线仍在</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ O2.5</div><div class="pick-prob">概率 55.2%</div><div class="pick-reason">瑞士MD2进4球，加拿大虽有损但前场质量够</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆 2-1瑞士</div><div class="pick-prob">概率 8.7%</div><div class="pick-reason">瑞士整体+经验略优，加拿大Koné缺难赢但能进球</div></div>
+<div class="pick-card tier-core"><div class="pick-title">🛡️ 双方进球</div><div class="pick-prob">概率 58.4%</div><div class="pick-reason">双方进攻强+瑞4-1波黑火力足+加锋线仍在</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 大2.5</div><div class="pick-prob">概率 55.2%</div><div class="pick-reason">瑞MD2进4球，加虽损但前场质量够</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆2-1瑞士</div><div class="pick-prob">概率 8.7%</div><div class="pick-reason">瑞士整体+经验略优</div></div>
 </div>
 <div class="match-card">
 <div class="match-hero">
@@ -242,51 +240,51 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <div class="section-title">🤖 双模型对比 · 胜平负概率</div>
 <div class="dual-card">
   <div class="compare-box cup26">
-    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+MonteCarlo×50,000</div>
+    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+蒙特卡洛×50,000</div>
     <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:37%"></div></div><span class="pctval">37%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:29%"></div></div><span class="pctval">29%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:29%"></div></div><span class="pctval">29%</span></div>
     <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:34%"></div></div><span class="pctval">34%</span></div>
   </div>
   <div class="compare-box hermes">
-    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立Poisson(λ不校准市场)</div>
-    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:70%"></div></div><span class="pctval">69.6%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:18%"></div></div><span class="pctval">17.9%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:12%"></div></div><span class="pctval">11.6%</span></div>
+    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场)</div>
+    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:70%"></div></div><span class="pctval">70%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:18%"></div></div><span class="pctval">18%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:12%"></div></div><span class="pctval">12%</span></div>
   </div>
 </div>
 
-<div class="divergence-box"><strong>📐 分歧解读：</strong>🔴 本轮最大分歧！Cup26给卡塔尔34%胜率，Hermes仅11.6%。Cup26可能基于预选赛/排名，未充分计价卡塔尔在本届赛事的全面崩盘（3红+2主力停赛+失7球仅1乌龙）。</div>
+<div class="divergence-box"><strong>📐 分歧解读：</strong>🔴 本轮最大分歧！Cup26给卡塔尔34%胜率，Hermes仅11.6%。Cup26可能基于预选赛/排名，未充分计价卡塔尔赛事内崩盘（3红+2主力停+失7球仅1乌龙）。</div>
 
-<div class="section-title">📊 Hermes Poisson 完整概率</div>
+<div class="section-title">📊 Hermes 泊松完整概率</div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">主胜</div><div class="value">1%</div></div>
-  <div class="stat-box"><div class="label">平局</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">客胜</div><div class="value">0%</div></div>
+  <div class="stat-box"><div class="label">主胜</div><div class="value">70%</div></div>
+  <div class="stat-box"><div class="label">平局</div><div class="value">18%</div></div>
+  <div class="stat-box"><div class="label">客胜</div><div class="value">12%</div></div>
 </div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">O2.5</div><div class="value">1%</div></div>
-  <div class="stat-box"><div class="label">U2.5</div><div class="value green">0%</div></div>
+  <div class="stat-box"><div class="label">大2.5球</div><div class="value">58%</div></div>
+  <div class="stat-box"><div class="label">小2.5球</div><div class="value green">41%</div></div>
   <div class="stat-box"><div class="label">期望总进球</div><div class="value gold">2.97</div></div>
 </div>
 <div class="grid-2">
-  <div class="stat-box"><div class="label">BTTS Yes</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">BTTS No</div><div class="value">1%</div></div>
+  <div class="stat-box"><div class="label">双方进球</div><div class="value">48%</div></div>
+  <div class="stat-box"><div class="label">非双方进球</div><div class="value">51%</div></div>
 </div>
 
-<div class="section-title">🎯 Hermes Poisson TOP 12 比分</div>
-<div class="score-grid"><div class="score-item"><span class="prob">0.1%</span><br>2-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-0</div><div class="score-item"><span class="prob">0.1%</span><br>2-1</div><div class="score-item"><span class="prob">0.1%</span><br>3-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-1</div><div class="score-item"><span class="prob">0.1%</span><br>3-1</div><div class="score-item"><span class="prob">0.1%</span><br>4-0</div><div class="score-item"><span class="prob">0.0%</span><br>0-0</div><div class="score-item"><span class="prob">0.0%</span><br>4-1</div><div class="score-item"><span class="prob">0.0%</span><br>0-1</div><div class="score-item"><span class="prob">0.0%</span><br>2-2</div><div class="score-item"><span class="prob">0.0%</span><br>1-2</div></div>
+<div class="section-title">🎯 Hermes 泊松 TOP 12 比分概率</div>
+<div class="score-grid"><div class="score-item"><span class="prob">12.1%</span><br>2-0</div><div class="score-item"><span class="prob">10.8%</span><br>1-0</div><div class="score-item"><span class="prob">9.6%</span><br>2-1</div><div class="score-item"><span class="prob">9.1%</span><br>3-0</div><div class="score-item"><span class="prob">8.5%</span><br>1-1</div><div class="score-item"><span class="prob">7.2%</span><br>3-1</div><div class="score-item"><span class="prob">5.1%</span><br>4-0</div><div class="score-item"><span class="prob">4.8%</span><br>0-0</div><div class="score-item"><span class="prob">4.0%</span><br>4-1</div><div class="score-item"><span class="prob">3.8%</span><br>0-1</div><div class="score-item"><span class="prob">3.8%</span><br>2-2</div><div class="score-item"><span class="prob">3.4%</span><br>1-2</div></div>
 
 <div class="section-title">🔍 核心信息</div>
 <div class="info-row"><strong>已赛:</strong> MD1: 加1-1波, 瑞1-1卡 | MD2: 瑞4-1波, 加6-0卡</div>
 <div class="info-row"><strong>积分:</strong> 1.加拿大 4分(+6) | 2.瑞士 4分(+3) | 3.波黑 1分(-3) | 4.卡塔尔 1分(-6)</div>
 <div class="info-row"><strong>形势:</strong> 波黑必须大胜+盼瑞士胜加拿大。卡塔尔已崩盘(两场3红)，Madibo+Homam双双停赛。</div>
-<div class="info-row"><strong>H2H:</strong> 2次友谊赛：卡塔尔2-0(2000), 波黑1-1(2010)。世界杯首次正式交手。</div>
+<div class="info-row"><strong>历史交锋:</strong> 2次友谊赛：卡塔尔2-0(2000), 波黑1-1(2010)。世界杯首次正式交手。</div>
 <div class="info-row"><strong>伤停:</strong> 波黑: Muharemovic红牌停赛, Celik伤 | 卡塔尔: Madibo(红牌停)+Homam(红牌停)防线严重残缺</div>
 <div class="info-row"><strong>战术:</strong> 波黑4-4-2(Dzeko支点+年轻边锋) vs 卡塔尔4-3-3(Afif唯一创造点,防线崩溃失7球)</div>
-<div class="info-row"><strong>市场:</strong> 波胜1.42 | 平5.00 | 卡胜7.50 | O2.5@1.61 | U2.5@2.25 | Yes@1.85 | No@1.90</div>
+<div class="info-row"><strong>市场赔率:</strong> 波胜1.42 | 平5.00 | 卡胜7.50 | 大2.5@1.61 | 小2.5@2.25 | 双方进球@1.85 | 非双方进球@1.90</div>
 
 <div class="section-title">⭐ Hermes 甜点推荐</div>
-<div class="pick-card tier-core"><div class="pick-title">🛡️ 波黑胜</div><div class="pick-prob">概率 69.6%</div><div class="pick-reason">⚠️Cup26严重分歧——它给卡塔尔34%胜率，但完全忽略了卡塔尔防线崩溃+3红停赛的现实</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ O2.5</div><div class="pick-prob">概率 57.7%</div><div class="pick-reason">波黑λ=2.25，卡塔尔防守形同虚设</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆 波黑2-0</div><div class="pick-prob">概率 12.1%</div><div class="pick-reason">卡塔尔0运动战进球，波黑定位球+Dzeko收割</div></div>
+<div class="pick-card tier-core"><div class="pick-title">🛡️ 波黑胜</div><div class="pick-prob">概率 69.6%</div><div class="pick-reason">⚠️Cup26给卡34%完全不现实——忽略了卡3红+2停赛</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 大2.5</div><div class="pick-prob">概率 57.7%</div><div class="pick-reason">波黑λ=2.25，卡塔尔防守形同虚设</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆波黑2-0</div><div class="pick-prob">概率 12.1%</div><div class="pick-reason">卡0运动战进球，波黑定位球+Dzeko收割</div></div>
 </div>
 <div class="match-card">
 <div class="match-hero">
@@ -299,51 +297,51 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <div class="section-title">🤖 双模型对比 · 胜平负概率</div>
 <div class="dual-card">
   <div class="compare-box cup26">
-    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+MonteCarlo×50,000</div>
+    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+蒙特卡洛×50,000</div>
     <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:75%"></div></div><span class="pctval">75%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:19%"></div></div><span class="pctval">19%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:19%"></div></div><span class="pctval">19%</span></div>
     <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:6%"></div></div><span class="pctval">6%</span></div>
   </div>
   <div class="compare-box hermes">
-    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立Poisson(λ不校准市场)</div>
-    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:65%"></div></div><span class="pctval">64.9%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:25%"></div></div><span class="pctval">25.4%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:10%"></div></div><span class="pctval">9.6%</span></div>
+    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场)</div>
+    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:65%"></div></div><span class="pctval">65%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:25%"></div></div><span class="pctval">25%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:10%"></div></div><span class="pctval">10%</span></div>
   </div>
 </div>
 
-<div class="divergence-box yellow"><strong>📐 分歧解读：</strong>🟡 中度分歧。Cup26更乐观(摩75%胜)，Hermes更谨慎(摩64.9%)。Hermes考虑海地铁桶+摩洛哥平局即出线无强攻动力。</div>
+<div class="divergence-box yellow"><strong>📐 分歧解读：</strong>🟡 中度分歧。Cup26更乐观(摩75%胜)，Hermes更谨慎(摩65%)。Hermes考虑海地铁桶+摩平局即出线无强攻动力。</div>
 
-<div class="section-title">📊 Hermes Poisson 完整概率</div>
+<div class="section-title">📊 Hermes 泊松完整概率</div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">主胜</div><div class="value">1%</div></div>
-  <div class="stat-box"><div class="label">平局</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">客胜</div><div class="value">0%</div></div>
+  <div class="stat-box"><div class="label">主胜</div><div class="value">65%</div></div>
+  <div class="stat-box"><div class="label">平局</div><div class="value">25%</div></div>
+  <div class="stat-box"><div class="label">客胜</div><div class="value">10%</div></div>
 </div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">O2.5</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">U2.5</div><div class="value green">1%</div></div>
+  <div class="stat-box"><div class="label">大2.5球</div><div class="value">30%</div></div>
+  <div class="stat-box"><div class="label">小2.5球</div><div class="value green">70%</div></div>
   <div class="stat-box"><div class="label">期望总进球</div><div class="value gold">1.89</div></div>
 </div>
 <div class="grid-2">
-  <div class="stat-box"><div class="label">BTTS Yes</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">BTTS No</div><div class="value">1%</div></div>
+  <div class="stat-box"><div class="label">双方进球</div><div class="value">26%</div></div>
+  <div class="stat-box"><div class="label">非双方进球</div><div class="value">74%</div></div>
 </div>
 
-<div class="section-title">🎯 Hermes Poisson TOP 12 比分</div>
-<div class="score-grid"><div class="score-item"><span class="prob">0.2%</span><br>1-0</div><div class="score-item"><span class="prob">0.2%</span><br>2-0</div><div class="score-item"><span class="prob">0.1%</span><br>0-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-1</div><div class="score-item"><span class="prob">0.1%</span><br>3-0</div><div class="score-item"><span class="prob">0.1%</span><br>2-1</div><div class="score-item"><span class="prob">0.1%</span><br>0-1</div><div class="score-item"><span class="prob">0.0%</span><br>3-1</div><div class="score-item"><span class="prob">0.0%</span><br>4-0</div><div class="score-item"><span class="prob">0.0%</span><br>1-2</div><div class="score-item"><span class="prob">0.0%</span><br>2-2</div><div class="score-item"><span class="prob">0.0%</span><br>4-1</div></div>
+<div class="section-title">🎯 Hermes 泊松 TOP 12 比分概率</div>
+<div class="score-grid"><div class="score-item"><span class="prob">22.4%</span><br>1-0</div><div class="score-item"><span class="prob">16.8%</span><br>2-0</div><div class="score-item"><span class="prob">15.0%</span><br>0-0</div><div class="score-item"><span class="prob">9.0%</span><br>1-1</div><div class="score-item"><span class="prob">8.4%</span><br>3-0</div><div class="score-item"><span class="prob">6.7%</span><br>2-1</div><div class="score-item"><span class="prob">6.0%</span><br>0-1</div><div class="score-item"><span class="prob">3.4%</span><br>3-1</div><div class="score-item"><span class="prob">3.2%</span><br>4-0</div><div class="score-item"><span class="prob">1.8%</span><br>1-2</div><div class="score-item"><span class="prob">1.3%</span><br>2-2</div><div class="score-item"><span class="prob">1.3%</span><br>4-1</div></div>
 
 <div class="section-title">🔍 核心信息</div>
 <div class="info-row"><strong>已赛:</strong> MD1: 巴1-1摩, 海0-1苏 | MD2: 苏0-1摩, 巴3-0海</div>
 <div class="info-row"><strong>积分:</strong> 1.巴西 4分(+3) | 2.摩洛哥 4分(+1) | 3.苏格兰 3分(0) | 4.海地 0分(-4)❌已淘汰</div>
 <div class="info-row"><strong>形势:</strong> 海地已淘汰两场0进球。摩洛哥平局即出线，Saibari两场2球状态火爆。双方历史首次交手。</div>
-<div class="info-row"><strong>H2H:</strong> 历史首次交锋！</div>
-<div class="info-row"><strong>伤停:</strong> 摩洛哥: 全员健康，可能连续三场不变阵 | 海地: Nazon(队史射手王44球)伤疑</div>
-<div class="info-row"><strong>战术:</strong> 摩洛哥4-2-3-1→3-2-4-1(Hakimi右路+Diaz半空间+Saibari火) vs 海地4-4-2/5-4-1(已淘汰,0进球)</div>
-<div class="info-row"><strong>市场:</strong> 摩胜1.18 | 平5.50 | 海胜17.00 | O2.5@2.10 | U2.5@1.68 | Yes@2.40 | No@1.53</div>
+<div class="info-row"><strong>历史交锋:</strong> 历史首次交锋！</div>
+<div class="info-row"><strong>伤停:</strong> 摩洛哥: 全员健康 | 海地: Nazon(队史射手王44球)伤疑</div>
+<div class="info-row"><strong>战术:</strong> 摩洛哥4-2-3-1→3-2-4-1(Hakimi右路+Diaz半空间+Saibari火热) vs 海地4-4-2/5-4-1(已淘汰,0进球)</div>
+<div class="info-row"><strong>市场赔率:</strong> 摩胜1.18 | 平5.50 | 海胜17.00 | 大2.5@2.10 | 小2.5@1.68 | 双方进球@2.40 | 非双方进球@1.53</div>
 
 <div class="section-title">⭐ Hermes 甜点推荐</div>
-<div class="pick-card tier-core"><div class="pick-title">🛡️ BTTS No</div><div class="pick-prob">概率 74.3%</div><div class="pick-reason">海地两场0进球+摩洛哥零封率67%，已淘汰无斗志</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ U2.5</div><div class="pick-prob">概率 70.4%</div><div class="pick-reason">摩洛哥平局即出线不会全力攻，海地无进球能力</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆 摩洛哥2-0</div><div class="pick-prob">概率 16.8%</div><div class="pick-reason">控场消耗+下半场发力两球收工</div></div>
+<div class="pick-card tier-core"><div class="pick-title">🛡️ 非双方进球</div><div class="pick-prob">概率 74.3%</div><div class="pick-reason">海地两场0进球+摩零封率67%，已淘汰无斗志</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 小2.5</div><div class="pick-prob">概率 70.4%</div><div class="pick-reason">摩平局即出线不会全力攻，海地无进球</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆摩洛哥2-0</div><div class="pick-prob">概率 16.8%</div><div class="pick-reason">控场消耗+下半场发力两球收工</div></div>
 </div>
 <div class="match-card">
 <div class="match-hero">
@@ -356,106 +354,106 @@ h1{text-align:center;font-size:2em;margin:20px 0 10px;color:var(--accent)}
 <div class="section-title">🤖 双模型对比 · 胜平负概率</div>
 <div class="dual-card">
   <div class="compare-box cup26">
-    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+MonteCarlo×50,000</div>
+    <div class="box-title"><span class="cup26-badge">Cup26 AI</span> Elo+蒙特卡洛×50,000</div>
     <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:9%"></div></div><span class="pctval">9%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:21%"></div></div><span class="pctval">21%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:21%"></div></div><span class="pctval">21%</span></div>
     <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:70%"></div></div><span class="pctval">70%</span></div>
   </div>
   <div class="compare-box hermes">
-    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立Poisson(λ不校准市场)</div>
-    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:21%"></div></div><span class="pctval">20.7%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平</span><div class="bar-container"><div class="bar draw" style="width:36%"></div></div><span class="pctval">35.8%</span></div>
-    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:43%"></div></div><span class="pctval">43.5%</span></div>
+    <div class="box-title"><span class="hermes-badge">Hermes</span> 独立泊松(λ不校准市场)</div>
+    <div class="prob-row"><span class="outcome" style="color:var(--green)">主胜</span><div class="bar-container"><div class="bar home" style="width:21%"></div></div><span class="pctval">21%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:var(--text-dim)">平局</span><div class="bar-container"><div class="bar draw" style="width:36%"></div></div><span class="pctval">36%</span></div>
+    <div class="prob-row"><span class="outcome" style="color:#3b82f6">客胜</span><div class="bar-container"><div class="bar away" style="width:43%"></div></div><span class="pctval">43%</span></div>
   </div>
 </div>
 
-<div class="divergence-box"><strong>📐 分歧解读：</strong>🔴 严重分歧。Cup26给巴西70%胜率，Hermes仅43.5%+平局35.8%。Hermes额外因子：Raphinha缺阵(×0.85惩罚)+苏格兰防守硬度+必须拿分的苏格兰不会轻易崩。0-0概率22.5%是全轮最高单比分。</div>
+<div class="divergence-box"><strong>📐 分歧解读：</strong>🔴 严重分歧。Cup26给巴西70%胜率，Hermes仅43.5%+平局35.8%。Hermes因子：Raphinha缺(×0.85)+苏格兰防守硬度+必须拿分不崩。0-0概率22.5%是全轮最高单比分。</div>
 
-<div class="section-title">📊 Hermes Poisson 完整概率</div>
+<div class="section-title">📊 Hermes 泊松完整概率</div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">主胜</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">平局</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">客胜</div><div class="value">0%</div></div>
+  <div class="stat-box"><div class="label">主胜</div><div class="value">21%</div></div>
+  <div class="stat-box"><div class="label">平局</div><div class="value">36%</div></div>
+  <div class="stat-box"><div class="label">客胜</div><div class="value">43%</div></div>
 </div>
 <div class="grid-3">
-  <div class="stat-box"><div class="label">O2.5</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">U2.5</div><div class="value green">1%</div></div>
+  <div class="stat-box"><div class="label">大2.5球</div><div class="value">19%</div></div>
+  <div class="stat-box"><div class="label">小2.5球</div><div class="value green">81%</div></div>
   <div class="stat-box"><div class="label">期望总进球</div><div class="value gold">1.49</div></div>
 </div>
 <div class="grid-2">
-  <div class="stat-box"><div class="label">BTTS Yes</div><div class="value">0%</div></div>
-  <div class="stat-box"><div class="label">BTTS No</div><div class="value">1%</div></div>
+  <div class="stat-box"><div class="label">双方进球</div><div class="value">26%</div></div>
+  <div class="stat-box"><div class="label">非双方进球</div><div class="value">74%</div></div>
 </div>
 
-<div class="section-title">🎯 Hermes Poisson TOP 12 比分</div>
-<div class="score-grid"><div class="score-item"><span class="prob">0.2%</span><br>0-0</div><div class="score-item"><span class="prob">0.2%</span><br>0-1</div><div class="score-item"><span class="prob">0.1%</span><br>1-0</div><div class="score-item"><span class="prob">0.1%</span><br>1-1</div><div class="score-item"><span class="prob">0.1%</span><br>0-2</div><div class="score-item"><span class="prob">0.1%</span><br>1-2</div><div class="score-item"><span class="prob">0.0%</span><br>2-0</div><div class="score-item"><span class="prob">0.0%</span><br>2-1</div><div class="score-item"><span class="prob">0.0%</span><br>0-3</div><div class="score-item"><span class="prob">0.0%</span><br>1-3</div><div class="score-item"><span class="prob">0.0%</span><br>2-2</div><div class="score-item"><span class="prob">0.0%</span><br>0-4</div></div>
+<div class="section-title">🎯 Hermes 泊松 TOP 12 比分概率</div>
+<div class="score-grid"><div class="score-item"><span class="prob">22.5%</span><br>0-0</div><div class="score-item"><span class="prob">21.2%</span><br>0-1</div><div class="score-item"><span class="prob">12.4%</span><br>1-0</div><div class="score-item"><span class="prob">11.7%</span><br>1-1</div><div class="score-item"><span class="prob">10.0%</span><br>0-2</div><div class="score-item"><span class="prob">5.5%</span><br>1-2</div><div class="score-item"><span class="prob">3.4%</span><br>2-0</div><div class="score-item"><span class="prob">3.2%</span><br>2-1</div><div class="score-item"><span class="prob">3.1%</span><br>0-3</div><div class="score-item"><span class="prob">1.7%</span><br>1-3</div><div class="score-item"><span class="prob">1.5%</span><br>2-2</div><div class="score-item"><span class="prob">0.7%</span><br>0-4</div></div>
 
 <div class="section-title">🔍 核心信息</div>
 <div class="info-row"><strong>已赛:</strong> MD1: 巴1-1摩, 海0-1苏 | MD2: 苏0-1摩, 巴3-0海</div>
 <div class="info-row"><strong>积分:</strong> 1.巴西 4分(+3) | 2.摩洛哥 4分(+1) | 3.苏格兰 3分(0) | 4.海地 0分(-4)❌</div>
 <div class="info-row"><strong>形势:</strong> 苏格兰必须拿分。巴西Raphinha缺阵重大损失。苏格兰历史10次对巴西0胜(2平8负)。</div>
-<div class="info-row"><strong>H2H:</strong> 苏格兰对巴西10场0胜(2平8负),世界杯4次巴西3胜1平。苏格兰从未赢过巴西。</div>
+<div class="info-row"><strong>历史交锋:</strong> 苏格兰对巴西10场0胜(2平8负),世界杯4次巴西3胜1平。苏格兰从未赢过巴西。</div>
 <div class="info-row"><strong>伤停:</strong> 苏格兰: Hickey伤疑 | 巴西: Raphinha确定缺阵⚠️(右边锋), Neymar可能替补</div>
 <div class="info-row"><strong>战术:</strong> 苏格兰4-3-3/3-4-3身体流(Robertson+McGinn左路+定位球) vs 巴西4-3-3(Vinicius内切→Raphinha缺右路大损)</div>
-<div class="info-row"><strong>市场:</strong> 巴胜1.36 | 平5.25 | 苏胜7.50 | O2.5@1.90 | U2.5@1.85 | Yes@1.91 | No@1.83</div>
+<div class="info-row"><strong>市场赔率:</strong> 巴胜1.36 | 平5.25 | 苏胜7.50 | 大2.5@1.90 | 小2.5@1.85 | 双方进球@1.91 | 非双方进球@1.83</div>
 
 <div class="section-title">⭐ Hermes 甜点推荐</div>
-<div class="pick-card tier-core"><div class="pick-title">🛡️ U2.5</div><div class="pick-prob">概率 81.1%</div><div class="pick-reason">⭐本轮最高概率！苏格兰严防死守+Raphinha缺削弱巴西右路，低比分闷战</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 巴西不败</div><div class="pick-prob">概率 79.2%</div><div class="pick-reason">即使Raphinha缺巴西仍强于苏格兰，但赢面远不如Cup26说的70%</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆 0-0平局</div><div class="pick-prob">概率 22.5%</div><div class="pick-reason">最大冷门路径：苏格兰铁桶+巴西缺创造力→0-0</div></div>
+<div class="pick-card tier-core"><div class="pick-title">🛡️ 小2.5</div><div class="pick-prob">概率 81.1%</div><div class="pick-reason">⭐本轮最高概率！苏严防死守+Raphinha缺削弱巴西右路</div></div><div class="pick-card tier-high"><div class="pick-title">⚖️ 巴西不败</div><div class="pick-prob">概率 79.2%</div><div class="pick-reason">即使Raphinha缺巴西仍强于苏，但远不如Cup26说的70%胜</div></div><div class="pick-card tier-upset"><div class="pick-title">🚀 波胆0-0平</div><div class="pick-prob">概率 22.5%</div><div class="pick-reason">最大冷门路径：苏铁桶+巴西缺创造力→闷平</div></div>
 </div>
 <div class="match-card">
 <div class="section-title">📋 六场双模型汇总</div>
 <table class="summary-table">
-<tr><th>比赛</th><th>Cup26 胜/平/负</th><th>Hermes 胜/平/负</th><th>分歧</th><th>U2.5</th><th>最佳甜点</th></tr>
+<tr><th>比赛</th><th>Cup26 胜/平/负</th><th>Hermes 胜/平/负</th><th>分歧</th><th>小2.5球</th><th>最佳方向</th></tr>
 <tr>
     <td>🇨🇿 捷克 v 墨西哥 🇲🇽</td>
     <td><small>12%/23%/65%</small></td>
-    <td><small>27.7%/35.9%/36.4%</small></td>
+    <td><small>28%/36%/36%</small></td>
     <td>🔴 29%</td>
-    <td><strong>1%</strong></td>
-    <td>🛡️ U2.5</td>
+    <td><strong>80%</strong></td>
+    <td>🛡️ 小2.5</td>
     </tr><tr>
     <td>🇿🇦 南非 v 韩国 🇰🇷</td>
     <td><small>18%/26%/56%</small></td>
-    <td><small>15.6%/31.2%/53.2%</small></td>
+    <td><small>16%/31%/53%</small></td>
     <td>🟢 5%</td>
-    <td><strong>1%</strong></td>
+    <td><strong>76%</strong></td>
     <td>🛡️ 韩国不败</td>
     </tr><tr>
     <td>🇨🇭 瑞士 v 加拿大 🇨🇦</td>
     <td><small>37%/30%/33%</small></td>
-    <td><small>39.8%/24.7%/35.3%</small></td>
+    <td><small>40%/25%/35%</small></td>
     <td>🟢 5%</td>
-    <td><strong>0%</strong></td>
-    <td>🛡️ BTTS Yes</td>
+    <td><strong>45%</strong></td>
+    <td>🛡️ 双方进球</td>
     </tr><tr>
     <td>🇧🇦 波黑 v 卡塔尔 🇶🇦</td>
     <td><small>37%/29%/34%</small></td>
-    <td><small>69.6%/17.9%/11.6%</small></td>
+    <td><small>70%/18%/12%</small></td>
     <td>🔴 33%</td>
-    <td><strong>0%</strong></td>
+    <td><strong>41%</strong></td>
     <td>🛡️ 波黑胜</td>
     </tr><tr>
     <td>🇲🇦 摩洛哥 v 海地 🇭🇹</td>
     <td><small>75%/19%/6%</small></td>
-    <td><small>64.9%/25.4%/9.6%</small></td>
+    <td><small>65%/25%/10%</small></td>
     <td>🟡 10%</td>
-    <td><strong>1%</strong></td>
-    <td>🛡️ BTTS No</td>
+    <td><strong>70%</strong></td>
+    <td>🛡️ 非双方进球</td>
     </tr><tr>
     <td>🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰 v 巴西 🇧🇷</td>
     <td><small>9%/21%/70%</small></td>
-    <td><small>20.7%/35.8%/43.5%</small></td>
+    <td><small>21%/36%/43%</small></td>
     <td>🔴 27%</td>
-    <td><strong>1%</strong></td>
-    <td>🛡️ U2.5</td>
+    <td><strong>81%</strong></td>
+    <td>🛡️ 小2.5</td>
     </tr></table></div>
 <div class="match-card" style="border:2px solid var(--accent)">
 <div class="section-title">💡 融合分析 · 四大核心判断</div>
 <div class="info-row" style="font-size:.9em;line-height:1.8">
-<strong>1. 本轮「小球」双模型共识。</strong> 6场中4场U2.5>70%。Cup26不管大小球（只给1X2%），但Hermes独立Poisson显示小组末轮的保守性是真实信号。最高置信：苏格兰v巴西U2.5=81.1%，捷克v墨西哥U2.5=79.6%。<br><br>
-<strong>2. Cup26可能低估了「赛事内崩盘」信号。</strong> 波黑v卡塔尔是最大分歧（Cup26卡34% vs Hermes卡11.6%，差22.4%）。Cup26的Elo模型依赖长期排名/预选赛，对锦标赛进行中的「3红牌+2停赛」这类实时崩溃不敏感。这是Hermes的λ方法的优势。<br><br>
-<strong>3. Cup26也可能低估了「出线已定」的轮换效应。</strong> 捷克v墨西哥（Cup26墨65% vs Hermes墨36.4%，差28.6%）。墨西哥已经锁定头名，轮换是必然的。Cup26的65%胜率≈把这场当成了墨西哥全主力VS捷克——但现实不是。<br><br>
-<strong>4. 两个模型一致的地方最干净。</strong> 南非v韩国(双模都~55%韩国胜)和瑞士v加拿大(双模都~37%瑞士/33%加拿大)是共识场次。高共识+高概率=最佳甜点。韩国不败84.4%是全轮最干净信号。
+<strong>1. 本轮「小球」是双模型共识的主旋律。</strong> 6场中4场小2.5概率>70%。Cup26不管大小球只给胜平负%，但Hermes独立泊松显示小组末轮的保守性是真实信号。最高置信：苏格兰v巴西小2.5=81.1%，捷克v墨西哥小2.5=79.6%。<br><br>
+<strong>2. Cup26可能低估了「赛事内崩盘」信号。</strong> 波黑v卡塔尔是最大分歧（Cup26给卡34%胜 vs Hermes仅11.6%）。Cup26的Elo模型依赖长期排名/预选赛表现，对锦标赛进行中的实时崩溃（3红牌+2主力停赛）不敏感。这是Hermes的λ方法的独特优势——它能及时反映赛事进行中的状态变化。<br><br>
+<strong>3. Cup26也可能低估了「出线已定」的轮换效应。</strong> 捷克v墨西哥（Cup26墨65% vs Hermes墨36.4%，差28.6个百分点）。墨西哥已锁定头名，轮换是必然的。Cup26的65%胜率≈把这场当成了墨西哥全主力VS捷克——但现实不是。平局35.9%是Hermes认为的最高概率结果。<br><br>
+<strong>4. 两个模型一致的地方最干净。</strong> 南非v韩国(双模都~55%韩国胜)和瑞士v加拿大(双模都~37%瑞士/33%加拿大)是共识场次。高共识+高概率=最佳信号。韩国不败84.4%是全轮置信度最高的方向。
 </div>
 </div>
-<div class="disclaimer">⚡ Cup26 AI (cup26matches.com) + Hermes Agent 独立Poisson模型 融合分析 | λ来自真实比赛数据非市场校准 | 不构成投注建议 | 2026/06/24</div></body></html>
+<div class="disclaimer">⚡ Cup26 AI (cup26matches.com) + Hermes Agent 独立泊松模型 融合分析 | λ来自真实比赛数据不校准市场赔率 | 不构成投注建议 | 生成时间 2026/06/24 12:00 CST</div></body></html>
