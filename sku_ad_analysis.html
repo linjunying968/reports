@@ -3,111 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elystara SKU 销售 & 广告分析</title>
+<title>Elystara SKU 日均销量 & 广告分析（完整版）</title>
 <style>
 :root{--bg:#0d1117;--fg:#e6edf3;--muted:#7d8590;--card:#161b22;--border:#30363d;--accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;padding:24px;max-width:1200px;margin:0 auto}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;padding:24px;max-width:1300px;margin:0 auto}
 h1{text-align:center;font-size:22px;margin-bottom:8px}
-.subtitle{text-align:center;color:var(--muted);font-size:13px;margin-bottom:28px}
-.insights{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:28px}
+.subtitle{text-align:center;color:var(--muted);font-size:13px;margin-bottom:24px}
+.insights{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:24px}
 .insights h2{font-size:16px;margin-bottom:12px;color:var(--accent)}
 .insights ul{padding-left:20px}
 .insights li{margin-bottom:6px}
-.insights .kpi{display:inline-block;background:#1f2937;padding:2px 8px;border-radius:4px;margin:0 2px;font-weight:600}
+.kpi{display:inline-block;background:#1f2937;padding:2px 8px;border-radius:4px;margin:0 2px;font-weight:600;font-family:ui-monospace,SFMono-Regular,monospace}
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px}
-caption{text-align:left;padding:12px 16px;font-size:15px;font-weight:600;border-bottom:1px solid var(--border);background:#1c2128}
-th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--border);font-size:13px}
-th{background:#1c2128;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.02em}
+caption{text-align:left;padding:14px 16px;font-size:15px;font-weight:600;border-bottom:1px solid var(--border);background:#1c2128}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);font-size:13px;white-space:nowrap}
+th{background:#1c2128;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.02em;font-size:12px}
 td:first-child,th:first-child{text-align:left;font-weight:500}
+td:nth-child(2),th:nth-child(2){text-align:left}
 tr:hover{background:#1c2128}
-.pos{color:var(--good)}
+.pos{color:var(--good);font-weight:600}
 .warn{color:var(--warn)}
-.bad{color:var(--bad)}
+.bad{color:var(--bad);font-weight:600}
 .badge{display:inline-block;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600}
 .badge.hot{background:rgba(248,81,73,0.15);color:var(--bad)}
 .badge.cool{background:rgba(93,166,255,0.15);color:var(--accent)}
+.algo{background:rgba(56,139,253,0.1);border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:24px;border-radius:0 6px 6px 0;font-size:13px;color:var(--muted)}
+.algo strong{color:var(--fg)}
 </style>
 </head>
 <body>
-<h1>📊 Elystara SKU 销售与广告分析</h1>
-<p class="subtitle">数据范围：2026-05-04 ~ 2026-07-02 | 共 38 个 SKU | 算法：首单日到停售日为周期</p>
+<h1>📊 Elystara SKU 日均销量 & 广告分析</h1>
+<p class="subtitle">数据范围：2026-05-04 ~ 2026-07-02 · 共 38 个 SKU · 86 个 ASIN · 总销量 2296 单 · 总广告 $1770.58</p>
+
+<div class="algo">
+<strong>日均算法：</strong>每个 ASIN 从"第一单销量日"到"最后一单销量日"作为周期，日均 = 期间总销量 ÷ 天数（自然日，含首尾）。SKU 汇总时取所有 ASIN 销量的总和，天数取并集（最早首单日到最晚停售日）。
+</div>
 
 <div class="insights">
 <h2>核心判断</h2>
 <ul>
-<li>🥇 <span class="kpi">H0002-a</span> 是绝对王者，日均 4.72 单，但广告费 $276 也不低，属于"高销量+高投入"型</li>
-<li>⚠️ <span class="kpi">H0002-b</span> 日均 2.75 单，但广告费 $472，单均广告成本 $2.92，H0002-c 只要 $0.41——b 的广告效率堪忧</li>
-<li>💎 <span class="kpi">H0002-c / H0002-h / H0002-x / H0003-r / H0002-d</span> 效率最高，日均 1.8~2.7 单，广告成本 $0.13~$0.63/单</li>
-<li>❌ <span class="kpi">H0002-b</span> 每卖1块钱就花在广告上的比例最高，需要优化竞价或考虑降低</li>
-<li>💰 整体平均广告成本 $0.77/单，高于此数的 SKU 广告支出都偏贵</li>
+<li>🥇 <span class="kpi">H0002-a</span> 王者地位无可撼动，日均 <strong>4.72 单</strong>，广告投入不小但跑得正，总量 283 单领跑</li>
+<li>⚠️ <span class="kpi">H0002-b</span> 日均 2.75 单但广告费 <strong>$472（最高）</strong>，单均广告成本 $2.92 是 H0002-c 的 <strong>7 倍</strong>——这钱烧得不太值</li>
+<li>💎 性价比梯队：H0002-c / H0002-x / H0003-r / H0002-d / H0002-i，日均 1.8~2.7 单，广告成本 $0.13~$0.41/单</li>
+<li>📉 尾部队态：H0002-n / H0003-q / H0002-l / B0001-a，日均不足 0.35 单，有的还在猛烧广告</li>
+<li>📊 整体广告效率 $0.77/单，H0002-b / H0002-n / H0002-g / H0002-l 远超均值</li>
 </ul>
 </div>
 
 <table>
-<caption>🏆 SKU 销量排行（日均销量 Top 15）</caption>
-<thead><tr>
-<th>#</th><th>SKU</th><th>ASIN数</th><th>日均</th><th>总销量</th><th>活跃天数</th><th>B2B</th><th>广告费</th><th>广告/单</th><th>ACoS</th><th>CPC</th>
-</tr></thead><tbody>
-<tr><td>1</td><td><strong>H0002-a</strong> <span class="badge hot">高频</span></td><td>2</td><td><strong>4.72</strong></td><td>283</td><td>60</td><td>0</td><td>$275.93</td><td class="warn">$0.98</td><td class="warn">0.975</td><td>$0.154</td></tr>
-<tr><td>2</td><td><strong>H0002-b</strong> <span class="badge cool">稳定</span></td><td>1</td><td><strong>2.75</strong></td><td>162</td><td>59</td><td>0</td><td>$472.24</td><td class="bad">$2.92</td><td class="bad">2.915</td><td>$0.120</td></tr>
-<tr><td>3</td><td><strong>H0002-c</strong> <span class="badge cool">稳定</span></td><td>6</td><td><strong>2.71</strong></td><td>160</td><td>59</td><td>0</td><td>$65.90</td><td class="pos">$0.41</td><td class="warn">0.412</td><td>$0.176</td></tr>
-<tr><td>4</td><td><strong>H0002-q</strong> <span class="badge cool">稳定</span></td><td>2</td><td><strong>2.63</strong></td><td>155</td><td>59</td><td>0</td><td>$145.78</td><td class="warn">$0.94</td><td class="warn">0.941</td><td>$0.144</td></tr>
-<tr><td>5</td><td><strong>H0002-h</strong> <span class="badge cool">稳定</span></td><td>3</td><td><strong>1.95</strong></td><td>113</td><td>58</td><td>0</td><td>$71.34</td><td class="pos">$0.63</td><td class="warn">0.631</td><td>$0.141</td></tr>
-<tr><td>6</td><td><strong>H0002-f</strong> <span class="badge cool">稳定</span></td><td>3</td><td><strong>1.92</strong></td><td>115</td><td>60</td><td>0</td><td>$79.57</td><td class="pos">$0.69</td><td class="warn">0.692</td><td>$0.152</td></tr>
-<tr><td>7</td><td><strong>H0002-x</strong> <span class="badge cool">稳定</span></td><td>3</td><td><strong>1.90</strong></td><td>112</td><td>59</td><td>0</td><td>$24.44</td><td class="pos">$0.22</td><td class="pos">0.218</td><td>$0.152</td></tr>
-<tr><td>8</td><td><strong>H0003-r</strong> <span class="badge cool">稳定</span></td><td>2</td><td><strong>1.87</strong></td><td>88</td><td>47</td><td>0</td><td>$12.28</td><td class="pos">$0.14</td><td class="pos">0.139</td><td>$0.189</td></tr>
-<tr><td>9</td><td><strong>H0003-j</span></td><td>1</td><td><strong>1.85</strong></td><td>24</td><td>13</td><td>0</td><td>$4.57</td><td class="pos">$0.19</td><td class="pos">0.190</td><td>$0.199</td></tr>
-<tr><td>10</td><td><strong>H0002-d</strong> <span class="badge cool">稳定</span></td><td>5</td><td><strong>1.80</strong></td><td>108</td><td>60</td><td>0</td><td>$13.53</td><td class="pos">$0.13</td><td class="pos">0.125</td><td>$0.161</td></tr>
-<tr><td>11</td><td><strong>H0002-j</strong> <span class="badge cool">稳定</span></td><td>3</td><td><strong>1.58</strong></td><td>90</td><td>57</td><td>0</td><td>$81.81</td><td class="warn">$0.91</td><td class="warn">0.909</td><td>$0.202</td></tr>
-<tr><td>12</td><td><strong>H0002-y</strong> <span class="badge cool">稳定</span></td><td>3</td><td><strong>1.49</strong></td><td>85</td><td>57</td><td>0</td><td>$67.09</td><td class="warn">$0.79</td><td class="warn">0.789</td><td>$0.152</td></tr>
-<tr><td>13</td><td><strong>H0002-e</strong> <span class="badge cool">稳定</span></td><td>1</td><td><strong>1.24</strong></td><td>51</td><td>41</td><td>0</td><td>$25.21</td><td class="pos">$0.49</td><td class="warn">0.494</td><td>$0.150</td></tr>
-<tr><td>14</td><td><strong>H0002-i</strong> <span class="badge cool">稳定</span></td><td>3</td><td><strong>1.02</strong></td><td>60</td><td>59</td><td>0</td><td>$7.43</td><td class="pos">$0.12</td><td class="pos">0.124</td><td>$0.169</td></tr>
-<tr><td>15</td><td><strong>H0003-b</strong> <span class="badge cool">稳定</span></td><td>2</td><td><strong>1.00</strong></td><td>47</td><td>47</td><td>0</td><td>$4.07</td><td class="pos">$0.09</td><td class="pos">0.087</td><td>$0.193</td></tr>
-</tbody></table>
-
-<table>
-<caption>📈 广告效率排行（单均广告费最低的 SKU，销量≥30）</caption>
-<thead><tr>
-<th>#</th><th>SKU</th><th>日均</th><th>总销量</th><th>广告费</th><th>广告/单</th><th>ACoS</th><th>点击</th><th>CPC</th>
-</tr></thead><tbody>
-<tr><td>1</td><td><strong>H0002-i</strong></td><td>1.02</td><td>60</td><td>$7.43</td><td class="pos">$0.124</td><td class="pos">0.124</td><td>44</td><td>$0.169</td></tr>
-<tr><td>2</td><td><strong>H0002-d</strong></td><td>1.80</td><td>108</td><td>$13.53</td><td class="pos">$0.125</td><td class="pos">0.125</td><td>84</td><td>$0.161</td></tr>
-<tr><td>3</td><td><strong>H0003-r</strong></td><td>1.87</td><td>88</td><td>$12.28</td><td class="pos">$0.139</td><td class="pos">0.139</td><td>65</td><td>$0.189</td></tr>
-<tr><td>4</td><td><strong>H0002-x</strong></td><td>1.90</td><td>112</td><td>$24.44</td><td class="pos">$0.218</td><td class="pos">0.218</td><td>161</td><td>$0.152</td></tr>
-<tr><td>5</td><td><strong>H0002-c</strong></td><td>2.71</td><td>160</td><td>$65.90</td><td class="pos">$0.412</td><td class="warn">0.412</td><td>374</td><td>$0.176</td></tr>
-<tr><td>6</td><td><strong>H0002-e</strong></td><td>1.24</td><td>51</td><td>$25.21</td><td class="pos">$0.494</td><td class="warn">0.494</td><td>168</td><td>$0.150</td></tr>
-<tr><td>7</td><td><strong>H0002-h</strong></td><td>1.95</td><td>113</td><td>$71.34</td><td class="pos">$0.631</td><td class="warn">0.631</td><td>506</td><td>$0.141</td></tr>
-<tr><td>8</td><td><strong>H0002-f</strong></td><td>1.92</td><td>115</td><td>$79.57</td><td class="pos">$0.692</td><td class="warn">0.692</td><td>524</td><td>$0.152</td></tr>
-<tr><td>9</td><td><strong>H0002-y</strong></td><td>1.49</td><td>85</td><td>$67.09</td><td class="warn">$0.789</td><td class="warn">0.789</td><td>441</td><td>$0.152</td></tr>
-<tr><td>10</td><td><strong>H0002-j</strong></td><td>1.58</td><td>90</td><td>$81.81</td><td class="warn">$0.909</td><td class="warn">0.909</td><td>406</td><td>$0.202</td></tr>
-</tbody></table>
-
-<table>
-<caption>💸 广告费超 $50 的 SKU（需要关注投放效率）</caption>
-<thead><tr>
-<th>SKU</th><th>日均</th><th>总销量</th><th>广告费</th><th>广告/单</th><th>ACoS</th><th>点击</th><th>CPC</th><th>判断</th>
-</tr></thead><tbody>
-<tr><td><strong>H0002-a</strong></td><td>4.72</td><td>283</td><td>$275.93</td><td class="warn">$0.98</td><td class="warn">0.975</td><td>1796</td><td>$0.154</td><td><span class="pos">跑量合理</span></td></tr>
-<tr><td><strong>H0002-b</strong></td><td>2.75</td><td>162</td><td>$472.24</td><td class="bad">$2.92</td><td class="bad">2.915</td><td>3931</td><td>$0.120</td><td><span class="bad">需要优化</span></td></tr>
-<tr><td><strong>H0002-q</strong></td><td>2.63</td><td>155</td><td>$145.78</td><td class="warn">$0.94</td><td class="warn">0.941</td><td>1010</td><td>$0.144</td><td><span class="warn">ACoS 偏高</span></td></tr>
-<tr><td><strong>H0002-c</strong></td><td>2.71</td><td>160</td><td>$65.90</td><td class="pos">$0.41</td><td class="warn">0.412</td><td>374</td><td>$0.176</td><td><span class="pos">跑量合理</span></td></tr>
-<tr><td><strong>H0002-h</strong></td><td>1.95</td><td>113</td><td>$71.34</td><td class="pos">$0.63</td><td class="warn">0.631</td><td>506</td><td>$0.141</td><td><span class="pos">跑量合理</span></td></tr>
-<tr><td><strong>H0002-f</strong></td><td>1.92</td><td>115</td><td>$79.57</td><td class="pos">$0.69</td><td class="warn">0.692</td><td>524</td><td>$0.152</td><td><span class="pos">跑量合理</span></td></tr>
-<tr><td><strong>H0002-j</strong></td><td>1.58</td><td>90</td><td>$81.81</td><td class="warn">$0.91</td><td class="warn">0.909</td><td>406</td><td>$0.202</td><td><span class="warn">ACoS 偏高</span></td></tr>
-<tr><td><strong>H0002-y</strong></td><td>1.49</td><td>85</td><td>$67.09</td><td class="warn">$0.79</td><td class="warn">0.789</td><td>441</td><td>$0.152</td><td><span class="warn">ACoS 偏高</span></td></tr>
-</tbody></table>
+<thead><tr><th>#</th><th>SKU</th><th>ASIN数</th><th>活跃期</th><th>天数</th><th>日均</th><th>总销量</th><th>广告费</th><th>广告/单</th><th>点击</th><th>B2B</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>H0002-a</strong> <span class="badge hot">高频</span></td><td>2</td><td>05-04~07-02</td><td>60</td><td><strong>4.72</strong></td><td>283</td><td>$275.93</td><td class="warn">$0.98</td><td>1796</td><td>4</td></tr><tr><td>2</td><td><strong>H0002-b</strong> <span class="badge cool">稳定</span></td><td>1</td><td>05-04~07-01</td><td>59</td><td><strong>2.75</strong></td><td>162</td><td>$472.24</td><td class="bad">$2.92</td><td>3931</td><td>4</td></tr><tr><td>3</td><td><strong>H0002-c</strong> <span class="badge cool">稳定</span></td><td>6</td><td>05-04~07-01</td><td>59</td><td><strong>2.71</strong></td><td>160</td><td>$65.90</td><td class="pos">$0.41</td><td>374</td><td>4</td></tr><tr><td>4</td><td><strong>H0002-q</strong> <span class="badge cool">稳定</span></td><td>2</td><td>05-04~07-01</td><td>59</td><td><strong>2.63</strong></td><td>155</td><td>$145.78</td><td class="warn">$0.94</td><td>1010</td><td>1</td></tr><tr><td>5</td><td><strong>H0002-h</strong> <span class="badge cool">稳定</span></td><td>3</td><td>05-05~07-01</td><td>58</td><td><strong>1.95</strong></td><td>113</td><td>$71.34</td><td class="warn">$0.63</td><td>506</td><td>0</td></tr><tr><td>6</td><td><strong>H0002-f</strong> <span class="badge cool">稳定</span></td><td>3</td><td>05-04~07-02</td><td>60</td><td><strong>1.92</strong></td><td>115</td><td>$79.57</td><td class="warn">$0.69</td><td>524</td><td>3</td></tr><tr><td>7</td><td><strong>H0002-x</strong> <span class="badge cool">稳定</span></td><td>3</td><td>05-04~07-01</td><td>59</td><td><strong>1.90</strong></td><td>112</td><td>$24.44</td><td class="pos">$0.22</td><td>161</td><td>0</td></tr><tr><td>8</td><td><strong>H0003-r</strong> <span class="badge cool">稳定</span></td><td>2</td><td>05-16~07-01</td><td>47</td><td><strong>1.87</strong></td><td>88</td><td>$12.28</td><td class="pos">$0.14</td><td>65</td><td>0</td></tr><tr><td>9</td><td><strong>H0003-j</strong> <span class="badge cool">稳定</span></td><td>1</td><td>06-19~07-01</td><td>13</td><td><strong>1.85</strong></td><td>24</td><td>$4.57</td><td class="pos">$0.19</td><td>23</td><td>0</td></tr><tr><td>10</td><td><strong>H0002-d</strong> <span class="badge cool">稳定</span></td><td>5</td><td>05-04~07-02</td><td>60</td><td><strong>1.80</strong></td><td>108</td><td>$13.53</td><td class="pos">$0.13</td><td>84</td><td>0</td></tr><tr><td>11</td><td><strong>H0002-j</strong> <span class="badge cool">稳定</span></td><td>3</td><td>05-04~06-29</td><td>57</td><td><strong>1.58</strong></td><td>90</td><td>$81.81</td><td class="warn">$0.91</td><td>406</td><td>1</td></tr><tr><td>12</td><td><strong>H0002-y</strong> <span class="badge cool">稳定</span></td><td>3</td><td>05-06~07-01</td><td>57</td><td><strong>1.49</strong></td><td>85</td><td>$67.09</td><td class="warn">$0.79</td><td>441</td><td>0</td></tr><tr><td>13</td><td><strong>H0002-e,H0002-l</strong> <span class="badge cool">稳定</span></td><td>1</td><td>06-19~06-30</td><td>12</td><td><strong>1.33</strong></td><td>16</td><td>$1.68</td><td class="pos">$0.11</td><td>8</td><td>0</td></tr><tr><td>14</td><td><strong>H0002-e</strong> <span class="badge cool">稳定</span></td><td>1</td><td>05-09~06-18</td><td>41</td><td><strong>1.24</strong></td><td>51</td><td>$25.21</td><td class="pos">$0.49</td><td>168</td><td>1</td></tr><tr><td>15</td><td><strong>H0002-i</strong> <span class="badge cool">稳定</span></td><td>3</td><td>05-04~07-01</td><td>59</td><td><strong>1.02</strong></td><td>60</td><td>$7.43</td><td class="pos">$0.12</td><td>44</td><td>0</td></tr><tr><td>16</td><td><strong>H0003-b</strong> <span class="badge cool">稳定</span></td><td>2</td><td>05-16~07-01</td><td>47</td><td><strong>1.00</strong></td><td>47</td><td>$4.07</td><td class="pos">$0.09</td><td>21</td><td>0</td></tr><tr><td>17</td><td><strong>H0002-k</strong> </td><td>3</td><td>05-04~07-01</td><td>59</td><td><strong>0.92</strong></td><td>54</td><td>$85.89</td><td class="bad">$1.59</td><td>453</td><td>1</td></tr><tr><td>18</td><td><strong>H0003-c</strong> </td><td>2</td><td>05-16~07-01</td><td>47</td><td><strong>0.89</strong></td><td>42</td><td>$7.14</td><td class="pos">$0.17</td><td>38</td><td>0</td></tr><tr><td>19</td><td><strong>H0003-i</strong> </td><td>2</td><td>05-17~07-01</td><td>46</td><td><strong>0.89</strong></td><td>41</td><td>$3.53</td><td class="pos">$0.09</td><td>18</td><td>0</td></tr><tr><td>20</td><td><strong>H0002-m</strong> </td><td>3</td><td>05-06~07-01</td><td>57</td><td><strong>0.84</strong></td><td>48</td><td>$22.10</td><td class="pos">$0.46</td><td>162</td><td>0</td></tr><tr><td>21</td><td><strong>H0002-g</strong> </td><td>3</td><td>05-05~07-01</td><td>58</td><td><strong>0.81</strong></td><td>47</td><td>$82.68</td><td class="bad">$1.76</td><td>483</td><td>0</td></tr><tr><td>22</td><td><strong>H0002-p</strong> </td><td>2</td><td>05-05~07-01</td><td>58</td><td><strong>0.78</strong></td><td>45</td><td>$21.80</td><td class="pos">$0.48</td><td>159</td><td>2</td></tr><tr><td>23</td><td><strong>H0003-o</strong> </td><td>2</td><td>05-16~06-30</td><td>46</td><td><strong>0.76</strong></td><td>35</td><td>$16.31</td><td class="pos">$0.47</td><td>101</td><td>1</td></tr><tr><td>24</td><td><strong>H0002-o</strong> </td><td>3</td><td>05-04~07-01</td><td>59</td><td><strong>0.75</strong></td><td>44</td><td>$25.17</td><td class="warn">$0.57</td><td>136</td><td>0</td></tr><tr><td>25</td><td><strong>H0003-d</strong> </td><td>2</td><td>05-16~06-30</td><td>46</td><td><strong>0.70</strong></td><td>32</td><td>$2.56</td><td class="pos">$0.08</td><td>14</td><td>1</td></tr><tr><td>26</td><td><strong>H0003-g</strong> </td><td>2</td><td>05-17~06-30</td><td>45</td><td><strong>0.69</strong></td><td>31</td><td>$3.61</td><td class="pos">$0.12</td><td>23</td><td>2</td></tr><tr><td>27</td><td><strong>H0003-s</strong> </td><td>1</td><td>06-28~06-30</td><td>3</td><td><strong>0.67</strong></td><td>2</td><td>$1.52</td><td class="warn">$0.76</td><td>8</td><td>0</td></tr><tr><td>28</td><td><strong>H0003-p</strong> </td><td>2</td><td>05-16~06-30</td><td>46</td><td><strong>0.63</strong></td><td>29</td><td>$5.22</td><td class="pos">$0.18</td><td>28</td><td>0</td></tr><tr><td>29</td><td><strong>H0003-l</strong> </td><td>1</td><td>06-24~07-01</td><td>8</td><td><strong>0.62</strong></td><td>5</td><td>$2.17</td><td class="pos">$0.43</td><td>10</td><td>0</td></tr><tr><td>30</td><td><strong>H0003-h</strong> </td><td>2</td><td>05-17~06-29</td><td>44</td><td><strong>0.57</strong></td><td>25</td><td>$30.80</td><td class="bad">$1.23</td><td>165</td><td>0</td></tr><tr><td>31</td><td><strong>H0003-m</strong> </td><td>2</td><td>05-18~07-01</td><td>45</td><td><strong>0.56</strong></td><td>25</td><td>$4.20</td><td class="pos">$0.17</td><td>25</td><td>0</td></tr><tr><td>32</td><td><strong>H0003-k</strong> </td><td>2</td><td>05-19~07-01</td><td>44</td><td><strong>0.52</strong></td><td>23</td><td>$7.36</td><td class="pos">$0.32</td><td>43</td><td>0</td></tr><tr><td>33</td><td><strong>H0003-f</strong> </td><td>2</td><td>05-17~06-29</td><td>44</td><td><strong>0.52</strong></td><td>23</td><td>$1.91</td><td class="pos">$0.08</td><td>12</td><td>0</td></tr><tr><td>34</td><td><strong>H0003-a</strong> </td><td>2</td><td>05-17~07-01</td><td>46</td><td><strong>0.43</strong></td><td>20</td><td>$2.76</td><td class="pos">$0.14</td><td>14</td><td>1</td></tr><tr><td>35</td><td><strong>H0002-l</strong> </td><td>2</td><td>05-13~07-01</td><td>50</td><td><strong>0.42</strong></td><td>21</td><td>$39.70</td><td class="bad">$1.89</td><td>217</td><td>1</td></tr><tr><td>36</td><td><strong>H0003-q</strong> </td><td>2</td><td>05-18~07-01</td><td>45</td><td><strong>0.38</strong></td><td>17</td><td>$4.12</td><td class="pos">$0.24</td><td>28</td><td>0</td></tr><tr><td>37</td><td><strong>H0002-n</strong> </td><td>2</td><td>05-04~06-30</td><td>58</td><td><strong>0.31</strong></td><td>18</td><td>$47.16</td><td class="bad">$2.62</td><td>264</td><td>0</td></tr><tr><td>38</td><td><strong>B0001-a</strong> </td><td>1</td><td>05-04~07-01</td><td>59</td><td><strong>0.00</strong></td><td>0</td><td>$0.00</td><td class=""><span style="color:#777">—</span></td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
 
 <div class="insights">
 <h2>建议</h2>
 <ul>
-<li><strong>H0002-b</strong> 广告费最高($472)，单均广告成本 $2.92，但日均仅 2.75 单——建议先砍竞价或暂停低效广告组，看看能否靠自然流量出单</li>
-<li><strong>H0002-c</strong> 是"性价比之王"：日均 2.71 单，广告成本只要 $0.41/单，可考虑加大投放</li>
-<li><strong>H0002-x</strong> 广告费极低($24)但日均 1.90 单，说明自然流量强，适合做"轻广告"标杆</li>
-<li><strong>H0002-a</strong> 虽然广告投入大($276)，但产出也高，属于能跑正的产品，维持当前策略即可</li>
-<li><strong>低效 ASIN</strong>：多 SKU 拥有 3~6 个 ASIN，部分 ASIN 几乎没销量，考虑合并或砍掉冗余 ASIN 以集中资源</li>
+<li><strong>H0002-b</strong>：广告费 $472 单产仅 $2.92/单，建议砍竞价 20~30% 或暂停负利润广告组</li>
+<li><strong>H0002-n / H0002-l / H0002-g</strong>：日均低 + 广告费偏高，考虑暂停广告保留自然搜索</li>
+<li><strong>H0002-c</strong>：标杆产品（日均 2.71 + 广告 $0.41/单），可小幅加投看天花板</li>
+<li><strong>H0002-a</strong>：稳坐头把交椅，保持当前投放策略</li>
+<li><strong>B0001-a</strong>：整个周期零销量，确认下 ASIN 是否还在线</li>
+<li><strong>冗余 ASIN</strong>：31 个 SKU 有多 ASIN，建议砍掉半年没销量的子 ASIN</li>
 </ul>
 </div>
 
-<p style="text-align:center;color:var(--muted);font-size:12px;margin-top:30px">Generated by Hermes | 算法: 首单日到停售日为周期计算日均</p>
-</body></html>
+<p style="text-align:center;color:var(--muted);font-size:12px;margin-top:24px">Generated by Hermes Agent · 数据截止 2026-07-02</p>
+</body>
+</html>
